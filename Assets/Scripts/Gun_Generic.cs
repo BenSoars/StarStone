@@ -16,8 +16,10 @@ public class Gun_Generic : MonoBehaviour
     [Header("Weapon Accuracy")]
     [Space(2)]
     public bool m_isAccurate = true;
-    public Vector3 m_accuracyMinRange;
-    public Vector3 m_accuracyMaxRange;
+    public List<float> m_accuracyMinRange = new List<float>();
+    public List<float> m_accuracyMaxRange = new List<float>();
+    public List<float> m_accuracyGenerated = new List<float>();
+    private Vector3 m_newAccuracy;
     
     [Space(2)]
     [Header("Weapon Other Stats")]
@@ -39,27 +41,41 @@ public class Gun_Generic : MonoBehaviour
     {
         for (int i = 0; i < m_ammoPerShot; i++)
         {
-            if (m_physicalBullet) // if a physical bullet is there
+            if (!m_isAccurate)
             {
-                m_shotBullet = Instantiate(m_physicalBullet, m_shotPoint.transform.position, Quaternion.identity) as Rigidbody; // shoot bullet
-                m_shotBullet.AddForce(m_shotPoint.transform.forward * m_shotForce); // push bullet out
-
+                m_newAccuracy = f_BulletSpread();
             }
             else
             {
+                m_newAccuracy = m_shotPoint.forward;
+            }
 
-                if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out m_hitscanCast, Mathf.Infinity)) // shoot out a raycast for hitscan
-                {
-                    // if hit something
-                    Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * m_hitscanCast.distance, Color.yellow);
-                    Debug.Log("Did Hit");
+            if (m_physicalBullet) // if a physical bullet is there
+            {
+                m_shotBullet = Instantiate(m_physicalBullet, m_shotPoint.transform.position, Quaternion.identity) as Rigidbody; // shoot bullet
+                m_shotBullet.AddForce(m_newAccuracy * m_shotForce); // push bullet out
+            }
+            else
+            {
+                if (Physics.Raycast(transform.position, m_newAccuracy, out m_hitscanCast, Mathf.Infinity)) // shoot out a raycast for hitscan
+                { 
+                    Debug.DrawRay(transform.position, m_newAccuracy * m_hitscanCast.distance, Color.yellow);
                     Instantiate(hitSpark, m_hitscanCast.point, Quaternion.identity);
-
                 }
             }
+            m_accuracyGenerated.Clear(); // clear the generated accuracy
+            m_currentAmmo -= 1; // decrease total ammo counter by the ammo consuption of the gun
         }
+    }
 
-        m_currentAmmo -= m_ammoPerShot; // decrease total ammo counter by the ammo consuption of the gun
+    Vector3 f_BulletSpread()
+    {
+        for (int j = 0; j < m_accuracyMaxRange.Count; j++)
+        {
+            m_accuracyGenerated.Add(Random.Range(m_accuracyMinRange[j], m_accuracyMaxRange[j])); // randomly generate accuracy
+        }
+        Vector3 accuracy = new Vector3(m_shotPoint.forward.x + m_accuracyGenerated[0], m_shotPoint.forward.y + m_accuracyGenerated[1], m_shotPoint.forward.z + m_accuracyGenerated[2]); // send back accuracy
+        return accuracy;
     }
 
     void Update()
@@ -72,4 +88,6 @@ public class Gun_Generic : MonoBehaviour
             }
         }
     }
+
+    
 }
