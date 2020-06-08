@@ -310,11 +310,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2c87195fb52867499dd02a680fbba9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_maxAmmo: 1000
-  m_currentAmmo: 1000
+  m_maxAmmo: 6
+  m_currentAmmo: 6
   m_ammoPerShot: 1
-  m_bulletDamage: 1
+  m_accuracy: 0
   m_shotForce: 2000
+  m_bulletDamage: 1
   m_physicalBullet: {fileID: 0}
   m_shotPoint: {fileID: 492437567}
   hitSpark: {fileID: 711091191413159071, guid: bcb401efd2e081e47b56a919ee7cd4c5, type: 3}
