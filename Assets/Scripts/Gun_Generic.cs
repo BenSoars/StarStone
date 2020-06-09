@@ -59,10 +59,11 @@ public class Gun_Generic : MonoBehaviour
             {
                 if (Physics.Raycast(transform.position, m_newAccuracy, out m_hitscanCast, Mathf.Infinity)) // shoot out a raycast for hitscan
                 { 
-                    Debug.DrawRay(transform.position, m_newAccuracy * m_hitscanCast.distance, Color.yellow);
+                    Debug.DrawRay(transform.position    , m_newAccuracy * m_hitscanCast.distance, Color.yellow);
                     Instantiate(hitSpark, m_hitscanCast.point, Quaternion.identity);
                 }
             }
+
             m_accuracyGenerated.Clear(); // clear the generated accuracy
             m_currentAmmo -= 1; // decrease total ammo counter by the ammo consuption of the gun
         }

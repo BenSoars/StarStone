@@ -325,8 +325,7 @@ MonoBehaviour:
   m_accuracyGenerated: []
   m_shotForce: 1500
   m_bulletDamage: 4
-  m_physicalBullet: {fileID: 2656537138490890291, guid: a248afc33b4f0a84a8569fd2f9fd7288,
-    type: 3}
+  m_physicalBullet: {fileID: 0}
   m_shotPoint: {fileID: 492437567}
   hitSpark: {fileID: 711091191413159071, guid: bcb401efd2e081e47b56a919ee7cd4c5, type: 3}
 --- !u!1 &791101574
