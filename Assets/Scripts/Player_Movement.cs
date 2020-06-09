@@ -40,6 +40,7 @@ public class Player_Movement : MonoBehaviour
         {
             f_playerJump();
         }
+        f_ability();
     }
 
     void f_lookAround()
@@ -98,5 +99,13 @@ public class Player_Movement : MonoBehaviour
     void f_playerJump()
     {
         m_rb.AddForce(Vector3.up * m_jumpHeight, ForceMode.Impulse);
+    }
+
+    void f_ability()
+    {
+        if (Input.GetKeyDown("Q"))
+        {
+            Debug.Log("yeet");
+        }
     }
 }
