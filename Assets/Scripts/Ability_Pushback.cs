@@ -44,7 +44,7 @@ public class Ability_Pushback : MonoBehaviour
             }
         }
 
-        Invoke("f_removeObject", 1f);
+        Invoke("f_removeObject", 5f);
     }
 
     void f_removeObject()
