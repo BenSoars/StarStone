@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player_Movement : MonoBehaviour
+public class Player_Controller : MonoBehaviour
 {
     public Transform m_camera;
     public Rigidbody m_rb;
