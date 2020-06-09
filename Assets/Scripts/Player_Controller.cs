@@ -31,6 +31,7 @@ public class Player_Controller : MonoBehaviour
     public bool m_isSprinting;
 
     public Object m_pushBack;
+    public Rigidbody m_grenade;
 
 
     // Update is called once per frame
@@ -45,6 +46,8 @@ public class Player_Controller : MonoBehaviour
             f_playerJump();
         }
         f_ability();
+
+ 
     }
 
     void f_lookAround()
@@ -113,5 +116,16 @@ public class Player_Controller : MonoBehaviour
         {
             Instantiate(m_pushBack, m_shotPoint.transform.position, m_shotPoint.rotation); // 'm_shotPoint.rotation' makes the position of firing relative to where the player is looking based on camera rotation.
         }
+
+
+        // Ben Soars
+        if (Input.GetKeyDown("g"))
+        {
+            Rigidbody thrownObject = Instantiate(m_grenade, m_shotPoint.transform.position, m_shotPoint.rotation); // create grenade
+            thrownObject.AddForce(m_shotPoint.forward * 100); // push forwards
+            thrownObject.AddForce(m_shotPoint.up * 50); // throw slightly upwards
+        }
     }
+
+    
 }
