@@ -39,11 +39,13 @@ public class Gun_Generic : MonoBehaviour
     private RaycastHit m_hitscanCast; // the hitscan raycast
     public GameObject hitSpark;
 
-    private Text ammoCount;
+    private Text m_ammoCount; // the ui element displaying the current ammo
+    
 
     void Start()
     {
-        ammoCount = GameObject.Find("AmmoCount").GetComponent<Text>();
+        m_ammoCount = GameObject.Find("AmmoCount").GetComponent<Text>();
+        f_updateUI();
     }
 
     void f_ShootGun()
@@ -96,7 +98,7 @@ public class Gun_Generic : MonoBehaviour
             {
                 f_ShootGun();
             }
-            updateUI();
+            f_updateUI();
         }
     }
 
@@ -107,12 +109,12 @@ public class Gun_Generic : MonoBehaviour
             m_currentAmmo += other.GetComponent<AmmoReplenish>().AmmoWorth;
             if (m_currentAmmo > m_maxAmmo) { m_currentAmmo = m_maxAmmo; }
             Destroy(other.gameObject);
-            updateUI();
+            f_updateUI();
         }
     }
     
-    void updateUI()
+    void f_updateUI()
     {
-        ammoCount.text = (m_currentAmmo.ToString() + "/" + m_maxAmmo.ToString());
+        m_ammoCount.text = (m_currentAmmo.ToString() + "/" + m_maxAmmo.ToString());
     }
 }
