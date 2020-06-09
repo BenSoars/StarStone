@@ -28,6 +28,7 @@ public class Player_Controller : MonoBehaviour
     float m_speed; 
 
     public bool m_grounded;
+    public bool m_isSprinting;
 
     public Object m_pushBack;
 
@@ -80,10 +81,12 @@ public class Player_Controller : MonoBehaviour
 
         if (Input.GetKey(KeyCode.LeftShift))
         {
+            m_isSprinting = true;
             m_speed = m_sprintSpeed;
         }
         if(!Input.GetKey(KeyCode.LeftShift))
         {
+            m_isSprinting = false;
             m_speed = m_walkSpeed;
         }
     }

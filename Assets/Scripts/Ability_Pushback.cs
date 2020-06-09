@@ -18,14 +18,11 @@ public class Ability_Pushback : MonoBehaviour
 
     private Rigidbody m_rb;
 
-    private Animator m_animator;
     public void Start()
     {
         m_sphereCollider = gameObject.GetComponent<SphereCollider>();
 
         m_isFired = true;
-
-        m_animator = gameObject.GetComponent<Animator>();
 
         m_rb = GetComponent<Rigidbody>();
 
@@ -35,8 +32,6 @@ public class Ability_Pushback : MonoBehaviour
     public void Update()
     {
         m_damageRadius = m_sphereCollider.radius;
-
-        m_animator.SetBool("isFired", m_isFired);
 
         Collider[] o_colliders = Physics.OverlapSphere(transform.position, m_damageRadius); //o for objects.
         foreach (Collider o_hit in o_colliders)

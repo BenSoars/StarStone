@@ -157,9 +157,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 478a20d3a31972947ada1c06f7ab7139, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_abilitySpeed: 300
+  m_abilitySpeed: 600
   m_upliftForce: 2
-  m_knockbackForce: 5
+  m_knockbackForce: 6
   m_damageRadius: 0
   m_abilityDuration: 0
   m_isFired: 0
