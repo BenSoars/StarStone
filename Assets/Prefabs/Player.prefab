@@ -99,7 +99,7 @@ GameObject:
   - component: {fileID: 5077110649744817304}
   - component: {fileID: 2567463724418065398}
   m_Layer: 9
-  m_Name: Player_Test
+  m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -222,7 +222,10 @@ MonoBehaviour:
   m_jumpHeight: 30
   m_extraGravity: 6
   m_grounded: 0
+  m_isSprinting: 0
   m_pushBack: {fileID: 1851148228268403614, guid: af108dce561144945bf7271e1c761477,
+    type: 3}
+  m_grenade: {fileID: 8560859715546231127, guid: 6905919010773084b993d524e74b96a0,
     type: 3}
 --- !u!114 &2567463724418065398
 MonoBehaviour:
