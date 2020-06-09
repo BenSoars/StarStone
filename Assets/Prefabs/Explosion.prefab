@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6575564852631946052}
   - component: {fileID: 3468815702293135526}
   - component: {fileID: 9053200886989988654}
+  - component: {fileID: -4276962934112317252}
   m_Layer: 0
   m_Name: Explosion
   m_TagString: Untagged
@@ -78,6 +79,22 @@ MonoBehaviour:
   m_damageRadius: 0
   m_abilityDuration: 1
   m_isFired: 0
+--- !u!54 &-4276962934112317252
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4037682045085163055}
+  serializedVersion: 2
+  m_Mass: 0.0000001
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &5545330705112407020
 GameObject:
   m_ObjectHideFlags: 0
