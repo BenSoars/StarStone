@@ -7,6 +7,8 @@ public class Player_Movement : MonoBehaviour
     public Transform m_camera;
     public Rigidbody m_rb;
 
+    public Transform m_shotPoint;
+
     public float m_camRotSpeed;
     public float m_camMinY;
     public float m_camMaxY;
@@ -23,10 +25,11 @@ public class Player_Movement : MonoBehaviour
     float m_camRotY;
     Vector3 m_directionIntentX;
     Vector3 m_directionIntentY;
-    float m_speed;
-   
+    float m_speed; 
 
     public bool m_grounded;
+
+    public Object m_pushBack;
 
 
     // Update is called once per frame
@@ -103,9 +106,9 @@ public class Player_Movement : MonoBehaviour
 
     void f_ability()
     {
-        if (Input.GetKeyDown("Q"))
+        if (Input.GetKeyDown("q"))
         {
-            Debug.Log("yeet");
+            Instantiate(m_pushBack, m_shotPoint.transform.position, m_shotPoint.rotation); // 'm_shotPoint.rotation' makes the position of firing relative to where the player is looking based on camera rotation.
         }
     }
 }
