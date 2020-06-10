@@ -71,8 +71,14 @@ public class Gun_Generic : MonoBehaviour
             {
                 if (Physics.Raycast(transform.position, m_newAccuracy, out m_hitscanCast, Mathf.Infinity)) // shoot out a raycast for hitscan
                 { 
-                    Debug.DrawRay(transform.position    , m_newAccuracy * m_hitscanCast.distance, Color.yellow);
+                    Debug.DrawRay(transform.position, m_newAccuracy * m_hitscanCast.distance, Color.yellow);
                     Instantiate(hitSpark, m_hitscanCast.point, Quaternion.identity);
+
+                    if (m_hitscanCast.transform.gameObject.CompareTag("Enemy"))
+                    {
+                        m_hitscanCast.transform.gameObject.GetComponent<Enemy_Controller>().m_enemyHealth -= m_bulletDamage;
+                        
+                    }
                 }
             }
 
