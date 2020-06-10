@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Player_Controller : MonoBehaviour
 {
+    //Kurtis Watson
     public Transform m_camera;
     public Rigidbody m_rb;
 
@@ -19,6 +20,8 @@ public class Player_Controller : MonoBehaviour
     public float m_maxSpeed;
     public float m_jumpHeight;
 
+    public float m_playerHealth;
+
     public float m_extraGravity;
 
     float m_playerRotX;
@@ -33,21 +36,32 @@ public class Player_Controller : MonoBehaviour
     public Object m_pushBack;
     public Rigidbody m_grenade;
 
+    public bool m_isPlayerActive;
+
+    private void Start()
+    {
+        m_isPlayerActive = true;
+    }
 
     // Update is called once per frame
     void Update()
     {
-        f_lookAround();
-        f_moveAround();
-        f_strongerGravity();
-        f_groundCheck();
-        if(m_grounded == true && Input.GetButtonDown("Jump"))
-        {
-            f_playerJump();
-        }
-        f_ability();
+        f_drone();
 
- 
+        if (m_isPlayerActive == true)
+        {
+            f_lookAround();
+            f_moveAround();
+            f_strongerGravity();
+            f_groundCheck();
+            if (m_grounded == true && Input.GetButtonDown("Jump"))
+            {
+                f_playerJump();
+            }
+            f_ability();
+            gameObject.GetComponentInChildren<Camera>().enabled = true;
+        }
+        else gameObject.GetComponentInChildren<Camera>().enabled = false;
     }
 
     void f_lookAround()
@@ -126,6 +140,12 @@ public class Player_Controller : MonoBehaviour
             thrownObject.AddForce(m_shotPoint.up * 50); // throw slightly upwards
         }
     }
-
     
+    void f_drone()
+    {
+        if (Input.GetKeyDown("c"))
+        {
+            m_isPlayerActive = !m_isPlayerActive;
+        }
+    }
 }
