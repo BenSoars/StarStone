@@ -99,7 +99,7 @@ public class Gun_Generic : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetButtonDown("Fire1") && m_player.m_isSprinting == false)
+        if (Input.GetKeyDown(KeyCode.Mouse0) && m_player.m_isSprinting == false && m_player.m_isPlayerActive == true)
         {
             if (m_currentAmmo > 0)
             {
