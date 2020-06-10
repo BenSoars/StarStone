@@ -10,6 +10,8 @@ public class Player_Controller : MonoBehaviour
 
     public Transform m_shotPoint;
 
+    private Ability_Melee r_abilityMelee;
+
     public float m_camRotSpeed;
     public float m_camMinY;
     public float m_camMaxY;
@@ -41,6 +43,8 @@ public class Player_Controller : MonoBehaviour
     private void Start()
     {
         m_isPlayerActive = true;
+
+        r_abilityMelee = GameObject.FindObjectOfType<Ability_Melee>();
     }
 
     // Update is called once per frame
@@ -138,6 +142,11 @@ public class Player_Controller : MonoBehaviour
             Rigidbody thrownObject = Instantiate(m_grenade, m_shotPoint.transform.position, m_shotPoint.rotation); // create grenade
             thrownObject.AddForce(m_shotPoint.forward * 100); // push forwards
             thrownObject.AddForce(m_shotPoint.up * 50); // throw slightly upwards
+        }
+
+        if (Input.GetKeyDown("e"))
+        {
+            r_abilityMelee.f_melee();
         }
     }
     
