@@ -274,9 +274,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2c87195fb52867499dd02a680fbba9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_maxAmmo: 20
-  m_currentAmmo: 20
-  m_ammoPerShot: 3
+  m_maxAmmo: 50
+  m_currentAmmo: 50
+  m_ammoPerShot: 1
   m_isAccurate: 0
   m_accuracyMinRange:
   - 0
@@ -288,7 +288,7 @@ MonoBehaviour:
   - 0
   m_accuracyGenerated: []
   m_shotForce: 100
-  m_bulletDamage: 1
+  m_bulletDamage: 25
   m_physicalBullet: {fileID: 0}
   m_shotPoint: {fileID: 3768065255719412419}
   hitSpark: {fileID: 711091191413159071, guid: bcb401efd2e081e47b56a919ee7cd4c5, type: 3}
