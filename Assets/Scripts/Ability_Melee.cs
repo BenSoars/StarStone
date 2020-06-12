@@ -24,14 +24,23 @@ public class Ability_Melee : MonoBehaviour
         if(o_collided.CompareTag("Enemy"))
         {
             o_collided.gameObject.GetComponent<Enemy_Controller>().m_enemyHealth -= 50;
+            o_collided.gameObject.GetComponent<Enemy_Controller>().m_moveSpeed = 2;
+            Invoke("f_resetSpeed", 3);
+        }
+
+        void f_resetSpeed(){
+            o_collided.gameObject.GetComponent<Enemy_Controller>().m_moveSpeed = 4;
         }
     }
 
     public void f_melee()
     {
-        m_isMelee = true;
-        m_animator.SetBool("Melee", m_isMelee);
-        Invoke("f_resetAnimation", 0.5f);
+        if (m_isMelee == false)
+        {
+            m_isMelee = true;
+            m_animator.SetBool("Melee", m_isMelee);
+            Invoke("f_resetAnimation", 0.5f);
+        }
     }
 
     void f_resetAnimation()
