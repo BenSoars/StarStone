@@ -219,7 +219,7 @@ MonoBehaviour:
   m_camMaxY: 75
   m_camSmoothSpeed: 50
   m_walkSpeed: 6
-  m_sprintSpeed: 8
+  m_sprintSpeed: 9
   m_maxSpeed: 15
   m_jumpHeight: 9
   m_playerHealth: 0
