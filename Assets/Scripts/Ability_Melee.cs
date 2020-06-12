@@ -19,6 +19,14 @@ public class Ability_Melee : MonoBehaviour
 
     }
 
+    private void OnTriggerEnter(Collider o_collided)
+    {
+        if(o_collided.CompareTag("Enemy"))
+        {
+            o_collided.gameObject.GetComponent<Enemy_Controller>().m_enemyHealth -= 50;
+        }
+    }
+
     public void f_melee()
     {
         m_isMelee = true;
