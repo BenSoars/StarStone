@@ -11,6 +11,7 @@ public class Player_Controller : MonoBehaviour
     public Transform m_shotPoint;
 
     private Ability_Melee r_abilityMelee;
+    private Ability_Wall r_abilityWall;
 
     public float m_camRotSpeed;
     public float m_camMinY;
@@ -26,7 +27,7 @@ public class Player_Controller : MonoBehaviour
 
     public float m_extraGravity;
 
-    float m_playerRotX;
+    public float m_playerRotX;
     float m_camRotY;
     Vector3 m_directionIntentX;
     Vector3 m_directionIntentY;
@@ -45,9 +46,11 @@ public class Player_Controller : MonoBehaviour
         m_isPlayerActive = true;
 
         r_abilityMelee = GameObject.FindObjectOfType<Ability_Melee>();
+        r_abilityWall = GameObject.FindObjectOfType<Ability_Wall>();
     }
 
     // Update is called once per frame
+    //Kurtis Watson
     void Update()
     {
         f_drone();
@@ -68,6 +71,7 @@ public class Player_Controller : MonoBehaviour
         else gameObject.GetComponentInChildren<Camera>().enabled = false;
     }
 
+    //Kurtis Watson
     void f_lookAround()
     {
         Cursor.visible = false; //Remove cursor from the screen.
@@ -86,6 +90,7 @@ public class Player_Controller : MonoBehaviour
         m_camera.localRotation = Quaternion.Lerp(m_camera.localRotation, m_camTargetRotation, Time.deltaTime * m_camSmoothSpeed);
     }
 
+    //Kurtis Watson
     void f_moveAround()
     {
         m_directionIntentX = m_camera.right;
@@ -112,22 +117,26 @@ public class Player_Controller : MonoBehaviour
         }
     }
 
+    //Kurtis Watson
     void f_strongerGravity()
     {
         m_rb.AddForce(Vector3.down * m_extraGravity);
     }
 
+    //Kurtis Watson
     void f_groundCheck()
     {
         RaycastHit m_groundHit;
         m_grounded = Physics.Raycast(transform.position, -transform.up, out m_groundHit, 1.25f); //Automatically set bool value to true if an object is hit; else, returns false.
     }
 
+    //Kurtis Watson
     void f_playerJump()
     {
         m_rb.AddForce(Vector3.up * m_jumpHeight, ForceMode.Impulse);
     }
 
+    //Kurtis Watson
     void f_ability()
     {
         if (Input.GetKeyDown("q"))
@@ -147,6 +156,11 @@ public class Player_Controller : MonoBehaviour
         if (Input.GetKeyDown("e"))
         {
             r_abilityMelee.f_melee();
+        }
+
+        if (Input.GetKeyDown("v"))
+        {
+            r_abilityWall.f_spawnWall();
         }
     }
     

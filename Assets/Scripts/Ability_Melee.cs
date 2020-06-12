@@ -24,12 +24,6 @@ public class Ability_Melee : MonoBehaviour
         if(o_collided.CompareTag("Enemy"))
         {
             o_collided.gameObject.GetComponent<Enemy_Controller>().m_enemyHealth -= 50;
-            o_collided.gameObject.GetComponent<Enemy_Controller>().m_moveSpeed = 2;
-            Invoke("f_resetSpeed", 3);
-        }
-
-        void f_resetSpeed(){
-            o_collided.gameObject.GetComponent<Enemy_Controller>().m_moveSpeed = 4;
         }
     }
 
