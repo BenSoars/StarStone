@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AmmoReplenish : MonoBehaviour
+public class Ammo_Replenish : MonoBehaviour
 {
     // Ben Soars
     public string GunType = "ALL";
