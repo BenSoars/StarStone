@@ -8,7 +8,7 @@ public class Ability_Wall : MonoBehaviour
 
     public Transform m_shotPoint;
     private RaycastHit m_hitscanCast;
-    public Player_Controller r_playerController;
+    private Player_Controller r_playerController;
 
     private void Start()
     {

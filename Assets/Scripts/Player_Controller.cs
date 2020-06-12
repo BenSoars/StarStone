@@ -5,6 +5,7 @@ using UnityEngine;
 public class Player_Controller : MonoBehaviour
 {
     //Kurtis Watson
+    private Animator m_animator;
     public Transform m_camera;
     public Rigidbody m_rb;
 
@@ -35,6 +36,7 @@ public class Player_Controller : MonoBehaviour
 
     public bool m_grounded;
     public bool m_isSprinting;
+    public bool m_isCrouching;
 
     public Object m_pushBack;
     public Rigidbody m_grenade;
@@ -45,6 +47,7 @@ public class Player_Controller : MonoBehaviour
     {
         m_isPlayerActive = true;
 
+        m_animator = GetComponent<Animator>();
         r_abilityMelee = GameObject.FindObjectOfType<Ability_Melee>();
         r_abilityWall = GameObject.FindObjectOfType<Ability_Wall>();
     }
@@ -115,6 +118,15 @@ public class Player_Controller : MonoBehaviour
             m_isSprinting = false;
             m_speed = m_walkSpeed;
         }
+        if (Input.GetKey(KeyCode.LeftControl))
+        {
+            m_isCrouching = true;
+        }
+        if (!Input.GetKey(KeyCode.LeftControl))
+        {
+            m_isCrouching = false;
+        } 
+        m_animator.SetBool("Crouch", m_isCrouching);
     }
 
     //Kurtis Watson
@@ -143,7 +155,6 @@ public class Player_Controller : MonoBehaviour
         {
             Instantiate(m_pushBack, m_shotPoint.transform.position, m_shotPoint.rotation); // 'm_shotPoint.rotation' makes the position of firing relative to where the player is looking based on camera rotation.
         }
-
 
         // Ben Soars
         if (Input.GetKeyDown("g"))
