@@ -220,9 +220,9 @@ MonoBehaviour:
   m_walkSpeed: 9
   m_sprintSpeed: 13
   m_maxSpeed: 15
-  m_jumpHeight: 20
+  m_jumpHeight: 9
   m_playerHealth: 0
-  m_extraGravity: 6
+  m_extraGravity: 10
   m_grounded: 0
   m_isSprinting: 0
   m_pushBack: {fileID: 1851148228268403614, guid: af108dce561144945bf7271e1c761477,
