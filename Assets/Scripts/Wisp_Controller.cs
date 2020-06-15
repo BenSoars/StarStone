@@ -29,7 +29,7 @@ public class Wisp_Controller : MonoBehaviour
     {
         m_navAgent.SetDestination(wispPoint[m_random].transform.position);
 
-        if(this.transform.position.x <= m_navAgent.destination.x + 0.5f)
+        if(this.transform.position.x == m_navAgent.destination.x && this.transform.position.z == m_navAgent.destination.z)
         {
             Destroy(gameObject);
         }
