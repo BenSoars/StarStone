@@ -9,7 +9,7 @@ TagManager:
   - Explosion
   - Ground
   - Spawns
-  - WispSpawn
+  - WispPoint
   layers:
   - Default
   - TransparentFX

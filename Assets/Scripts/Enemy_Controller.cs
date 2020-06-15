@@ -14,6 +14,7 @@ public class Enemy_Controller : MonoBehaviour
     //Kurtis Watson
     public float m_detectionRadius;
     public bool m_isDetected;
+    public GameObject m_whisp;
 
     //Ben Soars
     private Player_Controller r_player;
@@ -50,6 +51,9 @@ public class Enemy_Controller : MonoBehaviour
                 Instantiate(m_AmmoCrate, transform.position, Quaternion.identity);
             }
             Destroy(gameObject);
+
+            //Kurtis Watson
+            Instantiate(m_whisp, transform.position, Quaternion.identity);
         }
     }
 
@@ -61,8 +65,7 @@ public class Enemy_Controller : MonoBehaviour
             {
                 m_rb.velocity = Vector3.zero;
                 m_navAgent.SetDestination(r_player.transform.position);
-            }
-            
+            }           
         }
 
     void OnTriggerStay(Collider other)
