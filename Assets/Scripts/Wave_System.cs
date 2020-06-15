@@ -7,16 +7,7 @@ public class Wave_System : MonoBehaviour
     public List<GameObject> enemyTypes = new List<GameObject>();
     public List<Transform> spawnPoints = new List<Transform>();
 
-    public class Point
-    {
-        public List<GameObject> list;
-    }
-
-    [System.Serializable]
-    public class PointList
-    {
-        public List<Point> list;
-    }
+    public List<List<int>> waves = new List<List<int>>();
 
     // Start is called before the first frame update
     void Start()

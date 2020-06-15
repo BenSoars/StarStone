@@ -8,6 +8,7 @@ TagManager:
   - Enemy
   - Explosion
   - Ground
+  - Spawns
   layers:
   - Default
   - TransparentFX
