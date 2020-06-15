@@ -62,6 +62,7 @@ public class Enemy_Controller : MonoBehaviour
                 m_rb.velocity = Vector3.zero;
                 m_navAgent.SetDestination(r_player.transform.position);
             }
+            
         }
 
     void OnTriggerStay(Collider other)
