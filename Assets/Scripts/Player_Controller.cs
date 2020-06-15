@@ -38,7 +38,7 @@ public class Player_Controller : MonoBehaviour
     public bool m_isSprinting;
     public bool m_isCrouching;
 
-    public Object m_pushBack;
+    public Object o_pushBack;
     public Rigidbody m_grenade;
 
     public bool m_isPlayerActive;
@@ -153,7 +153,7 @@ public class Player_Controller : MonoBehaviour
     {
         if (Input.GetKeyDown("q"))
         {
-            Instantiate(m_pushBack, m_shotPoint.transform.position, m_shotPoint.rotation); // 'm_shotPoint.rotation' makes the position of firing relative to where the player is looking based on camera rotation.
+            Instantiate(o_pushBack, m_shotPoint.transform.position, m_shotPoint.rotation); // 'm_shotPoint.rotation' makes the position of firing relative to where the player is looking based on camera rotation.
         }
 
         // Ben Soars
