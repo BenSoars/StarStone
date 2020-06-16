@@ -36,7 +36,14 @@ public class Player_Controller : MonoBehaviour
     Vector3 m_directionIntentY;
     float m_speed; 
 
+    // Ladder Values \\     
     public bool m_grounded;
+    public bool m_canPlayerMove;
+    public bool m_isLadder;
+    public bool m_isUsingLadder;
+    public bool m_topOfLadder;
+    public Transform desiredPos;
+
     public bool m_isSprinting;
     public bool m_isCrouching;
 
@@ -48,6 +55,7 @@ public class Player_Controller : MonoBehaviour
     private void Start()
     {
         m_isPlayerActive = true;
+        m_canPlayerMove = true;
 
         m_animator = GetComponent<Animator>();
         r_abilityMelee = GameObject.FindObjectOfType<Ability_Melee>();
@@ -62,6 +70,7 @@ public class Player_Controller : MonoBehaviour
 
         if (m_isPlayerActive == true)
         {
+            f_climb();
             f_lookAround();
             f_moveAround();
             f_strongerGravity();
@@ -107,34 +116,40 @@ public class Player_Controller : MonoBehaviour
         m_directionIntentY.y = 0;
         m_directionIntentY.Normalize();
 
-        m_rb.velocity = m_directionIntentY * Input.GetAxis("Vertical") * m_speed + m_directionIntentX * Input.GetAxis("Horizontal") * m_speed + Vector3.up * m_rb.velocity.y;
-        m_rb.velocity = Vector3.ClampMagnitude(m_rb.velocity, m_maxSpeed);
+        if (m_canPlayerMove == true)
+        {
+            m_rb.velocity = m_directionIntentY * Input.GetAxis("Vertical") * m_speed + m_directionIntentX * Input.GetAxis("Horizontal") * m_speed + Vector3.up * m_rb.velocity.y;
+            m_rb.velocity = Vector3.ClampMagnitude(m_rb.velocity, m_maxSpeed);
 
-        if (Input.GetKey(KeyCode.LeftShift))
-        {
-            m_isSprinting = true;
-            m_speed = m_sprintSpeed;
+            if (Input.GetKey(KeyCode.LeftShift))
+            {
+                m_isSprinting = true;
+                m_speed = m_sprintSpeed;
+            }
+            if (!Input.GetKey(KeyCode.LeftShift))
+            {
+                m_isSprinting = false;
+                m_speed = m_walkSpeed;
+            }
+            if (Input.GetKey(KeyCode.LeftControl))
+            {
+                m_isCrouching = true;
+            }
+            if (!Input.GetKey(KeyCode.LeftControl))
+            {
+                m_isCrouching = false;
+            }
+            m_animator.SetBool("Crouch", m_isCrouching);
         }
-        if(!Input.GetKey(KeyCode.LeftShift))
-        {
-            m_isSprinting = false;
-            m_speed = m_walkSpeed;
-        }
-        if (Input.GetKey(KeyCode.LeftControl))
-        {
-            m_isCrouching = true;
-        }
-        if (!Input.GetKey(KeyCode.LeftControl))
-        {
-            m_isCrouching = false;
-        } 
-        m_animator.SetBool("Crouch", m_isCrouching);
     }
 
     //Kurtis Watson
     void f_strongerGravity()
     {
-        m_rb.AddForce(Vector3.down * m_extraGravity);
+        if (m_canPlayerMove == true)
+        {
+            m_rb.AddForce(Vector3.down * m_extraGravity);
+        }
     }
 
     //Kurtis Watson
@@ -182,6 +197,71 @@ public class Player_Controller : MonoBehaviour
         if (Input.GetKeyDown("c"))
         {
             m_isPlayerActive = !m_isPlayerActive;
+        }
+    }
+
+    void f_climb()
+    {
+        RaycastHit m_ladderHit;
+
+        if (Input.GetKeyDown("f") && m_isUsingLadder == true)
+        {
+            m_rb.useGravity = true;
+            m_isUsingLadder = false;
+            m_canPlayerMove = true;
+        }
+        
+        else if (Physics.Raycast(m_camera.transform.position, m_camera.transform.forward, out m_ladderHit, 2f, 1<<10)) //Shoots a raycast forward of the players position at a distance of '2f'.
+        {
+            if (m_ladderHit.collider != null && m_ladderHit.collider.gameObject.layer == 10)
+            {
+                if (Input.GetKeyDown("f") && m_isUsingLadder == false)
+                {
+                    m_isUsingLadder = true;
+                    m_rb.useGravity = false;
+                    m_canPlayerMove = false;
+                    m_rb.velocity = Vector3.zero;
+                    if (m_topOfLadder == true)
+                    {
+                        desiredPos = m_ladderHit.collider.gameObject.transform.Find("Climb Point Top");
+                        this.transform.position = desiredPos.transform.position;
+                    }
+                    if(m_topOfLadder == false)
+                    {
+                        desiredPos = m_ladderHit.collider.gameObject.transform.Find("Climb Point Bottom");
+                        this.transform.position = desiredPos.transform.position;
+                    }
+
+                }   
+            }
+        }
+
+        float m_upwardsSpeed = Input.GetAxis("Vertical") / 20;
+        if (m_isUsingLadder == true)
+        {
+            transform.Translate(0, m_upwardsSpeed, 0);
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.name == "Top Stop Point")
+        {
+            m_rb.useGravity = true;
+            m_isUsingLadder = false;
+            m_canPlayerMove = true;
+        }
+        if (other.gameObject.name == "Top of Ladder")
+        {
+            m_topOfLadder = true;
+        }      
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.name == "Top of Ladder")
+        {
+            m_topOfLadder = false;
         }
     }
 }
