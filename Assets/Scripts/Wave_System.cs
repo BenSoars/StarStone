@@ -4,34 +4,62 @@ using UnityEngine;
 
 public class Wave_System : MonoBehaviour
 {
+    //Ben Soars
     public List<GameObject> enemyTypes = new List<GameObject>();
     public List<Transform> spawnPoints = new List<Transform>();
 
     public List<int> amountOf = new List<int>();
-    private List<GameObject> spawnedEnemies = new List<GameObject>();
+    public List<GameObject> spawnedEnemies = new List<GameObject>();
     public int enemiesLeft;
 
     private int curRound;
 
-    void SpawnEnemies()
+    //Kurtis Watson
+    private Player_Controller r_playerController;
+    public GameObject m_wisp;
+    private GameObject[] m_wispPoint;
+    private int m_random;
+    public bool m_startWaves;
+
+
+    //Kurtis Watson
+    private void Start()
+    {     
+        m_wispPoint = GameObject.FindGameObjectsWithTag("WispPoint");
+        r_playerController = FindObjectOfType<Player_Controller>();
+    }
+
+    //Kurtis Watson
+    private void Update()
     {
+        if (m_startWaves == true)
+        {
+            f_spawnWisps();
+            m_startWaves = false;
+        }
+    }
+
+    //Kurtis Watson
+    void f_spawnWisps()
+    {     
         for (int i = 0; i < amountOf[curRound]; i++)
         {
-            int rando = Random.Range(0, spawnPoints.Count);
-            GameObject spawned = Instantiate(enemyTypes[0], spawnPoints[rando].position, Quaternion.identity);
+            m_random = Random.Range(0, 4);          
+            GameObject spawned = Instantiate(m_wisp, m_wispPoint[m_random].transform.position, Quaternion.identity);
             spawnedEnemies.Add(spawned);
         }
+        enemiesLeft = spawnedEnemies.Count;
         curRound += 1;
+        Debug.Log("Enemies Left: " + enemiesLeft);
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        enemiesLeft = spawnedEnemies.Count;
-
-        if (spawnedEnemies.Count <= 0)
+        //Ben Soars
+        if (spawnedEnemies.Count <= 0 && enemiesLeft == 0)
         {
-            SpawnEnemies();
+            f_spawnWisps();
         }
         else
         {

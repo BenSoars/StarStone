@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
@@ -18,6 +19,7 @@ public class Enemy_Controller : MonoBehaviour
 
     //Ben Soars
     private Player_Controller r_player;
+    private Wave_System r_waveSystem;
     private Rigidbody m_rb;
 
     public GameObject m_AmmoCrate;
@@ -31,6 +33,7 @@ public class Enemy_Controller : MonoBehaviour
         m_navAgent = gameObject.GetComponent<NavMeshAgent>();
         m_navAgent.speed = m_moveSpeed; // set to defined movespeed in script for consistancy's sake
         r_player = GameObject.FindObjectOfType<Player_Controller>();
+        r_waveSystem = FindObjectOfType<Wave_System>();
     }
 
     void Update()
@@ -44,16 +47,19 @@ public class Enemy_Controller : MonoBehaviour
 
         //Ben Soars
         if (m_enemyHealth <= 0)
-        {
-            int rando = Random.Range(0, m_spawnChance);
+        {          
+            int rando = UnityEngine.Random.Range(0, m_spawnChance);
             if (rando == 1)
             {
                 Instantiate(m_AmmoCrate, transform.position, Quaternion.identity);
             }
+            
             Destroy(gameObject);
 
             //Kurtis Watson
-            Instantiate(m_whisp, transform.position, Quaternion.identity);
+            GameObject isNewWisp = Instantiate(m_whisp, transform.position, Quaternion.identity);
+            isNewWisp.GetComponent<Wisp_Controller>().m_enemySpawn = true;
+            r_waveSystem.enemiesLeft -= 1;
         }
     }
 

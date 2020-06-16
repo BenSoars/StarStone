@@ -24,6 +24,8 @@ public class Player_Controller : MonoBehaviour
     public float m_maxSpeed;
     public float m_jumpHeight;
 
+    public int m_enemiesKilled;
+
     public float m_playerHealth;
 
     public float m_extraGravity;
