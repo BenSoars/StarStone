@@ -668,7 +668,7 @@ GameObject:
   - component: {fileID: 8145446568550084157}
   m_Layer: 9
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -788,10 +788,16 @@ MonoBehaviour:
   m_sprintSpeed: 9
   m_maxSpeed: 15
   m_jumpHeight: 9
+  m_enemiesKilled: 0
   m_playerHealth: 0
   m_extraGravity: 10
   m_playerRotX: 0
   m_grounded: 0
+  m_canPlayerMove: 0
+  m_isLadder: 0
+  m_isUsingLadder: 0
+  m_topOfLadder: 0
+  desiredPos: {fileID: 0}
   m_isSprinting: 0
   m_isCrouching: 0
   o_pushBack: {fileID: 1851148228268403614, guid: af108dce561144945bf7271e1c761477,
