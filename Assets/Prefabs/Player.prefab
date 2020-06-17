@@ -837,6 +837,8 @@ MonoBehaviour:
   m_shotPoint: {fileID: 567909998898289762}
   hitSpark: {fileID: 711091191413159071, guid: bcb401efd2e081e47b56a919ee7cd4c5, type: 3}
   m_gunAnim: {fileID: 5413509914812397305}
+  m_hitDamageText: {fileID: 716313641932058393, guid: 6d1c9af70de7b834eb4915020237bcca,
+    type: 3}
 --- !u!114 &6984625067093746972
 MonoBehaviour:
   m_ObjectHideFlags: 0

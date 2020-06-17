@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -54,6 +55,10 @@ public class Gun_Generic : MonoBehaviour
     [Space(2)]
     public Animator m_gunAnim;
 
+    //Kurtis Watson
+
+    public GameObject m_hitDamageText;
+
     void Start()
     {
         m_ammoCount = GameObject.Find("AmmoCount").GetComponent<Text>();
@@ -95,7 +100,8 @@ public class Gun_Generic : MonoBehaviour
                     if (m_hitscanCast.transform.gameObject.CompareTag("Enemy")) // if an enemy was hit take away their health based on damage
                     {
                         m_hitscanCast.transform.gameObject.GetComponent<Enemy_Controller>().m_enemyHealth -= m_bulletDamage;
-                        
+                        //Kurtis Watson
+                        Instantiate(m_hitDamageText, m_hitscanCast.point, Quaternion.identity);                        
                     }
                 }
             }

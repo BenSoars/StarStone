@@ -24,7 +24,7 @@ public class Wisp_Controller : MonoBehaviour
         r_player = GameObject.FindObjectOfType<Player_Controller>();
         r_waveSystem = GameObject.FindObjectOfType<Wave_System>();
 
-        m_navAgent.speed = Random.Range(4, 13);
+        m_navAgent.speed = Random.Range(7, 16);
 
         wispPoint = GameObject.FindGameObjectsWithTag("WispPoint");
 
