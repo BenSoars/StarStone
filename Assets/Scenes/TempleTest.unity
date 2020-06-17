@@ -182,6 +182,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyTypes:
   - {fileID: 42458450682264745, guid: 4d4b05e08e0b0a6499519b925ddfa91b, type: 3}
+  - {fileID: 8653534323981115242, guid: 30a515d93317d6e46a11e2c362aafc9d, type: 3}
   spawnPoints:
   - {fileID: 1289623324}
   - {fileID: 1311514761}
@@ -198,10 +199,28 @@ MonoBehaviour:
   - {fileID: 482768561}
   - {fileID: 1884931917}
   - {fileID: 797025598}
-  amountOf: 0a0000000f00000014000000190000001e00000028000000320000003c00000046000000500000005a000000640000006e0000007800000082000000
+  amountOf:
+  - 10_0
+  - 15_0
+  - 20_0
+  - 20_5
+  - 25_5
+  - 35_5
+  - 40_10
+  - 50_10
+  - 60_10
+  - 60_20
+  - 65_25
+  - 60_30
+  - 65_35
+  - 75_35
+  - 0_100
   spawnedEnemies: []
   enemiesLeft: 140
-  m_wisp: {fileID: 42458450682264745, guid: 6befa5c3aa19d1842a12f708f5aab1c0, type: 3}
+  enemyArray: 
+  m_wisps:
+  - {fileID: 42458450682264745, guid: 6befa5c3aa19d1842a12f708f5aab1c0, type: 3}
+  - {fileID: 4912677542973487342, guid: 49ceda97bbd165a459db2f8f4ef86096, type: 3}
   m_startWaves: 0
 --- !u!4 &170729075
 Transform:

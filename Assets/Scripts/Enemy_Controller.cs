@@ -32,7 +32,7 @@ public class Enemy_Controller : MonoBehaviour
     }
     public CurrentState m_state;
 
-    private Transform m_eyePos;
+    public Transform m_eyePos;
     private RaycastHit m_sightRaycast; // the hitscan raycast
  
     //Kurtis Watson
@@ -46,17 +46,18 @@ public class Enemy_Controller : MonoBehaviour
         
         r_player = GameObject.FindObjectOfType<Player_Controller>();
         r_waveSystem = FindObjectOfType<Wave_System>();
-        m_eyePos = gameObject.GetComponentInChildren<Transform>();
+        
     }
 
     void Update()
     {
         // line of sight
-        Vector3 newDirection = (r_player.transform.position - transform.position).normalized;
-        m_eyePos.rotation = Quaternion.LookRotation(newDirection);
+        Vector3 newDirection = (r_player.transform.localPosition - m_eyePos.position).normalized;
+        m_eyePos.rotation = Quaternion.LookRotation(new Vector3(newDirection.x, newDirection.y, newDirection.z));
 
         if (Physics.Raycast(m_eyePos.position, m_eyePos.forward, out m_sightRaycast, Mathf.Infinity)) // shoot out a raycast for hitscan
         {
+            Debug.DrawRay(m_eyePos.position, m_eyePos.forward * m_sightRaycast.distance, Color.yellow); // draw line only viewable ineditor
             if (m_sightRaycast.collider.gameObject.CompareTag("Player"))
             {
                 m_state = CurrentState.Attack;

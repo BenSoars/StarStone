@@ -9,15 +9,16 @@ public class Wave_System : MonoBehaviour
     public List<GameObject> enemyTypes = new List<GameObject>();
     public List<Transform> spawnPoints = new List<Transform>();
 
-    public List<int> amountOf = new List<int>();
+    public List<string> amountOf = new List<string>();
     public List<GameObject> spawnedEnemies = new List<GameObject>();
     public int enemiesLeft;
 
     private int curRound;
+    public List<int> enemyArray = new List<int>();
 
     //Kurtis Watson
     private Player_Controller r_playerController;
-    public GameObject m_wisp;
+    public List<GameObject> m_wisps = new List<GameObject>();
     private GameObject[] m_wispPoint;
     private int m_random;
     public bool m_startWaves;
@@ -40,19 +41,25 @@ public class Wave_System : MonoBehaviour
         f_updateUI();
         if (m_startWaves == true)
         {
-            f_spawnWisps();
+
+            f_sortOutEnemys();
+
+            f_spawnWisps(); // spawn wisps
             m_startWaves = false;
         }
     }
 
     //Kurtis Watson
     void f_spawnWisps()
-    {     
-        for (int i = 0; i < amountOf[curRound]; i++)
-        {
-            m_random = Random.Range(0, 4);          
-            GameObject spawned = Instantiate(m_wisp, m_wispPoint[m_random].transform.position, Quaternion.identity);
-            spawnedEnemies.Add(spawned);
+    {
+
+        for (int k = 0; k < enemyArray.Count; k++) { 
+            for (int i = 0; i < enemyArray[k]; i++)
+            {
+                m_random = Random.Range(0, 4);
+                GameObject spawned = Instantiate(m_wisps[k], m_wispPoint[m_random].transform.position, Quaternion.identity);
+                spawnedEnemies.Add(spawned);
+            }
         }
         enemiesLeft = spawnedEnemies.Count;
         curRound += 1;
@@ -84,5 +91,14 @@ public class Wave_System : MonoBehaviour
                 }
             }
         }
+    }
+
+    void f_sortOutEnemys()
+    {
+        string[] varArray = amountOf[curRound].Split('_');
+
+        enemyArray.Clear();
+        enemyArray.Add(System.Convert.ToInt32(varArray[0])); // convert the string into a string if it can
+        enemyArray.Add(System.Convert.ToInt32(varArray[1]));
     }
 }

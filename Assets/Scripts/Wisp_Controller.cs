@@ -16,6 +16,8 @@ public class Wisp_Controller : MonoBehaviour
     public Transform m_desiredLocation;
     public bool m_enemySpawn;
 
+    public int m_type; // the enemy type it will spawn
+
     // Start is called before the first frame update
     void Start()
     {
@@ -54,7 +56,7 @@ public class Wisp_Controller : MonoBehaviour
         }
         else if (m_distance < 1f && m_enemySpawn == false)
         {
-            Instantiate(r_waveSystem.enemyTypes[0], transform.position, Quaternion.identity);
+            Instantiate(r_waveSystem.enemyTypes[m_type], transform.position, Quaternion.identity); //spawn the enemy type
             Destroy(gameObject);
         }
     }
