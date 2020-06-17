@@ -18,7 +18,11 @@ public class Wave_System : MonoBehaviour
 
     //Kurtis Watson
     private Player_Controller r_playerController;
+    private User_Interface r_userInterface;
+
     public List<GameObject> m_wisps = new List<GameObject>();
+    public List<int> m_waveTimes = new List<int>();
+
     private GameObject[] m_wispPoint;
     private int m_random;
     public bool m_startWaves;
@@ -31,7 +35,7 @@ public class Wave_System : MonoBehaviour
     {     
         m_wispPoint = GameObject.FindGameObjectsWithTag("WispPoint");
         r_playerController = FindObjectOfType<Player_Controller>();
-
+        r_userInterface = FindObjectOfType<User_Interface>();
         m_enemyCount = GameObject.Find("EnemyCount").GetComponent<Text>();
     }
 
@@ -40,8 +44,8 @@ public class Wave_System : MonoBehaviour
     {
         f_updateUI();
         if (m_startWaves == true)
-        { 
-
+        {
+            r_userInterface.f_waveTimer();
             f_spawnWisps(); // spawn wisps
             m_startWaves = false;
         }
@@ -76,7 +80,7 @@ public class Wave_System : MonoBehaviour
         //Ben Soars
         if (spawnedEnemies.Count <= 0 && enemiesLeft == 0)
         {
-            
+            r_userInterface.f_waveTimer();
             f_spawnWisps();
         }
         else
@@ -92,6 +96,7 @@ public class Wave_System : MonoBehaviour
         }
     }
 
+    //Ben Soars
     void f_sortOutEnemys()
     {
         string[] varArray = amountOf[curRound].Split('_');
