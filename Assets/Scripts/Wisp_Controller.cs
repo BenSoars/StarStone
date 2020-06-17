@@ -24,6 +24,8 @@ public class Wisp_Controller : MonoBehaviour
         r_player = GameObject.FindObjectOfType<Player_Controller>();
         r_waveSystem = GameObject.FindObjectOfType<Wave_System>();
 
+        m_navAgent.speed = Random.Range(4, 13);
+
         wispPoint = GameObject.FindGameObjectsWithTag("WispPoint");
 
         if (m_enemySpawn == true)
@@ -41,17 +43,18 @@ public class Wisp_Controller : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+
+        float m_distance = Vector3.Distance(this.transform.position, m_desiredLocation.position);
         //m_navAgent.SetDestination(wispPoint[m_random].transform.position);
         m_navAgent.SetDestination(m_desiredLocation.transform.position);
 
-
-        if (this.transform.position.x == m_navAgent.destination.x && this.transform.position.z == m_navAgent.destination.z && m_enemySpawn == false)
+        if (this.transform.position.x == m_navAgent.destination.x && this.transform.position.z == m_navAgent.destination.z && m_enemySpawn == true)
+        {
+            Destroy(gameObject);
+        }
+        else if (m_distance < 1f && m_enemySpawn == false)
         {
             Instantiate(r_waveSystem.enemyTypes[0], transform.position, Quaternion.identity);
-            Destroy(gameObject);
-        }  
-        else if(this.transform.position.x == m_navAgent.destination.x && this.transform.position.z == m_navAgent.destination.z && m_enemySpawn == true)
-        {
             Destroy(gameObject);
         }
     }

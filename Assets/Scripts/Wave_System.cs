@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Wave_System : MonoBehaviour
 {
@@ -21,17 +22,22 @@ public class Wave_System : MonoBehaviour
     private int m_random;
     public bool m_startWaves;
 
+    private Text m_enemyCount;
+
 
     //Kurtis Watson
     private void Start()
     {     
         m_wispPoint = GameObject.FindGameObjectsWithTag("WispPoint");
         r_playerController = FindObjectOfType<Player_Controller>();
+
+        m_enemyCount = GameObject.Find("EnemyCount").GetComponent<Text>();
     }
 
     //Kurtis Watson
     private void Update()
     {
+        f_updateUI();
         if (m_startWaves == true)
         {
             f_spawnWisps();
@@ -51,6 +57,12 @@ public class Wave_System : MonoBehaviour
         enemiesLeft = spawnedEnemies.Count;
         curRound += 1;
         Debug.Log("Enemies Left: " + enemiesLeft);
+    }
+
+    //Kurtis Watson
+    void f_updateUI()
+    {
+        m_enemyCount.text = ("" + enemiesLeft);
     }
 
     // Update is called once per frame
