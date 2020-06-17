@@ -12,7 +12,7 @@ public class Text_HitDamage : MonoBehaviour
     {
         r_playerController = FindObjectOfType<Player_Controller>();
         r_gunGeneric = FindObjectOfType<Gun_Generic>();
-        GetComponent<TextMeshPro>().text = "" + r_gunGeneric.m_bulletDamage;
+        GetComponentInChildren<TextMeshPro>().text = "" + r_gunGeneric.m_bulletDamage;
     }
 
     // Update is called once per frame
@@ -27,7 +27,7 @@ public class Text_HitDamage : MonoBehaviour
         }
 
         transform.eulerAngles = new Vector3(transform.eulerAngles.x, r_playerController.m_playerRotX, transform.eulerAngles.z);
-        transform.Translate(Vector3.up * (Time.deltaTime * 2));
-        transform.position = Vector3.MoveTowards(transform.position, r_playerController.transform.position, Time.deltaTime * 5);
+        transform.Translate(Vector3.up * (Time.deltaTime * 1.5f));
+        transform.position = Vector3.MoveTowards(transform.position, r_playerController.transform.position, Time.deltaTime * 2);
     }
 }

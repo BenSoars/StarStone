@@ -31,11 +31,14 @@ public class Gun_Generic : MonoBehaviour
     private bool m_isAiming = false;
     public Camera m_playerCam;
 
+    //Kurtis Watson and Ben Soars
     [Space(2)]
     [Header("Weapon Other Stats")]
     [Space(2)]
     public float m_shotForce = 100; // how much force the bullet will be shot for, it hitscan leave blank
-    public int m_bulletDamage = 1;
+    public int m_bulletDamage;
+    public int m_minBulletDamage;
+    public int m_maxBulletDamage;
 
     [Space(2)]
     [Header("Shot Type")]
@@ -123,6 +126,7 @@ public class Gun_Generic : MonoBehaviour
 
     void Update()
     {
+        m_bulletDamage = Random.Range(m_minBulletDamage, m_maxBulletDamage);
         if (m_player.m_isPlayerActive == true && m_player.m_isUsingLadder == false)
         {
             if (m_player.m_isSprinting == false)
