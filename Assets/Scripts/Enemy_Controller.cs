@@ -34,14 +34,9 @@ public class Enemy_Controller : MonoBehaviour
 
     private Transform m_eyePos;
     private RaycastHit m_sightRaycast; // the hitscan raycast
-  
  
     //Kurtis Watson
-    public float m_detectionRadius;
-    public bool m_isDetected;
     public GameObject m_whisp;
-
-   
 
     // Start is called before the first frame update
     void Start()
@@ -72,13 +67,6 @@ public class Enemy_Controller : MonoBehaviour
                 m_state = CurrentState.Check;
             }
         }
-
-            //Kurtis Watson
-            //if (Vector3.Distance(r_player.transform.position, this.transform.position) < m_detectionRadius)
-            //{
-            //    m_isDetected = true; //Used below in if statement to check if the enemy is within range.
-            //}
-            // TO DO: Give enemy sightline (using Raycast), if player enters they chase, if they exit they travel to last seen point and continue looking. If they can't find the player they stand still
 
             //Ben Soars
             if (m_enemyHealth <= 0)

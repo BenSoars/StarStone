@@ -133,12 +133,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5c0b7a7fbc78754c8abccc851cc46bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_moveSpeed: 4
+  m_moveSpeed: 3
+  m_runSpeed: 5
   m_enemyHealth: 100
   m_spawnChance: 5
   m_AmmoCrate: {fileID: 5762886321429660750, guid: e8fea09451d242e47a7ae1e2c4f6f86f,
     type: 3}
   m_isGrounded: 1
+  m_lastPosition: {x: 0, y: 0, z: 0}
   m_state: 1
   m_detectionRadius: 20
   m_isDetected: 0
