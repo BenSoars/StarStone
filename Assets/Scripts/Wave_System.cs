@@ -13,7 +13,7 @@ public class Wave_System : MonoBehaviour
     public List<GameObject> spawnedEnemies = new List<GameObject>();
     public int enemiesLeft;
 
-    private int curRound;
+    public int curRound;
     public List<int> enemyArray = new List<int>();
 
     //Kurtis Watson
@@ -40,9 +40,7 @@ public class Wave_System : MonoBehaviour
     {
         f_updateUI();
         if (m_startWaves == true)
-        {
-
-            f_sortOutEnemys();
+        { 
 
             f_spawnWisps(); // spawn wisps
             m_startWaves = false;
@@ -52,7 +50,7 @@ public class Wave_System : MonoBehaviour
     //Kurtis Watson
     void f_spawnWisps()
     {
-
+        f_sortOutEnemys();
         for (int k = 0; k < enemyArray.Count; k++) { 
             for (int i = 0; i < enemyArray[k]; i++)
             {
@@ -78,6 +76,7 @@ public class Wave_System : MonoBehaviour
         //Ben Soars
         if (spawnedEnemies.Count <= 0 && enemiesLeft == 0)
         {
+            
             f_spawnWisps();
         }
         else

@@ -217,6 +217,7 @@ MonoBehaviour:
   - 0_100
   spawnedEnemies: []
   enemiesLeft: 140
+  curRound: 0
   enemyArray: 
   m_wisps:
   - {fileID: 42458450682264745, guid: 6befa5c3aa19d1842a12f708f5aab1c0, type: 3}
@@ -1611,6 +1612,11 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 4117367702732905533, guid: 23e70938c35368744948706caab60da2,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 169.3
+      objectReference: {fileID: 0}
     - target: {fileID: 6427834453612790354, guid: 23e70938c35368744948706caab60da2,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1715,6 +1721,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6427834453612790355, guid: 23e70938c35368744948706caab60da2,
+        type: 3}
+      propertyPath: m_AdditionalShaderChannelsFlag
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 6427834453612790358, guid: 23e70938c35368744948706caab60da2,
         type: 3}
