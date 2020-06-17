@@ -117,7 +117,7 @@ public class Gun_Generic : MonoBehaviour
 
     void Update()
     {
-        if (m_player.m_isPlayerActive == true)
+        if (m_player.m_isPlayerActive == true && m_player.m_isUsingLadder == false)
         {
             if (m_player.m_isSprinting == false)
             {
