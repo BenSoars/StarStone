@@ -25,16 +25,19 @@ public class User_Interface : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        m_currentSecond = Mathf.FloorToInt(m_targetTime % 60);
-        m_currentMinute = Mathf.FloorToInt(m_targetTime / 60);
-
-        m_targetTime -= Time.deltaTime;
-
-        m_currentTimeText.text = "" + m_currentMinute.ToString("00") + ":" + m_currentSecond.ToString("00");
-
-        if(m_targetTime == 0)
+        if (r_waveSystem.m_startedWaves == true)
         {
-            SceneManager.LoadScene("GameOver");
+            m_currentSecond = Mathf.FloorToInt(m_targetTime % 60);
+            m_currentMinute = Mathf.FloorToInt(m_targetTime / 60);
+
+            m_targetTime -= Time.deltaTime;
+
+            m_currentTimeText.text = "" + m_currentMinute.ToString("00") + ":" + m_currentSecond.ToString("00");
+
+            if (m_targetTime <= 0)
+            {
+                SceneManager.LoadScene("GameOver");
+            }
         }
     }
 

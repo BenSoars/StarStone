@@ -15,6 +15,7 @@ public class Wave_System : MonoBehaviour
 
     public int curRound;
     public List<int> enemyArray = new List<int>();
+    public bool m_startedWaves;
 
     //Kurtis Watson
     private Player_Controller r_playerController;
@@ -45,6 +46,7 @@ public class Wave_System : MonoBehaviour
         f_updateUI();
         if (m_startWaves == true)
         {
+            m_startedWaves = true;
             r_userInterface.f_waveTimer();
             f_spawnWisps(); // spawn wisps
             m_startWaves = false;

@@ -219,9 +219,11 @@ MonoBehaviour:
   enemiesLeft: 140
   curRound: 0
   enemyArray: 
+  m_startedWaves: 0
   m_wisps:
   - {fileID: 42458450682264745, guid: 6befa5c3aa19d1842a12f708f5aab1c0, type: 3}
   - {fileID: 4912677542973487342, guid: 49ceda97bbd165a459db2f8f4ef86096, type: 3}
+  m_waveTimes: 
   m_startWaves: 0
 --- !u!4 &170729075
 Transform:
@@ -656,7 +658,7 @@ PrefabInstance:
     - target: {fileID: 8493438686635508280, guid: 350e34eddd2d71e4d93cfb4507594659,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -69.19
+      value: -78.38
       objectReference: {fileID: 0}
     - target: {fileID: 8493438686635508280, guid: 350e34eddd2d71e4d93cfb4507594659,
         type: 3}
@@ -666,7 +668,7 @@ PrefabInstance:
     - target: {fileID: 8493438686635508280, guid: 350e34eddd2d71e4d93cfb4507594659,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 37.17
+      value: 47.36
       objectReference: {fileID: 0}
     - target: {fileID: 8493438686635508280, guid: 350e34eddd2d71e4d93cfb4507594659,
         type: 3}
@@ -1610,7 +1612,7 @@ PrefabInstance:
     - target: {fileID: 4117367702732905533, guid: 23e70938c35368744948706caab60da2,
         type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4117367702732905533, guid: 23e70938c35368744948706caab60da2,
         type: 3}
