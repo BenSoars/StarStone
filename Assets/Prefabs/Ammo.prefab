@@ -80,7 +80,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GunType: ALL
-  AmmoWorth: 50
+  AmmoWorth: 100
 --- !u!114 &7295019275847874979
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -93,7 +93,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4df1611aab48ea4e9972b5ae28ea0c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_activeTime: 10
+  m_activeTime: 20
 --- !u!1 &5762886322336284120
 GameObject:
   m_ObjectHideFlags: 0

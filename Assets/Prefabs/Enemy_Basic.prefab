@@ -136,7 +136,7 @@ MonoBehaviour:
   m_moveSpeed: 3
   m_runSpeed: 5
   m_enemyHealth: 100
-  m_spawnChance: 5
+  m_spawnChance: 2
   m_AmmoCrate: {fileID: 5762886321429660750, guid: e8fea09451d242e47a7ae1e2c4f6f86f,
     type: 3}
   m_isGrounded: 1

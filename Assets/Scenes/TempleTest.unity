@@ -633,12 +633,12 @@ PrefabInstance:
     - target: {fileID: 1155792225427250519, guid: 350e34eddd2d71e4d93cfb4507594659,
         type: 3}
       propertyPath: m_maxAmmo
-      value: 100000000
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 1155792225427250519, guid: 350e34eddd2d71e4d93cfb4507594659,
         type: 3}
       propertyPath: m_currentAmmo
-      value: 100000000
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 1155792225427250519, guid: 350e34eddd2d71e4d93cfb4507594659,
         type: 3}
@@ -649,6 +649,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_ammoPerShot
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1155792225427250519, guid: 350e34eddd2d71e4d93cfb4507594659,
+        type: 3}
+      propertyPath: m_minBulletDamage
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 1155792225427250519, guid: 350e34eddd2d71e4d93cfb4507594659,
+        type: 3}
+      propertyPath: m_maxBulletDamage
+      value: 46
       objectReference: {fileID: 0}
     - target: {fileID: 8493438686635508275, guid: 350e34eddd2d71e4d93cfb4507594659,
         type: 3}
