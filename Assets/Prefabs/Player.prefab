@@ -95,6 +95,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2c87195fb52867499dd02a680fbba9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_name: PISTOL
   m_maxAmmo: 50
   m_currentAmmo: 50
   m_ammoPerShot: 1
@@ -769,6 +770,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2c87195fb52867499dd02a680fbba9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_name: SHOTGUN
   m_maxAmmo: 100
   m_currentAmmo: 100
   m_ammoPerShot: 5

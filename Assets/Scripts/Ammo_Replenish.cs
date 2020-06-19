@@ -16,10 +16,14 @@ public class Ammo_Replenish : MonoBehaviour
             Gun_Generic Gun = FindObjectOfType<Gun_Generic>();
             if (Gun)
             {
-                m_currentAmmo += other.GetComponent<Ammo_Replenish>().AmmoWorth;
-                if (m_currentAmmo > m_maxAmmo) { m_currentAmmo = m_maxAmmo; }
-                Destroy(other.gameObject);
-                f_updateUI();
+                if (Gun.name == GunType || GunType == "ALL")
+                {
+                    Gun.m_currentAmmo += AmmoWorth;
+                    if (Gun.m_currentAmmo > Gun.m_maxAmmo) { Gun.m_currentAmmo = Gun.m_maxAmmo; }
+                    
+                    Gun.f_updateUI();
+                    Destroy(gameObject);
+                }
             }
         }
     }

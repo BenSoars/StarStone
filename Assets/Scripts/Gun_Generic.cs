@@ -72,7 +72,6 @@ public class Gun_Generic : MonoBehaviour
         f_updateUI();
     }
 
-   
 
     void f_ShootGun()
     {
@@ -160,6 +159,12 @@ public class Gun_Generic : MonoBehaviour
                     m_playerCam.fieldOfView = 60;
                 }
             }
+            else
+            {
+                m_isAiming = false;
+                m_isAccurate = false;
+                m_playerCam.fieldOfView = 60;
+            }
         }
 
         if (m_gunAnim)
@@ -170,7 +175,7 @@ public class Gun_Generic : MonoBehaviour
     }
 
     
-    void f_updateUI()
+    public void f_updateUI()
     {
         m_ammoCount.text = (m_currentAmmo.ToString() + "/" + m_maxAmmo.ToString());
     }
