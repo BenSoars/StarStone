@@ -512,7 +512,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ada6dca11d94cf42905215f0cf8331e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_LevelName: TempleTest
+  m_LevelName: LatestTemple
   m_delayTime: 0
 --- !u!95 &1938511879
 Animator:
