@@ -12,6 +12,7 @@ public class Enemy_Controller : MonoBehaviour
     public float m_runSpeed = 4;
     public float m_enemyHealth = 3;
     public int m_spawnChance = 3;
+    public bool m_isStunned;
 
     private Player_Controller r_player;
     private Wave_System r_waveSystem;
@@ -93,7 +94,7 @@ public class Enemy_Controller : MonoBehaviour
         m_navAgent.enabled = m_isGrounded;
 
 
-        if (m_isGrounded == true) // movement
+        if (m_isGrounded == true && m_isStunned == false) // movement
         {
             m_rb.velocity = Vector3.zero;
             switch (m_state) // the current enemy state

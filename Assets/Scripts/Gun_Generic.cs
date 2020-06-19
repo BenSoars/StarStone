@@ -10,7 +10,8 @@ public class Gun_Generic : MonoBehaviour
 
     // Ben Soars
     [Header("Weapon Ammo")]
-    [Space (2)]
+    [Space(2)]
+    public string m_name = "GUN";
     public int m_maxAmmo = 6; // the maximum ammo
     public int m_currentAmmo = 6; // the current ammo
     public int m_ammoPerShot = 1; // how much ammo shooting will consume
@@ -168,16 +169,6 @@ public class Gun_Generic : MonoBehaviour
         }
     }
 
-    void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Ammo"))
-        {
-            m_currentAmmo += other.GetComponent<Ammo_Replenish>().AmmoWorth;
-            if (m_currentAmmo > m_maxAmmo) { m_currentAmmo = m_maxAmmo; }
-            Destroy(other.gameObject);
-            f_updateUI();
-        }
-    }
     
     void f_updateUI()
     {
