@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
+using TMPro;
 
 public class Gun_Prototype : MonoBehaviour
 {
@@ -24,7 +25,7 @@ public class Gun_Prototype : MonoBehaviour
     {
         m_currentCooldown = m_coolDown;
 
-        m_classState = 1;
+        m_classState = 0;
         m_lr = GetComponent<LineRenderer>();
     }
 
@@ -83,9 +84,7 @@ public class Gun_Prototype : MonoBehaviour
                     switch (m_classState)
                     {
                         case 0:
-                            m_laserHit.collider.gameObject.GetComponent<Enemy_Controller>().m_enemyHealth -= m_laserDamage;
-                            Instantiate(m_hitDamageText, m_laserHit.point, Quaternion.identity);
-                            m_currentCooldown = m_coolDown;
+                            m_laserHit.collider.gameObject.GetComponent<Enemy_Controller>().m_enemyHealth -= m_laserDamage;                         
                             break;
                         case 1:
                             break;
@@ -94,6 +93,9 @@ public class Gun_Prototype : MonoBehaviour
                         case 3:
                             break;
                     }
+                    GameObject textObject = Instantiate(m_hitDamageText, m_laserHit.point, Quaternion.identity);
+                    textObject.GetComponentInChildren<TextMeshPro>().text = "" + m_laserDamage;
+                    m_currentCooldown = m_coolDown;
                 }
             }
         }

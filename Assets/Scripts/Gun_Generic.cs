@@ -106,7 +106,8 @@ public class Gun_Generic : MonoBehaviour
                     {
                         m_hitscanCast.transform.gameObject.GetComponent<Enemy_Controller>().m_enemyHealth -= m_bulletDamage;
                         //Kurtis Watson
-                        Instantiate(m_hitDamageText, m_hitscanCast.point, Quaternion.identity);                        
+                        GameObject m_textObject = Instantiate(m_hitDamageText, m_hitscanCast.point, Quaternion.identity);
+                        m_textObject.GetComponentInChildren<TextMeshPro>().text = "" + m_bulletDamage;
                     }
                 }
             }
