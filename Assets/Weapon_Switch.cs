@@ -33,6 +33,10 @@ public class Weapon_Switch : MonoBehaviour
                 f_disableAll();
                 m_Weapons[1].active = true;
                 break;
+            case ("3"):
+                f_disableAll();
+                m_Weapons[2].active = true;
+                break;
 
         }
     }
