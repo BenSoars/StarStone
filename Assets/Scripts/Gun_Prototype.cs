@@ -44,7 +44,7 @@ public class Gun_Prototype : MonoBehaviour
     {
         RaycastHit m_stoneSelect;
 
-        if (Physics.Raycast(m_shotPoint.position, m_shotPoint.forward, out m_stoneSelect, 15f, 1 << 11))
+        if (Physics.Raycast(m_shotPoint.position, m_shotPoint.forward, out m_stoneSelect, 2f, 1 << 11) && Input.GetKeyDown(KeyCode.Mouse0)) 
         {
             switch (m_stoneSelect.collider.gameObject.name)
             {
@@ -83,9 +83,11 @@ public class Gun_Prototype : MonoBehaviour
                 {
                     switch (m_classState)
                     {
-                        case 0:           
+                        case 0:
+                            m_laserDamage = m_laserDamage * 2;
                             break;
                         case 1:
+                            m_laserHit.collider.gameObject.GetComponent<Enemy_Controller>().m_runSpeed = 0;
                             break;
                         case 2:
                             break;
