@@ -22,7 +22,6 @@ public class Wave_System : MonoBehaviour
     private User_Interface r_userInterface;
 
     public List<GameObject> m_wisps = new List<GameObject>();
-    public List<int> m_waveTimes = new List<int>();
 
     private GameObject[] m_wispPoint;
     private int m_random;

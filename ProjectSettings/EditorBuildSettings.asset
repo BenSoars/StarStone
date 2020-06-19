@@ -6,8 +6,8 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/TempleTest.unity
-    guid: bf53f08c7dbcaf94f9528601be3b822d
+    path: Assets/Scenes/LatestTemple.unity
+    guid: e13312ff19dbba641be95871627ef1f1
   - enabled: 1
     path: Assets/Scenes/GameOver.unity
     guid: 194652143986e0745850ec5f83258888
