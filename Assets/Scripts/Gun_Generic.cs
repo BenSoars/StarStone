@@ -51,7 +51,7 @@ public class Gun_Generic : MonoBehaviour
     public GameObject hitSpark;
 
     private Text m_ammoCount; // the ui element displaying the current ammo
-    private Player_Controller m_player;
+    private Player_Controller m_player; 
 
     [Space(2)]
     [Header("Other")]
@@ -66,10 +66,12 @@ public class Gun_Generic : MonoBehaviour
     {
         m_ammoCount = GameObject.Find("AmmoCount").GetComponent<Text>();
         m_player = GameObject.FindObjectOfType<Player_Controller>();
-        m_playerCam = gameObject.GetComponentInChildren<Camera>();
+      
 
         f_updateUI();
     }
+
+   
 
     void f_ShootGun()
     {
