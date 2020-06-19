@@ -44,7 +44,7 @@ public class Gun_Prototype : MonoBehaviour
     {
         RaycastHit m_stoneSelect;
 
-        if (Physics.Raycast(m_shotPoint.position, m_shotPoint.forward, out m_stoneSelect, 2f, 1 << 11))
+        if (Physics.Raycast(m_shotPoint.position, m_shotPoint.forward, out m_stoneSelect, 15f, 1 << 11))
         {
             switch (m_stoneSelect.collider.gameObject.name)
             {
@@ -83,8 +83,7 @@ public class Gun_Prototype : MonoBehaviour
                 {
                     switch (m_classState)
                     {
-                        case 0:
-                            m_laserHit.collider.gameObject.GetComponent<Enemy_Controller>().m_enemyHealth -= m_laserDamage;                         
+                        case 0:           
                             break;
                         case 1:
                             break;
@@ -93,6 +92,7 @@ public class Gun_Prototype : MonoBehaviour
                         case 3:
                             break;
                     }
+                    m_laserHit.collider.gameObject.GetComponent<Enemy_Controller>().m_enemyHealth -= m_laserDamage;      
                     GameObject textObject = Instantiate(m_hitDamageText, m_laserHit.point, Quaternion.identity);
                     textObject.GetComponentInChildren<TextMeshPro>().text = "" + m_laserDamage;
                     m_currentCooldown = m_coolDown;
