@@ -72,7 +72,7 @@ public class Enemy_Controller : MonoBehaviour
         if (Physics.Raycast(m_eyePos.position, m_eyePos.forward, out m_sightRaycast, Mathf.Infinity)) // shoot out a raycast for hitscan
         {
             Debug.DrawRay(m_eyePos.position, m_eyePos.forward * m_sightRaycast.distance, Color.yellow); // draw line only viewable ineditor
-            if (m_sightRaycast.collider.gameObject.CompareTag("Player"))
+            if (m_sightRaycast.collider.gameObject.CompareTag("Player") && r_player.m_isPlayerInvisible == false)
             {
                 m_state = CurrentState.Attack;
                 m_lastPosition = r_player.transform.position;
@@ -86,7 +86,7 @@ public class Enemy_Controller : MonoBehaviour
             //TESTING PURPOSES
             if (Vector3.Distance(transform.position, r_player.transform.position) <= 1)
             {
-                r_player.m_playerHealth -= m_enemyDamage;
+                r_player.m_playerHealth -= m_enemyDamage * r_player.m_defenceValue;
             }
 
             //Ben Soars
