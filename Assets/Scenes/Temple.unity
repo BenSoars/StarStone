@@ -4994,6 +4994,7 @@ MonoBehaviour:
   enemyTypes:
   - {fileID: 42458450682264745, guid: 4d4b05e08e0b0a6499519b925ddfa91b, type: 3}
   - {fileID: 8653534323981115242, guid: 30a515d93317d6e46a11e2c362aafc9d, type: 3}
+  - {fileID: 429346716407466653, guid: 0395127d264edeb4a9756be6d4b5c819, type: 3}
   spawnPoints:
   - {fileID: 1289623324}
   - {fileID: 564998457}
@@ -5014,21 +5015,21 @@ MonoBehaviour:
   - {fileID: 1978708595}
   - {fileID: 891954117}
   amountOf:
-  - 10_5
-  - 15_0
-  - 20_0
-  - 20_5
+  - 7_0_3
+  - 10_0_5
+  - 15_0_5
+  - 15_5_5
   - 25_5
   - 35_5
   - 40_10
   - 50_10
   - 60_10
-  - 60_20
-  - 65_25
-  - 60_30
-  - 65_35
-  - 75_35
-  - 0_100
+  - 55_20_5
+  - 60_25_5
+  - 60_30_5
+  - 65_35_5
+  - 75_35_10
+  - 5_100_10
   spawnedEnemies: []
   enemiesLeft: 140
   curRound: 0
@@ -5037,6 +5038,7 @@ MonoBehaviour:
   m_wisps:
   - {fileID: 42458450682264745, guid: 6befa5c3aa19d1842a12f708f5aab1c0, type: 3}
   - {fileID: 4912677542973487342, guid: 49ceda97bbd165a459db2f8f4ef86096, type: 3}
+  - {fileID: 5187828249536963387, guid: cbaa0c4a0dbc4af47a943da25a3413d3, type: 3}
   m_startWaves: 0
 --- !u!4 &170729075
 Transform:

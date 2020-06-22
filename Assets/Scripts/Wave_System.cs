@@ -105,5 +105,6 @@ public class Wave_System : MonoBehaviour
         enemyArray.Clear();
         enemyArray.Add(System.Convert.ToInt32(varArray[0])); // convert the string into a string if it can
         enemyArray.Add(System.Convert.ToInt32(varArray[1]));
+        enemyArray.Add(System.Convert.ToInt32(varArray[2]));
     }
 }
