@@ -118,6 +118,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_desiredLocation: {fileID: 0}
   m_enemySpawn: 0
+  m_type: 0
 --- !u!1 &1308668901181732451
 GameObject:
   m_ObjectHideFlags: 0

@@ -34,4 +34,9 @@ public class Ability_Handler : MonoBehaviour
             GameObject o_storm = Instantiate(m_storm, new Vector3(m_hitscanCast.point.x, m_hitscanCast.point.y - 2, m_hitscanCast.point.z), Quaternion.LookRotation(Vector3.forward));
         }
     }
+
+    public void f_spawnKnives()
+    {
+
+    }
 }

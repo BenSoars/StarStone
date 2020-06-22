@@ -117,6 +117,7 @@ public class Prototype_Classes : MonoBehaviour
                     f_stormAbility();
                     break;
                 case 2:
+                    f_knifeAbility();
                     //Knives.
                     break;
                 case 3:
@@ -127,18 +128,27 @@ public class Prototype_Classes : MonoBehaviour
     }
 
     void f_wallAbility() {
-        if (m_stonePower[1] >= 20)
+        if (m_stonePower[0] >= 20)
         {
             FindObjectOfType<Ability_Handler>().f_spawnWall();
-            m_stonePower[1] -= 20;
+            m_stonePower[0] -= 20;
         }
     }
 
     void f_stormAbility()
     {
-        if (m_stonePower[2] >= 25)
+        if (m_stonePower[1] >= 25)
         {
             FindObjectOfType<Ability_Handler>().f_spawnStorm();
+            m_stonePower[1] -= 25;
+        }
+    }
+
+    void f_knifeAbility()
+    {
+        if (m_stonePower[2] >= 25)
+        {
+            FindObjectOfType<Ability_Handler>().f_spawnKnives();
             m_stonePower[2] -= 25;
         }
     }
