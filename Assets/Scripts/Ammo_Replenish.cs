@@ -14,6 +14,7 @@ public class Ammo_Replenish : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             Gun_Generic Gun = FindObjectOfType<Gun_Generic>();
+
             if (Gun)
             {
                 if (Gun.name == GunType || GunType == "ALL")

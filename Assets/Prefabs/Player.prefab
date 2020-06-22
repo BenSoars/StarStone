@@ -114,7 +114,8 @@ MonoBehaviour:
   m_bulletDamage: 0
   m_minBulletDamage: 30
   m_maxBulletDamage: 46
-  m_physicalBullet: {fileID: 0}
+  m_physicalBullet: {fileID: 2824383119464962097, guid: a42c2071c560a5e429b817b6c466b4e8,
+    type: 3}
   m_shotPoint: {fileID: 567909998898289762}
   hitSpark: {fileID: 711091191413159071, guid: bcb401efd2e081e47b56a919ee7cd4c5, type: 3}
   m_gunAnim: {fileID: 2484504158634245370}
@@ -1151,6 +1152,7 @@ MonoBehaviour:
   m_isLadder: 0
   m_isUsingLadder: 0
   m_topOfLadder: 0
+  m_isPlayerInvisible: 0
   desiredPos: {fileID: 0}
   m_isSprinting: 0
   m_isCrouching: 0
@@ -1195,11 +1197,6 @@ MonoBehaviour:
     type: 3}
   m_classState: 0
   m_stonePower: 0000000064000000640000006400000064000000
-  m_abitiesV:
-  - {fileID: 1851148228268403614, guid: af108dce561144945bf7271e1c761477, type: 3}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
 --- !u!114 &1031861635661113235
 MonoBehaviour:
   m_ObjectHideFlags: 0
