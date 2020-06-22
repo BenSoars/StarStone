@@ -41,6 +41,8 @@ public class Player_Controller : MonoBehaviour
     public bool m_isLadder;
     public bool m_isUsingLadder;
     public bool m_topOfLadder;
+    public bool m_isPlayerInvisible;
+
     public Transform desiredPos;
 
     public bool m_isSprinting;

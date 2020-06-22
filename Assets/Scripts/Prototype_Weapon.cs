@@ -64,17 +64,17 @@ public class Prototype_Weapon : MonoBehaviour
                     enemyHit = m_laserHit.collider.gameObject.GetComponent<Enemy_Controller>();
                     switch (r_prototypeClasses.m_classState)
                     {
-                        case 1: //Yellow
+                        case 0: //Yellow
                             m_laserDamage = m_laserDamage * 2;
                             break;
-                        case 2: //White
+                        case 1: //White
                             
                             break;
-                        case 3: //Pink
+                        case 2: //Pink
                             enemyHit.m_runSpeed = 0;
                             enemyHit.m_isEnemyStunned = true;
                             break;
-                        case 4: //Blue
+                        case 3: //Blue
                             r_playerController.m_playerHealth += 1;
                             break;
                     }
@@ -92,10 +92,10 @@ public class Prototype_Weapon : MonoBehaviour
 
         switch (r_prototypeClasses.m_classState)
         {
-            case 1:
+            case 0:
                 m_lr.SetColors(Color.yellow, Color.yellow);
                 break;
-            case 2:
+            case 1:
                 m_lr.SetColors(Color.white, Color.white);
                 break;
             case 3:

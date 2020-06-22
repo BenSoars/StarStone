@@ -22,7 +22,7 @@ public class Prototype_Classes : MonoBehaviour
 
     void Start()
     {
-        m_classState = 1;
+        m_classState = 0;
 
         r_playerController = FindObjectOfType<Player_Controller>();
 
@@ -33,7 +33,6 @@ public class Prototype_Classes : MonoBehaviour
 
     void Update()
     {
-        Debug.Log("Power 2: " + m_stonePower[2]);
         f_startstoneSelect();
         f_ability();
 
@@ -64,21 +63,21 @@ public class Prototype_Classes : MonoBehaviour
             {
                 case ("Starstone 1"): //Yellow
                     f_defaultSettings();
-                    m_classState = 1;
+                    m_classState = 0;
                     r_playerController.m_defenceValue = 0.75f;
                     break;
                 case ("Starstone 2"): //White
                     f_defaultSettings();
-                    m_classState = 2;
+                    m_classState = 1;
                     r_playerController.m_playerHealth = m_defaultHealth * 1.3f;
                     break;
                 case ("Starstone 3"): //Pink
                     f_defaultSettings();
-                    m_classState = 3;
+                    m_classState = 2;
                     break;
                 case ("Starstone 4"): //Blue
                     f_defaultSettings();
-                    m_classState = 4;
+                    m_classState = 3;
                     m_prototypeWeapon.m_damageCoolDown = m_defaultDamageCooldown / 2;
                     break;
             }
@@ -91,16 +90,17 @@ public class Prototype_Classes : MonoBehaviour
         {
             switch (m_classState)
             {
-                case 1:
-                    Instantiate(m_pushBack, m_shotPoint.transform.position, m_shotPoint.rotation); // 'm_shotPoint.rotation' makes the position of firing relative to where the player is looking based on camera rotation.
+                case 0:
+                    r_playerController.m_isPlayerInvisible = true;
+                    Invoke("f_resetInvisible", 10);
                     break;
-                case 2:
+                case 1:
                     //Cloud of bullets. -15% power.
                     break;
-                case 3:
-                    //2x speed and combat. -15% power.
+                case 2:
+                    Instantiate(m_pushBack, m_shotPoint.transform.position, m_shotPoint.rotation); // 'm_shotPoint.rotation' makes the position of firing relative to where the player is looking based on camera rotation.
                     break;
-                case 4:
+                case 3:
                     //Ring of blue fire that enemies can't come into. -10% power.
                     break;
             }
@@ -110,16 +110,16 @@ public class Prototype_Classes : MonoBehaviour
         {
             switch (m_classState)
             {
-                case 1:
+                case 0:
                     f_wallAbility();
                     break;
-                case 2:
+                case 1:
                     f_stormAbility();
                     break;
-                case 3:
-
+                case 2:
+                    //Knives.
                     break;
-                case 4:
+                case 3:
 
                     break;
             }           
@@ -141,5 +141,16 @@ public class Prototype_Classes : MonoBehaviour
             FindObjectOfType<Ability_Handler>().f_spawnStorm();
             m_stonePower[2] -= 25;
         }
+    }
+
+
+
+
+
+
+
+    void f_resetInvisible()
+    {
+        r_playerController.m_isPlayerInvisible = false;
     }
 }

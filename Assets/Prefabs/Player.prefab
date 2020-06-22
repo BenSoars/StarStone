@@ -1157,6 +1157,7 @@ MonoBehaviour:
   m_grenade: {fileID: 8560859715546231127, guid: 6905919010773084b993d524e74b96a0,
     type: 3}
   m_isPlayerActive: 0
+  m_defenceValue: 1
 --- !u!95 &8145446568550084157
 Animator:
   serializedVersion: 3
@@ -1194,6 +1195,11 @@ MonoBehaviour:
     type: 3}
   m_classState: 0
   m_stonePower: 0000000064000000640000006400000064000000
+  m_abitiesV:
+  - {fileID: 1851148228268403614, guid: af108dce561144945bf7271e1c761477, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!114 &1031861635661113235
 MonoBehaviour:
   m_ObjectHideFlags: 0
