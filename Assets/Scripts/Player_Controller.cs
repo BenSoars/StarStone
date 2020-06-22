@@ -12,7 +12,6 @@ public class Player_Controller : MonoBehaviour
     public Transform m_shotPoint;
 
     private Ability_Melee r_abilityMelee;
-    private Ability_Wall r_abilityWall;
 
     public float m_camRotSpeed;
     public float m_camMinY;
@@ -47,7 +46,6 @@ public class Player_Controller : MonoBehaviour
     public bool m_isSprinting;
     public bool m_isCrouching;
 
-    public Object o_pushBack;
     public Rigidbody m_grenade;
 
     public bool m_isPlayerActive;
@@ -59,27 +57,42 @@ public class Player_Controller : MonoBehaviour
 
         m_animator = GetComponent<Animator>();
         r_abilityMelee = GameObject.FindObjectOfType<Ability_Melee>();
-        r_abilityWall = GameObject.FindObjectOfType<Ability_Wall>();
     }
 
     // Update is called once per frame
     //Kurtis Watson
     void Update()
     {
+        Debug.Log("Health: " + m_playerHealth);
+
         f_drone();
 
         if (m_isPlayerActive == true)
         {
+            // Ben Soars
+            if (Input.GetKeyDown("g"))
+            {
+                Rigidbody thrownObject = Instantiate(m_grenade, m_shotPoint.transform.position, m_shotPoint.rotation); // create grenade
+                thrownObject.AddForce(m_shotPoint.forward * 100); // push forwards
+                thrownObject.AddForce(m_shotPoint.up * 50); // throw slightly upwards
+            }
+
+            //Kurtis Watson
+            if (Input.GetKeyDown("e"))
+            {
+                r_abilityMelee.f_melee();
+            }
+            
             f_climb();
             f_lookAround();
             f_moveAround();
             f_strongerGravity();
             f_groundCheck();
+
             if (m_grounded == true && Input.GetButtonDown("Jump"))
             {
                 f_playerJump();
             }
-            f_ability();
             gameObject.GetComponentInChildren<Camera>().enabled = true;
         }
         else gameObject.GetComponentInChildren<Camera>().enabled = false;
@@ -166,32 +179,6 @@ public class Player_Controller : MonoBehaviour
     }
 
     //Kurtis Watson
-    void f_ability()
-    {
-        if (Input.GetKeyDown("q"))
-        {
-            Instantiate(o_pushBack, m_shotPoint.transform.position, m_shotPoint.rotation); // 'm_shotPoint.rotation' makes the position of firing relative to where the player is looking based on camera rotation.
-        }
-
-        // Ben Soars
-        if (Input.GetKeyDown("g"))
-        {
-            Rigidbody thrownObject = Instantiate(m_grenade, m_shotPoint.transform.position, m_shotPoint.rotation); // create grenade
-            thrownObject.AddForce(m_shotPoint.forward * 100); // push forwards
-            thrownObject.AddForce(m_shotPoint.up * 50); // throw slightly upwards
-        }
-
-        if (Input.GetKeyDown("e"))
-        {
-            r_abilityMelee.f_melee();
-        }
-
-        if (Input.GetKeyDown("v"))
-        {
-            r_abilityWall.f_spawnWall();
-        }
-    }
-    
     void f_drone()
     {
         if (Input.GetKeyDown("c"))
@@ -200,6 +187,7 @@ public class Player_Controller : MonoBehaviour
         }
     }
 
+    //Kurtis Watson
     void f_climb()
     {
         RaycastHit m_ladderHit;

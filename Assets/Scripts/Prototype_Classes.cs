@@ -1,0 +1,147 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Prototype_Classes : MonoBehaviour
+{
+    //Kurtis Watson
+    private Enemy_Controller r_enemyController;
+    private Player_Controller r_playerController;
+    public Prototype_Weapon m_prototypeWeapon;
+
+    public Transform m_shotPoint;
+
+    public GameObject m_pushBack;
+
+    public int m_classState;
+
+    private float m_defaultDamage;
+    private float m_defaultHealth;
+    private float m_defaultDamageCooldown;
+
+    public int[] m_stonePower;
+
+    void Start()
+    {
+        m_classState = 1;
+
+        r_enemyController = FindObjectOfType<Enemy_Controller>();
+        r_playerController = FindObjectOfType<Player_Controller>();
+
+        m_defaultDamage = r_enemyController.m_enemyDamage;
+        m_defaultHealth = r_playerController.m_playerHealth;
+        m_defaultDamageCooldown = m_prototypeWeapon.m_damageCoolDown;
+    }
+
+    void Update()
+    {
+        Debug.Log("Power 2: " + m_stonePower[2]);
+        f_startstoneSelect();
+        f_ability();
+
+        if (Input.GetKeyDown("p"))
+        {
+            m_classState = 0;
+        }
+
+        if (m_classState == 0)
+        {
+            f_defaultSettings();
+        }    
+    }
+
+    void f_defaultSettings() //Reset to 0
+    {
+        r_enemyController.m_enemyDamage = m_defaultDamage;
+        m_prototypeWeapon.m_damageCoolDown = m_defaultDamageCooldown;
+    }
+
+    void f_startstoneSelect()
+    {
+        RaycastHit m_stoneSelect;
+
+        if (Physics.Raycast(m_shotPoint.position, m_shotPoint.forward, out m_stoneSelect, 3f, 1 << 11) && Input.GetKeyDown("f"))
+        {
+            switch (m_stoneSelect.collider.gameObject.name)
+            {
+                case ("Starstone 1"): //Yellow
+                    f_defaultSettings();
+                    m_classState = 1;
+                    r_enemyController.m_enemyDamage = m_defaultDamage * 0.75f;
+                    break;
+                case ("Starstone 2"): //White
+                    f_defaultSettings();
+                    m_classState = 2;
+                    r_playerController.m_playerHealth = m_defaultHealth * 1.3f;
+                    break;
+                case ("Starstone 3"): //Pink
+                    f_defaultSettings();
+                    m_classState = 3;
+                    break;
+                case ("Starstone 4"): //Blue
+                    f_defaultSettings();
+                    m_classState = 4;
+                    m_prototypeWeapon.m_damageCoolDown = m_defaultDamageCooldown / 2;
+                    break;
+            }
+        }
+    }
+
+    void f_ability()
+    {
+        if (Input.GetKeyDown("q"))
+        {
+            switch (m_classState)
+            {
+                case 1:
+                    Instantiate(m_pushBack, m_shotPoint.transform.position, m_shotPoint.rotation); // 'm_shotPoint.rotation' makes the position of firing relative to where the player is looking based on camera rotation.
+                    break;
+                case 2:
+                    //Cloud of bullets. -15% power.
+                    break;
+                case 3:
+                    //2x speed and combat. -15% power.
+                    break;
+                case 4:
+                    //Ring of blue fire that enemies can't come into. -10% power.
+                    break;
+            }
+        }
+
+        if (Input.GetKeyDown("v"))
+        {
+            switch (m_classState)
+            {
+                case 1:
+                    f_wallAbility();
+                    break;
+                case 2:
+                    f_stormAbility();
+                    break;
+                case 3:
+
+                    break;
+                case 4:
+
+                    break;
+            }           
+        }
+    }
+
+    void f_wallAbility() {
+        if (m_stonePower[1] >= 20)
+        {
+            FindObjectOfType<Ability_Handler>().f_spawnWall();
+            m_stonePower[1] -= 20;
+        }
+    }
+
+    void f_stormAbility()
+    {
+        if (m_stonePower[2] >= 25)
+        {
+            FindObjectOfType<Ability_Handler>().f_spawnStorm();
+            m_stonePower[2] -= 25;
+        }
+    }
+}

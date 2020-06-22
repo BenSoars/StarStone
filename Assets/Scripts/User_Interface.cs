@@ -7,8 +7,10 @@ public class User_Interface : MonoBehaviour
 {
     //Kurtis Watson
     public TMPro.TextMeshProUGUI m_currentTimeText;
+    public TMPro.TextMeshProUGUI m_currentHealth;
 
     private Wave_System r_waveSystem;
+    private Player_Controller r_playerController;
 
     private float m_targetTime;
     private int m_currentSecond;
@@ -21,10 +23,13 @@ public class User_Interface : MonoBehaviour
     private void Start()
     {
         r_waveSystem = FindObjectOfType<Wave_System>();
+        r_playerController = FindObjectOfType<Player_Controller>();
     }
     // Update is called once per frame
     void Update()
     {
+        m_currentHealth.text = "" + r_playerController.m_playerHealth;
+
         if (r_waveSystem.m_startedWaves == true)
         {
             m_currentSecond = Mathf.FloorToInt(m_targetTime % 60);

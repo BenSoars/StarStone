@@ -3,9 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
 using TMPro;
+using System;
 
-public class Gun_Prototype : MonoBehaviour
+public class Prototype_Weapon : MonoBehaviour
 {
+    private Player_Controller r_playerController;
+    private Prototype_Classes r_prototypeClasses;
+    private Enemy_Controller enemyHit;
+
     private LineRenderer m_lr;
 
     public Transform m_shotPoint;
@@ -14,18 +19,17 @@ public class Gun_Prototype : MonoBehaviour
 
     public float m_laserDamage;
 
-    public int m_classState;
-
-    public float m_coolDown;
-    private float m_currentCooldown;
-
+    public float m_damageCoolDown;
+    private float m_currentDamageCoolDown;
 
     // Use this for initialization
     void Start()
     {
-        m_currentCooldown = m_coolDown;
+        m_damageCoolDown = 0.2f;
+        m_currentDamageCoolDown = m_damageCoolDown;
 
-        m_classState = 0;
+        r_playerController = FindObjectOfType<Player_Controller>();
+        r_prototypeClasses = FindObjectOfType<Prototype_Classes>();
         m_lr = GetComponent<LineRenderer>();
     }
 
@@ -33,39 +37,15 @@ public class Gun_Prototype : MonoBehaviour
     [System.Obsolete]
     void Update()
     {
-        f_startstoneSelect();
-        f_prototypeClasses();
+        f_prototypeWeapon();
 
-        m_currentCooldown -= Time.deltaTime;
-        m_laserDamage = Random.Range(5, 10);
+        m_currentDamageCoolDown -= Time.deltaTime;
+        m_laserDamage = UnityEngine.Random.Range(5, 10);
     }
 
-    void f_startstoneSelect()
-    {
-        RaycastHit m_stoneSelect;
-
-        if (Physics.Raycast(m_shotPoint.position, m_shotPoint.forward, out m_stoneSelect, 2f, 1 << 11) && Input.GetKeyDown(KeyCode.Mouse0)) 
-        {
-            switch (m_stoneSelect.collider.gameObject.name)
-            {
-                case ("Starstone 1"):
-                    m_classState = 0;
-                    break;
-                case ("Starstone 2"):
-                    m_classState = 1;
-                    break;
-                case ("Starstone 3"):
-                    m_classState = 2;
-                    break;
-                case ("Starstone 4"):
-                    m_classState = 3;
-                    break;
-            }
-        }
-    }
 
     [System.Obsolete]
-    void f_prototypeClasses()
+    void f_prototypeWeapon()
     {
         RaycastHit m_laserHit;
         if (Input.GetKey(KeyCode.Mouse0))
@@ -79,25 +59,29 @@ public class Gun_Prototype : MonoBehaviour
                     m_lr.SetPosition(1, m_laserHit.point);
                 }
 
-                if (m_laserHit.collider.gameObject.CompareTag("Enemy") && m_currentCooldown <= 0)
+                if (m_laserHit.collider.gameObject.CompareTag("Enemy") && m_currentDamageCoolDown <= 0)
                 {
-                    switch (m_classState)
+                    enemyHit = m_laserHit.collider.gameObject.GetComponent<Enemy_Controller>();
+                    switch (r_prototypeClasses.m_classState)
                     {
-                        case 0:
+                        case 1: //Yellow
                             m_laserDamage = m_laserDamage * 2;
                             break;
-                        case 1:
-                            m_laserHit.collider.gameObject.GetComponent<Enemy_Controller>().m_runSpeed = 0;
+                        case 2: //White
+                            
                             break;
-                        case 2:
+                        case 3: //Pink
+                            enemyHit.m_runSpeed = 0;
+                            enemyHit.m_isEnemyStunned = true;
                             break;
-                        case 3:
+                        case 4: //Blue
+                            r_playerController.m_playerHealth += 1;
                             break;
                     }
                     m_laserHit.collider.gameObject.GetComponent<Enemy_Controller>().m_enemyHealth -= m_laserDamage;      
                     GameObject textObject = Instantiate(m_hitDamageText, m_laserHit.point, Quaternion.identity);
                     textObject.GetComponentInChildren<TextMeshPro>().text = "" + m_laserDamage;
-                    m_currentCooldown = m_coolDown;
+                    m_currentDamageCoolDown = m_damageCoolDown;
                 }
             }
         }
@@ -106,19 +90,19 @@ public class Gun_Prototype : MonoBehaviour
             m_lr.enabled = false;
         }
 
-        switch (m_classState)
+        switch (r_prototypeClasses.m_classState)
         {
-            case 0:
-                m_lr.SetColors(Color.red, Color.red);
-                break;
             case 1:
                 m_lr.SetColors(Color.yellow, Color.yellow);
                 break;
             case 2:
-                m_lr.SetColors(Color.blue, Color.blue);
+                m_lr.SetColors(Color.white, Color.white);
                 break;
             case 3:
-                m_lr.SetColors(Color.green, Color.green);
+                m_lr.SetColors(Color.magenta, Color.magenta);
+                break;
+            case 4:
+                m_lr.SetColors(Color.blue, Color.blue);
                 break;
         }
     }
