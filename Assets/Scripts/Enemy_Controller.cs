@@ -165,6 +165,11 @@ public class Enemy_Controller : MonoBehaviour
             m_isGrounded = false;
             m_enemyHealth = 1;
         }
+
+        if (other.gameObject.CompareTag("Infected"))
+        {
+            m_isEnemyInfected = true;
+        }
     }
 
     void OnCollisionEnter(Collision col)
@@ -174,10 +179,7 @@ public class Enemy_Controller : MonoBehaviour
             m_enemyHealth = 0;
         }
 
-        if (col.gameObject.CompareTag("Infected"))
-        {
-            col.gameObject.GetComponent<Enemy_Controller>().m_isEnemyInfected = true;
-        }
+        
     }
 
     //Kurtis Watson
