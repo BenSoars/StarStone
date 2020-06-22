@@ -5,7 +5,6 @@ using UnityEngine;
 public class Prototype_Classes : MonoBehaviour
 {
     //Kurtis Watson
-    private Enemy_Controller r_enemyController;
     private Player_Controller r_playerController;
     public Prototype_Weapon m_prototypeWeapon;
 
@@ -15,7 +14,7 @@ public class Prototype_Classes : MonoBehaviour
 
     public int m_classState;
 
-    private float m_defaultDamage;
+    private float m_defaultDefence;
     private float m_defaultHealth;
     private float m_defaultDamageCooldown;
 
@@ -25,10 +24,9 @@ public class Prototype_Classes : MonoBehaviour
     {
         m_classState = 1;
 
-        r_enemyController = FindObjectOfType<Enemy_Controller>();
         r_playerController = FindObjectOfType<Player_Controller>();
 
-        m_defaultDamage = r_enemyController.m_enemyDamage;
+        m_defaultDefence = r_playerController.m_defenceValue;
         m_defaultHealth = r_playerController.m_playerHealth;
         m_defaultDamageCooldown = m_prototypeWeapon.m_damageCoolDown;
     }
@@ -52,7 +50,7 @@ public class Prototype_Classes : MonoBehaviour
 
     void f_defaultSettings() //Reset to 0
     {
-        r_enemyController.m_enemyDamage = m_defaultDamage;
+        r_playerController.m_defenceValue = m_defaultDefence;
         m_prototypeWeapon.m_damageCoolDown = m_defaultDamageCooldown;
     }
 
@@ -67,7 +65,7 @@ public class Prototype_Classes : MonoBehaviour
                 case ("Starstone 1"): //Yellow
                     f_defaultSettings();
                     m_classState = 1;
-                    r_enemyController.m_enemyDamage = m_defaultDamage * 0.75f;
+                    r_playerController.m_defenceValue = 0.75f;
                     break;
                 case ("Starstone 2"): //White
                     f_defaultSettings();

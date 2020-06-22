@@ -50,6 +50,8 @@ public class Player_Controller : MonoBehaviour
 
     public bool m_isPlayerActive;
 
+    public float m_defenceValue = 1;
+
     private void Start()
     {
         m_isPlayerActive = true;
