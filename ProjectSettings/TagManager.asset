@@ -10,6 +10,7 @@ TagManager:
   - Ground
   - Spawns
   - WispPoint
+  - Infected
   layers:
   - Default
   - TransparentFX

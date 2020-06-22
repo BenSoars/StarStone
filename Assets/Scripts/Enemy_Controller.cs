@@ -41,8 +41,11 @@ public class Enemy_Controller : MonoBehaviour
     //Kurtis Watson
     public GameObject m_whisp;
     public bool m_isEnemyStunned;
+    public bool m_isEnemyInfected;
+    private bool test;
 
     private float m_defaultRunSpeed;
+    
 
     // Start is called before the first frame update
     void Start()
@@ -63,6 +66,15 @@ public class Enemy_Controller : MonoBehaviour
         {
             m_isEnemyStunned = false;
             Invoke("f_resetSpeed", 5);
+        }
+
+        if(m_isEnemyInfected == true && test == false)
+        {
+            test = true;
+            GetComponentInChildren<ParticleSystem>().Play();
+            GetComponentInChildren<BoxCollider>().enabled = true;
+            m_enemyHealth -= 0.01f;
+            Invoke("f_resetInfection", 10);
         }
 
         // line of sight
@@ -161,11 +173,23 @@ public class Enemy_Controller : MonoBehaviour
         {
             m_enemyHealth = 0;
         }
+
+        if (col.gameObject.CompareTag("Infected"))
+        {
+            col.gameObject.GetComponent<Enemy_Controller>().m_isEnemyInfected = true;
+        }
     }
 
     //Kurtis Watson
     void f_resetSpeed()
     {
         m_runSpeed = m_defaultRunSpeed;
+    }
+
+    void f_resetInfection()
+    { 
+        m_isEnemyInfected = false;
+        GetComponentInChildren<ParticleSystem>().Stop();
+        GetComponentInChildren<BoxCollider>().enabled = false;       
     }
 }

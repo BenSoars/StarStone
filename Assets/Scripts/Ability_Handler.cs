@@ -42,12 +42,12 @@ public class Ability_Handler : MonoBehaviour
     {
         for (int i = 0; i < m_totalKnives; i++)
         {
+            GameObject knife = Instantiate(m_knife, m_shotPoint.position, Quaternion.identity);
+
             float xValue = Random.Range(-0.4f, 0.4f);
             Vector3 accuracy = new Vector3(m_shotPoint.forward.x + xValue, m_shotPoint.forward.y, m_shotPoint.forward.z);
 
-            GameObject knife = Instantiate(m_knife, m_shotPoint.transform.position, Quaternion.identity);
-            knife.GetComponent<Rigidbody>().AddForce(accuracy * 50);
+            knife.GetComponent<Rigidbody>().AddForce(accuracy * 100);
         }
-        
     }
 }
