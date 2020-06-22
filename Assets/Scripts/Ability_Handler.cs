@@ -13,6 +13,9 @@ public class Ability_Handler : MonoBehaviour
     public Transform m_shotPoint;
     private RaycastHit m_hitscanCast;
 
+    public GameObject m_knife;
+    public int m_totalKnives;
+
     private void Start()
     {
         r_playerController = GameObject.FindObjectOfType<Player_Controller>();
@@ -37,6 +40,14 @@ public class Ability_Handler : MonoBehaviour
 
     public void f_spawnKnives()
     {
+        for (int i = 0; i < m_totalKnives; i++)
+        {
+            float xValue = Random.Range(-0.4f, 0.4f);
+            Vector3 accuracy = new Vector3(m_shotPoint.forward.x + xValue, m_shotPoint.forward.y, m_shotPoint.forward.z);
 
+            GameObject knife = Instantiate(m_knife, m_shotPoint.transform.position, Quaternion.identity);
+            knife.GetComponent<Rigidbody>().AddForce(accuracy * 50);
+        }
+        
     }
 }
