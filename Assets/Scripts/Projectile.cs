@@ -29,18 +29,28 @@ public class Projectile : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Enemy"))
+        if (other.gameObject.CompareTag("Enemy") && m_enemy == false)
         {
             other.GetComponent<Enemy_Controller>().m_enemyHealth -= m_damage;
             GameObject m_textObject = Instantiate(m_hitDamageText, other.transform.position, Quaternion.identity);
             m_textObject.GetComponentInChildren<TextMeshPro>().text = "" + m_damage;
-            if (m_sticky)
-            {
-                Destroy(m_hurtBox);
-                Destroy(m_rb);
-                Destroy(m_trail);
-                transform.SetParent(other.gameObject.transform);
-            }
+            stickyProjectile(other);
+        } else if (other.gameObject.CompareTag ("Player") && m_enemy == true)
+        {
+            
+            other.GetComponent<Player_Controller>().m_playerHealth -= m_damage;
+            stickyProjectile(other);
+        }
+    }
+
+    void stickyProjectile(Collider col)
+    {
+        if (m_sticky)
+        {
+            Destroy(m_hurtBox);
+            Destroy(m_rb);
+            Destroy(m_trail);
+            transform.SetParent(col.gameObject.transform);
         }
     }
 }

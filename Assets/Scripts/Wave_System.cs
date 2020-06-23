@@ -103,8 +103,11 @@ public class Wave_System : MonoBehaviour
         string[] varArray = amountOf[curRound].Split('_');
 
         enemyArray.Clear();
-        enemyArray.Add(System.Convert.ToInt32(varArray[0])); // convert the string into a string if it can
-        enemyArray.Add(System.Convert.ToInt32(varArray[1]));
-        enemyArray.Add(System.Convert.ToInt32(varArray[2]));
+        for (int i = 0; i < enemyTypes.Count; i++)
+        {
+            enemyArray.Add(System.Convert.ToInt32(varArray[i]));// convert the string into a string if it can
+        }
+         
+       
     }
 }

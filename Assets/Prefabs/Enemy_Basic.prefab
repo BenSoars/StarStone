@@ -216,10 +216,12 @@ MonoBehaviour:
   m_moveSpeed: 3
   m_runSpeed: 5
   m_enemyHealth: 100
-  m_enemyDamage: 5
+  m_enemyDamage: 7
   m_attackTime: 1
   m_spawnChance: 2
   m_isStunned: 0
+  m_isRanged: 0
+  m_projectile: {fileID: 0}
   m_ItemDrops:
   - {fileID: 5762886321429660750, guid: e8fea09451d242e47a7ae1e2c4f6f86f, type: 3}
   m_isGrounded: 1
@@ -231,7 +233,6 @@ MonoBehaviour:
     m_Bits: 3895
   m_hurtBox: {fileID: 3835827186872194993}
   m_whisp: {fileID: 42458450682264745, guid: 6befa5c3aa19d1842a12f708f5aab1c0, type: 3}
-  m_isEnemyStunned: 0
   m_isEnemyInfected: 0
 --- !u!95 &6578292449175435465
 Animator:

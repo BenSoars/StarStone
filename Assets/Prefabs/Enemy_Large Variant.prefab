@@ -45,8 +45,14 @@ PrefabInstance:
     - target: {fileID: 42458450682264744, guid: 4d4b05e08e0b0a6499519b925ddfa91b,
         type: 3}
       propertyPath: m_enemyDamage
-      value: 10
+      value: 15
       objectReference: {fileID: 0}
+    - target: {fileID: 42458450682264744, guid: 4d4b05e08e0b0a6499519b925ddfa91b,
+        type: 3}
+      propertyPath: m_whisp
+      value: 
+      objectReference: {fileID: 4912677542973487342, guid: 49ceda97bbd165a459db2f8f4ef86096,
+        type: 3}
     - target: {fileID: 42458450682264745, guid: 4d4b05e08e0b0a6499519b925ddfa91b,
         type: 3}
       propertyPath: m_Name
