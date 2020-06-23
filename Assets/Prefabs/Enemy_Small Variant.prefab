@@ -24,6 +24,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 42458450682264744, guid: 4d4b05e08e0b0a6499519b925ddfa91b,
         type: 3}
+      propertyPath: m_ItemDrops.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 42458450682264744, guid: 4d4b05e08e0b0a6499519b925ddfa91b,
+        type: 3}
       propertyPath: m_moveSpeed
       value: 6
       objectReference: {fileID: 0}
@@ -57,6 +62,12 @@ PrefabInstance:
       propertyPath: m_whisp
       value: 
       objectReference: {fileID: 42458450682264745, guid: 6befa5c3aa19d1842a12f708f5aab1c0,
+        type: 3}
+    - target: {fileID: 42458450682264744, guid: 4d4b05e08e0b0a6499519b925ddfa91b,
+        type: 3}
+      propertyPath: m_ItemDrops.Array.data[1]
+      value: 
+      objectReference: {fileID: 1328950134255430560, guid: 0905edf88bc54574bb94d689a6dcae3e,
         type: 3}
     - target: {fileID: 42458450682264745, guid: 4d4b05e08e0b0a6499519b925ddfa91b,
         type: 3}

@@ -97,7 +97,8 @@ public class Enemy_Controller : MonoBehaviour
             int rando = UnityEngine.Random.Range(0, m_spawnChance);
             if (rando == 1)
             {
-                Instantiate(m_ItemDrops[0], transform.position, Quaternion.identity);
+                rando = UnityEngine.Random.Range(0, m_ItemDrops.Count);
+                Instantiate(m_ItemDrops[rando], transform.position, Quaternion.identity);
             }
 
             Destroy(gameObject);

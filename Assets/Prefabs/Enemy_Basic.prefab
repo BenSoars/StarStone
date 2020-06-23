@@ -224,6 +224,7 @@ MonoBehaviour:
   m_projectile: {fileID: 0}
   m_ItemDrops:
   - {fileID: 5762886321429660750, guid: e8fea09451d242e47a7ae1e2c4f6f86f, type: 3}
+  - {fileID: 1328950134255430560, guid: 0905edf88bc54574bb94d689a6dcae3e, type: 3}
   m_isGrounded: 1
   m_lastPosition: {x: 0, y: 0, z: 0}
   m_state: 1

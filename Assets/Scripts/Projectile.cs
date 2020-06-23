@@ -21,7 +21,7 @@ public class Projectile : MonoBehaviour
 
     void Update()
     {
-        if (m_faceDirectionOfTravel == true)
+        if (m_faceDirectionOfTravel == true && m_rb)
         {
             transform.rotation = Quaternion.LookRotation(m_rb.velocity);
         }
