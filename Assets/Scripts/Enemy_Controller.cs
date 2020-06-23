@@ -8,9 +8,11 @@ public class Enemy_Controller : MonoBehaviour
 {
     // Ben Soars
     private NavMeshAgent m_navAgent;
+
     public float m_moveSpeed = 2;
     public float m_runSpeed = 4;
     public float m_enemyHealth = 3;
+    public float m_enemyDamage = 5;
     public int m_spawnChance = 3;
     public bool m_isStunned;
 
@@ -18,15 +20,11 @@ public class Enemy_Controller : MonoBehaviour
     private Wave_System r_waveSystem;
     private Rigidbody m_rb;
 
-    public GameObject m_AmmoCrate;
+    public List<GameObject> m_AmmoCrate = new List<GameObject>(); // item drop
     public bool m_isGrounded = true;
 
     public Vector3 m_lastPosition;
     private int m_randomNumber;
-
-    public float m_enemyDamage;
-
-    public LayerMask layerMask;
 
     [System.Serializable]
     public enum CurrentState // The current state
@@ -39,6 +37,9 @@ public class Enemy_Controller : MonoBehaviour
 
     public Transform m_eyePos;
     private RaycastHit m_sightRaycast; // the hitscan raycast
+    public LayerMask layerMask; // 
+
+    public Enemy_Damage m_hurtBox;
 
     //Kurtis Watson
     public GameObject m_whisp;
@@ -59,6 +60,7 @@ public class Enemy_Controller : MonoBehaviour
         r_waveSystem = FindObjectOfType<Wave_System>();
 
         m_defaultRunSpeed = m_runSpeed;
+        m_hurtBox.m_damage = m_enemyDamage;
     }
 
     void Update()
@@ -97,11 +99,7 @@ public class Enemy_Controller : MonoBehaviour
                 m_state = CurrentState.Check;
             }
 
-            //TESTING PURPOSES
-            if (Vector3.Distance(transform.position, r_player.transform.position) <= 1)
-            {
-                r_player.m_playerHealth -= m_enemyDamage * r_player.m_defenceValue;
-            }
+        
 
             //Ben Soars
             if (m_enemyHealth <= 0)
@@ -109,7 +107,7 @@ public class Enemy_Controller : MonoBehaviour
                 int rando = UnityEngine.Random.Range(0, m_spawnChance);
                 if (rando == 1)
                 {
-                    Instantiate(m_AmmoCrate, transform.position, Quaternion.identity);
+                    Instantiate(m_AmmoCrate[0], transform.position, Quaternion.identity);
                 }
 
                 Destroy(gameObject);
