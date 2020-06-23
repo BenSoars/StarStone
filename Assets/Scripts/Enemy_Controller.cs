@@ -19,6 +19,8 @@ public class Enemy_Controller : MonoBehaviour
     private bool m_resetStun;
     private bool m_isAttacking;
 
+    public bool m_isRanged = false;
+
     private Player_Controller r_player;
     private Wave_System r_waveSystem;
     private Rigidbody m_rb;
@@ -68,8 +70,6 @@ public class Enemy_Controller : MonoBehaviour
 
     void Update()
     {
-       
-
         if(m_isEnemyInfected == true && test == false)
         {
             test = true;
@@ -87,7 +87,7 @@ public class Enemy_Controller : MonoBehaviour
         if (m_isStunned == true && m_resetStun == false)
         {
             m_resetStun = true;
-            Invoke("m_resetStun", 1);
+            Invoke("f_resetStun", 2);
         }
 
         //Ben Soars
@@ -136,13 +136,24 @@ public class Enemy_Controller : MonoBehaviour
             switch (m_state) // the current enemy state
             {
                 case (CurrentState.Attack): // if they're set to attack 
-                    if (m_isAttacking == false)
+
+                    if (m_isRanged == true) // if the enemy is ranged
                     {
-                        m_navAgent.SetDestination(r_player.transform.position);
-                        m_navAgent.speed = m_runSpeed; // set to defined movespeed in script for consistancy's sake
-                        if (m_navAgent.remainingDistance <= m_navAgent.stoppingDistance)
+                        if (m_isAttacking == false)
                         {
                             StartCoroutine("CanAttack");
+                        }
+                    }
+                    else
+                    {
+                        if (m_isAttacking == false)
+                        {
+                            m_navAgent.SetDestination(r_player.transform.position);
+                            m_navAgent.speed = m_runSpeed; // set to defined movespeed in script for consistancy's sake
+                            if (m_navAgent.remainingDistance <= m_navAgent.stoppingDistance)
+                            {
+                                StartCoroutine("CanAttack");
+                            }
                         }
                     }
                     break;
