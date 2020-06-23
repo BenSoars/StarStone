@@ -13,12 +13,15 @@ public class Enemy_Controller : MonoBehaviour
     public float m_runSpeed = 4;
     public float m_enemyHealth = 3;
     public float m_enemyDamage = 5;
+    public float m_attackTime = 2;
     public int m_spawnChance = 3;
     public bool m_isStunned;
+    private bool m_isAttacking;
 
     private Player_Controller r_player;
     private Wave_System r_waveSystem;
     private Rigidbody m_rb;
+    private Animator r_anim;
 
     public List<GameObject> m_AmmoCrate = new List<GameObject>(); // item drop
     public bool m_isGrounded = true;
@@ -55,7 +58,7 @@ public class Enemy_Controller : MonoBehaviour
     {
         m_rb = gameObject.GetComponent<Rigidbody>(); // get rigidbody
         m_navAgent = gameObject.GetComponent<NavMeshAgent>();
-
+        r_anim = gameObject.GetComponent<Animator>();
         r_player = GameObject.FindObjectOfType<Player_Controller>();
         r_waveSystem = FindObjectOfType<Wave_System>();
 
@@ -85,6 +88,26 @@ public class Enemy_Controller : MonoBehaviour
         Vector3 newDirection = (r_player.transform.localPosition - m_eyePos.position).normalized;
         m_eyePos.rotation = Quaternion.LookRotation(new Vector3(newDirection.x, newDirection.y, newDirection.z));
 
+
+        //Ben Soars
+        if (m_enemyHealth <= 0)
+        {
+            int rando = UnityEngine.Random.Range(0, m_spawnChance);
+            if (rando == 1)
+            {
+                Instantiate(m_AmmoCrate[0], transform.position, Quaternion.identity);
+            }
+
+            Destroy(gameObject);
+
+            //Kurtis Watson
+            GameObject isNewWisp = Instantiate(m_whisp, transform.position, Quaternion.identity);
+            isNewWisp.GetComponent<Wisp_Controller>().m_enemySpawn = true;
+            r_waveSystem.enemiesLeft -= 1;
+        }
+
+
+
         if (Physics.Raycast(m_eyePos.position, m_eyePos.forward, out m_sightRaycast, Mathf.Infinity, layerMask)) // shoot out a raycast for hitscan
         {
             Debug.DrawRay(m_eyePos.position, m_eyePos.forward * m_sightRaycast.distance, Color.yellow); // draw line only viewable ineditor
@@ -98,25 +121,7 @@ public class Enemy_Controller : MonoBehaviour
             {
                 m_state = CurrentState.Check;
             }
-
-        
-
-            //Ben Soars
-            if (m_enemyHealth <= 0)
-            {
-                int rando = UnityEngine.Random.Range(0, m_spawnChance);
-                if (rando == 1)
-                {
-                    Instantiate(m_AmmoCrate[0], transform.position, Quaternion.identity);
-                }
-
-                Destroy(gameObject);
-
-                //Kurtis Watson
-                GameObject isNewWisp = Instantiate(m_whisp, transform.position, Quaternion.identity);
-                isNewWisp.GetComponent<Wisp_Controller>().m_enemySpawn = true;
-                r_waveSystem.enemiesLeft -= 1;
-            }
+           
         }
     }
 
@@ -130,8 +135,15 @@ public class Enemy_Controller : MonoBehaviour
             switch (m_state) // the current enemy state
             {
                 case (CurrentState.Attack): // if they're set to attack 
+                    if (m_isAttacking == false)
+                    {
                         m_navAgent.SetDestination(r_player.transform.position);
                         m_navAgent.speed = m_runSpeed; // set to defined movespeed in script for consistancy's sake
+                        if (m_navAgent.remainingDistance <= m_navAgent.stoppingDistance)
+                        {
+                            StartCoroutine("CanAttack");
+                        }
+                    }
                     break;
                 case (CurrentState.Check): // if enemy has lost player, search for last known position
                         m_navAgent.SetDestination(m_lastPosition);
@@ -180,6 +192,19 @@ public class Enemy_Controller : MonoBehaviour
         }
 
         
+    }
+
+    IEnumerator CanAttack()
+    {
+        if (m_isAttacking == false)
+        {
+            m_isAttacking = true;
+            yield return new WaitForSeconds(0.1f);
+            r_anim.SetTrigger("Attack");
+            yield return new WaitForSeconds(m_attackTime);
+            m_isAttacking = false;
+        }
+       
     }
 
     //Kurtis Watson

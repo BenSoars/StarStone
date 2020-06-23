@@ -17,8 +17,9 @@ public class Enemy_Damage : MonoBehaviour
 
     void OnTriggerStay (Collider other)
     {
-        if (other.CompareTag("player"))
+        if (other.CompareTag("Player"))
         {
+            r_player = other.gameObject.GetComponent<Player_Controller>();
             r_player.m_playerHealth -= m_damage * r_player.m_defenceValue;
             m_hurtBox.enabled = false;
         }
