@@ -42,7 +42,7 @@ public class Ability_Handler : MonoBehaviour
     {
         Debug.Log("Shot Point: " + m_hitscanCast.point);
 
-        float m_sideDirection = -50;
+        float m_sideDirection = -40;
 
         for (int i = 0; i < m_totalKnives; i++)
         {

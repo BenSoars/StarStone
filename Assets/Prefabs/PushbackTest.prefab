@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 2656537138490890291}
   - component: {fileID: 709845916037645089}
   - component: {fileID: 2955128623258941284}
+  - component: {fileID: 2330088124434672821}
   m_Layer: 8
   m_Name: PushbackTest
   m_TagString: Untagged
@@ -146,10 +147,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_abilitySpeed: 300
   m_upliftForce: 2
-  m_knockbackForce: 6
+  m_knockbackForce: 60
   m_damageRadius: 0
   m_abilityDuration: 0
   m_isFired: 0
+--- !u!114 &2330088124434672821
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1851148228268403614}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4df1611aab48ea4e9972b5ae28ea0c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_activeTime: 2
 --- !u!1 &4773467126593848227
 GameObject:
   m_ObjectHideFlags: 0
@@ -370,9 +384,9 @@ ParticleSystem:
         m_RotationOrder: 4
     startColor:
       serializedVersion: 2
-      minMaxState: 2
+      minMaxState: 0
       minColor: {r: 0.12941174, g: 0.67725265, b: 0.77254903, a: 1}
-      maxColor: {r: 0.8867924, g: 0.06165271, b: 0.004182993, a: 0.29803923}
+      maxColor: {r: 0.754717, g: 0.7472802, b: 0.039159846, a: 0.25490198}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}

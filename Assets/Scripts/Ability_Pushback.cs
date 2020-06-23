@@ -40,14 +40,9 @@ public class Ability_Pushback : MonoBehaviour
 
             if(o_rb != null && o_hit.gameObject.layer != 9 && o_hit.gameObject != this.gameObject)
             {
-                o_rb.AddExplosionForce(m_knockbackForce, transform.position, m_damageRadius, m_upliftForce);
+                o_rb.gameObject.GetComponent<Enemy_Controller>().m_isStunned = true;
+                o_rb.AddExplosionForce(m_knockbackForce, transform.position, m_damageRadius, m_upliftForce);               
             }
         }
-        Invoke("f_removeObject", 5f);
-    }
-
-    void f_removeObject()
-    {
-        GameObject.Destroy(this.gameObject);
     }
 }

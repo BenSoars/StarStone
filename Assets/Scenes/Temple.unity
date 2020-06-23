@@ -30025,6 +30025,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1031861635661113235, guid: 350e34eddd2d71e4d93cfb4507594659,
+        type: 3}
+      propertyPath: m_totalKnives
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 8493438686635508275, guid: 350e34eddd2d71e4d93cfb4507594659,
         type: 3}
       propertyPath: m_Name

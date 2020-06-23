@@ -1213,7 +1213,7 @@ MonoBehaviour:
   m_storm: {fileID: 2084821073527653411, guid: 69f10fff7f1e53b489cc042a5eaf74b3, type: 3}
   m_shotPoint: {fileID: 567909998898289762}
   m_knife: {fileID: 3005016408550678764, guid: a42c2071c560a5e429b817b6c466b4e8, type: 3}
-  m_totalKnives: 10
+  m_totalKnives: 9
 --- !u!1 &8493438687375166391
 GameObject:
   m_ObjectHideFlags: 0

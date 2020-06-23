@@ -151,7 +151,7 @@ public class Prototype_Classes : MonoBehaviour
         if (m_stonePower[2] >= 25)
         {
             FindObjectOfType<Ability_Handler>().f_spawnKnives();
-            //m_stonePower[2] -= 25;
+            m_stonePower[2] -= 25;
         }
     }
 
