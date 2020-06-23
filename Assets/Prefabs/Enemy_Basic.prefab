@@ -221,6 +221,9 @@ MonoBehaviour:
   m_isGrounded: 1
   m_lastPosition: {x: 0, y: 0, z: 0}
   m_enemyDamage: 1
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 3895
   m_state: 1
   m_eyePos: {fileID: 1229794459954426972}
   m_whisp: {fileID: 42458450682264745, guid: 6befa5c3aa19d1842a12f708f5aab1c0, type: 3}
