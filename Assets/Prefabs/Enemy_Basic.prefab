@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 7353072314230088136}
   - component: {fileID: -29216751136668040}
   - component: {fileID: 42458450682264744}
+  - component: {fileID: 6578292449175435465}
   m_Layer: 12
   m_Name: Enemy_Basic
   m_TagString: Enemy
@@ -215,21 +216,43 @@ MonoBehaviour:
   m_moveSpeed: 3
   m_runSpeed: 5
   m_enemyHealth: 100
+  m_enemyDamage: 1
   m_spawnChance: 2
   m_isStunned: 0
-  m_AmmoCrate: {fileID: 5762886321429660750, guid: e8fea09451d242e47a7ae1e2c4f6f86f,
-    type: 3}
+  m_AmmoCrate:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   m_isGrounded: 1
   m_lastPosition: {x: 0, y: 0, z: 0}
-  m_enemyDamage: 1
+  m_state: 1
+  m_eyePos: {fileID: 1229794459954426972}
   layerMask:
     serializedVersion: 2
     m_Bits: 3895
-  m_state: 1
-  m_eyePos: {fileID: 1229794459954426972}
+  m_hurtBox: {fileID: 0}
   m_whisp: {fileID: 42458450682264745, guid: 6befa5c3aa19d1842a12f708f5aab1c0, type: 3}
   m_isEnemyStunned: 0
   m_isEnemyInfected: 0
+--- !u!95 &6578292449175435465
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 42458450682264745}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: ad3cfc5f922c1ea43b4ef45c26e6fd86, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &3218770150996492342
 GameObject:
   m_ObjectHideFlags: 0
@@ -5081,6 +5104,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61e21deaab5120c49827344477662daa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_damage: 0
+  m_hurtBox: {fileID: 0}
+  r_player: {fileID: 0}
 --- !u!1 &6292640144576386327
 GameObject:
   m_ObjectHideFlags: 0
