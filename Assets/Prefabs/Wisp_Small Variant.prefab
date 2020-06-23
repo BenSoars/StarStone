@@ -85,7 +85,7 @@ PrefabInstance:
     - target: {fileID: 42458450682264759, guid: 6befa5c3aa19d1842a12f708f5aab1c0,
         type: 3}
       propertyPath: m_BaseOffset
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6295395092690014080, guid: 6befa5c3aa19d1842a12f708f5aab1c0,
         type: 3}

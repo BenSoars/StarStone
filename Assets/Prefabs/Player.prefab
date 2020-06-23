@@ -1144,7 +1144,7 @@ MonoBehaviour:
   m_maxSpeed: 15
   m_jumpHeight: 9
   m_enemiesKilled: 0
-  m_playerHealth: 0
+  m_playerHealth: 100
   m_extraGravity: 10
   m_playerRotX: 0
   m_grounded: 0

@@ -20,6 +20,7 @@ public class Enemy_Controller : MonoBehaviour
     private bool m_isAttacking;
 
     public bool m_isRanged = false;
+    public Projectile m_projectile;
 
     private Player_Controller r_player;
     private Wave_System r_waveSystem;
@@ -96,7 +97,8 @@ public class Enemy_Controller : MonoBehaviour
             int rando = UnityEngine.Random.Range(0, m_spawnChance);
             if (rando == 1)
             {
-                Instantiate(m_ItemDrops[0], transform.position, Quaternion.identity);
+                rando = UnityEngine.Random.Range(0, m_ItemDrops.Count);
+                Instantiate(m_ItemDrops[rando], transform.position, Quaternion.identity);
             }
 
             Destroy(gameObject);
@@ -212,7 +214,16 @@ public class Enemy_Controller : MonoBehaviour
         {
             m_isAttacking = true;
             yield return new WaitForSeconds(0.1f);
-            r_anim.SetTrigger("Attack");
+            if (!m_isRanged)
+            {
+                r_anim.SetTrigger("Attack");
+            } else
+            {
+                Projectile proj = Instantiate(m_projectile, m_eyePos.position, Quaternion.identity);
+                proj.GetComponent<Rigidbody>().AddForce(m_eyePos.forward * 200);
+                proj.m_enemy = true;
+                proj.m_damage = m_enemyDamage;
+            }
             yield return new WaitForSeconds(m_attackTime);
             m_isAttacking = false;
         }

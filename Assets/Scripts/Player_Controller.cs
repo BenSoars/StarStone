@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player_Controller : MonoBehaviour
 {
@@ -68,6 +69,11 @@ public class Player_Controller : MonoBehaviour
     void Update()
     {
         f_drone();
+
+        if (m_playerHealth <= 0)
+        {
+            SceneManager.LoadScene("GameOver");
+        }
 
         if (m_isPlayerActive == true)
         {
