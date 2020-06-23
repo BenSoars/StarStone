@@ -70,8 +70,7 @@ public class Prototype_Weapon : MonoBehaviour
                         case 1: //White
                             break;
                         case 2: //Pink
-                            enemyHit.m_runSpeed = 0;
-                            enemyHit.m_isEnemyStunned = true;
+                            enemyHit.m_isStunned = true;
                             break;
                         case 3: //Blue
                             r_playerController.m_playerHealth += 1;
