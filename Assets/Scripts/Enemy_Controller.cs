@@ -16,6 +16,7 @@ public class Enemy_Controller : MonoBehaviour
     public float m_attackTime = 2;
     public int m_spawnChance = 3;
     public bool m_isStunned;
+    private bool m_resetStun;
     private bool m_isAttacking;
 
     private Player_Controller r_player;
@@ -23,7 +24,7 @@ public class Enemy_Controller : MonoBehaviour
     private Rigidbody m_rb;
     private Animator r_anim;
 
-    public List<GameObject> m_AmmoCrate = new List<GameObject>(); // item drop
+    public List<GameObject> m_ItemDrops = new List<GameObject>(); // item drop
     public bool m_isGrounded = true;
 
     public Vector3 m_lastPosition;
@@ -46,7 +47,6 @@ public class Enemy_Controller : MonoBehaviour
 
     //Kurtis Watson
     public GameObject m_whisp;
-    public bool m_isEnemyStunned;
     public bool m_isEnemyInfected;
     private bool test;
 
@@ -68,12 +68,7 @@ public class Enemy_Controller : MonoBehaviour
 
     void Update()
     {
-        //Kurtis Watson
-        if (m_isEnemyStunned == true)
-        {
-            m_isEnemyStunned = false;
-            Invoke("f_resetSpeed", 5);
-        }
+       
 
         if(m_isEnemyInfected == true && test == false)
         {
@@ -89,13 +84,19 @@ public class Enemy_Controller : MonoBehaviour
         m_eyePos.rotation = Quaternion.LookRotation(new Vector3(newDirection.x, newDirection.y, newDirection.z));
 
 
+        if (m_isStunned == true && m_resetStun == false)
+        {
+            m_resetStun = true;
+            Invoke("m_resetStun", 1);
+        }
+
         //Ben Soars
         if (m_enemyHealth <= 0)
         {
             int rando = UnityEngine.Random.Range(0, m_spawnChance);
             if (rando == 1)
             {
-                Instantiate(m_AmmoCrate[0], transform.position, Quaternion.identity);
+                Instantiate(m_ItemDrops[0], transform.position, Quaternion.identity);
             }
 
             Destroy(gameObject);
@@ -205,6 +206,12 @@ public class Enemy_Controller : MonoBehaviour
             m_isAttacking = false;
         }
        
+    }
+
+    void f_resetStun()
+    {
+        m_isStunned = false;
+        m_resetStun = false;
     }
 
     //Kurtis Watson
