@@ -42,14 +42,18 @@ public class Ability_Handler : MonoBehaviour
     {
         Debug.Log("Shot Point: " + m_hitscanCast.point);
 
+        float m_sideDirection = -50;
+
         for (int i = 0; i < m_totalKnives; i++)
         {
             GameObject knife = Instantiate(m_knife, m_shotPoint.position, Quaternion.identity);
+            Rigidbody m_krb = knife.GetComponent<Rigidbody>();
 
-            float xValue = Random.Range(-0.3f, 0.3f);
-            Vector3 accuracy = new Vector3(m_shotPoint.forward.x - xValue, m_shotPoint.forward.y, m_shotPoint.forward.z);
+            m_krb.AddForce(m_shotPoint.forward * 100);
+            m_krb.AddForce(m_shotPoint.right * m_sideDirection);
 
-            knife.GetComponent<Rigidbody>().AddForce(accuracy * 100);
+            m_sideDirection += 10;
+
         }
     }
 }
