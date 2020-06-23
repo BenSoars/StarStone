@@ -97,7 +97,7 @@ public class Prototype_Classes : MonoBehaviour
                     Invoke("f_resetInvisible", 10);
                     break;
                 case 1:
-                    //Cloud of bullets. -15% power.
+                    f_tornadoAbility();
                     break;
                 case 2:
                     Instantiate(m_pushBack, m_shotPoint.transform.position, m_shotPoint.rotation); // 'm_shotPoint.rotation' makes the position of firing relative to where the player is looking based on camera rotation.
@@ -148,10 +148,19 @@ public class Prototype_Classes : MonoBehaviour
 
     void f_knifeAbility()
     {
-        if (m_stonePower[2] >= 25)
+        if (m_stonePower[2] >= 15)
         {
             FindObjectOfType<Ability_Handler>().f_spawnKnives();
-            m_stonePower[2] -= 25;
+            m_stonePower[2] -= 15;
+        }
+    }
+
+    void f_tornadoAbility()
+    {
+        if (m_stonePower[1] >= 15)
+        {
+            FindObjectOfType<Ability_Handler>().f_spawnTornado();
+            m_stonePower[1] -= 20;
         }
     }
 

@@ -16,6 +16,8 @@ public class Ability_Handler : MonoBehaviour
     public GameObject m_knife;
     public int m_totalKnives;
 
+    public GameObject m_Tornado;
+
     private void Start()
     {
         r_playerController = GameObject.FindObjectOfType<Player_Controller>();
@@ -54,6 +56,14 @@ public class Ability_Handler : MonoBehaviour
 
             m_sideDirection += 10;
 
+        }
+    }
+
+    public void f_spawnTornado()
+    {
+        if (Physics.Raycast(m_shotPoint.position, m_shotPoint.forward, out m_hitscanCast, Mathf.Infinity)) //Creates a Raycast.
+        {
+            Instantiate(m_Tornado, new Vector3(m_hitscanCast.point.x, m_hitscanCast.point.y - 2, m_hitscanCast.point.z), Quaternion.LookRotation(Vector3.forward));
         }
     }
 }
