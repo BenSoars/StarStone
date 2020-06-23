@@ -22,8 +22,6 @@ public class Prototype_Classes : MonoBehaviour
 
     void Start()
     {
-        m_classState = 0;
-
         r_playerController = FindObjectOfType<Player_Controller>();
 
         m_defaultDefence = r_playerController.m_defenceValue;
@@ -63,20 +61,24 @@ public class Prototype_Classes : MonoBehaviour
             {
                 case ("Starstone 1"): //Yellow
                     f_defaultSettings();
+                    Debug.Log("1");
                     m_classState = 0;
                     r_playerController.m_defenceValue = 0.75f;
                     break;
                 case ("Starstone 2"): //White
                     f_defaultSettings();
+                    Debug.Log("2");
                     m_classState = 1;
                     r_playerController.m_playerHealth = m_defaultHealth * 1.3f;
                     break;
                 case ("Starstone 3"): //Pink
                     f_defaultSettings();
+                    Debug.Log("3");
                     m_classState = 2;
                     break;
                 case ("Starstone 4"): //Blue
                     f_defaultSettings();
+                    Debug.Log("4");
                     m_classState = 3;
                     m_prototypeWeapon.m_damageCoolDown = m_defaultDamageCooldown / 2;
                     break;

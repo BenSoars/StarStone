@@ -67,8 +67,6 @@ public class Player_Controller : MonoBehaviour
     //Kurtis Watson
     void Update()
     {
-        Debug.Log("Health: " + m_playerHealth);
-
         f_drone();
 
         if (m_isPlayerActive == true)

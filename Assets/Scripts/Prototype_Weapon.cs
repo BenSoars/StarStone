@@ -68,7 +68,6 @@ public class Prototype_Weapon : MonoBehaviour
                             m_laserDamage = m_laserDamage * 2;
                             break;
                         case 1: //White
-                            
                             break;
                         case 2: //Pink
                             enemyHit.m_runSpeed = 0;
@@ -98,10 +97,10 @@ public class Prototype_Weapon : MonoBehaviour
             case 1:
                 m_lr.SetColors(Color.white, Color.white);
                 break;
-            case 3:
+            case 2:
                 m_lr.SetColors(Color.magenta, Color.magenta);
                 break;
-            case 4:
+            case 3:
                 m_lr.SetColors(Color.blue, Color.blue);
                 break;
         }

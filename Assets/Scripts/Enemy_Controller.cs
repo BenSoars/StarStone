@@ -73,7 +73,7 @@ public class Enemy_Controller : MonoBehaviour
             test = true;
             GetComponentInChildren<ParticleSystem>().Play();
             GetComponentInChildren<BoxCollider>().enabled = true;
-            m_enemyHealth -= 0.01f;
+            m_enemyHealth -= 0.1f;
             Invoke("f_resetInfection", 10);
         }
 
