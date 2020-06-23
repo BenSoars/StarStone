@@ -42,17 +42,17 @@ public class Ability_Handler : MonoBehaviour
     {
         Debug.Log("Shot Point: " + m_hitscanCast.point);
 
-        float m_sideDirection = -50;
+        float m_sideDirection = -50; // starting side spread
 
         for (int i = 0; i < m_totalKnives; i++)
         {
             GameObject knife = Instantiate(m_knife, m_shotPoint.position, Quaternion.identity);
             Rigidbody m_krb = knife.GetComponent<Rigidbody>();
 
-            m_krb.AddForce(m_shotPoint.forward * 100);
-            m_krb.AddForce(m_shotPoint.right * m_sideDirection);
+            m_krb.AddForce(m_shotPoint.forward * 100); // shoot forward
+            m_krb.AddForce(m_shotPoint.right * m_sideDirection); // apply side direciton
 
-            m_sideDirection += 10;
+            m_sideDirection += 10; // increase side direciton
 
         }
     }

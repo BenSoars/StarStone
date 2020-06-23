@@ -26,6 +26,8 @@ public class Enemy_Controller : MonoBehaviour
 
     public float m_enemyDamage;
 
+    public LayerMask layerMask;
+
     [System.Serializable]
     public enum CurrentState // The current state
     {
@@ -81,7 +83,7 @@ public class Enemy_Controller : MonoBehaviour
         Vector3 newDirection = (r_player.transform.localPosition - m_eyePos.position).normalized;
         m_eyePos.rotation = Quaternion.LookRotation(new Vector3(newDirection.x, newDirection.y, newDirection.z));
 
-        if (Physics.Raycast(m_eyePos.position, m_eyePos.forward, out m_sightRaycast, Mathf.Infinity)) // shoot out a raycast for hitscan
+        if (Physics.Raycast(m_eyePos.position, m_eyePos.forward, out m_sightRaycast, Mathf.Infinity, layerMask)) // shoot out a raycast for hitscan
         {
             Debug.DrawRay(m_eyePos.position, m_eyePos.forward * m_sightRaycast.distance, Color.yellow); // draw line only viewable ineditor
             if (m_sightRaycast.collider.gameObject.CompareTag("Player") && r_player.m_isPlayerInvisible == false)

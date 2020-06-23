@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 7353072314230088136}
   - component: {fileID: -29216751136668040}
   - component: {fileID: 42458450682264744}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Enemy_Basic
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -239,7 +239,7 @@ GameObject:
   - component: {fileID: 3007200526936079684}
   - component: {fileID: 5821351728558532295}
   - component: {fileID: 4445042777133509401}
-  m_Layer: 2
+  m_Layer: 12
   m_Name: Infector
   m_TagString: Infected
   m_Icon: {fileID: 0}
@@ -5020,7 +5020,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1229794459954426972}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: ViewPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5053,7 +5053,7 @@ GameObject:
   - component: {fileID: 8236496959247484869}
   - component: {fileID: 7215696418023578089}
   - component: {fileID: 8527743947929761489}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
