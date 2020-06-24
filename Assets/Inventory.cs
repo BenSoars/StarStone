@@ -38,7 +38,7 @@ public class Inventory : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Z))
             {
                 currentNote += 1;
-                if (currentNote > noteName.Count)
+                if (currentNote >= noteName.Count)
                 {
                     currentNote = 0;
                 }
