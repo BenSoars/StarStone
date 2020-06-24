@@ -1191,13 +1191,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a938f5b129ad6f439dcd5a02a2a9fbe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_prototypeWeapon: {fileID: 6879699983474076598}
+  r_prototypeWeapon: {fileID: 0}
   m_shotPoint: {fileID: 567909998898289762}
   m_pushBack: {fileID: 1851148228268403614, guid: af108dce561144945bf7271e1c761477,
     type: 3}
   m_classState: 0
-  m_stonePower: 64000000640000006400000064000000
+  m_stonePower: []
   m_activeStone: 00000000
+  newValue: 0
+  m_fogStrength: 0
+  m_currentFog: 0
 --- !u!114 &1031861635661113235
 MonoBehaviour:
   m_ObjectHideFlags: 0

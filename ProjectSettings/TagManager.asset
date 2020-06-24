@@ -11,6 +11,7 @@ TagManager:
   - Spawns
   - WispPoint
   - Infected
+  - Note
   layers:
   - Default
   - TransparentFX
