@@ -16,7 +16,7 @@ public class Wave_Trigger : MonoBehaviour
     {
         if(other.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
-            r_waveSystem.m_startWaves = true;
+            r_waveSystem.m_newWave = true;
             Destroy(gameObject);
         }
     }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.Serialization;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -49,12 +50,14 @@ public class Enemy_Controller : MonoBehaviour
     public Enemy_Damage m_hurtBox;
 
     //Kurtis Watson
+    private Prototype_Classes r_prototypeClasses;
+
     public GameObject m_whisp;
     public bool m_isEnemyInfected;
-    private bool test;
+    private bool m_previouslyInfected;
+    private bool m_particleSystem;
 
     private float m_defaultRunSpeed;
-    
 
     // Start is called before the first frame update
     void Start()
@@ -64,6 +67,7 @@ public class Enemy_Controller : MonoBehaviour
         r_anim = gameObject.GetComponent<Animator>();
         r_player = GameObject.FindObjectOfType<Player_Controller>();
         r_waveSystem = FindObjectOfType<Wave_System>();
+        r_prototypeClasses = FindObjectOfType<Prototype_Classes>();
 
         m_defaultRunSpeed = m_runSpeed;
         m_hurtBox.m_damage = m_enemyDamage;
@@ -71,15 +75,21 @@ public class Enemy_Controller : MonoBehaviour
 
     void Update()
     {
-        if(m_isEnemyInfected == true && test == false)
+        //Kurtis Watson
+        if (m_isEnemyInfected == true && m_previouslyInfected == false)
         {
-            test = true;
-            GetComponentInChildren<ParticleSystem>().Play();
-            GetComponentInChildren<BoxCollider>().enabled = true;
-            m_enemyHealth -= 0.1f;
-            Invoke("f_resetInfection", 10);
-        }
+            if (m_particleSystem == false)
+            {
+                m_particleSystem = true;
+                GetComponentInChildren<ParticleSystem>().Play();
+            }
 
+            m_enemyHealth -= 0.1f;
+            GetComponentInChildren<BoxCollider>().enabled = true;
+            Invoke("f_resetInfection", 10);
+        }       
+
+        //Ben Soars
         // line of sight
         Vector3 newDirection = (r_player.transform.localPosition - m_eyePos.position).normalized;
         m_eyePos.rotation = Quaternion.LookRotation(new Vector3(newDirection.x, newDirection.y, newDirection.z));
@@ -94,6 +104,10 @@ public class Enemy_Controller : MonoBehaviour
         //Ben Soars
         if (m_enemyHealth <= 0)
         {
+            //Kurtis Watson
+            r_prototypeClasses.m_currentFog = r_prototypeClasses.m_currentFog - r_waveSystem.m_fogMath;
+
+            //Ben Soars
             int rando = UnityEngine.Random.Range(0, m_spawnChance);
             if (rando == 1)
             {
@@ -243,7 +257,8 @@ public class Enemy_Controller : MonoBehaviour
     }
 
     void f_resetInfection()
-    { 
+    {
+        m_previouslyInfected = true;
         m_isEnemyInfected = false;
         GetComponentInChildren<ParticleSystem>().Stop();
         GetComponentInChildren<BoxCollider>().enabled = false;       

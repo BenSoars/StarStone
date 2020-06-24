@@ -37,7 +37,7 @@ public class Gun_Generic : MonoBehaviour
     [Header("Weapon Other Stats")]
     [Space(2)]
     public float m_shotForce = 100; // how much force the bullet will be shot for, it hitscan leave blank
-    public int m_bulletDamage;
+    public float m_bulletDamage;
     public int m_minBulletDamage;
     public int m_maxBulletDamage;
 

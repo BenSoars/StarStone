@@ -17,6 +17,7 @@ public class Ability_Handler : MonoBehaviour
     public int m_totalKnives;
 
     public GameObject m_Tornado;
+    public GameObject m_Infector;
 
     private void Start()
     {
@@ -36,7 +37,7 @@ public class Ability_Handler : MonoBehaviour
     {
         if (Physics.Raycast(m_shotPoint.position, m_shotPoint.forward, out m_hitscanCast, Mathf.Infinity)) //Creates a Raycast.
         {
-            GameObject o_storm = Instantiate(m_storm, new Vector3(m_hitscanCast.point.x, m_hitscanCast.point.y - 2, m_hitscanCast.point.z), Quaternion.LookRotation(Vector3.forward));
+            Instantiate(m_storm, new Vector3(m_hitscanCast.point.x, m_hitscanCast.point.y - 2, m_hitscanCast.point.z), Quaternion.LookRotation(Vector3.forward));
         }
     }
 
@@ -66,4 +67,13 @@ public class Ability_Handler : MonoBehaviour
             Instantiate(m_Tornado, new Vector3(m_hitscanCast.point.x, m_hitscanCast.point.y - 2, m_hitscanCast.point.z), Quaternion.LookRotation(Vector3.forward));
         }
     }
+
+    public void f_spawnInfector()
+    {
+        if (Physics.Raycast(m_shotPoint.position, m_shotPoint.forward, out m_hitscanCast, Mathf.Infinity)) //Creates a Raycast.
+        {
+            Instantiate(m_Infector, new Vector3(m_hitscanCast.point.x, m_hitscanCast.point.y - 2, m_hitscanCast.point.z), Quaternion.LookRotation(Vector3.forward));
+        }
+    }
+
 }

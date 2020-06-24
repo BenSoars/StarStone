@@ -20,22 +20,27 @@ public class Wave_System : MonoBehaviour
     //Kurtis Watson
     private Player_Controller r_playerController;
     private User_Interface r_userInterface;
+    private Prototype_Classes r_prototypeClasses;
 
     public List<GameObject> m_wisps = new List<GameObject>();
 
     private GameObject[] m_wispPoint;
     private int m_random;
-    public bool m_startWaves;
+    public int m_intermissionTime;
+
+    public bool m_newWave;
+    private bool m_timeMet;
 
     private Text m_enemyCount;
-
+    public float m_fogMath;
 
     //Kurtis Watson
     private void Start()
-    {     
+    {
         m_wispPoint = GameObject.FindGameObjectsWithTag("WispPoint");
         r_playerController = FindObjectOfType<Player_Controller>();
         r_userInterface = FindObjectOfType<User_Interface>();
+        r_prototypeClasses = FindObjectOfType<Prototype_Classes>();
         m_enemyCount = GameObject.Find("EnemyCount").GetComponent<Text>();
     }
 
@@ -43,20 +48,22 @@ public class Wave_System : MonoBehaviour
     private void Update()
     {
         f_updateUI();
-        if (m_startWaves == true)
+
+        if (m_newWave == true)
         {
-            m_startedWaves = true;
             r_userInterface.f_waveTimer();
-            f_spawnWisps(); // spawn wisps
-            m_startWaves = false;
+            StartCoroutine(f_spawnWisps()); // spawn wisps
         }
     }
 
     //Kurtis Watson
-    void f_spawnWisps()
+    IEnumerator f_spawnWisps()
     {
-        f_sortOutEnemys();
-        for (int k = 0; k < enemyArray.Count; k++) { 
+        m_newWave = false;
+        yield return new WaitForSeconds(m_intermissionTime);
+        f_sortOutEnemys();        
+        for (int k = 0; k < enemyArray.Count; k++)
+        {
             for (int i = 0; i < enemyArray[k]; i++)
             {
                 m_random = Random.Range(0, 4);
@@ -65,8 +72,11 @@ public class Wave_System : MonoBehaviour
             }
         }
         enemiesLeft = spawnedEnemies.Count;
+        r_prototypeClasses.m_fogStrength = 0.2f; //THIS WILL NEED TO BE CHANGED IN ORDER TO ADD INTERMISSION BETWEEN ROUNDS.
+        r_prototypeClasses.m_currentFog = 0.2f;
+        m_fogMath = r_prototypeClasses.m_fogStrength / enemiesLeft;
         curRound += 1;
-        Debug.Log("Enemies Left: " + enemiesLeft);
+        m_timeMet = false;
     }
 
     //Kurtis Watson
@@ -77,10 +87,12 @@ public class Wave_System : MonoBehaviour
 
     // Update is called once per frame
     void FixedUpdate()
-    {
+    {       
         //Ben Soars
-        if (spawnedEnemies.Count <= 0 && enemiesLeft == 0)
+        if (spawnedEnemies.Count <= 0 && enemiesLeft == 0 && m_timeMet == false)
         {
+            m_timeMet = true;
+            m_newWave = true;
             r_userInterface.f_waveTimer();
             f_spawnWisps();
         }
