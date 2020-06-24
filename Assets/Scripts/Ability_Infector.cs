@@ -4,12 +4,11 @@ using UnityEngine;
 
 public class Ability_Infector : MonoBehaviour
 {
-    // Start is called before the first frame update
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Enemy"))
+        if (other.gameObject.CompareTag("Enemy")) //Check if collided object is an enemy >
         {            
-            other.gameObject.GetComponent<Enemy_Controller>().m_isEnemyInfected = true;
+            other.gameObject.GetComponent<Enemy_Controller>().m_isEnemyInfected = true; //If true, infect the collided enemy.
             Destroy(gameObject);
         }
     }

@@ -91,8 +91,9 @@ public class Wave_System : MonoBehaviour
         //Ben Soars
         if (spawnedEnemies.Count <= 0 && enemiesLeft == 0 && m_timeMet == false)
         {
+            r_prototypeClasses.m_canSelect = true;
+            r_prototypeClasses.m_activeStone[r_prototypeClasses.m_classState] = false;
             m_timeMet = true;
-            m_newWave = true;
             r_userInterface.f_waveTimer();
             f_spawnWisps();
         }

@@ -13,17 +13,11 @@ public class Ability_Melee : MonoBehaviour
         m_animator = GetComponent<Animator>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     private void OnTriggerEnter(Collider o_collided)
     {
         if(o_collided.CompareTag("Enemy"))
         {
-            o_collided.gameObject.GetComponent<Enemy_Controller>().m_enemyHealth -= 50;
+            o_collided.gameObject.GetComponent<Enemy_Controller>().m_enemyHealth -= 50; //Damage enemy by 50 if collided.
         }
     }
 
@@ -32,7 +26,7 @@ public class Ability_Melee : MonoBehaviour
         if (m_isMelee == false)
         {
             m_isMelee = true;
-            m_animator.SetBool("Melee", m_isMelee);
+            m_animator.SetBool("Melee", m_isMelee); //Animate player so they can visually see they are attacking.
             Invoke("f_resetAnimation", 0.5f);
         }
     }

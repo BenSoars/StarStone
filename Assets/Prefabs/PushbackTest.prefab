@@ -147,9 +147,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_abilitySpeed: 300
   m_upliftForce: 2
-  m_knockbackForce: 60
+  m_knockbackForce: 40
   m_damageRadius: 0
-  m_abilityDuration: 0
   m_isFired: 0
 --- !u!114 &2330088124434672821
 MonoBehaviour:
@@ -163,7 +162,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4df1611aab48ea4e9972b5ae28ea0c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_activeTime: 2
+  m_activeTime: 1
 --- !u!1 &4773467126593848227
 GameObject:
   m_ObjectHideFlags: 0

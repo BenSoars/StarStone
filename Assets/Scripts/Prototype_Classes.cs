@@ -26,8 +26,9 @@ public class Prototype_Classes : MonoBehaviour
     public bool[] m_activeStone;
 
     public bool newValue;
+    public bool m_canSelect;
 
-    private float m_chosenBuff;
+    public int m_chosenBuff;
 
     public float m_fogStrength;
     public float m_currentFog;
@@ -36,6 +37,7 @@ public class Prototype_Classes : MonoBehaviour
     void Start()
     {
         m_currentFog = m_fogStrength;
+        m_canSelect = true;
 
         r_playerController = FindObjectOfType<Player_Controller>();
         r_gunGeneric = FindObjectOfType<Gun_Generic>();
@@ -68,7 +70,7 @@ public class Prototype_Classes : MonoBehaviour
         }
         m_currentFog = m_fogStrength;
 
-        //RenderSettings.fog = false;
+        RenderSettings.fog = false;
         r_playerController.m_defenceValue = m_defaultDefence;
         r_prototypeWeapon.m_damageCoolDown = m_defaultDamageCooldown;
         r_gunGeneric.m_bulletDamage = m_defaultBulletDamage;
@@ -78,8 +80,10 @@ public class Prototype_Classes : MonoBehaviour
     {
         RaycastHit m_stoneSelect;
 
-        if (Physics.Raycast(m_shotPoint.position, m_shotPoint.forward, out m_stoneSelect, 3f, 1 << 11) && Input.GetKeyDown("f"))
+        if (Physics.Raycast(m_shotPoint.position, m_shotPoint.forward, out m_stoneSelect, 3f, 1 << 11) && Input.GetKeyDown("f") && m_canSelect == true)
         {
+            r_waveSystem.m_newWave = true;
+            m_canSelect = false;
             f_defaultSettings();
             switch (m_stoneSelect.collider.gameObject.name)
             {
