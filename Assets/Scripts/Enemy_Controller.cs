@@ -128,7 +128,7 @@ public class Enemy_Controller : MonoBehaviour
         if (Physics.Raycast(m_eyePos.position, m_eyePos.forward, out m_sightRaycast, Mathf.Infinity, layerMask)) // shoot out a raycast for hitscan
         {
             Debug.DrawRay(m_eyePos.position, m_eyePos.forward * m_sightRaycast.distance, Color.yellow); // draw line only viewable ineditor
-            if (m_sightRaycast.collider.gameObject.CompareTag("Player") && r_player.m_isPlayerInvisible == false)
+            if (m_sightRaycast.collider.gameObject.CompareTag("Player") && r_player.isPlayerInvisible == false)
             {
                 m_state = CurrentState.Attack;
                 m_lastPosition = r_player.transform.position;

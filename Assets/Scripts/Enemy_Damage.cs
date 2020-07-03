@@ -20,7 +20,7 @@ public class Enemy_Damage : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             r_player = other.gameObject.GetComponent<Player_Controller>();
-            r_player.m_playerHealth -= m_damage * r_player.m_defenceValue;
+            r_player.playerHealth -= m_damage * r_player.defenceValue;
             m_hurtBox.enabled = false;
         }
     }

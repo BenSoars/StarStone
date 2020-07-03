@@ -29,7 +29,7 @@ public class Ability_Handler : MonoBehaviour
         if (Physics.Raycast(m_shotPoint.position, m_shotPoint.forward, out m_hitscanCast, Mathf.Infinity)) //Creates a Raycast in direction player is looking.
         {
             GameObject o_wall = Instantiate(m_wall, new Vector3(m_hitscanCast.point.x, m_hitscanCast.point.y - 2, m_hitscanCast.point.z), Quaternion.LookRotation(Vector3.forward)); //Instantiate a wall that summons at the position of the players crosshair location.
-            o_wall.transform.eulerAngles = new Vector3(o_wall.transform.eulerAngles.x, r_playerController.m_playerRotX, o_wall.transform.eulerAngles.z); //Rotate the wall based on angle of player.
+            o_wall.transform.eulerAngles = new Vector3(o_wall.transform.eulerAngles.x, r_playerController.playerRotX, o_wall.transform.eulerAngles.z); //Rotate the wall based on angle of player.
         }
     }
 
@@ -43,19 +43,17 @@ public class Ability_Handler : MonoBehaviour
 
     public void f_spawnKnives()
     {
-        Debug.Log("Shot Point: " + m_hitscanCast.point);
+        float m_sideDirection = -40; //Angle of first knife.
 
-        float m_sideDirection = -40;
-
-        for (int i = 0; i < m_totalKnives; i++)
+        for (int i = 0; i < m_totalKnives; i++) //Instantiate a set amount of knives.
         {
-            GameObject knife = Instantiate(m_knife, m_shotPoint.position, Quaternion.identity);
-            Rigidbody m_krb = knife.GetComponent<Rigidbody>();
+            GameObject knife = Instantiate(m_knife, m_shotPoint.position, Quaternion.identity); 
+            Rigidbody m_krb = knife.GetComponent<Rigidbody>(); //Access that specific knife RigidBody and >
 
-            m_krb.AddForce(m_shotPoint.forward * 100);
-            m_krb.AddForce(m_shotPoint.right * m_sideDirection);
+            m_krb.AddForce(m_shotPoint.forward * 100); 
+            m_krb.AddForce(m_shotPoint.right * m_sideDirection); 
 
-            m_sideDirection += 10;
+            m_sideDirection += 10; //> change the RigidBody force from the right direction so it 'spreads' correctly.
 
         }
     }
@@ -64,7 +62,7 @@ public class Ability_Handler : MonoBehaviour
     {
         if (Physics.Raycast(m_shotPoint.position, m_shotPoint.forward, out m_hitscanCast, Mathf.Infinity)) //Creates a Raycast.
         {
-            Instantiate(m_Tornado, new Vector3(m_hitscanCast.point.x, m_hitscanCast.point.y - 2, m_hitscanCast.point.z), Quaternion.LookRotation(Vector3.forward));
+            Instantiate(m_Tornado, new Vector3(m_hitscanCast.point.x, m_hitscanCast.point.y - 2, m_hitscanCast.point.z), Quaternion.LookRotation(Vector3.forward)); //Spawns a tornade of position of player crosshair.
         }
     }
 
@@ -72,7 +70,7 @@ public class Ability_Handler : MonoBehaviour
     {
         if (Physics.Raycast(m_shotPoint.position, m_shotPoint.forward, out m_hitscanCast, Mathf.Infinity)) //Creates a Raycast.
         {
-            Instantiate(m_Infector, new Vector3(m_hitscanCast.point.x, m_hitscanCast.point.y - 2, m_hitscanCast.point.z), Quaternion.LookRotation(Vector3.forward));
+            Instantiate(m_Infector, new Vector3(m_hitscanCast.point.x, m_hitscanCast.point.y - 2, m_hitscanCast.point.z), Quaternion.LookRotation(Vector3.forward)); //Spawns a tornade of position of player crosshair.
         }
     }
 

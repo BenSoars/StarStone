@@ -34,6 +34,6 @@ public class Ability_Melee : MonoBehaviour
     void f_resetAnimation()
     {
         m_isMelee = false;
-        m_animator.SetBool("Melee", false);
+        m_animator.SetBool("Melee", false); //Stop animation loop.
     }
 }

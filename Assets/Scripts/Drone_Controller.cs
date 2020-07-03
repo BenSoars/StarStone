@@ -32,7 +32,7 @@ public class Drone_Controller : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (r_playerContoller.m_isPlayerActive == false)
+        if (r_playerContoller.isPlayerActive == false)
         {
             f_lookAround();
             f_moveAround();
@@ -66,8 +66,8 @@ public class Drone_Controller : MonoBehaviour
     {
         m_directionIntentX = m_camera.right;
         m_directionIntentX.y = 0;
-        //Normalize makes the numbers more 'usable' for the engine.
-        m_directionIntentX.Normalize();
+        
+        m_directionIntentX.Normalize(); //Normalize makes the numbers more 'usable' for the engine.
 
         m_directionIntentY = m_camera.forward;
         m_directionIntentY.y = 0;
@@ -78,11 +78,11 @@ public class Drone_Controller : MonoBehaviour
 
         if (Input.GetKey(KeyCode.LeftControl))
         {
-            transform.Translate(Vector3.down * (m_verticalSpeed / 100));
+            transform.Translate(Vector3.down * (m_verticalSpeed / 100)); //Decrease vertical movement.
         }
         if (Input.GetKey(KeyCode.Space))
         {
-            transform.Translate(Vector3.up * (m_verticalSpeed / 100));
+            transform.Translate(Vector3.up * (m_verticalSpeed / 100)); //Increase vertical movement.
         }
     }  
 }

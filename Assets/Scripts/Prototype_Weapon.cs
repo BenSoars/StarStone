@@ -73,7 +73,7 @@ public class Prototype_Weapon : MonoBehaviour
                             enemyHit.m_isStunned = true;
                             break;
                         case 3: //Blue
-                            r_playerController.m_playerHealth += 1;
+                            r_playerController.playerHealth += 1;
                             break;
                     }
                     m_laserHit.collider.gameObject.GetComponent<Enemy_Controller>().m_enemyHealth -= m_laserDamage;      

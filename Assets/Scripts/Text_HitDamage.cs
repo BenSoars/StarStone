@@ -30,7 +30,7 @@ public class Text_HitDamage : MonoBehaviour
             Destroy(gameObject);
         }
 
-        transform.eulerAngles = new Vector3(transform.eulerAngles.x, r_playerController.m_playerRotX, transform.eulerAngles.z);
+        transform.eulerAngles = new Vector3(transform.eulerAngles.x, r_playerController.playerRotX, transform.eulerAngles.z);
         transform.Translate(Vector3.up * (Time.deltaTime * 1.5f));
         transform.position = Vector3.MoveTowards(transform.position, r_playerController.transform.position, Time.deltaTime * 2);
     }

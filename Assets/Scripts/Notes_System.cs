@@ -17,22 +17,18 @@ public class Notes_System : MonoBehaviour
 
     private void Start()
     {
-        m_waveSystem = FindObjectOfType<Wave_System>();
-
-       
+        m_waveSystem = FindObjectOfType<Wave_System>();       
     }
     private void Update()
     {
-
-
         if (m_spawnNote == true)
         {
             m_spawnNote = false;
-            int random = Random.Range(0, m_locations.Count);
+            int random = Random.Range(0, m_locations.Count); //Pick random number from 0 to total desirable locations.
 
-            m_desiredLocation = m_locations[random];
+            m_desiredLocation = m_locations[random]; //Set the desired location based on random number.
 
-            Instantiate(m_note, m_desiredLocation.position, Quaternion.identity);
+            Instantiate(m_note, m_desiredLocation.position, Quaternion.identity); //Instantiate the note at the chosen location.
         }
     }
 }

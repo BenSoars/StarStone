@@ -142,9 +142,9 @@ public class Gun_Generic : MonoBehaviour
     void Update()
     {
         
-        if (m_player.m_isPlayerActive == true && m_player.m_isUsingLadder == false) // if the player is active and not on a ladder
+        if (m_player.isPlayerActive == true && m_player.isUsingLadder == false) // if the player is active and not on a ladder
         {
-            if (m_player.m_isSprinting == false) // if the player isn't sprinting
+            if (m_player.isSprinting == false) // if the player isn't sprinting
             {
                 if (Input.GetKeyDown(KeyCode.Mouse0)) // and the player has fired their weapon
                 {
@@ -158,7 +158,7 @@ public class Gun_Generic : MonoBehaviour
 
             if (canAim == true) // if the player is able to aim down sights with this weapon
             {
-                if (Input.GetKey(KeyCode.Mouse1) && m_player.m_isSprinting == false) // if they're holding down right mouse and aren't sprinting
+                if (Input.GetKey(KeyCode.Mouse1) && m_player.isSprinting == false) // if they're holding down right mouse and aren't sprinting
                 {
                     m_isAiming = true; // they are aiming
                     isAccurate = true; // gun becomes accurate
@@ -184,7 +184,7 @@ public class Gun_Generic : MonoBehaviour
         {
             // update gun animations
             m_gunAnim.SetBool("Aim", m_isAiming); 
-            m_gunAnim.SetBool("Run", m_player.m_isSprinting);
+            m_gunAnim.SetBool("Run", m_player.isSprinting);
         }
     }
 

@@ -36,7 +36,7 @@ public class User_Interface : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        m_currentHealth.text = "" + r_playerController.m_playerHealth;
+        m_currentHealth.text = "" + r_playerController.playerHealth;
 
         m_currentStoneCharge.text = "" + r_prototypeClasses.m_stonePower[r_prototypeClasses.m_classState].ToString();
 

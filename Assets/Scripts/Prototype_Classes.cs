@@ -53,8 +53,8 @@ public class Prototype_Classes : MonoBehaviour
         r_gunGeneric = FindObjectOfType<Gun_Generic>();
         r_waveSystem = FindObjectOfType<Wave_System>();
 
-        m_defaultDefence = r_playerController.m_defenceValue;
-        m_defaultHealth = r_playerController.m_playerHealth;
+        m_defaultDefence = r_playerController.defenceValue;
+        m_defaultHealth = r_playerController.playerHealth;
         m_defaultDamageCooldown = r_prototypeWeapon.m_damageCoolDown;
         m_defaultBulletDamage = r_gunGeneric.m_bulletDamage;
     }
@@ -81,7 +81,7 @@ public class Prototype_Classes : MonoBehaviour
         m_currentFog = m_fogStrength;
 
         RenderSettings.fog = false;
-        r_playerController.m_defenceValue = m_defaultDefence;
+        r_playerController.defenceValue = m_defaultDefence;
         r_prototypeWeapon.m_damageCoolDown = m_defaultDamageCooldown;
         r_gunGeneric.m_bulletDamage = m_defaultBulletDamage;
     }
@@ -99,11 +99,11 @@ public class Prototype_Classes : MonoBehaviour
             {
                 case ("Starstone 1"): //Yellow
                     m_classState = 0;
-                    r_playerController.m_defenceValue = 0.75f;
+                    r_playerController.defenceValue = 0.75f;
                     break;
                 case ("Starstone 2"): //White
                     m_classState = 1;
-                    r_playerController.m_playerHealth = m_defaultHealth * 1.3f;
+                    r_playerController.playerHealth = m_defaultHealth * 1.3f;
                     break;
                 case ("Starstone 3"): //Pink
                     m_classState = 2;
@@ -155,7 +155,7 @@ public class Prototype_Classes : MonoBehaviour
             switch (m_classState)
             {
                 case 0:
-                    r_playerController.m_isPlayerInvisible = true;
+                    r_playerController.isPlayerInvisible = true;
                     Invoke("f_resetInvisible", 10);
                     break;
                 case 1:
@@ -232,6 +232,6 @@ public class Prototype_Classes : MonoBehaviour
 
     void f_resetInvisible()
     {
-        r_playerController.m_isPlayerInvisible = false;
+        r_playerController.isPlayerInvisible = false;
     }
 }

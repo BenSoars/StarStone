@@ -145,11 +145,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 478a20d3a31972947ada1c06f7ab7139, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_abilitySpeed: 300
-  m_upliftForce: 2
-  m_knockbackForce: 40
-  m_damageRadius: 0
-  m_isFired: 0
+  abilitySpeed: 1000
+  upliftForce: 1
+  knockbackForce: 1
+  damageRadius: 1
 --- !u!114 &2330088124434672821
 MonoBehaviour:
   m_ObjectHideFlags: 0
