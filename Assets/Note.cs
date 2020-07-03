@@ -4,33 +4,32 @@ using UnityEngine;
 
 public class Note : MonoBehaviour
 {
+    // Ben Soars
+    public string NoteName; // the Note name
+    public string NoteText; // the Note's contents
+    public Sprite NoteImage; // an image for the note
 
-    public string NoteName;
-    public string NoteText;
-    public Sprite NoteImage;
-
-    private Inventory m_invSystem;
+    private Inventory m_invSystem; // the inventory system access
 
     void Start()
     {
-        m_invSystem = GameObject.FindObjectOfType<Inventory>();
+        m_invSystem = GameObject.FindObjectOfType<Inventory>(); // get access to the note system
     }
 
     // Start is called before the first frame update
     void OnTriggerEnter (Collider other)
     {
-        if (other.gameObject.CompareTag("Player"))
+        if (other.gameObject.CompareTag("Player")) // if the player walks over the note
         {
-            pickUpNote();
+            pickUpNote(); // collect the note, run the function
         }
     }
 
-
     void pickUpNote()
     {
-        m_invSystem.noteName.Add(NoteName);
-        m_invSystem.noteContents.Add(NoteText);
-        m_invSystem.noteImage.Add(NoteImage);
-        Destroy(gameObject);
+        m_invSystem.noteName.Add(NoteName); // add to the inventory list
+        m_invSystem.noteContents.Add(NoteText); // add to the inventory list
+        m_invSystem.noteImage.Add(NoteImage); // add to the inventory list
+        Destroy(gameObject); // add to the inventory list
     }
 }

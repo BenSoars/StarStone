@@ -10,9 +10,9 @@ public class Enemy_Controller : MonoBehaviour
     // Ben Soars
     private NavMeshAgent m_navAgent;
 
-    public float m_moveSpeed = 2;
-    public float m_runSpeed = 4;
-    public float m_enemyHealth = 3;
+    public float m_moveSpeed = 2; // the default movement speed
+    public float m_runSpeed = 4; // the running speed, used when it spots the player
+    public float m_enemyHealth = 3; // the player's health
     public float m_enemyDamage = 5;
     public float m_attackTime = 2;
     public int m_spawnChance = 3;

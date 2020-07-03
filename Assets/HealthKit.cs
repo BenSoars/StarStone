@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class HealthKit : MonoBehaviour
 {
-
-    public int m_healthValue;
+    // Ben Soars
+    public int m_healthValue; // the amount to heal
     
     void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Player"))
+        if (other.gameObject.CompareTag("Player")) // if player walks into it
         {
-            other.GetComponent<Player_Controller>().m_playerHealth += m_healthValue;
-            Destroy(gameObject);
+            other.GetComponent<Player_Controller>().m_playerHealth += m_healthValue; //add health to player
+            Destroy(gameObject); // destroy self so can't be picked up again
         }
     }
 }

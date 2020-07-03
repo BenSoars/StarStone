@@ -99,16 +99,10 @@ MonoBehaviour:
   m_maxAmmo: 50
   m_currentAmmo: 50
   m_ammoPerShot: 1
-  m_isAccurate: 0
-  m_accuracyMinRange:
-  - -0.02
-  - -0.02
-  - -0.02
-  m_accuracyMaxRange:
-  - 0.02
-  - 0.02
-  - 0.02
-  m_canAim: 1
+  isAccurate: 1
+  accuracyMinRange: {x: -0.02, y: -0.02, z: -0.02}
+  accuracyMaxRange: {x: 0.02, y: 0.02, z: 0.02}
+  canAim: 0
   m_playerCam: {fileID: 8493438687375166385}
   m_shotForce: 100
   m_bulletDamage: 0
@@ -774,16 +768,10 @@ MonoBehaviour:
   m_maxAmmo: 100
   m_currentAmmo: 100
   m_ammoPerShot: 5
-  m_isAccurate: 0
-  m_accuracyMinRange:
-  - -0.08
-  - -0.08
-  - -0.08
-  m_accuracyMaxRange:
-  - 0.08
-  - 0.08
-  - 0.08
-  m_canAim: 0
+  isAccurate: 1
+  accuracyMinRange: {x: -0.05, y: -0.05, z: -0.05}
+  accuracyMaxRange: {x: 0.05, y: 0.05, z: 0.05}
+  canAim: 0
   m_playerCam: {fileID: 8493438687375166385}
   m_shotForce: 100
   m_bulletDamage: 0
@@ -1249,6 +1237,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   m_note: {fileID: 1033052027369876156, guid: c38ac8c3ae000e04dae3ee914d878c7e, type: 3}
+  m_spawnNote: 0
 --- !u!1 &8493438687375166391
 GameObject:
   m_ObjectHideFlags: 0
