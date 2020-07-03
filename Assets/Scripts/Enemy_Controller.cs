@@ -12,24 +12,25 @@ public class Enemy_Controller : MonoBehaviour
 
     public float m_moveSpeed = 2; // the default movement speed
     public float m_runSpeed = 4; // the running speed, used when it spots the player
-    public float m_enemyHealth = 3; // the player's health
-    public float m_enemyDamage = 5;
-    public float m_attackTime = 2;
-    public int m_spawnChance = 3;
-    public bool m_isStunned;
-    private bool m_resetStun;
-    private bool m_isAttacking;
+    public float m_enemyHealth = 3; // the enemy health
+    public float m_enemyDamage = 5; // the damage the enemy does to the player
+    public float m_attackTime = 2; //the time inbetween attacks
+    public int m_spawnChance = 3; // chance for it to spawn an item on death
+    public bool m_isStunned; // is stunend
+    private bool m_resetStun; // reset the stun
+    private bool m_isAttacking; // used to tell if the enemy is currently attacking
 
-    public bool m_isRanged = false;
-    public Projectile m_projectile;
+    public bool m_isRanged = false; // if the enemy is a ranged type
+    public Projectile m_projectile; // the projectile they fire
 
-    private Player_Controller r_player;
+    // access to other componenets
+    private Player_Controller r_player; 
     private Wave_System r_waveSystem;
     private Rigidbody m_rb;
     private Animator r_anim;
 
     public List<GameObject> m_ItemDrops = new List<GameObject>(); // item drop
-    public bool m_isGrounded = true;
+    public bool m_isGrounded = true; // is grounded check
 
     public Vector3 m_lastPosition;
     private int m_randomNumber;
@@ -43,7 +44,7 @@ public class Enemy_Controller : MonoBehaviour
     }
     public CurrentState m_state;
 
-    public Transform m_eyePos;
+    public Transform m_eyePos; // the sight light position
     private RaycastHit m_sightRaycast; // the hitscan raycast
     public LayerMask layerMask; // 
 
@@ -62,21 +63,22 @@ public class Enemy_Controller : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        // get the components that are defined at the top
         m_rb = gameObject.GetComponent<Rigidbody>(); // get rigidbody
-        m_navAgent = gameObject.GetComponent<NavMeshAgent>();
+        m_navAgent = gameObject.GetComponent<NavMeshAgent>(); 
         r_anim = gameObject.GetComponent<Animator>();
         r_player = GameObject.FindObjectOfType<Player_Controller>();
         r_waveSystem = FindObjectOfType<Wave_System>();
         r_prototypeClasses = FindObjectOfType<Prototype_Classes>();
 
-        m_defaultRunSpeed = m_runSpeed;
-        m_hurtBox.m_damage = m_enemyDamage;
+        m_defaultRunSpeed = m_runSpeed; // set the default run speed
+        m_hurtBox.m_damage = m_enemyDamage; // set the hurtbox damage to represent the enemy damage
     }
 
     void Update()
     {
         //Kurtis Watson
-        if (m_isEnemyInfected == true && m_previouslyInfected == false)
+        if (m_isEnemyInfected == true && m_previouslyInfected == false) 
         {
             if (m_particleSystem == false)
             {
@@ -91,14 +93,14 @@ public class Enemy_Controller : MonoBehaviour
 
         //Ben Soars
         // line of sight
-        Vector3 newDirection = (r_player.transform.localPosition - m_eyePos.position).normalized;
-        m_eyePos.rotation = Quaternion.LookRotation(new Vector3(newDirection.x, newDirection.y, newDirection.z));
+        Vector3 newDirection = (r_player.transform.localPosition - m_eyePos.position).normalized; // look at the player
+        m_eyePos.rotation = Quaternion.LookRotation(new Vector3(newDirection.x, newDirection.y, newDirection.z)); // looking at the player
 
-
+        // 
         if (m_isStunned == true && m_resetStun == false)
         {
-            m_resetStun = true;
-            Invoke("f_resetStun", 2);
+            m_resetStun = true; // reset the stun
+            Invoke("f_resetStun", 2); // reset the stun after 2 seconds
         }
 
         //Ben Soars
@@ -108,14 +110,14 @@ public class Enemy_Controller : MonoBehaviour
             r_prototypeClasses.m_currentFog = r_prototypeClasses.m_currentFog - r_waveSystem.m_fogMath;
 
             //Ben Soars
-            int rando = UnityEngine.Random.Range(0, m_spawnChance);
-            if (rando == 1)
+            int rando = UnityEngine.Random.Range(0, m_spawnChance); // generate a random nomber whtihin the range
+            if (rando == 1) 
             {
-                rando = UnityEngine.Random.Range(0, m_ItemDrops.Count);
-                Instantiate(m_ItemDrops[rando], transform.position, Quaternion.identity);
+                rando = UnityEngine.Random.Range(0, m_ItemDrops.Count); // choose which item to spawn
+                Instantiate(m_ItemDrops[rando], transform.position, Quaternion.identity); //spawn the item it chose
             }
 
-            Destroy(gameObject);
+            Destroy(gameObject); // destroy self
 
             //Kurtis Watson
             GameObject isNewWisp = Instantiate(m_whisp, transform.position, Quaternion.identity);
@@ -128,15 +130,15 @@ public class Enemy_Controller : MonoBehaviour
         if (Physics.Raycast(m_eyePos.position, m_eyePos.forward, out m_sightRaycast, Mathf.Infinity, layerMask)) // shoot out a raycast for hitscan
         {
             Debug.DrawRay(m_eyePos.position, m_eyePos.forward * m_sightRaycast.distance, Color.yellow); // draw line only viewable ineditor
-            if (m_sightRaycast.collider.gameObject.CompareTag("Player") && r_player.isPlayerInvisible == false)
+            if (m_sightRaycast.collider.gameObject.CompareTag("Player") && r_player.isPlayerInvisible == false) // if it can see the player 
             {
-                m_state = CurrentState.Attack;
-                m_lastPosition = r_player.transform.position;
+                m_state = CurrentState.Attack; // set the enemy to be attacking
+                m_lastPosition = r_player.transform.position; // set the last position of the player
 
             }
-            else if (m_state == CurrentState.Attack)
+            else if (m_state == CurrentState.Attack) // if they're attacking and they can't see the player
             {
-                m_state = CurrentState.Check;
+                m_state = CurrentState.Check; // set to check for the player
             }
            
         }
