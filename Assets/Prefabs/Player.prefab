@@ -1021,6 +1021,7 @@ GameObject:
   - component: {fileID: 8145446568550084157}
   - component: {fileID: 745732647775295139}
   - component: {fileID: 1031861635661113235}
+  - component: {fileID: 2584875211696430289}
   m_Layer: 9
   m_Name: Player
   m_TagString: Player
@@ -1199,6 +1200,8 @@ MonoBehaviour:
   m_stonePower: []
   m_activeStone: 00000000
   newValue: 0
+  m_canSelect: 0
+  m_chosenBuff: 0
   m_fogStrength: 0
   m_currentFog: 0
 --- !u!114 &1031861635661113235
@@ -1213,15 +1216,39 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bc2d210d5628c34cb394a6638732e04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_totalKnives: 9
+  m_shotPoint: {fileID: 567909998898289762}
   m_wall: {fileID: 8105937169651061196, guid: a61e8a30f90ffde45b284f96c1dfe150, type: 3}
   m_storm: {fileID: 2084821073527653411, guid: 69f10fff7f1e53b489cc042a5eaf74b3, type: 3}
-  m_shotPoint: {fileID: 567909998898289762}
   m_knife: {fileID: 3005016408550678764, guid: a42c2071c560a5e429b817b6c466b4e8, type: 3}
-  m_totalKnives: 9
   m_Tornado: {fileID: 3247021307327370051, guid: 95fedcde153b44b45bd7a91473f0ae11,
     type: 3}
   m_Infector: {fileID: 5813459701485193558, guid: 2f1a8e8830d7e42408df0bb637c3b3d3,
     type: 3}
+--- !u!114 &2584875211696430289
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8493438686635508275}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1fff7c6652405d40bd232d70ffe00de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_locations:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  m_note: {fileID: 1033052027369876156, guid: c38ac8c3ae000e04dae3ee914d878c7e, type: 3}
 --- !u!1 &8493438687375166391
 GameObject:
   m_ObjectHideFlags: 0

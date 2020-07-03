@@ -26,6 +26,7 @@ public class Prototype_Classes : MonoBehaviour
     public bool[] m_activeStone;
 
     public bool newValue;
+    private bool m_stonePowerSet;
     public bool m_canSelect;
 
     public int m_chosenBuff;
@@ -36,6 +37,15 @@ public class Prototype_Classes : MonoBehaviour
 
     void Start()
     {
+        if(m_stonePowerSet == false)
+        {
+            m_stonePowerSet = true;
+            for (int i = 0; i < m_activeStone.Length; i++)
+            {
+                m_stonePower[i] = Random.Range(30, 80);
+            }
+        }
+
         m_currentFog = m_fogStrength;
         m_canSelect = true;
 
@@ -207,13 +217,16 @@ public class Prototype_Classes : MonoBehaviour
 
     void f_chargeStones()
     {
-        for (int i = 0; i < m_activeStone.Length; i++)
+        if (m_canSelect == false)
         {
-            if(m_activeStone[i] != true && m_stonePower[i] < 100)
+            for (int i = 0; i < m_activeStone.Length; i++)
             {
-                m_stonePower[i] += 0.003f;
+                if (m_activeStone[i] != true && m_stonePower[i] < 100)
+                {
+                    m_stonePower[i] += 0.002f;
+                }
+                //Debug.Log("Star stone: " + i + "    Power: " + m_stonePower[i]);
             }
-            //Debug.Log("Star stone: " + i + "    Power: " + m_stonePower[i]);
         }
     }
 

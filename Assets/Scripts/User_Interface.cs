@@ -8,6 +8,7 @@ public class User_Interface : MonoBehaviour
     //Kurtis Watson
     public TMPro.TextMeshProUGUI m_currentTimeText;
     public TMPro.TextMeshProUGUI m_currentHealth;
+    public TMPro.TextMeshProUGUI m_currentStoneCharge;
 
     public TMPro.TextMeshPro m_SS1;
     public TMPro.TextMeshPro m_SS2;
@@ -37,10 +38,12 @@ public class User_Interface : MonoBehaviour
     {
         m_currentHealth.text = "" + r_playerController.m_playerHealth;
 
-        m_SS1.text = r_prototypeClasses.m_stonePower[0].ToString("F2");
-        m_SS2.text = r_prototypeClasses.m_stonePower[1].ToString("F2");
-        m_SS3.text = r_prototypeClasses.m_stonePower[2].ToString("F2");
-        m_SS4.text = r_prototypeClasses.m_stonePower[3].ToString("F2");
+        m_currentStoneCharge.text = "" + r_prototypeClasses.m_stonePower[r_prototypeClasses.m_classState].ToString();
+
+        m_SS1.text = r_prototypeClasses.m_stonePower[0].ToString("F0");
+        m_SS2.text = r_prototypeClasses.m_stonePower[1].ToString("F0");
+        m_SS3.text = r_prototypeClasses.m_stonePower[2].ToString("F0");
+        m_SS4.text = r_prototypeClasses.m_stonePower[3].ToString("F0");
 
         if (r_waveSystem.m_startedWaves == true)
         {

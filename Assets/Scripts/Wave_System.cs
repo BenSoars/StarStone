@@ -21,6 +21,7 @@ public class Wave_System : MonoBehaviour
     private Player_Controller r_playerController;
     private User_Interface r_userInterface;
     private Prototype_Classes r_prototypeClasses;
+    private Notes_System r_notesSystem;
 
     public List<GameObject> m_wisps = new List<GameObject>();
 
@@ -41,6 +42,7 @@ public class Wave_System : MonoBehaviour
         r_playerController = FindObjectOfType<Player_Controller>();
         r_userInterface = FindObjectOfType<User_Interface>();
         r_prototypeClasses = FindObjectOfType<Prototype_Classes>();
+        r_notesSystem = FindObjectOfType<Notes_System>();
         m_enemyCount = GameObject.Find("EnemyCount").GetComponent<Text>();
     }
 
@@ -61,6 +63,7 @@ public class Wave_System : MonoBehaviour
     {
         m_newWave = false;
         yield return new WaitForSeconds(m_intermissionTime);
+        m_startedWaves = true;
         f_sortOutEnemys();        
         for (int k = 0; k < enemyArray.Count; k++)
         {
@@ -74,6 +77,7 @@ public class Wave_System : MonoBehaviour
         enemiesLeft = spawnedEnemies.Count;
         r_prototypeClasses.m_fogStrength = 0.2f; //THIS WILL NEED TO BE CHANGED IN ORDER TO ADD INTERMISSION BETWEEN ROUNDS.
         r_prototypeClasses.m_currentFog = 0.2f;
+        r_prototypeClasses.m_stonePower[r_prototypeClasses.m_chosenBuff] -= enemiesLeft * 2;
         m_fogMath = r_prototypeClasses.m_fogStrength / enemiesLeft;
         curRound += 1;
         m_timeMet = false;
@@ -91,6 +95,8 @@ public class Wave_System : MonoBehaviour
         //Ben Soars
         if (spawnedEnemies.Count <= 0 && enemiesLeft == 0 && m_timeMet == false)
         {
+            r_notesSystem.m_spawnNote = true;
+            m_startedWaves = false;
             r_prototypeClasses.m_canSelect = true;
             r_prototypeClasses.m_activeStone[r_prototypeClasses.m_classState] = false;
             m_timeMet = true;
