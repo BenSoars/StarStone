@@ -2,9 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Wave_System : MonoBehaviour
 {
+    // NEEDS TO BE COMMENTED 
+
     //Ben Soars
     public List<GameObject> enemyTypes = new List<GameObject>();
     public List<Transform> spawnPoints = new List<Transform>();
@@ -119,12 +122,18 @@ public class Wave_System : MonoBehaviour
     //Ben Soars
     void f_sortOutEnemys()
     {
-        string[] varArray = amountOf[curRound].Split('_');
-
-        enemyArray.Clear();
-        for (int i = 0; i < enemyTypes.Count; i++)
+        if (curRound <= amountOf.Count)
         {
-            enemyArray.Add(System.Convert.ToInt32(varArray[i]));// convert the string into a string if it can
+            string[] varArray = amountOf[curRound].Split('_');
+
+            enemyArray.Clear();
+            for (int i = 0; i < enemyTypes.Count; i++)
+            {
+                enemyArray.Add(System.Convert.ToInt32(varArray[i]));// convert the string into a string if it can
+            }
+        } else
+        {
+            SceneManager.LoadScene("MainMenu"); // load scene
         }
          
        
