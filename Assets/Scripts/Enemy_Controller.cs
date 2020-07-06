@@ -32,7 +32,7 @@ public class Enemy_Controller : MonoBehaviour
     public List<GameObject> m_ItemDrops = new List<GameObject>(); // item drop
     public bool m_isGrounded = true; // is grounded check
 
-    public Vector3 m_lastPosition;
+    private Vector3 m_lastPosition; // the last position the enemy saw the player at
     private int m_randomNumber;
 
     [System.Serializable]
@@ -42,16 +42,16 @@ public class Enemy_Controller : MonoBehaviour
         Attack,
         Check
     }
-    public CurrentState m_state;
+    public CurrentState m_state; // the current state
 
     public Transform m_eyePos; // the sight light position
     private RaycastHit m_sightRaycast; // the hitscan raycast
-    public LayerMask layerMask; // 
+    public LayerMask layerMask; // the gameobject layer which sightlines will ignore
 
-    public Enemy_Damage m_hurtBox;
+    public Enemy_Damage m_hurtBox; // the enemy hurtbox
 
     //Kurtis Watson
-    private Prototype_Classes r_prototypeClasses;
+    private Prototype_Classes r_prototypeClasses; 
 
     public GameObject m_whisp;
     public bool m_isEnemyInfected;
@@ -91,23 +91,24 @@ public class Enemy_Controller : MonoBehaviour
             Invoke("f_resetInfection", 10);
         }       
 
-        //Ben Soars
+        //Ben Soars 
+
         // line of sight
         Vector3 newDirection = (r_player.transform.localPosition - m_eyePos.position).normalized; // look at the player
         m_eyePos.rotation = Quaternion.LookRotation(new Vector3(newDirection.x, newDirection.y, newDirection.z)); // looking at the player
 
-        // 
+        // resetting stunned state
         if (m_isStunned == true && m_resetStun == false)
         {
             m_resetStun = true; // reset the stun
             Invoke("f_resetStun", 2); // reset the stun after 2 seconds
         }
 
-        //Ben Soars
+        // if the enemy is dead
         if (m_enemyHealth <= 0)
         {
             //Kurtis Watson
-            r_prototypeClasses.m_currentFog = r_prototypeClasses.m_currentFog - r_waveSystem.m_fogMath;
+            r_prototypeClasses.m_currentFog = r_prototypeClasses.m_currentFog - r_waveSystem.m_fogMath; 
 
             //Ben Soars
             int rando = UnityEngine.Random.Range(0, m_spawnChance); // generate a random nomber whtihin the range
@@ -120,9 +121,9 @@ public class Enemy_Controller : MonoBehaviour
             Destroy(gameObject); // destroy self
 
             //Kurtis Watson
-            GameObject isNewWisp = Instantiate(m_whisp, transform.position, Quaternion.identity);
-            isNewWisp.GetComponent<Wisp_Controller>().m_enemySpawn = true;
-            r_waveSystem.enemiesLeft -= 1;
+            GameObject isNewWisp = Instantiate(m_whisp, transform.position, Quaternion.identity); // spawn a wisp
+            isNewWisp.GetComponent<Wisp_Controller>().m_enemySpawn = true; // set the wisp to recognise it was spawned from a defeated enemy
+            r_waveSystem.enemiesLeft -= 1; // take away from the enemies left
         }
 
 
@@ -159,41 +160,40 @@ public class Enemy_Controller : MonoBehaviour
                     {
                         if (m_isAttacking == false)
                         {
-                            StartCoroutine("CanAttack");
+                            StartCoroutine("CanAttack"); // begin attack
                         }
                     }
                     else
                     {
                         if (m_isAttacking == false)
                         {
-                            m_navAgent.SetDestination(r_player.transform.position);
+                            m_navAgent.SetDestination(r_player.transform.position); // head towards the player
                             m_navAgent.speed = m_runSpeed; // set to defined movespeed in script for consistancy's sake
-                            if (m_navAgent.remainingDistance <= m_navAgent.stoppingDistance)
+                            if (m_navAgent.remainingDistance <= m_navAgent.stoppingDistance) // if the enemy is close enough to attack
                             {
-                                StartCoroutine("CanAttack");
+                                StartCoroutine("CanAttack"); // begin attack
                             }
                         }
                     }
                     break;
                 case (CurrentState.Check): // if enemy has lost player, search for last known position
-                        m_navAgent.SetDestination(m_lastPosition);
+                        m_navAgent.SetDestination(m_lastPosition); 
 
                         m_navAgent.speed = m_runSpeed; // set to defined movespeed in script for consistancy's sake
-                                                       //Debug.Log("Searching Last Known Position");
-                        if (m_navAgent.remainingDistance <= m_navAgent.stoppingDistance)
+                  
+                        if (m_navAgent.remainingDistance <= m_navAgent.stoppingDistance) // if the enemy arrives at the last known location and there is no sign of the player
                         {
-                            //Debug.Log("Lost Player");
-                            m_state = CurrentState.Wander;
+                            m_state = CurrentState.Wander; // set back to wander
                         }
                     break;
                 default: // if wandering
-                    m_navAgent.SetDestination(r_waveSystem.spawnPoints[m_randomNumber].position);
+                    m_navAgent.SetDestination(r_waveSystem.spawnPoints[m_randomNumber].position); // set the destination for the enemy based on the random number generated
 
-                    if (m_navAgent.remainingDistance <= m_navAgent.stoppingDistance)
+                    if (m_navAgent.remainingDistance <= m_navAgent.stoppingDistance)  // if the enemy is at their destination, within their stop distance range
                     {
-                        m_randomNumber = UnityEngine.Random.Range(0, r_waveSystem.spawnPoints.Count);
+                        m_randomNumber = UnityEngine.Random.Range(0, r_waveSystem.spawnPoints.Count); // generate a new destination using the list of destinations on the wave system
                     }
-                    //Debug.Log("Looking for Player");
+                    
                     m_navAgent.speed = m_moveSpeed; // set to defined movespeed in script for consistancy's sake
                     break;
             }
@@ -202,51 +202,51 @@ public class Enemy_Controller : MonoBehaviour
 
     void OnTriggerStay(Collider other)
     {
-        if (other.gameObject.CompareTag("Explosion"))
+        if (other.gameObject.CompareTag("Explosion")) // if the enemy is hit by an explosion
         {
-            m_isGrounded = false;
-            m_enemyHealth = 1;
+            m_isGrounded = false; // set them to be no longer grounded
+            m_enemyHealth = 1; // set them to 1 health so they die on impact
         }
 
-        if (other.gameObject.CompareTag("Infected"))
+        if (other.gameObject.CompareTag("Infected")) // if the enemy touches an infection point
         {
-            m_isEnemyInfected = true;
+            m_isEnemyInfected = true; // set themselves to be infected
         }
     }
 
     void OnCollisionEnter(Collision col)
     {
-        if (col.gameObject.CompareTag("Ground") && m_isGrounded == false)
+        if (col.gameObject.CompareTag("Ground") && m_isGrounded == false) // if the enemy touches the ground and isn't already grounded
         {
-            m_enemyHealth = 0;
+            m_enemyHealth = 0; // set the enemy to die on impact
         }
 
         
     }
 
-    IEnumerator CanAttack()
+    IEnumerator CanAttack() // attack function
     {
         if (m_isAttacking == false)
         {
-            m_isAttacking = true;
-            yield return new WaitForSeconds(0.1f);
-            if (!m_isRanged)
+            m_isAttacking = true; // set the enemmy to be attacking to prevent this coroutine from overlapping itself
+            yield return new WaitForSeconds(0.1f); // wait a short time so it's not instant
+            if (!m_isRanged) // if they are not a ranged type
             {
-                r_anim.SetTrigger("Attack");
+                r_anim.SetTrigger("Attack"); // play attacking animation
             } else
             {
-                Projectile proj = Instantiate(m_projectile, m_eyePos.position, Quaternion.identity);
-                proj.GetComponent<Rigidbody>().AddForce(m_eyePos.forward * 200);
-                proj.m_enemy = true;
-                proj.m_damage = m_enemyDamage;
+                Projectile proj = Instantiate(m_projectile, m_eyePos.position, Quaternion.identity); // create projectile at shot point
+                proj.GetComponent<Rigidbody>().AddForce(m_eyePos.forward * 200); // push the projectile forwards with rigidbody
+                proj.m_enemy = true; // set the projectile to be an enemy projectile
+                proj.m_damage = m_enemyDamage; // set the damage of the projectile to reflect the enemy damage
             }
-            yield return new WaitForSeconds(m_attackTime);
+            yield return new WaitForSeconds(m_attackTime); // wait until they can attack again
             m_isAttacking = false;
         }
        
     }
 
-    void f_resetStun()
+    void f_resetStun() // reset the enemy stun state
     {
         m_isStunned = false;
         m_resetStun = false;
@@ -255,11 +255,12 @@ public class Enemy_Controller : MonoBehaviour
     //Kurtis Watson
     void f_resetSpeed()
     {
-        m_runSpeed = m_defaultRunSpeed;
+        m_runSpeed = m_defaultRunSpeed; // set run speed to default
     }
 
     void f_resetInfection()
     {
+        // reset the infection 
         m_previouslyInfected = true;
         m_isEnemyInfected = false;
         GetComponentInChildren<ParticleSystem>().Stop();
