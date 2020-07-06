@@ -11,11 +11,11 @@ GameObject:
   - component: {fileID: 42458450682264754}
   - component: {fileID: 42458450682264755}
   - component: {fileID: 42458450682264756}
+  - component: {fileID: 42458450682264744}
   - component: {fileID: 42458450682264757}
   - component: {fileID: 42458450682264759}
   - component: {fileID: 7353072314230088136}
   - component: {fileID: -29216751136668040}
-  - component: {fileID: 42458450682264744}
   - component: {fileID: 6578292449175435465}
   m_Layer: 12
   m_Name: Enemy_Basic
@@ -88,6 +88,39 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!114 &42458450682264744
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 42458450682264745}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5c0b7a7fbc78754c8abccc851cc46bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_moveSpeed: 3
+  m_runSpeed: 5
+  m_enemyHealth: 100
+  m_enemyDamage: 7
+  m_attackTime: 1
+  m_spawnChance: 2
+  m_isStunned: 0
+  m_isRanged: 0
+  m_projectile: {fileID: 0}
+  m_ItemDrops:
+  - {fileID: 5762886321429660750, guid: e8fea09451d242e47a7ae1e2c4f6f86f, type: 3}
+  - {fileID: 1328950134255430560, guid: 0905edf88bc54574bb94d689a6dcae3e, type: 3}
+  m_isGrounded: 1
+  m_state: 1
+  m_eyePos: {fileID: 1229794459954426972}
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 3895
+  m_hurtBox: {fileID: 3835827186872194993}
+  m_whisp: {fileID: 42458450682264745, guid: 6befa5c3aa19d1842a12f708f5aab1c0, type: 3}
+  m_isEnemyInfected: 0
 --- !u!136 &42458450682264757
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -201,40 +234,6 @@ Light:
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
---- !u!114 &42458450682264744
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 42458450682264745}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f5c0b7a7fbc78754c8abccc851cc46bd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_moveSpeed: 3
-  m_runSpeed: 5
-  m_enemyHealth: 100
-  m_enemyDamage: 7
-  m_attackTime: 1
-  m_spawnChance: 2
-  m_isStunned: 0
-  m_isRanged: 0
-  m_projectile: {fileID: 0}
-  m_ItemDrops:
-  - {fileID: 5762886321429660750, guid: e8fea09451d242e47a7ae1e2c4f6f86f, type: 3}
-  - {fileID: 1328950134255430560, guid: 0905edf88bc54574bb94d689a6dcae3e, type: 3}
-  m_isGrounded: 1
-  m_lastPosition: {x: 0, y: 0, z: 0}
-  m_state: 1
-  m_eyePos: {fileID: 1229794459954426972}
-  layerMask:
-    serializedVersion: 2
-    m_Bits: 3895
-  m_hurtBox: {fileID: 3835827186872194993}
-  m_whisp: {fileID: 42458450682264745, guid: 6befa5c3aa19d1842a12f708f5aab1c0, type: 3}
-  m_isEnemyInfected: 0
 --- !u!95 &6578292449175435465
 Animator:
   serializedVersion: 3

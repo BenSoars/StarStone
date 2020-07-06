@@ -6,7 +6,8 @@ using UnityEngine.UI;
 
 public class Projectile : MonoBehaviour
 {
-
+    // Ben Soars
+    // Need to complete commenting
     public float m_damage; // damage to deal on contact
     public Collider m_hurtBox; // the hurtbox
     public Rigidbody m_rb; // the rigidbodys
