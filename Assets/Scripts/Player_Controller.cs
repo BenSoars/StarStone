@@ -128,8 +128,8 @@ public class Player_Controller : MonoBehaviour
     {
         m_directionIntentX = m_camera.right;
         m_directionIntentX.y = 0;
-        //Normalize makes the numbers more 'usable' for the engine.
-        m_directionIntentX.Normalize();
+        
+        m_directionIntentX.Normalize(); //Normalize makes the numbers more 'usable' for the engine.
 
         m_directionIntentY = m_camera.forward;
         m_directionIntentY.y = 0;
@@ -181,7 +181,7 @@ public class Player_Controller : MonoBehaviour
     //Kurtis Watson
     void f_playerJump()
     {
-        m_rb.AddForce(Vector3.up * jumpHeight, ForceMode.Impulse);
+        m_rb.AddForce(Vector3.up * jumpHeight, ForceMode.Impulse); //Adds a force to the player object in the upwards direction.
     }
 
     //Kurtis Watson
@@ -202,7 +202,7 @@ public class Player_Controller : MonoBehaviour
         {
             m_rb.useGravity = true; //Fall off the ladder.
             isUsingLadder = false;
-            canPlayerMove = true;
+            canPlayerMove = true; //Allow the player to move again in all directions.
         }
         
         else if (Physics.Raycast(m_camera.transform.position, m_camera.transform.forward, out m_ladderHit, 2f, 1<<10)) //Shoots a raycast forward of the players position at a distance of '2f'.
@@ -219,7 +219,7 @@ public class Player_Controller : MonoBehaviour
                     if (topOfLadder == true)
                     {
                         desiredPos = m_ladderHit.collider.gameObject.transform.Find("Climb Point Top");
-                        this.transform.position = desiredPos.transform.position;
+                        this.transform.position = desiredPos.transform.position; //Set player central to the ladder for smoother animations.
                     }
                     if(topOfLadder == false)
                     {
@@ -234,7 +234,7 @@ public class Player_Controller : MonoBehaviour
         float m_upwardsSpeed = Input.GetAxis("Vertical") / 20;
         if (isUsingLadder == true)
         {
-            transform.Translate(0, m_upwardsSpeed, 0);
+            transform.Translate(0, m_upwardsSpeed, 0); //Move player in the Y axis (climbing ladder) at a desired speed.
         }
     }
 

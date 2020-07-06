@@ -48,8 +48,9 @@ public class Prototype_Weapon : MonoBehaviour
     void f_prototypeWeapon()
     {
         RaycastHit m_laserHit;
-        if (Input.GetKey(KeyCode.Mouse0))
+        if (Input.GetKey(KeyCode.Mouse0) && r_prototypeClasses.m_stonePower[r_prototypeClasses.m_classState] > 0)
         {
+            r_prototypeClasses.m_stonePower[r_prototypeClasses.m_classState] -= 0.01f;
             m_lr.SetPosition(0, transform.position);
             m_lr.enabled = true;
             if (Physics.Raycast(m_shotPoint.position, m_shotPoint.forward, out m_laserHit))

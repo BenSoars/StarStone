@@ -38,7 +38,7 @@ public class User_Interface : MonoBehaviour
     {
         m_currentHealth.text = "" + r_playerController.playerHealth;
 
-        m_currentStoneCharge.text = "" + r_prototypeClasses.m_stonePower[r_prototypeClasses.m_classState].ToString();
+        m_currentStoneCharge.text = "" + r_prototypeClasses.m_stonePower[r_prototypeClasses.m_classState].ToString("F0");
 
         m_SS1.text = r_prototypeClasses.m_stonePower[0].ToString("F0");
         m_SS2.text = r_prototypeClasses.m_stonePower[1].ToString("F0");
