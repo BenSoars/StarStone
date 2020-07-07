@@ -15,6 +15,8 @@ public class Gun_Generic : MonoBehaviour
     public int m_maxAmmo = 6; // the maximum ammo 
     public int m_currentAmmo = 6; // the current ammo
     public int m_ammoPerShot = 1; // how much ammo shooting will consume
+    public float m_coolDown = 0.5f; // the amount of time until the next shot can happen
+    public AudioClip shotSound; // the shot sound
 
     [Space(2)]
     [Header("Weapon Accuracy")]
@@ -52,12 +54,14 @@ public class Gun_Generic : MonoBehaviour
     public GameObject hitSpark;
 
     private Text m_ammoCount; // the ui element displaying the current ammo
-    private Player_Controller m_player; 
+    private Player_Controller m_player;  // get the player component
+    private Audio_System m_audio; // get the audio system component to play sounds
 
     [Space(2)]
     [Header("Other")]
     [Space(2)]
     public Animator m_gunAnim; // the animations for gun
+    private float coolDownTimer; // the timer for the cooldown
 
     //Kurtis Watson
 
@@ -67,6 +71,7 @@ public class Gun_Generic : MonoBehaviour
     {
         m_ammoCount = GameObject.Find("AmmoCount").GetComponent<Text>(); // get the text for displaying ammo
         m_player = GameObject.FindObjectOfType<Player_Controller>(); // get player component
+        m_audio = GameObject.FindObjectOfType<Audio_System>(); // get audio system
         f_updateUI(); // update the UI
     }
 
@@ -78,7 +83,11 @@ public class Gun_Generic : MonoBehaviour
         {
             m_gunAnim.SetTrigger("Shot"); // playr shot animations
         }
-            for (int i = 0; i < m_ammoPerShot; i++) // for loop of ammo per shot
+
+        coolDownTimer = m_coolDown; // set the cooldown timer
+        m_audio.playGun(shotSound); // play shot sound, passed through from this script
+
+        for (int i = 0; i < m_ammoPerShot; i++) // for loop of ammo per shot
         {
             if (!isAccurate) // if the gun is not accurate
             {
@@ -97,7 +106,7 @@ public class Gun_Generic : MonoBehaviour
             else
             {
                 if (Physics.Raycast(m_shotPoint.position, m_newAccuracy, out m_hitscanCast, Mathf.Infinity)) // shoot out a raycast for hitscan
-                { 
+                {
                     Debug.DrawRay(m_shotPoint.position, m_newAccuracy * m_hitscanCast.distance, Color.yellow); // draw line only viewable ineditor
                     Instantiate(hitSpark, m_hitscanCast.point, Quaternion.identity); // create hitspark at hit point
 
@@ -142,9 +151,14 @@ public class Gun_Generic : MonoBehaviour
     void Update()
     {
         
+        if (coolDownTimer >= 0)
+        {
+            coolDownTimer -= Time.deltaTime;
+        }
+
         if (m_player.isPlayerActive == true && m_player.isUsingLadder == false) // if the player is active and not on a ladder
         {
-            if (m_player.isSprinting == false) // if the player isn't sprinting
+            if (m_player.isSprinting == false && coolDownTimer <= 0) // if the player isn't sprinting and the cooldown isn't bigger than 0
             {
                 if (Input.GetKeyDown(KeyCode.Mouse0)) // and the player has fired their weapon
                 {

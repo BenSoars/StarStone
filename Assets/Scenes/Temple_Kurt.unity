@@ -106,21 +106,21 @@ NavMeshSettings:
   m_BuildSettings:
     serializedVersion: 2
     agentTypeID: 0
-    agentRadius: 0.3
-    agentHeight: 2
+    agentRadius: 0.6
+    agentHeight: 1
     agentSlope: 45
     agentClimb: 1
     ledgeDropHeight: 0
     maxJumpAcrossDistance: 0
     minRegionArea: 2
     manualCellSize: 0
-    cellSize: 0.1
+    cellSize: 0.2
     manualTileSize: 0
     tileSize: 256
     accuratePlacement: 0
     debug:
       m_Flags: 0
-  m_NavMeshData: {fileID: 23800000, guid: 95a7d71bb6069c641a046b5d7aaeb953, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: 084798cb11076b644a60c74eb6ee2f4e, type: 2}
 --- !u!1001 &1800961
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -207,6 +207,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Whitebox_Walls
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: f1270a312a388ef49ad252827531164a,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: f1270a312a388ef49ad252827531164a,
+        type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f1270a312a388ef49ad252827531164a, type: 3}
@@ -18002,6 +18012,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Whitebox_Floor
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 465abed0191999c499a79dc9f787de9e,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 465abed0191999c499a79dc9f787de9e, type: 3}
 --- !u!1 &2051628165
@@ -18112,6 +18127,11 @@ PrefabInstance:
       propertyPath: m_fogStrength
       value: 0.2
       objectReference: {fileID: 0}
+    - target: {fileID: 1908995038181295566, guid: e4a841adec4910f489345f40f47a0baf,
+        type: 3}
+      propertyPath: shotSound
+      value: 
+      objectReference: {fileID: 8300000, guid: a0588470e3cd3b04fb599829fe2daddc, type: 3}
     - target: {fileID: 2584875211696430289, guid: e4a841adec4910f489345f40f47a0baf,
         type: 3}
       propertyPath: m_locations.Array.size
@@ -18232,6 +18252,11 @@ PrefabInstance:
       propertyPath: m_locations.Array.data[22]
       value: 
       objectReference: {fileID: 109840278}
+    - target: {fileID: 7591412882415260588, guid: e4a841adec4910f489345f40f47a0baf,
+        type: 3}
+      propertyPath: shotSound
+      value: 
+      objectReference: {fileID: 8300000, guid: bd01d9b87702b804b875009dbf9da959, type: 3}
     - target: {fileID: 8493438686635508275, guid: e4a841adec4910f489345f40f47a0baf,
         type: 3}
       propertyPath: m_Name
@@ -23161,7 +23186,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 574835305}
-  m_RootOrder: 1
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -23245,7 +23270,7 @@ PrefabInstance:
     - target: {fileID: 857509599295432239, guid: 23e70938c35368744948706caab60da2,
         type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1248981581612680890, guid: 23e70938c35368744948706caab60da2,
         type: 3}
@@ -23272,10 +23297,25 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 2672703823454061360, guid: 23e70938c35368744948706caab60da2,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2871717255382239825, guid: 23e70938c35368744948706caab60da2,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3589345061004878327, guid: 23e70938c35368744948706caab60da2,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 4117367702732905533, guid: 23e70938c35368744948706caab60da2,
         type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4117367702732905533, guid: 23e70938c35368744948706caab60da2,
         type: 3}
@@ -23417,10 +23457,15 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 6427834454048007549, guid: 23e70938c35368744948706caab60da2,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8332607949900917764, guid: 23e70938c35368744948706caab60da2,
         type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 23e70938c35368744948706caab60da2, type: 3}

@@ -81,6 +81,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GunType: ALL
   AmmoWorth: 100
+  pickupSound: {fileID: 8300000, guid: a18578509e44a6040bb3aa0a8ba4fbb7, type: 3}
 --- !u!114 &7295019275847874979
 MonoBehaviour:
   m_ObjectHideFlags: 0
