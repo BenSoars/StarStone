@@ -50,6 +50,9 @@ public class Enemy_Controller : MonoBehaviour
 
     public Enemy_Damage m_hurtBox; // the enemy hurtbox
 
+    public AudioSource soundEffect;
+    public List<AudioClip> soundsList = new List<AudioClip>(); 
+
     //Kurtis Watson
     private Prototype_Classes r_prototypeClasses; 
 
@@ -73,6 +76,8 @@ public class Enemy_Controller : MonoBehaviour
 
         m_defaultRunSpeed = m_runSpeed; // set the default run speed
         m_hurtBox.m_damage = m_enemyDamage; // set the hurtbox damage to represent the enemy damage
+
+        soundEffect.volume = PlayerPrefs.GetFloat("volumeLevel");
     }
 
     void Update()
@@ -240,6 +245,8 @@ public class Enemy_Controller : MonoBehaviour
                 proj.m_enemy = true; // set the projectile to be an enemy projectile
                 proj.m_damage = m_enemyDamage; // set the damage of the projectile to reflect the enemy damage
             }
+            soundEffect.clip = soundsList[0]; // set the sound effect to be the attack sound
+            soundEffect.Play(); // play the attack sound
             yield return new WaitForSeconds(m_attackTime); // wait until they can attack again
             m_isAttacking = false;
         }

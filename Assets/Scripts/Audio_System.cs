@@ -13,6 +13,13 @@ public class Audio_System : MonoBehaviour
   
     public List<AudioClip> playerHurtSounds = new List<AudioClip>(); // player injured sound effects
 
+    void Start()
+    {   // set the volume to match the volue passed from the menu
+        gunShot.volume = PlayerPrefs.GetFloat("volumeLevel");
+        playerHurt.volume = PlayerPrefs.GetFloat("volumeLevel");
+        other.volume = PlayerPrefs.GetFloat("volumeLevel");
+    }
+
     public void playGun(AudioClip gunSound) // 
     {
         gunShot.clip = gunSound; // get the passed through audio clip
