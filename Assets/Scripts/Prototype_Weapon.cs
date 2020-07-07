@@ -5,6 +5,7 @@ using UnityEngine.UIElements;
 using TMPro;
 using System;
 
+//Kurtis Watson
 public class Prototype_Weapon : MonoBehaviour
 {
     private Player_Controller r_playerController;

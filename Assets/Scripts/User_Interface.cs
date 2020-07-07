@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+//Kurtis Watson
 public class User_Interface : MonoBehaviour
 {
-    //Kurtis Watson
     public TMPro.TextMeshProUGUI m_currentTimeText;
     public TMPro.TextMeshProUGUI m_currentHealth;
     public TMPro.TextMeshProUGUI m_currentStoneCharge;

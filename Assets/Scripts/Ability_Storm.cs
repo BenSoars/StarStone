@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//Kurtis Watson
 public class Ability_Storm : MonoBehaviour
 {
     private void Start()

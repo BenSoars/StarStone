@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
+//Kurtis Watson
 public class Text_HitDamage : MonoBehaviour
 {
     private Player_Controller r_playerController;

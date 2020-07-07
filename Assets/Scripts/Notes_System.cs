@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Security.Cryptography;
 using UnityEngine;
 
+//Kurtis Watson
 public class Notes_System : MonoBehaviour
 {
     public List<Transform> m_locations = new List<Transform>();

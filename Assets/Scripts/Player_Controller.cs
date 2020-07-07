@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+//Kurtis Watson
 public class Player_Controller : MonoBehaviour
 {
-    //Kurtis Watson
     private Animator m_animator;
     public Transform m_camera;
     public Rigidbody m_rb;

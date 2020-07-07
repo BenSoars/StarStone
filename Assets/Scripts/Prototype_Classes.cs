@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
+//Kurtis Watson
 public class Prototype_Classes : MonoBehaviour
 {
-    //Kurtis Watson
     private Player_Controller r_playerController;
     private Gun_Generic r_gunGeneric;
     public Prototype_Weapon r_prototypeWeapon;

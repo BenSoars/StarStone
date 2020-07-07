@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//Kurtis Watson
 public class Drone_Controller : MonoBehaviour
 {
-    //Kurtis Watson
     public Transform m_camera;
     public Rigidbody m_rb;
 

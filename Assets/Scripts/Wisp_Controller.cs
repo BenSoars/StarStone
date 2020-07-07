@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
+//Kurtis Watson
 public class Wisp_Controller : MonoBehaviour
 {
-    //Kurtis Watson
     private NavMeshAgent m_navAgent;
     private Player_Controller r_player;
     private Wave_System r_waveSystem;

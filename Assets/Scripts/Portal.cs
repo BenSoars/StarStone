@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//Kurtis Watson
 public class Portal : MonoBehaviour
 {
     private Player_Controller r_playerController;

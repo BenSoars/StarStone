@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//Kurtis Watson
 public class Orb_Controller : MonoBehaviour
 {
     private Prototype_Classes r_prototypeClasses;

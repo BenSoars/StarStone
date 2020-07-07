@@ -265,6 +265,7 @@ public class Enemy_Controller : MonoBehaviour
         m_runSpeed = m_defaultRunSpeed; // set run speed to default
     }
 
+    //Kurtis Watson
     void f_resetInfection()
     {
         // reset the infection 
