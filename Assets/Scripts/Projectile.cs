@@ -38,8 +38,10 @@ public class Projectile : MonoBehaviour
             stickyProjectile(other);
         } else if (other.gameObject.CompareTag ("Player") && m_enemy == true)
         {
-            
-            other.GetComponent<Player_Controller>().playerHealth -= m_damage;
+            Player_Controller player = other.GetComponent<Player_Controller>();
+
+            player.playerHealth -= m_damage;
+            player.audio.playPlayerHurt();
             stickyProjectile(other);
         }
     }

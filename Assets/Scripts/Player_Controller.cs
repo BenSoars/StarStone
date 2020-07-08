@@ -9,6 +9,8 @@ public class Player_Controller : MonoBehaviour
     private Animator m_animator;
     public Transform m_camera;
     public Rigidbody m_rb;
+    public Audio_System audio; // get the audio system component to play sounds
+
 
     public Transform m_shotPoint;
 
@@ -54,11 +56,12 @@ public class Player_Controller : MonoBehaviour
 
     public float defenceValue = 1;
 
+    
     private void Start()
     {
         isPlayerActive = true;
         canPlayerMove = true;
-
+        audio = GameObject.FindObjectOfType<Audio_System>(); // get audio system
         m_animator = GetComponent<Animator>();
         r_abilityMelee = GameObject.FindObjectOfType<Ability_Melee>();
     }
@@ -259,4 +262,5 @@ public class Player_Controller : MonoBehaviour
             topOfLadder = false;
         }
     }
+
 }
