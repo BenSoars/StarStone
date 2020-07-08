@@ -24,7 +24,7 @@ public class Wave_System : MonoBehaviour
     private Player_Controller r_playerController;
     private User_Interface r_userInterface;
     private Prototype_Classes r_prototypeClasses;
-    private Notes_System r_notesSystem;
+    private Pickup_System r_pickupSystem;
 
     public List<GameObject> m_wisps = new List<GameObject>();
 
@@ -37,6 +37,7 @@ public class Wave_System : MonoBehaviour
 
     private Text m_enemyCount;
     public float m_fogMath;
+    private float m_spawnValue;
 
     //Kurtis Watson
     private void Start()
@@ -45,7 +46,7 @@ public class Wave_System : MonoBehaviour
         r_playerController = FindObjectOfType<Player_Controller>();
         r_userInterface = FindObjectOfType<User_Interface>();
         r_prototypeClasses = FindObjectOfType<Prototype_Classes>();
-        r_notesSystem = FindObjectOfType<Notes_System>();
+        r_pickupSystem = FindObjectOfType<Pickup_System>();
         m_enemyCount = GameObject.Find("EnemyCount").GetComponent<Text>();
     }
 
@@ -98,11 +99,20 @@ public class Wave_System : MonoBehaviour
         //Ben Soars
         if (spawnedEnemies.Count <= 0 && enemiesLeft == 0 && m_timeMet == false)
         {
-            r_notesSystem.m_spawnNote = true;
+            m_timeMet = true;
+            if (m_spawnValue % 2 == 0)
+            {
+                
+                r_pickupSystem.m_spawnNote = true;
+            }
+            else
+            {
+                r_pickupSystem.m_spawnCogs = true;
+            }
             m_startedWaves = false;
             r_prototypeClasses.m_canSelect = true;
-            r_prototypeClasses.m_activeStone[r_prototypeClasses.m_classState] = false;
-            m_timeMet = true;
+            r_prototypeClasses.m_activeStone[r_prototypeClasses.m_classState] = false;            
+            m_spawnValue += 1;
             r_userInterface.f_waveTimer();
             f_spawnWisps();
         }

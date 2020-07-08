@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 //Kurtis Watson
@@ -23,16 +24,28 @@ public class Clock_Controller : MonoBehaviour
 
     private bool m_isActive;
 
+    public List<GameObject> clockParts = new List<GameObject>(); 
+
     private void Start()
     {
-        m_animator = GetComponentInChildren<Animator>();
+        for (int i = 0; i < clockParts.Count; i++)
+        {
+            clockParts[i].active = false;
+        }
 
+        m_animator = GetComponentInChildren<Animator>();
         m_desiredMin = UnityEngine.Random.Range(1, 11);
         m_desiredHour = UnityEngine.Random.Range(1, 11);
     }
 
     // Update is called once per frame
     void Update()
+    {
+        f_clockMechanic();
+        f_checkTime();      
+    }
+
+    void f_clockMechanic()
     {
         m_animator.SetBool("Active", m_isActive);
         f_checkTime();
@@ -49,7 +62,7 @@ public class Clock_Controller : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Mouse1))
             {
                 bigRotation += 30;
-                m_currentMin += 1;             
+                m_currentMin += 1;
             }
 
             if (m_currentHour == 12)

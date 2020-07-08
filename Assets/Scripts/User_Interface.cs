@@ -10,6 +10,9 @@ public class User_Interface : MonoBehaviour
     public TMPro.TextMeshProUGUI m_currentHealth;
     public TMPro.TextMeshProUGUI m_currentStoneCharge;
 
+    public TMPro.TextMeshProUGUI noteSpawnedText;
+    public TMPro.TextMeshProUGUI cogSpawnedText;
+
     public TMPro.TextMeshPro m_SS1;
     public TMPro.TextMeshPro m_SS2;
     public TMPro.TextMeshPro m_SS3;
@@ -18,6 +21,7 @@ public class User_Interface : MonoBehaviour
     private Wave_System r_waveSystem;
     private Player_Controller r_playerController;
     private Prototype_Classes r_prototypeClasses;
+    private Pickup_System pickupSystem;
 
     private float m_targetTime;
     private int m_currentSecond;
@@ -29,13 +33,18 @@ public class User_Interface : MonoBehaviour
 
     private void Start()
     {
+        noteSpawnedText.enabled = false;
+        cogSpawnedText.enabled = false;
         r_waveSystem = FindObjectOfType<Wave_System>();
         r_playerController = FindObjectOfType<Player_Controller>();
         r_prototypeClasses = FindObjectOfType<Prototype_Classes>();
+        pickupSystem = FindObjectOfType<Pickup_System>();
     }
     // Update is called once per frame
     void Update()
     {
+        f_popupText();
+
         m_currentHealth.text = "" + r_playerController.playerHealth;
 
         m_currentStoneCharge.text = "" + r_prototypeClasses.m_stonePower[r_prototypeClasses.m_classState].ToString("F0");
@@ -59,6 +68,26 @@ public class User_Interface : MonoBehaviour
                 SceneManager.LoadScene("GameOver");
             }
         }
+    }
+
+    void f_popupText()
+    {
+        if (pickupSystem.m_spawnNote == true)
+        {
+            noteSpawnedText.enabled = true;
+            Invoke("f_resetText", 3);
+        }
+        if (pickupSystem.m_spawnCogs == true)
+        {
+            cogSpawnedText.enabled = true;
+            Invoke("f_resetText", 3);
+        }
+    }
+
+    void f_resetText()
+    {
+        noteSpawnedText.enabled = false;
+        cogSpawnedText.enabled = false;
     }
 
     public void f_waveTimer()
