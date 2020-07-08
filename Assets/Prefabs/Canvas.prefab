@@ -969,7 +969,11 @@ MonoBehaviour:
   gunShot: {fileID: 4778166867179406103}
   playerHurt: {fileID: 1373814767958516243}
   other: {fileID: 8292899263992693386}
-  playerHurtSounds: []
+  playerHurtSounds:
+  - {fileID: 8300000, guid: 3f1292ebfa770734ca15f48cbf84228a, type: 3}
+  - {fileID: 8300000, guid: 95a710e069acf134dba94f56cefe357f, type: 3}
+  - {fileID: 8300000, guid: 2c7ede1ca6d71c1418160c5a304f988b, type: 3}
+  - {fileID: 8300000, guid: 5011f36a23cb6be4984e095929e33888, type: 3}
 --- !u!1 &3502129990789931122
 GameObject:
   m_ObjectHideFlags: 0

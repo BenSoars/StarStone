@@ -23,7 +23,8 @@ public class Enemy_Damage : MonoBehaviour
         {
             r_player = other.gameObject.GetComponent<Player_Controller>(); // get player componenet
             r_player.playerHealth -= m_damage * r_player.defenceValue; // take health away based on damage and defence
-            m_hurtBox.enabled = false; // disable the hurtbox to prevent multiple hits per frames
+            m_hurtBox.enabled = false; // disable the hurtbox to prevent multiple hits per frames]
+            r_player.audio.playPlayerHurt();
         }
     }
 }
