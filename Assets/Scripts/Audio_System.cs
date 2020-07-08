@@ -8,6 +8,7 @@ public class Audio_System : MonoBehaviour
     public AudioSource gunShot; // gun audio source
     public AudioSource playerHurt; // player injured audio source
     public AudioSource other;
+    public AudioSource notification; // used for player notifications, such as round start or important annoucenemnts
 
     // in lists to make it easier to get access to them
   
@@ -18,6 +19,7 @@ public class Audio_System : MonoBehaviour
         gunShot.volume = PlayerPrefs.GetFloat("volumeLevel");
         playerHurt.volume = PlayerPrefs.GetFloat("volumeLevel");
         other.volume = PlayerPrefs.GetFloat("volumeLevel");
+        notification.volume = PlayerPrefs.GetFloat("volumeLevel");
     }
 
     public void playGun(AudioClip gunSound) // 
@@ -36,5 +38,11 @@ public class Audio_System : MonoBehaviour
     {
         other.clip = soundClip; // get the passed through audio clip
         other.Play(); // play the sound
+    }
+
+    public void playImportant(AudioClip soundClip) // is separate for the same reason as play other is. Has higher priority
+    {
+        notification.clip = soundClip; // get the passed through audio clip
+        notification.Play(); // play the sound
     }
 }

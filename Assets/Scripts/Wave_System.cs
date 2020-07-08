@@ -20,6 +20,9 @@ public class Wave_System : MonoBehaviour
     public List<int> enemyArray = new List<int>();
     public bool m_startedWaves;
 
+    public Audio_System audio; // get the audio system component to play sounds
+    public List<AudioClip> roundNoises = new List<AudioClip>();
+
     //Kurtis Watson
     private Player_Controller r_playerController;
     private User_Interface r_userInterface;
@@ -46,6 +49,7 @@ public class Wave_System : MonoBehaviour
         r_playerController = FindObjectOfType<Player_Controller>();
         r_userInterface = FindObjectOfType<User_Interface>();
         r_prototypeClasses = FindObjectOfType<Prototype_Classes>();
+        audio = GameObject.FindObjectOfType<Audio_System>(); // get audio system
         r_pickupSystem = FindObjectOfType<Pickup_System>();
         m_enemyCount = GameObject.Find("EnemyCount").GetComponent<Text>();
     }
@@ -66,9 +70,11 @@ public class Wave_System : MonoBehaviour
     IEnumerator f_spawnWisps()
     {
         m_newWave = false;
+        
         yield return new WaitForSeconds(m_intermissionTime);
         m_startedWaves = true;
-        f_sortOutEnemys();        
+        f_sortOutEnemys();
+        audio.playImportant(roundNoises[0]);
         for (int k = 0; k < enemyArray.Count; k++)
         {
             for (int i = 0; i < enemyArray[k]; i++)

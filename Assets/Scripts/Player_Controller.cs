@@ -55,7 +55,7 @@ public class Player_Controller : MonoBehaviour
     //public Rigidbody grenade;
     //public int grenadeAmount = 3;
     public float defenceValue = 1;
-
+    public AudioSource runSound;
     
     private void Start()
     {
@@ -64,6 +64,8 @@ public class Player_Controller : MonoBehaviour
         audio = GameObject.FindObjectOfType<Audio_System>(); // get audio system
         m_animator = GetComponent<Animator>();
         r_abilityMelee = GameObject.FindObjectOfType<Ability_Melee>();
+        runSound.volume = PlayerPrefs.GetFloat("volumeLevel"); // set volume of run sound
+        runSound.enabled = false; // stop run sound
     }
 
     //Kurtis Watson
@@ -147,11 +149,13 @@ public class Player_Controller : MonoBehaviour
             if (Input.GetKey(KeyCode.LeftShift))
             {
                 isSprinting = true;
+               
                 m_speed = sprintSpeed; //Set sprint speed.
             }
             if (!Input.GetKey(KeyCode.LeftShift))
             {
                 isSprinting = false;
+               
                 m_speed = walkSpeed; //Reset speed.
             }
             if (Input.GetKey(KeyCode.LeftControl))
@@ -163,6 +167,14 @@ public class Player_Controller : MonoBehaviour
                 isCrouching = false;
             }
             m_animator.SetBool("Crouch", isCrouching);
+
+            if (isSprinting && m_rb.velocity != Vector3.zero && grounded == true)
+            {
+                runSound.enabled = true; // start run speed
+            } else
+            {
+                runSound.enabled = false; // end run sound
+            }
         }
     }
 

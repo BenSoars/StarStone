@@ -35,6 +35,7 @@ public class Prototype_Weapon : MonoBehaviour
         r_prototypeClasses = FindObjectOfType<Prototype_Classes>();
         m_lr = GetComponent<LineRenderer>();
         beamNoise.volume = PlayerPrefs.GetFloat("volumeLevel");
+        beamNoise.enabled = false;
     }
 
     // Update is called once per frame
@@ -54,7 +55,7 @@ public class Prototype_Weapon : MonoBehaviour
         RaycastHit m_laserHit;
         if (Input.GetKey(KeyCode.Mouse0) && r_prototypeClasses.m_stonePower[r_prototypeClasses.m_classState] > 0)
         {
-            beamNoise.Play();
+            beamNoise.enabled = true;
             r_prototypeClasses.m_stonePower[r_prototypeClasses.m_classState] -= 0.01f;
             m_lr.SetPosition(0, transform.position);
             m_lr.enabled = true;
@@ -92,7 +93,7 @@ public class Prototype_Weapon : MonoBehaviour
         else
         {
             m_lr.enabled = false;
-            beamNoise.Stop();
+            beamNoise.enabled = false;
         }
 
         switch (r_prototypeClasses.m_classState)
