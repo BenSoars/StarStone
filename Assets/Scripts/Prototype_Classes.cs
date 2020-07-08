@@ -34,6 +34,8 @@ public class Prototype_Classes : MonoBehaviour
     public float m_fogStrength;
     public float m_currentFog;
 
+    
+
 
     void Start()
     {

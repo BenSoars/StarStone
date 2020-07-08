@@ -11,7 +11,6 @@ public class Player_Controller : MonoBehaviour
     public Rigidbody m_rb;
     public Audio_System audio; // get the audio system component to play sounds
 
-
     public Transform m_shotPoint;
 
     private Ability_Melee r_abilityMelee;
@@ -50,10 +49,11 @@ public class Player_Controller : MonoBehaviour
     public bool isSprinting;
     public bool isCrouching;
 
-    public Rigidbody grenade;
-
     public bool isPlayerActive;
 
+
+    //public Rigidbody grenade;
+    //public int grenadeAmount = 3;
     public float defenceValue = 1;
 
     
@@ -78,13 +78,14 @@ public class Player_Controller : MonoBehaviour
 
         if (isPlayerActive == true)
         {
-            // Ben Soars
-            if (Input.GetKeyDown("g"))
-            {
-                Rigidbody thrownObject = Instantiate(grenade, m_shotPoint.transform.position, m_shotPoint.rotation); // create grenade
-                thrownObject.AddForce(m_shotPoint.forward * 100); // push forwards
-                thrownObject.AddForce(m_shotPoint.up * 50); // throw slightly upwards
-            }
+            //// Ben Soars
+            //if (Input.GetKeyDown("g") && grenadeAmount > 0)
+            //{
+            //    Rigidbody thrownObject = Instantiate(grenade, m_shotPoint.transform.position, m_shotPoint.rotation); // create grenade
+            //    thrownObject.AddForce(m_shotPoint.forward * 100); // push forwards
+            //    thrownObject.AddForce(m_shotPoint.up * 50); // throw slightly upwards#
+            //    grenadeAmount += 1;
+            //}
 
             //Kurtis Watson
             if (Input.GetKeyDown("e"))
