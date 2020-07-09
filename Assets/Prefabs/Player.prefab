@@ -107,7 +107,7 @@ MonoBehaviour:
   canAim: 1
   m_playerCam: {fileID: 8493438687375166385}
   m_shotForce: 100
-  m_bulletDamage: 0
+  m_bulletDamage: 25
   m_minBulletDamage: 30
   m_maxBulletDamage: 46
   m_physicalBullet: {fileID: 2824383119464962097, guid: a42c2071c560a5e429b817b6c466b4e8,
