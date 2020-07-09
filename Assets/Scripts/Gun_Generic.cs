@@ -52,7 +52,7 @@ public class Gun_Generic : MonoBehaviour
     [Tooltip("The force that will be applied to the physical projectile (if there is a physical projectile).")]
     public float m_shotForce = 100; // how much force the bullet will be shot for, it hitscan leave blank
 
-    private float m_bulletDamage; // the damage of the bullet
+    public float m_bulletDamage; // the damage of the bullet
 
     [Tooltip("The minimum damage the bullet can deal.")]
     public int m_minBulletDamage; // the minimum damage for the bullet
