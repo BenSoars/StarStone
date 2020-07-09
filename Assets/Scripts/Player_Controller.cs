@@ -170,10 +170,10 @@ public class Player_Controller : MonoBehaviour
 
             if (isSprinting && m_rb.velocity != Vector3.zero && grounded == true)
             {
-                runSound.enabled = true; // start run speed
+                runSound.enabled = true; // Start run sound
             } else
             {
-                runSound.enabled = false; // end run sound
+                runSound.enabled = false; // End run sound
             }
         }
     }
