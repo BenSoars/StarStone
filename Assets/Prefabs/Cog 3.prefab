@@ -11,7 +11,8 @@ GameObject:
   - component: {fileID: 7182388069129122218}
   - component: {fileID: -4164966818546051432}
   - component: {fileID: 8354991686865868460}
-  m_Layer: 0
+  - component: {fileID: 916159751306563243}
+  m_Layer: 13
   m_Name: Cog 3
   m_TagString: Untagged
   m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
@@ -62,6 +63,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.37772155, y: 0.0923233, z: 0.5040829}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &916159751306563243
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7182388069129122217}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e32a0dee596f244eb40d59d270ed6a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clockPartID: 2
 --- !u!1 &8203358714737683573
 GameObject:
   m_ObjectHideFlags: 0

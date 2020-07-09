@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 //Kurtis Watson
 public class User_Interface : MonoBehaviour
@@ -9,6 +10,8 @@ public class User_Interface : MonoBehaviour
     public TMPro.TextMeshProUGUI m_currentTimeText;
     public TMPro.TextMeshProUGUI m_currentHealth;
     public TMPro.TextMeshProUGUI m_currentStoneCharge;
+
+    public GameObject repairBar;
 
     public TMPro.TextMeshProUGUI noteSpawnedText;
     public TMPro.TextMeshProUGUI cogSpawnedText;
@@ -33,6 +36,7 @@ public class User_Interface : MonoBehaviour
 
     private void Start()
     {
+        repairBar.active = false;
         noteSpawnedText.enabled = false;
         cogSpawnedText.enabled = false;
         r_waveSystem = FindObjectOfType<Wave_System>();

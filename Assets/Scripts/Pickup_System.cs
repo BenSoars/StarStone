@@ -7,20 +7,35 @@ using UnityEngine;
 public class Pickup_System : MonoBehaviour
 {
     public List<Transform> m_locations = new List<Transform>();
-   
+
     private Transform m_desiredLocation;
 
     public GameObject m_note;
     private int m_clockPart;
 
     public GameObject floatPoint;
+    public GameObject currentPart;
 
     public List<GameObject> clockPart = new List<GameObject>();
 
     public bool m_spawnNote;
     public bool m_spawnCogs;
+    private bool itemHeld;
+    public int currentPartID;
 
     public Transform cameraLook;
+
+    private Clock_Controller clockController;
+    private User_Interface userInterface;
+
+    public float currentRepairTime;
+    public float repairTime;
+
+    private void Start()
+    {
+        clockController = FindObjectOfType<Clock_Controller>();
+        userInterface = FindObjectOfType<User_Interface>();
+    }
 
     private void Update()
     {
@@ -50,19 +65,50 @@ public class Pickup_System : MonoBehaviour
     {
         RaycastHit m_clockHit;
 
-        if (Physics.Raycast(cameraLook.transform.position, cameraLook.transform.forward, out m_clockHit, 6f))
+        if (Physics.Raycast(cameraLook.transform.position, cameraLook.transform.forward, out m_clockHit, 100f))
         {
-            if(m_clockHit.collider.gameObject.name == "Steampunk Clock")
+            float closeEnough = Vector3.Distance(transform.position, m_clockHit.collider.gameObject.transform.position);
+            if (Input.GetKeyDown("f") && m_clockHit.collider.gameObject.name != "Steampunk Clock" && itemHeld == true)
             {
-                Debug.Log("YEET");
+                Debug.Log("Dropped");
+                itemHeld = false;
+                currentPart.transform.parent = null;
+                currentPart.GetComponent<Rigidbody>().isKinematic = false;
+                currentPart.GetComponent<BoxCollider>().enabled = true;
             }
 
-            if(m_clockHit.collider.gameObject.name == "Cog 1(Clone)" && Input.GetKeyDown("f"))
+            if (m_clockHit.collider.gameObject.layer == 13 && Input.GetKeyDown("f") && itemHeld == false && closeEnough <= 3)
             {
-                m_clockHit.collider.gameObject.transform.parent = floatPoint.transform;
-                m_clockHit.collider.gameObject.transform.localPosition = Vector3.zero;
-                m_clockHit.collider.gameObject.GetComponent<Rigidbody>().isKinematic = true;
-                m_clockHit.collider.gameObject.GetComponent<BoxCollider>().enabled = false;
+                currentPart = m_clockHit.collider.gameObject;
+                currentPartID = currentPart.GetComponent<Clock_ID>().clockPartID;
+                Debug.Log("ID: " + currentPartID);
+                itemHeld = true;
+                currentPart.transform.parent = floatPoint.transform;
+                currentPart.transform.localPosition = Vector3.zero;
+                currentPart.GetComponent<Rigidbody>().isKinematic = true;
+                currentPart.GetComponent<BoxCollider>().enabled = false;
+            }
+
+            if (m_clockHit.collider.gameObject.name == "Steampunk Clock" && Input.GetKey("f") && itemHeld == true && closeEnough <= 4)
+            {
+                currentRepairTime += Time.deltaTime;
+                userInterface.repairBar.active = true;
+
+                if (currentRepairTime >= repairTime)
+                {
+                    currentRepairTime = 0;
+                    Destroy(currentPart);
+                    itemHeld = false;
+                    userInterface.repairBar.active = false;
+                    clockController.clockParts[currentPartID].active = true;
+                }
+
+                //Debug.Log("Current Repair: " + currentRepairTime);
+            }
+            else
+            {
+                currentRepairTime = 0;
+                userInterface.repairBar.active = false;
             }
         }
     }
