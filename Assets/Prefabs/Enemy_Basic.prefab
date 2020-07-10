@@ -366,7 +366,7 @@ GameObject:
   - component: {fileID: 3007200526936079684}
   - component: {fileID: 5821351728558532295}
   - component: {fileID: 4445042777133509401}
-  m_Layer: 12
+  m_Layer: 14
   m_Name: Infector
   m_TagString: Infected
   m_Icon: {fileID: 0}
@@ -5151,7 +5151,7 @@ GameObject:
   - component: {fileID: 4382383518665292684}
   - component: {fileID: 3835827186872194993}
   - component: {fileID: 6417880955816701238}
-  m_Layer: 12
+  m_Layer: 14
   m_Name: Damage
   m_TagString: Untagged
   m_Icon: {fileID: 0}

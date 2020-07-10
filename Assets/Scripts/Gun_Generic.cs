@@ -87,12 +87,15 @@ public class Gun_Generic : MonoBehaviour
     [Tooltip("The gameobject that is used for the damage text")]
     public GameObject m_hitDamageText; // the hit text
 
+    private LayerMask layerMask;
+
     void Start()
     {
         m_ammoCount = GameObject.Find("AmmoCount").GetComponent<Text>(); // get the text for displaying ammo
         m_player = GameObject.FindObjectOfType<Player_Controller>(); // get player component
         m_audio = GameObject.FindObjectOfType<Audio_System>(); // get audio system
         f_updateUI(); // update the UI
+        layerMask =~ 1 >> 14;
     }
 
 
@@ -125,7 +128,7 @@ public class Gun_Generic : MonoBehaviour
             }
             else
             {
-                if (Physics.Raycast(m_shotPoint.position, m_newAccuracy, out m_hitscanCast, Mathf.Infinity)) // shoot out a raycast for hitscan
+                if (Physics.Raycast(m_shotPoint.position, m_newAccuracy, out m_hitscanCast, Mathf.Infinity, layerMask)) // shoot out a raycast for hitscan
                 {
                     Debug.DrawRay(m_shotPoint.position, m_newAccuracy * m_hitscanCast.distance, Color.yellow); // draw line only viewable ineditor
                     Instantiate(hitSpark, m_hitscanCast.point, Quaternion.identity); // create hitspark at hit point
