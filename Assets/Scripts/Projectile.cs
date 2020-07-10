@@ -44,6 +44,11 @@ public class Projectile : MonoBehaviour
             player.audio.playPlayerHurt();
             stickyProjectile(other);
         }
+
+        else if (m_sticky && !other.gameObject.CompareTag("Player"))
+        {
+            stickyProjectile(other);
+        }
     }
 
     void stickyProjectile(Collider col)

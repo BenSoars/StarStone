@@ -1,0 +1,9 @@
+Controls
+
+WSAD - Move
+Right Click - Shoot
+CTRL - Crouch
+Shift - Run
+Q - use ability 1
+V - use ability 2
+F - interact (clock peices, ladder, star stones)

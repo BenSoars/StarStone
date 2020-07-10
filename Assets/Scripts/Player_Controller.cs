@@ -78,6 +78,8 @@ public class Player_Controller : MonoBehaviour
             SceneManager.LoadScene("GameOver");
         }
 
+        if (playerHealth > 100) { playerHealth = 100; }
+
         if (isPlayerActive == true)
         {
             //// Ben Soars
