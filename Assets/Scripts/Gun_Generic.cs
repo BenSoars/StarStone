@@ -98,6 +98,10 @@ public class Gun_Generic : MonoBehaviour
         layerMask =~ 1 >> 14;
     }
 
+    void OnEnable()
+    {
+        f_updateUI(); // update the UI
+    }
 
     void f_ShootGun() // gun shoot script
     {
