@@ -4,6 +4,7 @@ using TMPro;
 using Unity.Collections;
 using UnityEngine;
 using UnityEngine.PlayerLoop;
+using UnityEngine.UI;
 
 //Kurtis Watson
 public class Cutscene_Handler : MonoBehaviour
@@ -20,12 +21,16 @@ public class Cutscene_Handler : MonoBehaviour
 
     private bool sentenceFinish;
     private bool pauseCutscene;
+
+    public Image shrine;
+    public Image COD;
     
 
     // Start is called before the first frame update
     void Start()
     {
         StartCoroutine(f_typewriter());
+        COD.enabled = false;
     }
 
     private void Update()
@@ -45,7 +50,7 @@ public class Cutscene_Handler : MonoBehaviour
 
         bool test = false;
         if(index == 4 && test == false)
-        {
+        {            
             Debug.Log("Paused");
             test = true;
             pauseCutscene = true;
@@ -53,6 +58,8 @@ public class Cutscene_Handler : MonoBehaviour
 
         if (Input.GetKeyDown("g"))
         {
+            shrine.enabled = false;
+            COD.enabled = true;
             pauseCutscene = false;
             StartCoroutine(f_typewriter());
         }

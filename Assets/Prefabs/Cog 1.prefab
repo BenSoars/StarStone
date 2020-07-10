@@ -76,6 +76,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   clockPartID: 0
+  pickedUp: 0
 --- !u!1 &5208824186091686178
 GameObject:
   m_ObjectHideFlags: 0
