@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 //Kurtis Watson
@@ -18,6 +19,7 @@ public class Clock_Controller : MonoBehaviour
     public GameObject hourHand;
     public GameObject minuteHand;
     public GameObject player;
+    public GameObject portal;
 
     private int smallRotation = 0;
     private int bigRotation = 0;
@@ -28,6 +30,7 @@ public class Clock_Controller : MonoBehaviour
 
     private void Start()
     {
+        portal.active = false;
         for (int i = 0; i < clockParts.Count; i++)
         {
             clockParts[i].active = false;
@@ -49,6 +52,11 @@ public class Clock_Controller : MonoBehaviour
     {
         m_animator.SetBool("Active", m_isActive);
         f_checkTime();
+
+        if (m_animator.GetCurrentAnimatorStateInfo(0).IsName("gearsTurning") && m_animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f)
+        {
+            portal.active = true;
+        }
 
         Debug.Log("Hour: " + m_desiredHour + " Min: " + m_desiredMin);
         if (Vector3.Distance(transform.position, player.transform.position) < 3)
