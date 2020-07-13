@@ -10,6 +10,8 @@ public class User_Interface : MonoBehaviour
     public TMPro.TextMeshProUGUI m_currentTimeText;
     public TMPro.TextMeshProUGUI m_currentHealth;
     public TMPro.TextMeshProUGUI m_currentStoneCharge;
+    public TMPro.TextMeshProUGUI timeTillNextRound;
+    public TMPro.TextMeshProUGUI chooseStone;
 
     public GameObject repairBar;
 
@@ -44,13 +46,14 @@ public class User_Interface : MonoBehaviour
         r_playerController = FindObjectOfType<Player_Controller>();
         r_prototypeClasses = FindObjectOfType<Prototype_Classes>();
         pickupSystem = FindObjectOfType<Pickup_System>();
+        timeTillNextRound.enabled = false;
     }
     // Update is called once per frame
     void Update()
     {
         f_popupText();
 
-        m_currentHealth.text = "" + r_playerController.playerHealth;
+        m_currentHealth.text = "" + r_playerController.playerHealth.ToString("F0");
 
         m_currentStoneCharge.text = "" + r_prototypeClasses.m_stonePower[r_prototypeClasses.m_classState].ToString("F0");
 
@@ -58,6 +61,19 @@ public class User_Interface : MonoBehaviour
         m_SS2.text = r_prototypeClasses.m_stonePower[1].ToString("F0");
         m_SS3.text = r_prototypeClasses.m_stonePower[2].ToString("F0");
         m_SS4.text = r_prototypeClasses.m_stonePower[3].ToString("F0");
+
+        if(r_waveSystem.enemiesLeft == 0 && r_waveSystem.curRound > 0)
+        {
+            chooseStone.enabled = true;
+            timeTillNextRound.enabled = true;
+        }
+        else
+        {
+            chooseStone.enabled = false;
+            timeTillNextRound.enabled = false;
+        }
+
+        timeTillNextRound.text = r_waveSystem.m_currentIntermissionTime.ToString("F0");
 
         if (r_waveSystem.m_startedWaves == true)
         {

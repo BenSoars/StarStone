@@ -30,12 +30,10 @@ public class Prototype_Classes : MonoBehaviour
     public bool m_canSelect;
 
     public int m_chosenBuff;
+    public bool buffChosen;
 
     public float m_fogStrength;
     public float m_currentFog;
-
-    
-
 
     void Start()
     {
@@ -81,7 +79,6 @@ public class Prototype_Classes : MonoBehaviour
             m_activeStone[m_classState] = false;
         }
         m_currentFog = m_fogStrength;
-
         RenderSettings.fog = false;
         r_playerController.defenceValue = m_defaultDefence;
         r_prototypeWeapon.m_damageCoolDown = m_defaultDamageCooldown;
@@ -96,6 +93,7 @@ public class Prototype_Classes : MonoBehaviour
         {
             r_waveSystem.m_newWave = true;
             m_canSelect = false;
+            r_waveSystem.m_isIntermission = false;
             f_defaultSettings();
             switch (m_stoneSelect.collider.gameObject.name)
             {
@@ -113,21 +111,35 @@ public class Prototype_Classes : MonoBehaviour
                 case ("Starstone 4"): //Blue                   
                     m_classState = 3;
                     r_prototypeWeapon.m_damageCoolDown = m_defaultDamageCooldown / 2;
-                    break;                 
-            }            
+                    break;
+            }
 
             m_activeStone[m_classState] = true;
+        }
 
+        if (r_waveSystem.notChosen == true)
+        {
+            f_defaultSettings();
+            r_waveSystem.m_isIntermission = false;
+            r_waveSystem.m_newWave = true;          
+            r_waveSystem.notChosen = false;
+            m_classState = Random.Range(0, 3);
+            m_activeStone[m_classState] = true;
+        }
+
+        if (buffChosen == false)
+        {
+            buffChosen = true;
             float max = int.MinValue;
             for (int i = 0; i < m_activeStone.Length; i++)
-            {                
+            {
                 if (m_activeStone[i] == false && m_stonePower[i] > max)
                 {
                     max = m_stonePower[i];
                     m_chosenBuff = i;
                 }
             }
-        }         
+        }
     }
 
     void f_enemyBuff()

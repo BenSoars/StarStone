@@ -97,7 +97,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_name: PISTOL
   m_maxAmmo: 50
-  m_currentAmmo: 50
+  m_currentAmmo: 10
   m_ammoPerShot: 1
   m_coolDown: 0.5
   shotSound: {fileID: 8300000, guid: a0588470e3cd3b04fb599829fe2daddc, type: 3}

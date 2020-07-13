@@ -33,18 +33,23 @@ public class Wave_System : MonoBehaviour
 
     private GameObject[] m_wispPoint;
     private int m_random;
-    public int m_intermissionTime;
 
     public bool m_newWave;
-    private bool m_timeMet;
+    private bool m_enemiesKilled;
 
     private Text m_enemyCount;
     public float m_fogMath;
     private float m_spawnValue;
 
+    public bool m_isIntermission;
+    public bool notChosen;
+    public float intermissionTime;
+    public float m_currentIntermissionTime;
+
     //Kurtis Watson
     private void Start()
     {
+        m_currentIntermissionTime = intermissionTime;
         // get the different components neccesart for this script to function
         m_wispPoint = GameObject.FindGameObjectsWithTag("WispPoint");
         r_playerController = FindObjectOfType<Player_Controller>();
@@ -63,16 +68,15 @@ public class Wave_System : MonoBehaviour
         if (m_newWave == true)
         {
             r_userInterface.f_waveTimer();
-            StartCoroutine(f_spawnWisps()); // spawn wisps
+            f_spawnWisps(); // spawn wisps
         }
     }
 
     //Kurtis Watson
-    IEnumerator f_spawnWisps()
+    void f_spawnWisps()
     {
-        m_newWave = false;
-        
-        yield return new WaitForSeconds(m_intermissionTime);
+        m_currentIntermissionTime = intermissionTime;
+        m_newWave = false;      
         m_startedWaves = true;
         f_sortOutEnemys();
         audio.playImportant(roundNoises[0]);
@@ -91,7 +95,8 @@ public class Wave_System : MonoBehaviour
         r_prototypeClasses.m_stonePower[r_prototypeClasses.m_chosenBuff] -= enemiesLeft * 2;
         m_fogMath = r_prototypeClasses.m_fogStrength / enemiesLeft;
         curRound += 1;
-        m_timeMet = false;
+        m_enemiesKilled = false;
+        
     }
 
     //Kurtis Watson
@@ -100,28 +105,43 @@ public class Wave_System : MonoBehaviour
         m_enemyCount.text = ("" + enemiesLeft);
     }
 
-    // Update is called once per frame
     void FixedUpdate()
-    {       
-        //Kurtis Watson
-        if (spawnedEnemies.Count <= 0 && enemiesLeft == 0 && m_timeMet == false) // if there are no more enemies
+    {
+        if (m_isIntermission == true)
         {
-            m_timeMet = true;
-            if (m_spawnValue % 2 == 0)// if the spawn value is a multiple of two
-            {
-                
-                r_pickupSystem.m_spawnNote = true; // spawn a note
+            m_currentIntermissionTime -= Time.deltaTime;
+        }
+
+        if (m_currentIntermissionTime <= 0)
+        {
+            notChosen = true;
+            m_isIntermission = false;
+            r_prototypeClasses.m_canSelect = false;
+            m_newWave = true;
+        }
+
+        Debug.Log("Time:" + m_currentIntermissionTime);
+        //Kurtis Watson
+        if (spawnedEnemies.Count <= 0 && enemiesLeft == 0 && m_enemiesKilled == false && curRound > 0)
+        {
+            r_prototypeClasses.buffChosen = false;
+            m_isIntermission = true;
+            if (m_spawnValue % 2 == 0)
+            {               
+                r_pickupSystem.m_spawnNote = true;
             }
             else
             {
-                r_pickupSystem.m_spawnCogs = true; // spawn a cog
+                r_pickupSystem.m_spawnCogs = true;
             }
-            m_startedWaves = false; // started the wave
-            r_prototypeClasses.m_canSelect = true;
-            r_prototypeClasses.m_activeStone[r_prototypeClasses.m_classState] = false;   // select a class for the prototype weapon          
-            m_spawnValue += 1; // increase spawn value
-            r_userInterface.f_waveTimer(); // update the wave timer
-            f_spawnWisps(); // run wisp spawn function
+            m_enemiesKilled = true; //Stops the pick-ups from spawning more than one item a round.
+            m_startedWaves = false; //Begin the wave (required for a different script).
+            r_prototypeClasses.m_canSelect = true; //Allow the player to choose a new Starstone.
+            r_prototypeClasses.m_activeStone[r_prototypeClasses.m_classState] = false; //Disable the current stone so that it can be chosen again.
+            r_prototypeClasses.m_activeStone[r_prototypeClasses.m_chosenBuff] = false;
+            m_spawnValue += 1; //Increments by one to indicate to the game on whether to spawn a gear cog or a lab note.
+            r_userInterface.f_waveTimer(); //Update the round time limit.
+
         }
         else
         {

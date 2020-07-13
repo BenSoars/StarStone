@@ -39,6 +39,7 @@ public class Clock_Controller : MonoBehaviour
         m_animator = GetComponentInChildren<Animator>();
         m_desiredMin = UnityEngine.Random.Range(1, 11);
         m_desiredHour = UnityEngine.Random.Range(1, 11);
+        Debug.Log("Hour: " + m_desiredHour + " Min: " + m_desiredMin);
     }
 
     // Update is called once per frame
@@ -58,7 +59,6 @@ public class Clock_Controller : MonoBehaviour
             portal.active = true;
         }
 
-        Debug.Log("Hour: " + m_desiredHour + " Min: " + m_desiredMin);
         if (Vector3.Distance(transform.position, player.transform.position) < 3)
         {
             if (Input.GetKeyDown(KeyCode.Mouse0))
