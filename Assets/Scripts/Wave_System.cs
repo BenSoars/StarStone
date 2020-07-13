@@ -145,7 +145,7 @@ public class Wave_System : MonoBehaviour
             string[] varArray = amountOf[curRound].Split('_'); // split the current amount of enemies
 
             enemyArray.Clear(); // clear the current array
-            for (int i = 0; i < enemyArray.Count; i++) // for loop for all the enemy types
+            for (int i = 0; i < enemyTypes.Count; i++) // for loop for all the enemy types
             {
                 enemyArray.Add(System.Convert.ToInt32(varArray[i]));// convert the string into a string if it can
             }
