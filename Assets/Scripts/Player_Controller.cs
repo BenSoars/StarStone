@@ -114,9 +114,6 @@ public class Player_Controller : MonoBehaviour
     //Kurtis Watson
     void f_lookAround()
     {
-        Cursor.visible = false; //Remove cursor from the screen.
-        Cursor.lockState = CursorLockMode.Locked; //Locks the cursor to the screen to prevent leaving the window.
-
         playerRotX += Input.GetAxis("Mouse X") * camRotSpeed; //Rotates player FPS view along X axis based on mouse movement.
         m_camRotY += Input.GetAxis("Mouse Y") * camRotSpeed; //Rotates the camera in Y axis so that the player object doesn't rotate upwards.
 

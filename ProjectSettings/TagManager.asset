@@ -12,6 +12,7 @@ TagManager:
   - WispPoint
   - Infected
   - Note
+  - Canvas
   layers:
   - Default
   - TransparentFX

@@ -83,6 +83,9 @@ public class Prototype_Classes : MonoBehaviour
         r_playerController.defenceValue = m_defaultDefence;
         r_prototypeWeapon.m_damageCoolDown = m_defaultDamageCooldown;
         r_gunGeneric.m_bulletDamage = m_defaultBulletDamage;
+        r_waveSystem.m_isIntermission = false;
+        r_waveSystem.m_newWave = true;
+        m_canSelect = false;
     }
 
     void f_startstoneSelect()
@@ -91,9 +94,8 @@ public class Prototype_Classes : MonoBehaviour
 
         if (Physics.Raycast(m_shotPoint.position, m_shotPoint.forward, out m_stoneSelect, 3f, 1 << 11) && Input.GetKeyDown("f") && m_canSelect == true)
         {
-            r_waveSystem.m_newWave = true;
-            m_canSelect = false;
-            r_waveSystem.m_isIntermission = false;
+            buffChosen = true;
+
             f_defaultSettings();
             switch (m_stoneSelect.collider.gameObject.name)
             {
@@ -119,17 +121,18 @@ public class Prototype_Classes : MonoBehaviour
 
         if (r_waveSystem.notChosen == true)
         {
-            f_defaultSettings();
-            r_waveSystem.m_isIntermission = false;
-            r_waveSystem.m_newWave = true;          
+            buffChosen = true;
             r_waveSystem.notChosen = false;
+            
+            f_defaultSettings();   
+            
             m_classState = Random.Range(0, 3);
             m_activeStone[m_classState] = true;
         }
 
-        if (buffChosen == false)
+        if (buffChosen == true)
         {
-            buffChosen = true;
+            buffChosen = false;
             float max = int.MinValue;
             for (int i = 0; i < m_activeStone.Length; i++)
             {

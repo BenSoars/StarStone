@@ -22,7 +22,7 @@ public class Inventory : MonoBehaviour
     void Update()
     {
 
-        if (Input.GetKeyDown(KeyCode.Escape)) // toggle the visibility of the notes
+        if (Input.GetKeyDown(KeyCode.Tab)) // toggle the visibility of the notes
         {
             m_isVisible = !m_isVisible;
         }

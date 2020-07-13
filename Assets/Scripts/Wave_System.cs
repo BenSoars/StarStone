@@ -75,26 +75,26 @@ public class Wave_System : MonoBehaviour
     //Kurtis Watson
     void f_spawnWisps()
     {
-        m_currentIntermissionTime = intermissionTime;
-        m_newWave = false;      
-        m_startedWaves = true;
-        f_sortOutEnemys();
+        m_currentIntermissionTime = intermissionTime; //Reset current intermission time.
+        m_newWave = false; //Stop a new wave of enemies spawning. 
+        m_startedWaves = true; //Update UI values.
+        f_sortOutEnemys(); //Spawn enemies of different types.
         audio.playImportant(roundNoises[0]);
-        for (int k = 0; k < enemyArray.Count; k++)
+        for (int k = 0; k < enemyArray.Count; k++) 
         {
             for (int i = 0; i < enemyArray[k]; i++)
             {
-                m_random = Random.Range(0, 4);
-                GameObject spawned = Instantiate(m_wisps[k], m_wispPoint[m_random].transform.position, Quaternion.identity);
-                spawnedEnemies.Add(spawned);
+                m_random = Random.Range(1, 4);
+                GameObject spawned = Instantiate(m_wisps[k], m_wispPoint[m_random].transform.position, Quaternion.identity); //Spawn wisps at a random point.
+                spawnedEnemies.Add(spawned); //Add enemy spawned to enemies spawned list.
             }
         }
-        enemiesLeft = spawnedEnemies.Count;
-        r_prototypeClasses.m_fogStrength = 0.2f; //THIS WILL NEED TO BE CHANGED IN ORDER TO ADD INTERMISSION BETWEEN ROUNDS.
-        r_prototypeClasses.m_currentFog = 0.2f;
-        r_prototypeClasses.m_stonePower[r_prototypeClasses.m_chosenBuff] -= enemiesLeft * 2;
-        m_fogMath = r_prototypeClasses.m_fogStrength / enemiesLeft;
-        curRound += 1;
+        enemiesLeft = spawnedEnemies.Count; //Set the count for the enemies left.
+        r_prototypeClasses.m_fogStrength = 0.2f; //Fog strength.
+        r_prototypeClasses.m_currentFog = 0.2f; //Reset current fog.
+        r_prototypeClasses.m_stonePower[r_prototypeClasses.m_chosenBuff] -= enemiesLeft * 2; //Decrease the chosen enemy buff by two times the amount of enemies.
+        m_fogMath = r_prototypeClasses.m_fogStrength / enemiesLeft; //Calculate the amount of fog to decrease each enemy kill.
+        curRound += 1; //Increase current round by one.
         m_enemiesKilled = false;
         
     }
@@ -105,43 +105,41 @@ public class Wave_System : MonoBehaviour
         m_enemyCount.text = ("" + enemiesLeft);
     }
 
+    //Kurtis Watson
     void FixedUpdate()
     {
-        if (m_isIntermission == true)
+        if (m_isIntermission == true) //Countdown for intermission between rounds.
         {
             m_currentIntermissionTime -= Time.deltaTime;
         }
 
-        if (m_currentIntermissionTime <= 0)
+        if (m_currentIntermissionTime <= 0) //If the player hasn't chosen a stone, the game will do it automatically.
         {
-            notChosen = true;
-            m_isIntermission = false;
-            r_prototypeClasses.m_canSelect = false;
-            m_newWave = true;
+            notChosen = true; //Auto selection (used in Prototype_Classes).
+            m_isIntermission = false; //Stops countdown as it has reached 0.
+            r_prototypeClasses.m_canSelect = false; //Disable player selecting stone.
+            m_newWave = true; //Begin new wave.
         }
-
-        Debug.Log("Time:" + m_currentIntermissionTime);
-        //Kurtis Watson
+        
         if (spawnedEnemies.Count <= 0 && enemiesLeft == 0 && m_enemiesKilled == false && curRound > 0)
         {
-            r_prototypeClasses.buffChosen = false;
-            m_isIntermission = true;
-            if (m_spawnValue % 2 == 0)
+            r_prototypeClasses.buffChosen = false; //Bug fix.
+            m_isIntermission = true; //Begin intermission countdown.
+            if (m_spawnValue % 2 == 0) //Check for if the spawn value is a value of 2.
             {               
-                r_pickupSystem.m_spawnNote = true;
+                r_pickupSystem.m_spawnNote = true; //Spawn note if value of 2.
             }
             else
             {
-                r_pickupSystem.m_spawnCogs = true;
+                r_pickupSystem.m_spawnCogs = true; //Spawn cogs if not a value of 2.
             }
             m_enemiesKilled = true; //Stops the pick-ups from spawning more than one item a round.
             m_startedWaves = false; //Begin the wave (required for a different script).
             r_prototypeClasses.m_canSelect = true; //Allow the player to choose a new Starstone.
             r_prototypeClasses.m_activeStone[r_prototypeClasses.m_classState] = false; //Disable the current stone so that it can be chosen again.
-            r_prototypeClasses.m_activeStone[r_prototypeClasses.m_chosenBuff] = false;
+            r_prototypeClasses.m_activeStone[r_prototypeClasses.m_chosenBuff] = false; //Disable the current enemy buff so it can be chosen again.
             m_spawnValue += 1; //Increments by one to indicate to the game on whether to spawn a gear cog or a lab note.
             r_userInterface.f_waveTimer(); //Update the round time limit.
-
         }
         else
         {

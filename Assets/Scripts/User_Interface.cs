@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 //Kurtis Watson
 public class User_Interface : MonoBehaviour
@@ -13,7 +14,9 @@ public class User_Interface : MonoBehaviour
     public TMPro.TextMeshProUGUI timeTillNextRound;
     public TMPro.TextMeshProUGUI chooseStone;
 
+    public GameObject gameUI;
     public GameObject repairBar;
+    public GameObject pauseMenu;
 
     public TMPro.TextMeshProUGUI noteSpawnedText;
     public TMPro.TextMeshProUGUI cogSpawnedText;
@@ -32,13 +35,14 @@ public class User_Interface : MonoBehaviour
     private int m_currentSecond;
     private int m_currentMinute;
 
-    public List<int> m_waveTimes = new List<int>();
+    private bool pauseMenuActive;
 
-    // Start is called before the first frame update
+    public List<int> m_waveTimes = new List<int>();
 
     private void Start()
     {
-        DontDestroyOnLoad(this.gameObject);
+        DontDestroyOnLoad(this);
+        pauseMenu.active = false;
         repairBar.active = false;
         noteSpawnedText.enabled = false;
         cogSpawnedText.enabled = false;
@@ -48,6 +52,7 @@ public class User_Interface : MonoBehaviour
         pickupSystem = FindObjectOfType<Pickup_System>();
         timeTillNextRound.enabled = false;
     }
+
     // Update is called once per frame
     void Update()
     {
@@ -73,7 +78,7 @@ public class User_Interface : MonoBehaviour
             timeTillNextRound.enabled = false;
         }
 
-        timeTillNextRound.text = r_waveSystem.m_currentIntermissionTime.ToString("F0");
+        timeTillNextRound.text = "NEXT ROUND IN " + r_waveSystem.m_currentIntermissionTime.ToString("F0");
 
         if (r_waveSystem.m_startedWaves == true)
         {
@@ -89,6 +94,25 @@ public class User_Interface : MonoBehaviour
                 SceneManager.LoadScene("GameOver");
             }
         }
+       
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            pauseMenuActive = !pauseMenuActive;
+        }     
+
+        pauseMenu.active = pauseMenuActive;
+    }
+
+    public void resumeButton()
+    {
+        pauseMenuActive = !pauseMenuActive;
+    }
+
+    public void exitButton()
+    {
+        gameUI.active = false;
+        pauseMenuActive = false;
+        SceneManager.LoadScene("MainMenu");      
     }
 
     void f_popupText()
