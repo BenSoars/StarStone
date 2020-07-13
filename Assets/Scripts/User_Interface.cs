@@ -36,6 +36,7 @@ public class User_Interface : MonoBehaviour
 
     private void Start()
     {
+        DontDestroyOnLoad(this.gameObject);
         repairBar.active = false;
         noteSpawnedText.enabled = false;
         cogSpawnedText.enabled = false;
