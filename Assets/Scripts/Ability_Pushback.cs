@@ -9,16 +9,16 @@ public class Ability_Pushback : MonoBehaviour
     private SphereCollider m_sphereCollider;
 
     public float abilitySpeed; //Values to change the strength of the pushback.
-    public float upliftForce;
-    public float knockbackForce;
-    public float damageRadius;
+    public float upliftForce; // the upwards velocity
+    public float knockbackForce; // the force at which the knockback is applied
+    public float damageRadius; // the damage radius
 
     private Rigidbody m_rb;
 
     public void Start()
     {
         m_sphereCollider = gameObject.GetComponent<SphereCollider>();
-        m_rb = GetComponent<Rigidbody>();
+        m_rb = GetComponent<Rigidbody>(); // get the rigidbody
         m_rb.AddForce(transform.forward * abilitySpeed);
     }
 

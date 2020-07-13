@@ -129,6 +129,7 @@ public class Gun_Generic : MonoBehaviour
             {
                 m_shotBullet = Instantiate(m_physicalBullet, m_shotPoint.transform.position, Quaternion.identity) as Rigidbody; // shoot bullet
                 m_shotBullet.AddForce(m_newAccuracy * m_shotForce); // push bullet out
+                m_shotBullet.GetComponent<Projectile>().m_damage = m_bulletDamage;
             }
             else
             {

@@ -6,13 +6,14 @@ public class Proximity_Animate : MonoBehaviour
 {
     // Ben Soars
 
-    public Animator anim;
-    public Player_Controller player;
+    public Animator anim; // animator
+    public Player_Controller player; // the player
     private float Distance;
 
     // Start is called before the first frame update
     void Start()
     {
+        // get neccesary componenets
         player = GameObject.FindObjectOfType<Player_Controller>();
         anim = gameObject.GetComponent<Animator>();
     }
@@ -20,7 +21,8 @@ public class Proximity_Animate : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // calculate the distance
         Distance = Vector3.Distance(player.transform.position, transform.position);
-        anim.SetBool("Close", Distance <= 8);
+        anim.SetBool("Close", Distance <= 8); // if the player is within this range, set the animation to be true
     }
 }

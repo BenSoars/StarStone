@@ -77,7 +77,7 @@ public class Enemy_Controller : MonoBehaviour
         m_defaultRunSpeed = m_runSpeed; // set the default run speed
         m_hurtBox.m_damage = m_enemyDamage; // set the hurtbox damage to represent the enemy damage
 
-        soundEffect.volume = PlayerPrefs.GetFloat("volumeLevel");
+        soundEffect.volume = PlayerPrefs.GetFloat("volumeLevel"); // set the sound to match the sound effect volume
     }
 
     void Update()
