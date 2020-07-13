@@ -5,6 +5,7 @@ using UnityEngine.PlayerLoop;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
+//Kurtis Watson
 public class Portal_Controller : MonoBehaviour
 {
     public Image transition;

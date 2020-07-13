@@ -51,7 +51,6 @@ public class Player_Controller : MonoBehaviour
 
     public bool isPlayerActive;
 
-
     //public Rigidbody grenade;
     //public int grenadeAmount = 3;
     public float defenceValue = 1;
@@ -256,6 +255,7 @@ public class Player_Controller : MonoBehaviour
         }
     }
 
+    //Kurtis Watson
     private void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.name == "Top Stop Point")
@@ -270,6 +270,7 @@ public class Player_Controller : MonoBehaviour
         }      
     }
 
+    //Kurtis Watson
     private void OnTriggerExit(Collider other)
     {
         if (other.gameObject.name == "Top of Ladder")

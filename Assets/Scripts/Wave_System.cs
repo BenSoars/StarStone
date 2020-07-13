@@ -103,7 +103,7 @@ public class Wave_System : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {       
-        //Ben Soars
+        //Kurtis Watson
         if (spawnedEnemies.Count <= 0 && enemiesLeft == 0 && m_timeMet == false) // if there are no more enemies
         {
             m_timeMet = true;
@@ -125,6 +125,7 @@ public class Wave_System : MonoBehaviour
         }
         else
         {
+            //Ben Soars
             // if there are enemies
             for (int i = 0; i < spawnedEnemies.Count; i++) //check the list of enemies that are spawned
             {
