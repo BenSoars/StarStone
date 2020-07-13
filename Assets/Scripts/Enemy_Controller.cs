@@ -10,7 +10,9 @@ public class Enemy_Controller : MonoBehaviour
     // Ben Soars
     private NavMeshAgent m_navAgent;
 
+    [Tooltip("Enemy movement speed, used when the enemy is wandering around")]
     public float m_moveSpeed = 2; // the default movement speed
+    [Tooltip("Enemy running speed, used when the enemy spots the player")]
     public float m_runSpeed = 4; // the running speed, used when it spots the player
     public float m_enemyHealth = 3; // the enemy health
     public float m_enemyDamage = 5; // the damage the enemy does to the player
