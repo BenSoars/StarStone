@@ -41,7 +41,7 @@ public class User_Interface : MonoBehaviour
 
     private void Start()
     {
-        DontDestroyOnLoad(gameObject);
+        DontDestroyOnLoad(this);
         pauseMenu.active = false;
         repairBar.active = false;
         noteSpawnedText.enabled = false;
@@ -57,7 +57,6 @@ public class User_Interface : MonoBehaviour
     void Update()
     {
         f_popupText();
-        f_pauseMenu();
 
         m_currentHealth.text = "" + r_playerController.playerHealth.ToString("F0");
 
@@ -95,6 +94,25 @@ public class User_Interface : MonoBehaviour
                 SceneManager.LoadScene("GameOver");
             }
         }
+       
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            pauseMenuActive = !pauseMenuActive;
+        }     
+
+        pauseMenu.active = pauseMenuActive;
+    }
+
+    public void resumeButton()
+    {
+        pauseMenuActive = !pauseMenuActive;
+    }
+
+    public void exitButton()
+    {
+        gameUI.active = false;
+        pauseMenuActive = false;
+        SceneManager.LoadScene("MainMenu");      
     }
 
     void f_popupText()
@@ -120,46 +138,5 @@ public class User_Interface : MonoBehaviour
     public void f_waveTimer()
     {
         m_targetTime = m_waveTimes[r_waveSystem.curRound];
-    }
-
-    void f_pauseMenu()
-    {
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            pauseMenuActive = !pauseMenuActive;
-        }
-
-        if (pauseMenuActive == true)
-        {
-            gameUI.active = false;
-            Time.timeScale = 0;
-            Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
-        }
-
-        else
-        {
-            gameUI.active = true;
-            Time.timeScale = 1;
-            Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = false;
-        }
-        
-        pauseMenu.active = pauseMenuActive;
-    }
-
-    public void resumeButton()
-    {
-        pauseMenuActive = !pauseMenuActive;
-    }
-
-    public void exitButton()
-    {
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
-        gameUI.active = false;
-        pauseMenuActive = false;
-        SceneManager.LoadScene("MainMenu");
-        Destroy(gameObject);
     }
 }
