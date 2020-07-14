@@ -168,9 +168,10 @@ public class Gun_Generic : Melee_Attack
     void onReload()
     {
         Anim.SetTrigger("Reload"); // play reload animation
+        m_maxAmmo -= (m_currentAmmo - m_clipSize);
         coolDownTimer = m_reloadTime;
         m_currentAmmo = m_clipSize;
-        m_maxAmmo -= m_clipSize;
+        
         f_updateUI();
     }
 
