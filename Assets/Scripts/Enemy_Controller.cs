@@ -221,6 +221,15 @@ public class Enemy_Controller : MonoBehaviour
         }
     }
 
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Melee")) // if the enemy is hit by an explosion
+        {
+            
+            m_enemyHealth -= 50; // set them to 1 health so they die on impact
+        }
+    }
+
     void OnCollisionEnter(Collision col)
     {
         if (col.gameObject.CompareTag("Ground") && m_isGrounded == false) // if the enemy touches the ground and isn't already grounded
