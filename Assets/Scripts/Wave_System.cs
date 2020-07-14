@@ -75,28 +75,30 @@ public class Wave_System : MonoBehaviour
     //Kurtis Watson
     void f_spawnWisps()
     {
-        m_currentIntermissionTime = intermissionTime; //Reset current intermission time.
-        m_newWave = false; //Stop a new wave of enemies spawning. 
-        m_startedWaves = true; //Update UI values.
-        f_sortOutEnemys(); //Spawn enemies of different types.
-        audio.playImportant(roundNoises[0]);
-        for (int k = 0; k < enemyArray.Count; k++) 
+        if (SceneManager.GetActiveScene().name != "Temple_Clean") //Stop enemies spawning in clean scene.
         {
-            for (int i = 0; i < enemyArray[k]; i++)
+            m_currentIntermissionTime = intermissionTime; //Reset current intermission time.
+            m_newWave = false; //Stop a new wave of enemies spawning. 
+            m_startedWaves = true; //Update UI values.
+            f_sortOutEnemys(); //Spawn enemies of different types.
+            audio.playImportant(roundNoises[0]);
+            for (int k = 0; k < enemyArray.Count; k++)
             {
-                m_random = Random.Range(1, 4);
-                GameObject spawned = Instantiate(m_wisps[k], m_wispPoint[m_random].transform.position, Quaternion.identity); //Spawn wisps at a random point.
-                spawnedEnemies.Add(spawned); //Add enemy spawned to enemies spawned list.
+                for (int i = 0; i < enemyArray[k]; i++)
+                {
+                    m_random = Random.Range(1, 4);
+                    GameObject spawned = Instantiate(m_wisps[k], m_wispPoint[m_random].transform.position, Quaternion.identity); //Spawn wisps at a random point.
+                    spawnedEnemies.Add(spawned); //Add enemy spawned to enemies spawned list.
+                }
             }
+            enemiesLeft = spawnedEnemies.Count; //Set the count for the enemies left.
+            r_prototypeClasses.m_fogStrength = 0.2f; //Fog strength.
+            r_prototypeClasses.m_currentFog = 0.2f; //Reset current fog.
+            r_prototypeClasses.m_stonePower[r_prototypeClasses.m_chosenBuff] -= enemiesLeft * 2; //Decrease the chosen enemy buff by two times the amount of enemies.
+            m_fogMath = r_prototypeClasses.m_fogStrength / enemiesLeft; //Calculate the amount of fog to decrease each enemy kill.
+            curRound += 1; //Increase current round by one.
+            m_enemiesKilled = false;
         }
-        enemiesLeft = spawnedEnemies.Count; //Set the count for the enemies left.
-        r_prototypeClasses.m_fogStrength = 0.2f; //Fog strength.
-        r_prototypeClasses.m_currentFog = 0.2f; //Reset current fog.
-        r_prototypeClasses.m_stonePower[r_prototypeClasses.m_chosenBuff] -= enemiesLeft * 2; //Decrease the chosen enemy buff by two times the amount of enemies.
-        m_fogMath = r_prototypeClasses.m_fogStrength / enemiesLeft; //Calculate the amount of fog to decrease each enemy kill.
-        curRound += 1; //Increase current round by one.
-        m_enemiesKilled = false;
-        
     }
 
     //Kurtis Watson
