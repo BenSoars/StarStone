@@ -218,7 +218,7 @@ public class Gun_Generic : Melee_Attack
                 }
             }
 
-            if (Input.GetKeyDown(KeyCode.V) || Input.GetKeyDown(KeyCode.Mouse2))
+            if (Input.GetKeyDown(KeyCode.Mouse2))
             {
                 Anim.SetTrigger("Melee");
             }
