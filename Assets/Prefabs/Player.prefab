@@ -292,12 +292,12 @@ MonoBehaviour:
     type: 3}
   m_shotPoint: {fileID: 567909998898289762}
   hitSpark: {fileID: 711091191413159071, guid: bcb401efd2e081e47b56a919ee7cd4c5, type: 3}
-  m_hitDamageText: {fileID: 716313641932058393, guid: 6d1c9af70de7b834eb4915020237bcca,
-    type: 3}
   Anim: {fileID: 2484504158634245370}
   layerMask:
     serializedVersion: 2
     m_Bits: 0
+  m_hitDamageText: {fileID: 716313641932058393, guid: 6d1c9af70de7b834eb4915020237bcca,
+    type: 3}
 --- !u!1 &1924124459186539784
 GameObject:
   m_ObjectHideFlags: 0
@@ -666,7 +666,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7799314833898530632
 Transform:
   m_ObjectHideFlags: 0
@@ -1257,12 +1257,12 @@ MonoBehaviour:
   m_physicalBullet: {fileID: 0}
   m_shotPoint: {fileID: 567909998898289762}
   hitSpark: {fileID: 711091191413159071, guid: bcb401efd2e081e47b56a919ee7cd4c5, type: 3}
-  m_hitDamageText: {fileID: 716313641932058393, guid: 6d1c9af70de7b834eb4915020237bcca,
-    type: 3}
   Anim: {fileID: 9051406418708992001}
   layerMask:
     serializedVersion: 2
     m_Bits: 0
+  m_hitDamageText: {fileID: 716313641932058393, guid: 6d1c9af70de7b834eb4915020237bcca,
+    type: 3}
 --- !u!95 &9051406418708992001
 Animator:
   serializedVersion: 3
@@ -1901,6 +1901,7 @@ MonoBehaviour:
   buffChosen: 0
   m_fogStrength: 0
   m_currentFog: 0
+  stoneColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!114 &1031861635661113235
 MonoBehaviour:
   m_ObjectHideFlags: 0

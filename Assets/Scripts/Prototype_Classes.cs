@@ -10,6 +10,7 @@ public class Prototype_Classes : MonoBehaviour
     private Gun_Generic r_gunGeneric;
     public Prototype_Weapon r_prototypeWeapon;
     private Wave_System r_waveSystem;
+    private Rune_Controller r_runeController;
 
     public Transform m_shotPoint;
 
@@ -35,6 +36,8 @@ public class Prototype_Classes : MonoBehaviour
     public float m_fogStrength;
     public float m_currentFog;
 
+    public Color stoneColor;
+
     void Start()
     {
         if(m_stonePowerSet == false)
@@ -52,6 +55,7 @@ public class Prototype_Classes : MonoBehaviour
         r_playerController = FindObjectOfType<Player_Controller>();
         r_gunGeneric = FindObjectOfType<Gun_Generic>();
         r_waveSystem = FindObjectOfType<Wave_System>();
+        r_runeController = FindObjectOfType<Rune_Controller>();
 
         m_defaultDefence = r_playerController.defenceValue;
         m_defaultHealth = r_playerController.playerHealth;
@@ -65,6 +69,7 @@ public class Prototype_Classes : MonoBehaviour
         f_enemyBuff();
         f_chargeStones();
         f_ability();
+        f_setStoneColor();
 
         if (Input.GetKeyDown("p"))
         {
@@ -95,6 +100,7 @@ public class Prototype_Classes : MonoBehaviour
 
         if (Physics.Raycast(m_shotPoint.position, m_shotPoint.forward, out m_stoneSelect, 3f, 1 << 11) && Input.GetKeyDown("f") && m_canSelect == true)
         {
+            r_runeController.animated = true;
             buffChosen = true;
 
             f_defaultSettings();
@@ -122,6 +128,7 @@ public class Prototype_Classes : MonoBehaviour
 
         if (r_waveSystem.notChosen == true)
         {
+            r_runeController.animated = true;
             buffChosen = true;       
             f_defaultSettings();   
             
@@ -152,7 +159,7 @@ public class Prototype_Classes : MonoBehaviour
                 
                 break;
             case 1:
-                r_gunGeneric.m_bulletDamage = r_gunGeneric.m_bulletDamage * 0.75f;
+                //r_gunGeneric.m_bulletDamage = r_gunGeneric.m_bulletDamage * 0.75f;
                 m_fogStrength = Mathf.Lerp(m_fogStrength, m_currentFog, Time.deltaTime * 2); //Smooth fog adjustment.
                 RenderSettings.fogDensity = m_fogStrength;
                 RenderSettings.fog = true;
@@ -249,5 +256,24 @@ public class Prototype_Classes : MonoBehaviour
     void f_resetInvisible()
     {
         r_playerController.isPlayerInvisible = false;
+    }
+
+    void f_setStoneColor()
+    {
+        switch (m_chosenBuff)
+        {
+            case 0:
+                stoneColor = Color.yellow;
+                break;
+            case 1:
+                stoneColor = Color.white;
+                break;
+            case 2:
+                stoneColor = Color.magenta;
+                break;
+            case 3:
+                stoneColor = Color.cyan;
+                break;
+        }
     }
 }
