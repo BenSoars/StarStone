@@ -78,6 +78,7 @@ public class Prototype_Classes : MonoBehaviour
         {
             m_activeStone[m_classState] = false;
         }
+        r_waveSystem.notChosen = false;
         m_currentFog = m_fogStrength;
         RenderSettings.fog = false;
         r_playerController.defenceValue = m_defaultDefence;
@@ -121,9 +122,7 @@ public class Prototype_Classes : MonoBehaviour
 
         if (r_waveSystem.notChosen == true)
         {
-            buffChosen = true;
-            r_waveSystem.notChosen = false;
-            
+            buffChosen = true;       
             f_defaultSettings();   
             
             m_classState = Random.Range(0, 3);

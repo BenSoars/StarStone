@@ -111,18 +111,7 @@ public class Wave_System : MonoBehaviour
     //Kurtis Watson
     void FixedUpdate()
     {
-        if (m_isIntermission == true) //Countdown for intermission between rounds.
-        {
-            m_currentIntermissionTime -= Time.deltaTime;
-        }
-
-        if (m_currentIntermissionTime <= 0) //If the player hasn't chosen a stone, the game will do it automatically.
-        {
-            notChosen = true; //Auto selection (used in Prototype_Classes).
-            m_isIntermission = false; //Stops countdown as it has reached 0.
-            r_prototypeClasses.m_canSelect = false; //Disable player selecting stone.
-            //m_newWave = true; //Begin new wave.
-        }
+        f_intermission();
         
         if (spawnedEnemies.Count <= 0 && enemiesLeft == 0 && m_enemiesKilled == false && curRound > 0)
         {
@@ -136,7 +125,7 @@ public class Wave_System : MonoBehaviour
             {
                 r_pickupSystem.m_spawnCogs = true; //Spawn cogs if not a value of 2.
             }
-            m_enemiesKilled = true; //Stops the pick-ups from spawning more than one item a round.
+            m_enemiesKilled = true; //Stops the pick-ups from spawning more than one item a round (Notes etc. above in %2 function).
             m_startedWaves = false; //Begin the wave (required for a different script).
             r_prototypeClasses.m_canSelect = true; //Allow the player to choose a new Starstone.
             r_prototypeClasses.m_activeStone[r_prototypeClasses.m_classState] = false; //Disable the current stone so that it can be chosen again.
@@ -156,6 +145,21 @@ public class Wave_System : MonoBehaviour
                     break; // break the loop, as the for loop won't work due to an element being removed
                 }
             }
+        }
+    }
+
+    void f_intermission()
+    {
+        if (m_isIntermission == true) //Countdown for intermission between rounds.
+        {
+            m_currentIntermissionTime -= Time.deltaTime;
+        }
+
+        if (m_currentIntermissionTime <= 0 && m_isIntermission == true) //If the player hasn't chosen a stone, the game will do it automatically.
+        {
+            notChosen = true; //Auto selection (used in Prototype_Classes).
+            m_isIntermission = false; //Stops countdown as it has reached 0.
+            r_prototypeClasses.m_canSelect = false; //Disable player selecting stone.
         }
     }
 
