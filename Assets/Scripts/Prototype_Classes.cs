@@ -56,7 +56,7 @@ public class Prototype_Classes : MonoBehaviour
         m_defaultDefence = r_playerController.defenceValue;
         m_defaultHealth = r_playerController.playerHealth;
         m_defaultDamageCooldown = r_prototypeWeapon.m_damageCoolDown;
-        m_defaultBulletDamage = r_gunGeneric.m_bulletDamage;
+        //m_defaultBulletDamage = r_gunGeneric.m_bulletDamage;
     }
 
     void Update()
@@ -83,7 +83,7 @@ public class Prototype_Classes : MonoBehaviour
         RenderSettings.fog = false;
         r_playerController.defenceValue = m_defaultDefence;
         r_prototypeWeapon.m_damageCoolDown = m_defaultDamageCooldown;
-        r_gunGeneric.m_bulletDamage = m_defaultBulletDamage;
+        //r_gunGeneric.m_bulletDamage = m_defaultBulletDamage;
         r_waveSystem.m_isIntermission = false;
         r_waveSystem.m_newWave = true;
         m_canSelect = false;
