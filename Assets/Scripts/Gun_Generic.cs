@@ -105,7 +105,7 @@ public class Gun_Generic : Melee_Attack
         m_player = GameObject.FindObjectOfType<Player_Controller>(); // get player component
         m_audio = GameObject.FindObjectOfType<Audio_System>(); // get audio system
         f_updateUI(); // update the UI
-        layerMask = 1 >> 14;
+  
 
         m_savedMaxAmmo = m_maxAmmo; // save the max ammo of the weapon
     }
