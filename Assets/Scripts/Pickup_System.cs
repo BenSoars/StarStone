@@ -72,13 +72,12 @@ public class Pickup_System : MonoBehaviour
         m_desiredLocation = m_locations[random];
         if (m_spawnNote == true)
         {
-            m_spawnNote = false;
+            userInterface.f_popupText();
             Instantiate(m_note, m_desiredLocation.position, Quaternion.identity); //Instantiate the note at the chosen location.
         }
-
         if (m_spawnCogs == true)
         {
-            m_spawnCogs = false;
+            userInterface.f_popupText();
             Instantiate(clockPart[m_clockPart], m_desiredLocation.position, Quaternion.identity); //Instantiate the note at the chosen location.
             m_clockPart += 1;
         }

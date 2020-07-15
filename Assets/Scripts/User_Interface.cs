@@ -19,8 +19,8 @@ public class User_Interface : MonoBehaviour
     public GameObject pauseMenu;
     public GameObject transition;
 
-    public GameObject noteSpawnedText;
-    public GameObject cogSpawnedText;
+    public TMPro.TextMeshProUGUI noteSpawnedText;
+    public TMPro.TextMeshProUGUI cogSpawnedText;
 
     public TMPro.TextMeshPro m_SS1;
     public TMPro.TextMeshPro m_SS2;
@@ -46,8 +46,8 @@ public class User_Interface : MonoBehaviour
         transition.active = false;
         pauseMenu.active = false;
         repairBar.active = false;
-        noteSpawnedText.active = false;
-        cogSpawnedText.active = false;
+        noteSpawnedText.enabled = false;
+        cogSpawnedText.enabled = false;
         r_waveSystem = FindObjectOfType<Wave_System>();
         r_playerController = FindObjectOfType<Player_Controller>();
         r_prototypeClasses = FindObjectOfType<Prototype_Classes>();
@@ -59,8 +59,7 @@ public class User_Interface : MonoBehaviour
     void Update()
     {
         f_pauseMenu();
-        f_popupText();
-
+        
         m_currentHealth.text = "" + r_playerController.playerHealth.ToString("F0");
 
         m_currentStoneCharge.text = "" + r_prototypeClasses.m_stonePower[r_prototypeClasses.m_classState].ToString("F0");
@@ -102,26 +101,25 @@ public class User_Interface : MonoBehaviour
         }
     }
  
-    void f_popupText()
+    public void f_popupText()
     {
         if (pickupSystem.m_spawnNote == true)
         {
             pickupSystem.m_spawnNote = false;
-            noteSpawnedText.active = true;
-            Invoke("f_resetText", 3);
+            noteSpawnedText.enabled = true;          
         }
         if (pickupSystem.m_spawnCogs == true)
         {
             pickupSystem.m_spawnCogs = false;
-            cogSpawnedText.active = true;
-            Invoke("f_resetText", 3);
+            cogSpawnedText.enabled = true;         
         }
+        Invoke("f_resetText", 3);
     }
 
     void f_resetText()
     {
-        noteSpawnedText.active = false;
-        cogSpawnedText.active = false;
+        noteSpawnedText.enabled = false;
+        cogSpawnedText.enabled = false;
     }
 
     public void f_waveTimer()
