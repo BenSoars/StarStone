@@ -17,6 +17,7 @@ public class User_Interface : MonoBehaviour
     public GameObject gameUI;
     public GameObject repairBar;
     public GameObject pauseMenu;
+    public GameObject transition;
 
     public TMPro.TextMeshProUGUI noteSpawnedText;
     public TMPro.TextMeshProUGUI cogSpawnedText;
@@ -42,6 +43,7 @@ public class User_Interface : MonoBehaviour
     private void Start()
     {
         DontDestroyOnLoad(this);
+        transition.active = false;
         pauseMenu.active = false;
         repairBar.active = false;
         noteSpawnedText.enabled = false;
@@ -56,6 +58,7 @@ public class User_Interface : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        f_pauseMenu();
         f_popupText();
 
         m_currentHealth.text = "" + r_playerController.playerHealth.ToString("F0");
@@ -90,31 +93,15 @@ public class User_Interface : MonoBehaviour
             m_currentTimeText.text = "" + m_currentMinute.ToString("00") + ":" + m_currentSecond.ToString("00");
 
             if (m_targetTime <= 0)
-            {
-                SceneManager.LoadScene("GameOver");
+            {               
+                Destroy(gameObject);
+                Cursor.lockState = CursorLockMode.None;
+                Cursor.visible = true;
+                SceneManager.LoadScene("GameOver");               
             }
         }
-       
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            pauseMenuActive = !pauseMenuActive;
-        }     
-
-        pauseMenu.active = pauseMenuActive;
     }
-
-    public void resumeButton()
-    {
-        pauseMenuActive = !pauseMenuActive;
-    }
-
-    public void exitButton()
-    {
-        gameUI.active = false;
-        pauseMenuActive = false;
-        SceneManager.LoadScene("MainMenu");      
-    }
-
+ 
     void f_popupText()
     {
         if (pickupSystem.m_spawnNote == true)
@@ -138,5 +125,46 @@ public class User_Interface : MonoBehaviour
     public void f_waveTimer()
     {
         m_targetTime = m_waveTimes[r_waveSystem.curRound];
+    }   
+    
+    public void f_pauseMenu()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            pauseMenuActive = !pauseMenuActive;
+        }
+
+        if (pauseMenuActive == true)
+        {
+            gameUI.active = false;
+            Time.timeScale = 0;
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+        }
+        else
+        {
+            gameUI.active = true;
+            Time.timeScale = 1;
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+        }
+
+        pauseMenu.active = pauseMenuActive;
     }
+
+    public void resumeButton()
+    {
+        pauseMenuActive = !pauseMenuActive;
+    }
+
+    public void exitButton()
+    {
+        Destroy(gameObject);
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+        gameUI.active = false;
+        pauseMenuActive = false;
+        SceneManager.LoadScene("MainMenu");      
+    }
+
 }

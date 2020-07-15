@@ -8,7 +8,7 @@ using UnityEngine.SceneManagement;
 //Kurtis Watson
 public class Portal_Controller : MonoBehaviour
 {
-    public Image transition;
+    public GameObject transition;
 
     public GameObject player;
 
@@ -19,42 +19,35 @@ public class Portal_Controller : MonoBehaviour
     private bool opacityMet;
     private void Start()
     {
-        transition.enabled = false;
-
         DontDestroyOnLoad(this.gameObject);
     }
 
     private void Update()
     {
-
-        Scene scene = SceneManager.GetActiveScene();
-        if (scene.name == "Temple_Clean" && sceneSwitch == false)
-        {
-            opacity = 1;
-            Debug.Log("yes");
-            sceneSwitch = true;
-        }
-
-        if(transitionActive == true)
+        if(transitionActive == true) //Begin transition if the player sets off trigger.
         {
             if (opacityMet == false)
             {
                 opacity += 0.002f;
                 if(opacity >= 1)
                 {
-                    SceneManager.LoadScene("Temple_Clean");
-                    opacityMet = true;
+                    SceneManager.LoadScene("Temple_Clean"); //Load new scene as screen hits pitch black (transition effect).
+                    opacityMet = true; //Begin lowering the opacity to show the new scene.
                 }
             }
 
             if(opacityMet == true)
             {
-                opacity -= 0.001f;                
+                opacity -= 0.002f; //Lower the opacity as the new scene has loaded.  
+                if(opacity <= 0) 
+                {
+                    transition.active = false; //Disable the transition image so that the UI buttons can be used.
+                }
             }
             
-            Color c = transition.color;
+            Color c = transition.GetComponent<Image>().color;
             c.a = opacity;
-            transition.color = c;
+            transition.GetComponent<Image>().color = c;
         }
     }
 
@@ -62,8 +55,8 @@ public class Portal_Controller : MonoBehaviour
     {
         if(other.gameObject.tag == "Player")
         {
-            transitionActive = true;
-            transition.enabled = true;
+            transitionActive = true; //Activate transition.
+            transition.active = true; //Enable GameObject.
         }
     }
 }

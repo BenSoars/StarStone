@@ -91,10 +91,10 @@ public class Player_Controller : MonoBehaviour
             //}
 
             //Kurtis Watson
-            if (Input.GetKeyDown("e"))
-            {
-                r_abilityMelee.f_melee();
-            }
+            //if (Input.GetKeyDown("e"))
+            //{
+            //    r_abilityMelee.f_melee();
+            //}
             
             f_climb();
             f_lookAround();

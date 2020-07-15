@@ -10,6 +10,8 @@ public class Clock_Controller : MonoBehaviour
 {
     private Animator m_animator;
 
+    private Pickup_System pickupSystem;
+
     private int m_desiredMin;
     private int m_desiredHour;
 
@@ -30,6 +32,7 @@ public class Clock_Controller : MonoBehaviour
 
     private void Start()
     {
+        pickupSystem = FindObjectOfType<Pickup_System>();
         portal.active = false;
         for (int i = 0; i < clockParts.Count; i++)
         {
@@ -59,7 +62,7 @@ public class Clock_Controller : MonoBehaviour
             portal.active = true;
         }
 
-        if (Vector3.Distance(transform.position, player.transform.position) < 3)
+        if (Vector3.Distance(transform.position, player.transform.position) < 3 && pickupSystem.clockFixed == true)
         {
             if (Input.GetKeyDown(KeyCode.Mouse0))
             {

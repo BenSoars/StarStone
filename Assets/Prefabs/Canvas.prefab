@@ -2386,6 +2386,7 @@ MonoBehaviour:
   gameUI: {fileID: 4668854015211473051}
   repairBar: {fileID: 7309254859920486855}
   pauseMenu: {fileID: 8150140774860534131}
+  transition: {fileID: 4305803399649541090}
   noteSpawnedText: {fileID: 9141222454427168190}
   cogSpawnedText: {fileID: 7605227561904064949}
   m_SS1: {fileID: 0}
