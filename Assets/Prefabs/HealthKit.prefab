@@ -154,7 +154,7 @@ GameObject:
   - component: {fileID: 1328950134255430574}
   - component: {fileID: 4086346964093851213}
   - component: {fileID: 3540211545587873186}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: HealthKit
   m_TagString: Ammo
   m_Icon: {fileID: 0}

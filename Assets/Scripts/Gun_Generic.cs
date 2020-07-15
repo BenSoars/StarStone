@@ -21,11 +21,16 @@ public class Gun_Generic : Melee_Attack
     public int m_currentAmmo = 6; // the current ammo
     [Tooltip("The amount of ammo per clip")]
     public int m_clipSize = 6; // the current ammo
+    [Tooltip("The scale used to devide the amount of visible ammo on the UI")]
+    public int ammoScale = 1; // used for deviding the displayed ammo count for more accurate depictions
     [Tooltip("The ammount of Ammo consumed per each shot, also allows for multiple projectiles per shot.")]
     public int m_ammoPerShot = 1; // how much ammo shooting will consume
     [Tooltip("The time inbetween shots.")]
     public float m_coolDown = 0.5f; // the amount of time until the next shot can happen
+    [Tooltip("The time to reload")]
+    public float m_reloadTime = 0.5f; // the amount of time until the next shot can happen
     public float m_bulletDamage; // the damage of the bullet
+    
     public AudioClip shotSound; // the shot sound
 
     [Space(2)]
@@ -56,10 +61,6 @@ public class Gun_Generic : Melee_Attack
     [Space(2)]
     [Tooltip("The force that will be applied to the physical projectile (if there is a physical projectile).")]
     public float m_shotForce = 100; // how much force the bullet will be shot for, it hitscan leave blank
- 
-
-    [Tooltip("The time to reload")]
-    public float m_reloadTime = 0.5f; // the amount of time until the next shot can happen
 
     [Tooltip("The minimum damage the bullet can deal.")]
     public int m_minBulletDamage; // the minimum damage for the bullet
@@ -95,7 +96,7 @@ public class Gun_Generic : Melee_Attack
     [Tooltip("The gameobject that is used for the damage text")]
     public GameObject m_hitDamageText; // the hit text
     public Animator Anim; // the animations for gun
-    private LayerMask layerMask;
+    public LayerMask layerMask;
 
     void Start()
     {
@@ -128,15 +129,9 @@ public class Gun_Generic : Melee_Attack
 
         for (int i = 0; i < m_ammoPerShot; i++) // for loop of ammo per shot
         {
-            if (!isAccurate) // if the gun is not accurate
-            {
-                m_newAccuracy = f_BulletSpread(); // generate a new accuracy
-            }
-            else
-            {
-                m_newAccuracy = m_shotPoint.forward; // is accurate, uses default accuracy
-            }
-
+            if (!isAccurate) { m_newAccuracy = f_BulletSpread(); } // generate a new accuracy if the gun isn't set to be accurate
+            else { m_newAccuracy = m_shotPoint.forward; } // is accurate, uses default accuracy
+            
             if (m_physicalBullet) // if a physical bullet is there
             {
                 m_shotBullet = Instantiate(m_physicalBullet, m_shotPoint.transform.position, Quaternion.identity) as Rigidbody; // shoot bullet
@@ -200,8 +195,8 @@ public class Gun_Generic : Melee_Attack
 
     public void f_updateUI() // update the UI to reflect the current ammo count
     {
-        m_ammoCount.text = (m_currentAmmo.ToString() + "/" + m_clipSize.ToString());
-        m_ammoTotal.text = m_maxAmmo.ToString();
+        m_ammoCount.text = ((m_currentAmmo / ammoScale).ToString() + "/" + (m_clipSize / ammoScale).ToString());
+        m_ammoTotal.text = (m_maxAmmo / ammoScale).ToString();
     }
 
     void Update()
