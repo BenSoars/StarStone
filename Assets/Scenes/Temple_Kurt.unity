@@ -11355,6 +11355,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 719655212689082521, guid: 21294374fa76e804481961918e20ba03,
+        type: 3}
+      propertyPath: m_ConnectedAnchor.x
+      value: -0.022029273
+      objectReference: {fileID: 0}
+    - target: {fileID: 719655212689082521, guid: 21294374fa76e804481961918e20ba03,
+        type: 3}
+      propertyPath: m_ConnectedAnchor.y
+      value: 0.0008924046
+      objectReference: {fileID: 0}
+    - target: {fileID: 719655212689082521, guid: 21294374fa76e804481961918e20ba03,
+        type: 3}
+      propertyPath: m_ConnectedAnchor.z
+      value: -0.0014334789
+      objectReference: {fileID: 0}
     - target: {fileID: 1391486707071753610, guid: 21294374fa76e804481961918e20ba03,
         type: 3}
       propertyPath: m_Name
@@ -11414,6 +11429,51 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3917888399529709081, guid: 21294374fa76e804481961918e20ba03,
+        type: 3}
+      propertyPath: m_ConnectedAnchor.x
+      value: 0.022029277
+      objectReference: {fileID: 0}
+    - target: {fileID: 3917888399529709081, guid: 21294374fa76e804481961918e20ba03,
+        type: 3}
+      propertyPath: m_ConnectedAnchor.y
+      value: 0.0069343587
+      objectReference: {fileID: 0}
+    - target: {fileID: 3917888399529709081, guid: 21294374fa76e804481961918e20ba03,
+        type: 3}
+      propertyPath: m_ConnectedAnchor.z
+      value: 0.0014334786
+      objectReference: {fileID: 0}
+    - target: {fileID: 5654244755176519489, guid: 21294374fa76e804481961918e20ba03,
+        type: 3}
+      propertyPath: m_ConnectedAnchor.x
+      value: -0.022079999
+      objectReference: {fileID: 0}
+    - target: {fileID: 5654244755176519489, guid: 21294374fa76e804481961918e20ba03,
+        type: 3}
+      propertyPath: m_ConnectedAnchor.y
+      value: 0.0008924046
+      objectReference: {fileID: 0}
+    - target: {fileID: 5654244755176519489, guid: 21294374fa76e804481961918e20ba03,
+        type: 3}
+      propertyPath: m_ConnectedAnchor.z
+      value: -0.0014334789
+      objectReference: {fileID: 0}
+    - target: {fileID: 8733977951235972113, guid: 21294374fa76e804481961918e20ba03,
+        type: 3}
+      propertyPath: m_ConnectedAnchor.x
+      value: -0.022080014
+      objectReference: {fileID: 0}
+    - target: {fileID: 8733977951235972113, guid: 21294374fa76e804481961918e20ba03,
+        type: 3}
+      propertyPath: m_ConnectedAnchor.y
+      value: 0.006934352
+      objectReference: {fileID: 0}
+    - target: {fileID: 8733977951235972113, guid: 21294374fa76e804481961918e20ba03,
+        type: 3}
+      propertyPath: m_ConnectedAnchor.z
+      value: 0.0014334786
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 21294374fa76e804481961918e20ba03, type: 3}
@@ -18151,6 +18211,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Generator_1
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 2e1cc87f327775945bcd0687b9b2f6a8,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2e1cc87f327775945bcd0687b9b2f6a8, type: 3}
 --- !u!1001 &1153539373
@@ -18189,6 +18254,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1908995038181295566, guid: decec99c3a54a654d862175cb6806af1,
+        type: 3}
+      propertyPath: layerMask.m_Bits
+      value: 16384
       objectReference: {fileID: 0}
     - target: {fileID: 1924124459186539784, guid: decec99c3a54a654d862175cb6806af1,
         type: 3}
@@ -18389,6 +18459,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7591412882415260588, guid: decec99c3a54a654d862175cb6806af1,
+        type: 3}
+      propertyPath: layerMask.m_Bits
+      value: 16384
       objectReference: {fileID: 0}
     - target: {fileID: 7591412882415260590, guid: decec99c3a54a654d862175cb6806af1,
         type: 3}
