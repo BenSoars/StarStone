@@ -77,8 +77,9 @@ public class Wave_System : MonoBehaviour
     {
         if (SceneManager.GetActiveScene().name != "Temple_Clean") //Stop enemies spawning in clean scene.
         {
+            m_newWave = false;
             m_currentIntermissionTime = intermissionTime; //Reset current intermission time.
-            m_newWave = false; //Stop a new wave of enemies spawning. 
+             //Stop a new wave of enemies spawning. 
             m_startedWaves = true; //Update UI values.
             f_sortOutEnemys(); //Spawn enemies of different types.
             audio.playImportant(roundNoises[0]);
@@ -120,7 +121,7 @@ public class Wave_System : MonoBehaviour
             notChosen = true; //Auto selection (used in Prototype_Classes).
             m_isIntermission = false; //Stops countdown as it has reached 0.
             r_prototypeClasses.m_canSelect = false; //Disable player selecting stone.
-            m_newWave = true; //Begin new wave.
+            //m_newWave = true; //Begin new wave.
         }
         
         if (spawnedEnemies.Count <= 0 && enemiesLeft == 0 && m_enemiesKilled == false && curRound > 0)

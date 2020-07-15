@@ -19,8 +19,8 @@ public class User_Interface : MonoBehaviour
     public GameObject pauseMenu;
     public GameObject transition;
 
-    public TMPro.TextMeshProUGUI noteSpawnedText;
-    public TMPro.TextMeshProUGUI cogSpawnedText;
+    public GameObject noteSpawnedText;
+    public GameObject cogSpawnedText;
 
     public TMPro.TextMeshPro m_SS1;
     public TMPro.TextMeshPro m_SS2;
@@ -46,8 +46,8 @@ public class User_Interface : MonoBehaviour
         transition.active = false;
         pauseMenu.active = false;
         repairBar.active = false;
-        noteSpawnedText.enabled = false;
-        cogSpawnedText.enabled = false;
+        noteSpawnedText.active = false;
+        cogSpawnedText.active = false;
         r_waveSystem = FindObjectOfType<Wave_System>();
         r_playerController = FindObjectOfType<Player_Controller>();
         r_prototypeClasses = FindObjectOfType<Prototype_Classes>();
@@ -106,20 +106,22 @@ public class User_Interface : MonoBehaviour
     {
         if (pickupSystem.m_spawnNote == true)
         {
-            noteSpawnedText.enabled = true;
+            pickupSystem.m_spawnNote = false;
+            noteSpawnedText.active = true;
             Invoke("f_resetText", 3);
         }
         if (pickupSystem.m_spawnCogs == true)
         {
-            cogSpawnedText.enabled = true;
+            pickupSystem.m_spawnCogs = false;
+            cogSpawnedText.active = true;
             Invoke("f_resetText", 3);
         }
     }
 
     void f_resetText()
     {
-        noteSpawnedText.enabled = false;
-        cogSpawnedText.enabled = false;
+        noteSpawnedText.active = false;
+        cogSpawnedText.active = false;
     }
 
     public void f_waveTimer()
