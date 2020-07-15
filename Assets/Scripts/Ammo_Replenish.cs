@@ -26,8 +26,8 @@ public class Ammo_Replenish : MonoBehaviour
             {
                 if (Gun.name == GunType || GunType == "ALL")
                 {
-                    Gun.m_currentAmmo += AmmoWorth; // increase the ammo count
-                    if (Gun.m_currentAmmo > Gun.m_maxAmmo) { Gun.m_currentAmmo = Gun.m_maxAmmo; } // if the current amoutn is larger than the max, set it to the max
+                    Gun.m_maxAmmo += AmmoWorth; // increase the ammo count
+                    
                     
                     Gun.f_updateUI(); // update the UI so it reflects the current amount
                     Destroy(gameObject); // destroy the ammo so it can't be infinate
