@@ -88,15 +88,16 @@ public class Gun_Generic : Melee_Attack
     [Space(2)]
     [Header("Other")]
     [Space(2)]
-    [Tooltip("The animator used for gun animator.")]
-  
+   
     private float coolDownTimer; // the timer for the cooldown
+    [Tooltip("The animator used for gun animator.")]
+    public Animator Anim; // the animations for gun
+    public LayerMask layerMask;
 
     //Kurtis Watson
     [Tooltip("The gameobject that is used for the damage text")]
     public GameObject m_hitDamageText; // the hit text
-    public Animator Anim; // the animations for gun
-    public LayerMask layerMask;
+  
 
     void Start()
     {
@@ -267,4 +268,8 @@ public class Gun_Generic : Melee_Attack
         }
     }
 
+   void playSound(AudioClip soundEffect) // play custom sound effects for aniamtions
+    {
+        m_audio.playGun(soundEffect);
+    }
 }
