@@ -12,6 +12,8 @@ public class Prototype_Classes : MonoBehaviour
     private Wave_System r_waveSystem;
     private Rune_Controller r_runeController;
 
+    private Rune_Controller[] runeAnim;
+
     public Transform m_shotPoint;
 
     public GameObject m_pushBack;
@@ -48,6 +50,8 @@ public class Prototype_Classes : MonoBehaviour
                 m_stonePower[i] = Random.Range(30, 80);
             }
         }
+
+        runeAnim = FindObjectsOfType<Rune_Controller>();
 
         m_currentFog = m_fogStrength;
         m_canSelect = true;
@@ -100,8 +104,8 @@ public class Prototype_Classes : MonoBehaviour
 
         if (Physics.Raycast(m_shotPoint.position, m_shotPoint.forward, out m_stoneSelect, 3f, 1 << 11) && Input.GetKeyDown("f") && m_canSelect == true)
         {
-            r_runeController.animated = true;
             buffChosen = true;
+            f_animateRunes();
 
             f_defaultSettings();
             switch (m_stoneSelect.collider.gameObject.name)
@@ -128,7 +132,7 @@ public class Prototype_Classes : MonoBehaviour
 
         if (r_waveSystem.notChosen == true)
         {
-            r_runeController.animated = true;
+            f_animateRunes();
             buffChosen = true;       
             f_defaultSettings();   
             
@@ -274,6 +278,14 @@ public class Prototype_Classes : MonoBehaviour
             case 3:
                 stoneColor = Color.cyan;
                 break;
+        }
+    }
+
+    void f_animateRunes()
+    {
+        for (int i = 0; i < runeAnim.Length; i++)
+        {
+            runeAnim[i].animated = true;
         }
     }
 }
