@@ -202,7 +202,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 9ee9a5ee0b331054e9245134d2aa08d9, type: 2}
+      objectReference: {fileID: 2100000, guid: 3a11f63694514cb4681c90e05804bf5c, type: 2}
     - target: {fileID: -927199367670048503, guid: f1270a312a388ef49ad252827531164a,
         type: 3}
       propertyPath: m_Name
@@ -1100,9 +1100,12 @@ MonoBehaviour:
   - {fileID: 4912677542973487342, guid: 49ceda97bbd165a459db2f8f4ef86096, type: 3}
   - {fileID: 5187828249536963387, guid: cbaa0c4a0dbc4af47a943da25a3413d3, type: 3}
   - {fileID: 21340656321066126, guid: ec6d49e52b2116b45bcf4e7192782c54, type: 3}
-  m_intermissionTime: 5
   m_newWave: 0
   m_fogMath: 0
+  m_isIntermission: 0
+  notChosen: 0
+  intermissionTime: 0
+  m_currentIntermissionTime: 0
 --- !u!4 &170729075
 Transform:
   m_ObjectHideFlags: 0
@@ -18073,6 +18076,7 @@ MonoBehaviour:
   hourHand: {fileID: 1042219939}
   minuteHand: {fileID: 1996884005}
   player: {fileID: 0}
+  portal: {fileID: 0}
   clockParts:
   - {fileID: 1225622367}
   - {fileID: 1091237225}
@@ -21145,7 +21149,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: b4f964aabb28dad4dbfa186b8e78c60f, type: 2}
+      objectReference: {fileID: 2100000, guid: 3a11f63694514cb4681c90e05804bf5c, type: 2}
     - target: {fileID: -927199367670048503, guid: 465abed0191999c499a79dc9f787de9e,
         type: 3}
       propertyPath: m_Name
@@ -26409,7 +26413,7 @@ PrefabInstance:
     - target: {fileID: 3589345061004878327, guid: 23e70938c35368744948706caab60da2,
         type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4117367702732905533, guid: 23e70938c35368744948706caab60da2,
         type: 3}
@@ -26425,6 +26429,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_RootOrder
       value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 4479395245066243082, guid: 23e70938c35368744948706caab60da2,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5971268797762478982, guid: 23e70938c35368744948706caab60da2,
         type: 3}
@@ -26445,6 +26454,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_textInfo.pageCount
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5983063914817278006, guid: 23e70938c35368744948706caab60da2,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6216470956967879840, guid: 23e70938c35368744948706caab60da2,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6427834453612790354, guid: 23e70938c35368744948706caab60da2,
         type: 3}
