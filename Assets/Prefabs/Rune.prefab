@@ -140,6 +140,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wisp: {fileID: 42458450682264745, guid: 6befa5c3aa19d1842a12f708f5aab1c0, type: 3}
+  animator: {fileID: 1420687056379109268}
   light: {fileID: 6117712238516201389}
   runeBall: {fileID: 5206463932686783605}
   runeArt: {fileID: 2785175512274132743}

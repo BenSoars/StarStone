@@ -6,7 +6,7 @@ using UnityEngine;
 public class Rune_Controller : MonoBehaviour
 {
     public GameObject wisp;
-    private Animator animator;
+    public Animator animator;
     public Light light;
     public Renderer runeBall;
     public Renderer runeArt;
@@ -17,9 +17,9 @@ public class Rune_Controller : MonoBehaviour
     private bool shake;
     public bool animated;
 
+
     private void Start()
     {
-        animator = GetComponent<Animator>();
         prototypeClasses = FindObjectOfType<Prototype_Classes>();
     }
     private void Update()
