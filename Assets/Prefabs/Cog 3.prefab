@@ -76,6 +76,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   clockPartID: 2
+  pickedUp: 0
 --- !u!1 &8203358714737683573
 GameObject:
   m_ObjectHideFlags: 0
@@ -134,7 +135,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -743084485876491862, guid: 81882647aafb0f847add668e7808f176, type: 3}
+  - {fileID: 2100000, guid: 65a5f919f777212448225cbe640da231, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
