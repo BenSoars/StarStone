@@ -29,6 +29,10 @@ public class Gun_Generic : Melee_Attack
     public float m_coolDown = 0.5f; // the amount of time until the next shot can happen
     [Tooltip("The time to reload")]
     public float m_reloadTime = 0.5f; // the amount of time until the next shot can happen
+
+    [Tooltip("Damage multiplier")]
+    public float damageMultiplier = 1;
+
     public float m_bulletDamage; // the damage of the bullet
     
     public AudioClip shotSound; // the shot sound
@@ -119,7 +123,7 @@ public class Gun_Generic : Melee_Attack
 
     void f_ShootGun() // gun shoot script
     {
-        m_bulletDamage = Random.Range(m_minBulletDamage, m_maxBulletDamage); // generate random damage
+        m_bulletDamage = Random.Range(m_minBulletDamage, m_maxBulletDamage) * damageMultiplier; // generate random damage
         if (Anim) // if the gun has an animator
         {
             Anim.SetTrigger("Shot"); // playr shot animations
