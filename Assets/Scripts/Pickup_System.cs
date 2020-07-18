@@ -35,8 +35,8 @@ public class Pickup_System : MonoBehaviour
 
 
     private GameObject weaponHand;
-    private GameObject meleeHand;
-    private GameObject repairHands;
+    public GameObject weaponHands;
+    public GameObject repairHands;
 
     private Animator animator;
 
@@ -47,10 +47,6 @@ public class Pickup_System : MonoBehaviour
     private void Start()
     {
         animator = gameObject.transform.GetChild(0).gameObject.transform.GetChild(3).GetComponent<Animator>();
-
-        //weaponHand = GameObject.Find("Arm_Position");
-        meleeHand = GameObject.Find("Main Weapons");
-        repairHands = GameObject.Find("Repair Hands");
         repairHands.active = false;
 
         
@@ -99,7 +95,7 @@ public class Pickup_System : MonoBehaviour
                 currentPart.GetComponent<Rigidbody>().isKinematic = false;
                 currentPart.GetComponent<BoxCollider>().enabled = true;
 
-                meleeHand.active = true; //Enable to player to be able to melee.
+                weaponHands.active = true; //Enable to player to be able to melee.
                 repairHands.active = false; //Switch back to weapon classes.
             }
 
@@ -115,7 +111,7 @@ public class Pickup_System : MonoBehaviour
                 currentPart.GetComponent<Rigidbody>().isKinematic = true;
                 currentPart.GetComponent<BoxCollider>().enabled = false;
                 
-                meleeHand.active = false; //Disable player from being able to melee.
+                weaponHands.active = false; //Disable player from being able to melee.
                 repairHands.active = true; //Switch player hands to carrying the object.          
             }
 
@@ -136,7 +132,7 @@ public class Pickup_System : MonoBehaviour
                     userInterface.repairBar.active = false;
                     clockController.clockParts[currentPartID].active = true;
 
-                    meleeHand.active = true;
+                    weaponHands.active = true;
                     repairHands.active = false;
 
                     if(repairedParts == 5) //Check if all parts have been added >
