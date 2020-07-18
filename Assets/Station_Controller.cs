@@ -62,7 +62,6 @@ public class Station_Controller : MonoBehaviour
                 if (weaponUpgraded == true)
                 {
                     weaponUpgraded = false;
-                    Debug.Log("Yes");
                     weaponHands.active = true;
                     repairHands.active = false;
                     isUpgrading = false;

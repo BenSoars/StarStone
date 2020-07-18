@@ -33,6 +33,7 @@ public class Prototype_Weapon : MonoBehaviour
 
         r_playerController = FindObjectOfType<Player_Controller>();
         r_prototypeClasses = FindObjectOfType<Prototype_Classes>();
+
         m_lr = GetComponent<LineRenderer>();
         beamNoise.volume = PlayerPrefs.GetFloat("volumeLevel");
         beamNoise.enabled = false;

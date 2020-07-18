@@ -40,6 +40,16 @@ public class User_Interface : MonoBehaviour
 
     public List<int> m_waveTimes = new List<int>();
 
+    public Sprite[] startstoneIcons;
+    public Image starstoneIcon;
+
+    public Sprite[] abilityIcons;
+    public Image abilityIcon1;
+    public Image abilityIcon2;
+
+
+    
+
     private void Start()
     {
         DontDestroyOnLoad(this);
@@ -99,6 +109,34 @@ public class User_Interface : MonoBehaviour
                 SceneManager.LoadScene("GameOver");               
             }
         }
+
+        switch (r_prototypeClasses.m_classState)
+        {
+            case 0:
+                abilityIcon1.sprite = abilityIcons[0];
+                abilityIcon2.sprite = abilityIcons[1];
+                m_currentStoneCharge.color = Color.yellow;
+                break;
+            case 1:
+                abilityIcon1.sprite = abilityIcons[2];
+                abilityIcon2.sprite = abilityIcons[3];
+                m_currentStoneCharge.color = Color.white;
+                break;
+            case 2:
+                abilityIcon1.sprite = abilityIcons[4];
+                abilityIcon2.sprite = abilityIcons[5];
+                m_currentStoneCharge.color = Color.magenta;
+                break;
+            case 3:
+                abilityIcon1.sprite = abilityIcons[6];
+                abilityIcon2.sprite = abilityIcons[7];
+                m_currentStoneCharge.color = Color.blue;
+                break;
+        }
+
+        starstoneIcon.sprite = startstoneIcons[r_prototypeClasses.m_classState];
+
+
     }
  
     public void f_popupText()
