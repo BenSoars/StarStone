@@ -16,6 +16,12 @@ public class Station_Controller : MonoBehaviour
     public GameObject weaponHands;
     public GameObject repairHands;
 
+    public GameObject weapon1;
+    public GameObject weapon2;
+
+    public GameObject upgradedWeapon1;
+    public GameObject upgradedWeapon2;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -29,8 +35,7 @@ public class Station_Controller : MonoBehaviour
         if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f && animator.GetCurrentAnimatorStateInfo(0).IsName("upgradeWeapon1") || animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f && animator.GetCurrentAnimatorStateInfo(0).IsName("upgradeWeapon2"))
         {
             weaponUpgraded = true;
-
-            
+     
         }
 
         RaycastHit m_stationHit;
@@ -61,7 +66,19 @@ public class Station_Controller : MonoBehaviour
                     weaponHands.active = true;
                     repairHands.active = false;
                     isUpgrading = false;
-                    
+
+                    switch (weaponSwitch.currentWeapon)
+                    {
+                        case 1:
+                            weapon1.active = false;
+                            upgradedWeapon1.active = true;
+                            break;
+                        case 2:
+                            weapon2.active = false;
+                            upgradedWeapon2.active = true;
+                            break;
+                    }
+
                     animator.SetBool("Upgrading1", false);
                     animator.SetBool("Upgrading2", false);
 
