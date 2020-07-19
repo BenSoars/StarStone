@@ -17,6 +17,7 @@ public class Prototype_Weapon : MonoBehaviour
     public Transform m_shotPoint;
 
     public GameObject m_hitDamageText;
+    public GameObject beamParticles;
 
     public float m_laserDamage;
 
@@ -56,6 +57,7 @@ public class Prototype_Weapon : MonoBehaviour
         RaycastHit m_laserHit;
         if (Input.GetKey(KeyCode.Mouse0) && r_prototypeClasses.m_stonePower[r_prototypeClasses.m_classState] > 0)
         {
+            beamParticles.active = true;
             beamNoise.enabled = true;
             r_prototypeClasses.m_stonePower[r_prototypeClasses.m_classState] -= 0.01f;
             m_lr.SetPosition(0, transform.position);
@@ -95,6 +97,7 @@ public class Prototype_Weapon : MonoBehaviour
         {
             m_lr.enabled = false;
             beamNoise.enabled = false;
+            beamParticles.active = false;
         }
 
         switch (r_prototypeClasses.m_classState)

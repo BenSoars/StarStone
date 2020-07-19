@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.PostProcessing;
 
 //Kurtis Watson
 public class Prototype_Classes : MonoBehaviour
@@ -16,6 +18,7 @@ public class Prototype_Classes : MonoBehaviour
 
     public Transform m_shotPoint;
 
+    public GameObject invisibilityEffect;
     public GameObject m_pushBack;
 
     public int m_classState;
@@ -42,7 +45,7 @@ public class Prototype_Classes : MonoBehaviour
 
     void Start()
     {
-        if(m_stonePowerSet == false)
+        if (m_stonePowerSet == false)
         {
             m_stonePowerSet = true;
             for (int i = 0; i < m_activeStone.Length; i++)
@@ -182,8 +185,13 @@ public class Prototype_Classes : MonoBehaviour
             switch (m_classState)
             {
                 case 0:
-                    r_playerController.isPlayerInvisible = true;
-                    Invoke("f_resetInvisible", 10);
+                    if (m_stonePower[0] >= 15)
+                    {
+                        invisibilityEffect.active = true;
+                        r_playerController.isPlayerInvisible = true;
+                        Invoke("f_resetInvisible", 10);
+                        m_stonePower[0] -= 15;
+                    }
                     break;
                 case 1:
                     if (m_stonePower[1] >= 15)
@@ -259,6 +267,7 @@ public class Prototype_Classes : MonoBehaviour
 
     void f_resetInvisible()
     {
+        invisibilityEffect.active = false;
         r_playerController.isPlayerInvisible = false;
     }
 
