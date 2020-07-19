@@ -91,6 +91,7 @@ GameObject:
   - component: {fileID: 179889756188033710}
   - component: {fileID: 4475989688053596952}
   - component: {fileID: 729223072968711481}
+  - component: {fileID: -8329463684746251880}
   m_Layer: 13
   m_Name: Cog 2
   m_TagString: Untagged
@@ -156,3 +157,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   clockPartID: 1
   pickedUp: 0
+--- !u!114 &-8329463684746251880
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6538937956355786258}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 109669495519bfb4cb5f773ff01a5001, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  text: '''F'' to Pickup'

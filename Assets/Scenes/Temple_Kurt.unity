@@ -13003,6 +13003,12 @@ Transform:
   m_Father: {fileID: 670473403}
   m_RootOrder: 21
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!20 &896352354 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 8493438687375166385, guid: decec99c3a54a654d862175cb6806af1,
+    type: 3}
+  m_PrefabInstance: {fileID: 1153539373}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &896423928
 GameObject:
   m_ObjectHideFlags: 0
@@ -37222,6 +37228,36 @@ PrefabInstance:
       propertyPath: m_SS4
       value: 
       objectReference: {fileID: 1929541668}
+    - target: {fileID: 290495960513689129, guid: 23e70938c35368744948706caab60da2,
+        type: 3}
+      propertyPath: cameraLook
+      value: 
+      objectReference: {fileID: 896352354}
+    - target: {fileID: 334092942898280365, guid: 23e70938c35368744948706caab60da2,
+        type: 3}
+      propertyPath: m_textInfo.characterCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 334092942898280365, guid: 23e70938c35368744948706caab60da2,
+        type: 3}
+      propertyPath: m_textInfo.spaceCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 334092942898280365, guid: 23e70938c35368744948706caab60da2,
+        type: 3}
+      propertyPath: m_textInfo.wordCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 334092942898280365, guid: 23e70938c35368744948706caab60da2,
+        type: 3}
+      propertyPath: m_textInfo.lineCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 334092942898280365, guid: 23e70938c35368744948706caab60da2,
+        type: 3}
+      propertyPath: m_textInfo.pageCount
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4950014120154305012, guid: 23e70938c35368744948706caab60da2,
         type: 3}
       propertyPath: m_Colors.m_HighlightedColor.r

@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using TMPro;
 
 //Kurtis Watson
 public class User_Interface : MonoBehaviour
@@ -13,6 +14,7 @@ public class User_Interface : MonoBehaviour
     public TMPro.TextMeshProUGUI m_currentStoneCharge;
     public TMPro.TextMeshProUGUI timeTillNextRound;
     public TMPro.TextMeshProUGUI chooseStone;
+    public TMPro.TextMeshProUGUI interactText;
 
     public GameObject gameUI;
     public GameObject repairBar;
@@ -47,12 +49,15 @@ public class User_Interface : MonoBehaviour
     public Image abilityIcon1;
     public Image abilityIcon2;
 
+    public Camera cameraLook;
 
-    
+    private string currentText;
+
 
     private void Start()
     {
         DontDestroyOnLoad(this);
+        interactText.enabled = false;
         transition.active = false;
         pauseMenu.active = false;
         repairBar.active = false;
@@ -68,8 +73,9 @@ public class User_Interface : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        interactionText();
         f_pauseMenu();
-        
+
         m_currentHealth.text = "" + r_playerController.playerHealth.ToString("F0");
 
         m_currentStoneCharge.text = "" + r_prototypeClasses.m_stonePower[r_prototypeClasses.m_classState].ToString("F0");
@@ -79,7 +85,7 @@ public class User_Interface : MonoBehaviour
         m_SS3.text = r_prototypeClasses.m_stonePower[2].ToString("F0");
         m_SS4.text = r_prototypeClasses.m_stonePower[3].ToString("F0");
 
-        if(r_waveSystem.enemiesLeft == 0 && r_waveSystem.curRound > 0)
+        if (r_waveSystem.enemiesLeft == 0 && r_waveSystem.curRound > 0)
         {
             chooseStone.enabled = true;
             timeTillNextRound.enabled = true;
@@ -102,11 +108,11 @@ public class User_Interface : MonoBehaviour
             m_currentTimeText.text = "" + m_currentMinute.ToString("00") + ":" + m_currentSecond.ToString("00");
 
             if (m_targetTime <= 0)
-            {               
+            {
                 Destroy(gameObject);
                 Cursor.lockState = CursorLockMode.None;
                 Cursor.visible = true;
-                SceneManager.LoadScene("GameOver");               
+                SceneManager.LoadScene("GameOver");
             }
         }
 
@@ -136,20 +142,19 @@ public class User_Interface : MonoBehaviour
 
         starstoneIcon.sprite = startstoneIcons[r_prototypeClasses.m_classState];
 
-
     }
- 
+
     public void f_popupText()
     {
         if (pickupSystem.m_spawnNote == true)
         {
             pickupSystem.m_spawnNote = false;
-            noteSpawnedText.enabled = true;          
+            noteSpawnedText.enabled = true;
         }
         if (pickupSystem.m_spawnCogs == true)
         {
             pickupSystem.m_spawnCogs = false;
-            cogSpawnedText.enabled = true;         
+            cogSpawnedText.enabled = true;
         }
         Invoke("f_resetText", 3);
     }
@@ -163,8 +168,8 @@ public class User_Interface : MonoBehaviour
     public void f_waveTimer()
     {
         m_targetTime = m_waveTimes[r_waveSystem.curRound];
-    }   
-    
+    }
+
     public void f_pauseMenu()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -202,7 +207,26 @@ public class User_Interface : MonoBehaviour
         Cursor.visible = true;
         gameUI.active = false;
         pauseMenuActive = false;
-        SceneManager.LoadScene("MainMenu");      
+        SceneManager.LoadScene("MainMenu");
     }
 
+    public void interactionText()
+    {
+        RaycastHit m_objectHit;
+
+        if (Physics.Raycast(cameraLook.transform.position, cameraLook.transform.forward, out m_objectHit, 100f))
+        {                 
+            float distance = Vector3.Distance(cameraLook.transform.position, m_objectHit.collider.transform.position);
+            if ((m_objectHit.collider.gameObject.GetComponent("Interact_Text") as Interact_Text) != null && distance <= 2)
+            {
+                currentText = m_objectHit.collider.GetComponent<Interact_Text>().text;
+                interactText.enabled = true;
+                interactText.text = currentText;
+            }
+            else
+            {
+                interactText.enabled = false;
+            }
+        }
+    }
 }
