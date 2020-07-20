@@ -35,12 +35,12 @@ PrefabInstance:
     - target: {fileID: 42458450682264744, guid: 4d4b05e08e0b0a6499519b925ddfa91b,
         type: 3}
       propertyPath: m_moveSpeed
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 42458450682264744, guid: 4d4b05e08e0b0a6499519b925ddfa91b,
         type: 3}
       propertyPath: m_runSpeed
-      value: 12
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 42458450682264744, guid: 4d4b05e08e0b0a6499519b925ddfa91b,
         type: 3}

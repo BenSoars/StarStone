@@ -3255,7 +3255,7 @@ MonoBehaviour:
   ammoScale: 5
   m_ammoPerShot: 5
   m_coolDown: 0.5
-  m_reloadTime: 1
+  m_reloadTime: 1.5
   damageMultiplier: 1
   m_bulletDamage: 0
   shotSound: {fileID: 8300000, guid: bd01d9b87702b804b875009dbf9da959, type: 3}
