@@ -96,21 +96,21 @@ public class User_Interface : MonoBehaviour
         m_SS3.text = r_prototypeClasses.m_stonePower[2].ToString("F0");
         m_SS4.text = r_prototypeClasses.m_stonePower[3].ToString("F0");
 
-        if (r_waveSystem.enemiesLeft == 0 && r_waveSystem.curRound > 0 && bugFix == true)
+        if (r_waveSystem.enemiesLeft == 0 && r_waveSystem.curRound > 0)
         {
-            runtimeUI.active = false;
-            bugFix = false;
-            isChosen = false;
-            chooseStone.enabled = true;
             timeTillNextRound.enabled = true;
+            if (bugFix == true) {
+                runtimeUI.active = false;
+                bugFix = false;
+                isChosen = false;
+                chooseStone.enabled = true;
+            }
         }
         else
         {
             chooseStone.enabled = false;
             timeTillNextRound.enabled = false;
-        }
-
-        timeTillNextRound.text = "NEXT ROUND IN " + r_waveSystem.m_currentIntermissionTime.ToString("F0");
+        }           
 
         if (r_waveSystem.m_startedWaves == true && runtimeUI.active == true)
         {
@@ -154,6 +154,7 @@ public class User_Interface : MonoBehaviour
                 break;
         }
 
+        timeTillNextRound.text = "NEXT ROUND IN " + r_waveSystem.m_currentIntermissionTime.ToString("F0");
         starstoneIcon.sprite = startstoneIcons[r_prototypeClasses.m_classState];
 
     }
