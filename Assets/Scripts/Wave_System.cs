@@ -65,6 +65,8 @@ public class Wave_System : MonoBehaviour
     {
         f_updateUI();
 
+
+
         if (m_newWave == true)
         {
             r_userInterface.f_waveTimer();
@@ -105,7 +107,10 @@ public class Wave_System : MonoBehaviour
     //Kurtis Watson
     void f_updateUI()
     {
-        m_enemyCount.text = ("" + enemiesLeft);
+        if (GameObject.Find("Canvas").GetComponent<User_Interface>().runtimeUI.active == true)
+        {
+            m_enemyCount.text = ("" + enemiesLeft);
+        }
     }
 
     //Kurtis Watson

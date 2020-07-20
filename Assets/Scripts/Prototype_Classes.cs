@@ -125,6 +125,7 @@ public class Prototype_Classes : MonoBehaviour
                     break;                    
             }
 
+            GameObject.Find("Canvas").GetComponent<User_Interface>().runtimeUI.active = true;
             m_activeStone[m_classState] = true;
         }
 
@@ -132,8 +133,9 @@ public class Prototype_Classes : MonoBehaviour
         {
             f_animateRunes();
             buffChosen = true;       
-            f_defaultSettings();   
-            
+            f_defaultSettings();
+
+            GameObject.Find("Canvas").GetComponent<User_Interface>().runtimeUI.active = true;
             m_classState = Random.Range(0, 3);
             m_activeStone[m_classState] = true;
         }

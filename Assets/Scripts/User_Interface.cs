@@ -28,6 +28,7 @@ public class User_Interface : MonoBehaviour
     public GameObject repairBar;
     public GameObject pauseMenu;
     public GameObject transition;
+    public GameObject runtimeUI;
 
     public GameObject stone;
 
@@ -97,6 +98,7 @@ public class User_Interface : MonoBehaviour
 
         if (r_waveSystem.enemiesLeft == 0 && r_waveSystem.curRound > 0 && bugFix == true)
         {
+            runtimeUI.active = false;
             bugFix = false;
             isChosen = false;
             chooseStone.enabled = true;
@@ -110,7 +112,7 @@ public class User_Interface : MonoBehaviour
 
         timeTillNextRound.text = "NEXT ROUND IN " + r_waveSystem.m_currentIntermissionTime.ToString("F0");
 
-        if (r_waveSystem.m_startedWaves == true)
+        if (r_waveSystem.m_startedWaves == true && runtimeUI.active == true)
         {
             m_currentSecond = Mathf.FloorToInt(m_targetTime % 60);
             m_currentMinute = Mathf.FloorToInt(m_targetTime / 60);
