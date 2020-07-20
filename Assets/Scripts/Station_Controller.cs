@@ -69,11 +69,11 @@ public class Station_Controller : MonoBehaviour
                     switch (weaponSwitch.currentWeapon)
                     {
                         case 1:
-                            weapon1.active = false;
+                            weapon1.GetComponent<Gun_Generic>().damageMultiplier = 2f;
                             upgradedWeapon1.active = true;
                             break;
                         case 2:
-                            weapon2.active = false;
+                            weapon2.GetComponent<Gun_Generic>().damageMultiplier = 2f;
                             upgradedWeapon2.active = true;
                             break;
                     }
