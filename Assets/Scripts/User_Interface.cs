@@ -29,6 +29,7 @@ public class User_Interface : MonoBehaviour
     public GameObject pauseMenu;
     public GameObject transition;
     public GameObject runtimeUI;
+    public GameObject locateClockText;
 
     public GameObject stone;
 
@@ -46,6 +47,7 @@ public class User_Interface : MonoBehaviour
     private bool isLooking;
     private bool isChosen;
     private bool bugFix;
+    private bool findClock;
 
     public List<int> m_waveTimes = new List<int>();
 
@@ -169,16 +171,22 @@ public class User_Interface : MonoBehaviour
         }
         if (pickupSystem.m_spawnCogs == true)
         {
+            if(findClock == false)
+            {
+                findClock = true;
+                locateClockText.active = true;
+            }
             pickupSystem.m_spawnCogs = false;
             cogSpawnedText.enabled = true;
         }
-        Invoke("f_resetText", 3);
+        Invoke("f_resetText", 4);
     }
 
     void f_resetText()
     {
         noteSpawnedText.enabled = false;
         cogSpawnedText.enabled = false;
+        locateClockText.active = false;
     }
 
     public void f_waveTimer()
