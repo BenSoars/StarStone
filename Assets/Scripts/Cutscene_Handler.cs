@@ -5,6 +5,7 @@ using Unity.Collections;
 using UnityEngine;
 using UnityEngine.PlayerLoop;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 //Kurtis Watson
 public class Cutscene_Handler : MonoBehaviour
@@ -45,16 +46,20 @@ public class Cutscene_Handler : MonoBehaviour
                 index++;
                 cutsceneTextMesh.text = "";
                 StartCoroutine(f_typewriter());
+                if(index == 5)
+                {
+                    SceneManager.LoadScene("Temple_Kurt");
+                }
             }
         }
 
-        bool test = false;
-        if(index == 4 && test == false)
-        {            
-            Debug.Log("Paused");
-            test = true;
-            pauseCutscene = true;
-        }
+        //bool test = false;
+        //if(index == 4 && test == false)
+        //{            
+        //    Debug.Log("Paused");
+        //    test = true;
+        //    pauseCutscene = true;
+        //}
 
         if (Input.GetKeyDown("g"))
         {

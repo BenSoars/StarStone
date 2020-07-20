@@ -70,12 +70,7 @@ public class Player_Controller : MonoBehaviour
     //Kurtis Watson
     void Update()
     {
-        f_drone();
-
-        if (playerHealth <= 0)
-        {
-            SceneManager.LoadScene("GameOver");
-        }
+        //f_drone();
 
         if (playerHealth > 100) { playerHealth = 100; }
 
@@ -199,13 +194,13 @@ public class Player_Controller : MonoBehaviour
     }
 
     //Kurtis Watson
-    void f_drone()
-    {
-        if (Input.GetKeyDown("c"))
-        {
-            isPlayerActive = !isPlayerActive; //Switch to either the drone or player based on current bool value.
-        }
-    }
+    //void f_drone()
+    //{
+    //    if (Input.GetKeyDown("c"))
+    //    {
+    //        isPlayerActive = !isPlayerActive; //Switch to either the drone or player based on current bool value.
+    //    }
+    //}
 
     //Kurtis Watson
     void f_climb()

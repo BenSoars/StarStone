@@ -9,6 +9,11 @@ using TMPro;
 //Kurtis Watson
 public class User_Interface : MonoBehaviour
 {
+    private Wave_System r_waveSystem;
+    private Player_Controller r_playerController;
+    private Prototype_Classes r_prototypeClasses;
+    private Pickup_System pickupSystem;
+
     public TMPro.TextMeshProUGUI m_currentTimeText;
     public TMPro.TextMeshProUGUI m_currentHealth;
     public TMPro.TextMeshProUGUI m_currentStoneCharge;
@@ -16,47 +21,51 @@ public class User_Interface : MonoBehaviour
     public TMPro.TextMeshProUGUI chooseStone;
     public TMPro.TextMeshProUGUI interactText;
 
+    public TMPro.TextMeshProUGUI noteSpawnedText;
+    public TMPro.TextMeshProUGUI cogSpawnedText;
+
     public GameObject gameUI;
     public GameObject repairBar;
     public GameObject pauseMenu;
     public GameObject transition;
 
-    public TMPro.TextMeshProUGUI noteSpawnedText;
-    public TMPro.TextMeshProUGUI cogSpawnedText;
+    public GameObject stone;
 
     public TMPro.TextMeshPro m_SS1;
     public TMPro.TextMeshPro m_SS2;
     public TMPro.TextMeshPro m_SS3;
     public TMPro.TextMeshPro m_SS4;
 
-    private Wave_System r_waveSystem;
-    private Player_Controller r_playerController;
-    private Prototype_Classes r_prototypeClasses;
-    private Pickup_System pickupSystem;
-
     private float m_targetTime;
+
     private int m_currentSecond;
     private int m_currentMinute;
 
     private bool pauseMenuActive;
+    private bool isLooking;
+    private bool isChosen;
+    private bool bugFix;
 
     public List<int> m_waveTimes = new List<int>();
 
-    public Sprite[] startstoneIcons;
     public Image starstoneIcon;
-
-    public Sprite[] abilityIcons;
+    public Image abilityPreview1;
+    public Image abilityPreview2;
     public Image abilityIcon1;
     public Image abilityIcon2;
+
+    public Sprite[] startstoneIcons;
+    public Sprite[] abilityIcons;
 
     public Camera cameraLook;
 
     private string currentText;
 
-
     private void Start()
     {
         DontDestroyOnLoad(this);
+        abilityPreview1.enabled = false;
+        abilityPreview2.enabled = false;
         interactText.enabled = false;
         transition.active = false;
         pauseMenu.active = false;
@@ -73,6 +82,7 @@ public class User_Interface : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        starstoneFunctions();
         interactionText();
         f_pauseMenu();
 
@@ -85,8 +95,10 @@ public class User_Interface : MonoBehaviour
         m_SS3.text = r_prototypeClasses.m_stonePower[2].ToString("F0");
         m_SS4.text = r_prototypeClasses.m_stonePower[3].ToString("F0");
 
-        if (r_waveSystem.enemiesLeft == 0 && r_waveSystem.curRound > 0)
+        if (r_waveSystem.enemiesLeft == 0 && r_waveSystem.curRound > 0 && bugFix == true)
         {
+            bugFix = false;
+            isChosen = false;
             chooseStone.enabled = true;
             timeTillNextRound.enabled = true;
         }
@@ -107,7 +119,7 @@ public class User_Interface : MonoBehaviour
 
             m_currentTimeText.text = "" + m_currentMinute.ToString("00") + ":" + m_currentSecond.ToString("00");
 
-            if (m_targetTime <= 0)
+            if (m_targetTime <= 0 || r_playerController.playerHealth <= 0)
             {
                 Destroy(gameObject);
                 Cursor.lockState = CursorLockMode.None;
@@ -215,7 +227,7 @@ public class User_Interface : MonoBehaviour
         RaycastHit m_objectHit;
 
         if (Physics.Raycast(cameraLook.transform.position, cameraLook.transform.forward, out m_objectHit, 100f))
-        {                 
+        {
             float distance = Vector3.Distance(cameraLook.transform.position, m_objectHit.collider.transform.position);
             if ((m_objectHit.collider.gameObject.GetComponent("Interact_Text") as Interact_Text) != null && distance <= 2)
             {
@@ -228,5 +240,48 @@ public class User_Interface : MonoBehaviour
                 interactText.enabled = false;
             }
         }
+    }
+
+    public void starstoneFunctions()
+    {
+        RaycastHit m_objectHit;
+
+        if (Physics.Raycast(cameraLook.transform.position, cameraLook.transform.forward, out m_objectHit, 50f))
+        {
+            float distance = Vector3.Distance(cameraLook.transform.position, m_objectHit.collider.transform.position);
+            if ((m_objectHit.collider.gameObject.GetComponent("Starstone_ID") as Starstone_ID) && distance <= 4 && r_prototypeClasses.m_canSelect == true)
+            {
+                isLooking = true;
+                stone = m_objectHit.collider.gameObject;
+                abilityPreview1.sprite = m_objectHit.collider.GetComponent<Starstone_ID>().preview1;
+                abilityPreview2.sprite = m_objectHit.collider.GetComponent<Starstone_ID>().preview2;
+                abilityPreview1.enabled = true;
+                abilityPreview2.enabled = true;
+                if (Input.GetKeyDown("f"))
+                {
+                    Invoke("f_bugFix", 10);
+                    isChosen = true;
+                    abilityPreview1.enabled = false;
+                    abilityPreview2.enabled = false;
+                    stone.GetComponentInChildren<Animator>().SetBool("Chosen", true); //Animate stone.
+                }
+            }
+            else
+            {
+                if (isChosen == false)
+                {
+                    isLooking = false;
+                }
+                abilityPreview1.enabled = false;
+                abilityPreview2.enabled = false;                
+                stone.GetComponentInChildren<Animator>().SetBool("Chosen", false);
+            }
+            stone.GetComponentInChildren<Animator>().SetBool("Looking", isLooking);
+        }
+    }
+
+    void f_bugFix()
+    {
+        bugFix = true;
     }
 }

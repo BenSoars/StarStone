@@ -15,7 +15,7 @@ public class Portal : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.CompareTag("Player"))
+        if(other.gameObject.CompareTag("Player") && FindObjectOfType<Wave_System>().m_startedWaves == true)
         {
             r_playerController.transform.position = m_desiredLocation.position;
         }

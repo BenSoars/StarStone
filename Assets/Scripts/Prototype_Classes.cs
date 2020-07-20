@@ -77,11 +77,6 @@ public class Prototype_Classes : MonoBehaviour
         f_chargeStones();
         f_ability();
         f_setStoneColor();
-
-        if (Input.GetKeyDown("p"))
-        {
-            m_classState = 0;
-        }
     }
 
     void f_defaultSettings() //Reset to 0
@@ -113,21 +108,21 @@ public class Prototype_Classes : MonoBehaviour
             f_defaultSettings();
             switch (m_stoneSelect.collider.gameObject.name)
             {
-                case ("Starstone 1"): //Yellow
+                case ("Yellow"): //Yellow
                     m_classState = 0;
                     r_playerController.defenceValue = 0.75f;
                     break;
-                case ("Starstone 2"): //White
+                case ("White"): //White
                     m_classState = 1;
                     r_playerController.playerHealth = m_defaultHealth * 1.3f;
                     break;
-                case ("Starstone 3"): //Pink
+                case ("Pink"): //Pink
                     m_classState = 2;
                     break;
-                case ("Starstone 4"): //Blue                   
+                case ("Blue"): //Blue
                     m_classState = 3;
                     r_prototypeWeapon.m_damageCoolDown = m_defaultDamageCooldown / 2;
-                    break;
+                    break;                    
             }
 
             m_activeStone[m_classState] = true;
