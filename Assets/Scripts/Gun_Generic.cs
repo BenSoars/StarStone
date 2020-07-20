@@ -105,11 +105,10 @@ public class Gun_Generic : Melee_Attack
 
     void Start()
     {
-        m_ammoCount = GameObject.Find("AmmoCount").GetComponent<Text>(); // get the text for displaying ammo
-        m_ammoTotal = GameObject.Find("AmmoTotal").GetComponent<Text>(); // get the text for displaying ammo
+       
         m_player = GameObject.FindObjectOfType<Player_Controller>(); // get player component
         m_audio = GameObject.FindObjectOfType<Audio_System>(); // get audio system
-        f_updateUI(); // update the UI
+        
   
 
         m_savedMaxAmmo = m_maxAmmo; // save the max ammo of the weapon
@@ -200,8 +199,19 @@ public class Gun_Generic : Melee_Attack
 
     public void f_updateUI() // update the UI to reflect the current ammo count
     {
-        m_ammoCount.text = ((m_currentAmmo / ammoScale).ToString() + "/" + (m_clipSize / ammoScale).ToString());
-        m_ammoTotal.text = (m_maxAmmo / ammoScale).ToString();
+        if (GameObject.Find("Canvas").GetComponent<User_Interface>().runtimeUI.activeInHierarchy == true)
+        {
+            if (!m_ammoCount)
+            {
+                m_ammoCount = GameObject.Find("AmmoCount").GetComponent<Text>(); // get the text for displaying ammo
+                m_ammoTotal = GameObject.Find("AmmoTotal").GetComponent<Text>(); // get the text for displaying ammo
+            }
+            m_ammoCount.text = ((m_currentAmmo / ammoScale).ToString() + "/" + (m_clipSize / ammoScale).ToString());
+            m_ammoTotal.text = (m_maxAmmo / ammoScale).ToString();
+        }
+
+        
+        
     }
 
     void Update()

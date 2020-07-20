@@ -23,6 +23,8 @@ public class Wave_System : MonoBehaviour
     public Audio_System audio; // get the audio system component to play sounds
     public List<AudioClip> roundNoises = new List<AudioClip>(); // the round noises
 
+    private User_Interface m_Canvas;
+
     //Kurtis Watson
     private Player_Controller r_playerController;
     private User_Interface r_userInterface;
@@ -57,7 +59,7 @@ public class Wave_System : MonoBehaviour
         r_prototypeClasses = FindObjectOfType<Prototype_Classes>();
         audio = GameObject.FindObjectOfType<Audio_System>(); // get audio system
         r_pickupSystem = FindObjectOfType<Pickup_System>();
-        m_enemyCount = GameObject.Find("EnemyCount").GetComponent<Text>();
+        m_Canvas = GameObject.Find("Canvas").GetComponent<User_Interface>();
     }
 
     //Kurtis Watson
@@ -65,7 +67,10 @@ public class Wave_System : MonoBehaviour
     {
         f_updateUI();
 
-
+        if (m_Canvas.runtimeUI.activeInHierarchy == true)
+        {
+            m_enemyCount = GameObject.Find("EnemyCount").GetComponent<Text>();
+        }
 
         if (m_newWave == true)
         {
@@ -107,7 +112,7 @@ public class Wave_System : MonoBehaviour
     //Kurtis Watson
     void f_updateUI()
     {
-        if (GameObject.Find("Canvas").GetComponent<User_Interface>().runtimeUI.active == true)
+        if (m_Canvas.runtimeUI.activeInHierarchy == true && m_enemyCount)
         {
             m_enemyCount.text = ("" + enemiesLeft);
         }
