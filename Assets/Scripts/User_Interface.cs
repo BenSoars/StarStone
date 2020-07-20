@@ -229,7 +229,7 @@ public class User_Interface : MonoBehaviour
         if (Physics.Raycast(cameraLook.transform.position, cameraLook.transform.forward, out m_objectHit, 100f))
         {
             float distance = Vector3.Distance(cameraLook.transform.position, m_objectHit.collider.transform.position);
-            if ((m_objectHit.collider.gameObject.GetComponent("Interact_Text") as Interact_Text) != null && distance <= 2)
+            if ((m_objectHit.collider.gameObject.GetComponent("Interact_Text") as Interact_Text) != null && distance <= 3)
             {
                 currentText = m_objectHit.collider.GetComponent<Interact_Text>().text;
                 interactText.enabled = true;
@@ -249,7 +249,7 @@ public class User_Interface : MonoBehaviour
         if (Physics.Raycast(cameraLook.transform.position, cameraLook.transform.forward, out m_objectHit, 50f))
         {
             float distance = Vector3.Distance(cameraLook.transform.position, m_objectHit.collider.transform.position);
-            if ((m_objectHit.collider.gameObject.GetComponent("Starstone_ID") as Starstone_ID) && distance <= 4 && r_prototypeClasses.m_canSelect == true)
+            if ((m_objectHit.collider.gameObject.GetComponent("Starstone_ID") as Starstone_ID) && distance <= 3 && r_prototypeClasses.m_canSelect == true)
             {
                 isLooking = true;
                 stone = m_objectHit.collider.gameObject;
