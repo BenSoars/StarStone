@@ -125,7 +125,6 @@ public class Prototype_Classes : MonoBehaviour
                     break;                    
             }
 
-            GameObject.Find("Canvas").GetComponent<User_Interface>().runtimeUI.active = true;
             m_activeStone[m_classState] = true;
         }
 
@@ -135,13 +134,14 @@ public class Prototype_Classes : MonoBehaviour
             buffChosen = true;       
             f_defaultSettings();
 
-            GameObject.Find("Canvas").GetComponent<User_Interface>().runtimeUI.active = true;
+ 
             m_classState = Random.Range(0, 3);
             m_activeStone[m_classState] = true;
         }
 
         if (buffChosen == true)
         {
+            GameObject.Find("Canvas").GetComponent<User_Interface>().runtimeUI.active = true;
             buffChosen = false;
             float max = int.MinValue;
             for (int i = 0; i < m_activeStone.Length; i++)

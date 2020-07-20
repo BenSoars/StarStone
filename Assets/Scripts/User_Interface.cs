@@ -100,8 +100,9 @@ public class User_Interface : MonoBehaviour
         {
             timeTillNextRound.enabled = true;
             if (bugFix == true) {
-                runtimeUI.active = false;
                 bugFix = false;
+                stone.GetComponentInChildren<Animator>().SetBool("Chosen", false);
+                runtimeUI.active = false;
                 isChosen = false;
                 chooseStone.enabled = true;
             }
@@ -110,7 +111,7 @@ public class User_Interface : MonoBehaviour
         {
             chooseStone.enabled = false;
             timeTillNextRound.enabled = false;
-        }           
+        }
 
         if (r_waveSystem.m_startedWaves == true && runtimeUI.active == true)
         {
@@ -260,24 +261,18 @@ public class User_Interface : MonoBehaviour
                 abilityPreview2.sprite = m_objectHit.collider.GetComponent<Starstone_ID>().preview2;
                 abilityPreview1.enabled = true;
                 abilityPreview2.enabled = true;
-                if (Input.GetKeyDown("f"))
-                {
-                    Invoke("f_bugFix", 10);
-                    isChosen = true;
-                    abilityPreview1.enabled = false;
-                    abilityPreview2.enabled = false;
-                    stone.GetComponentInChildren<Animator>().SetBool("Chosen", true); //Animate stone.
-                }
             }
             else
             {
-                if (isChosen == false)
-                {
-                    isLooking = false;
-                }
+                isLooking = false;
                 abilityPreview1.enabled = false;
-                abilityPreview2.enabled = false;                
-                stone.GetComponentInChildren<Animator>().SetBool("Chosen", false);
+                abilityPreview2.enabled = false;
+            }
+            if (Input.GetKeyDown("f"))
+            {
+                Invoke("f_bugFix", 10);
+                isLooking = false;
+                stone.GetComponentInChildren<Animator>().SetBool("Chosen", true);
             }
             stone.GetComponentInChildren<Animator>().SetBool("Looking", isLooking);
         }
