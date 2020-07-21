@@ -24,6 +24,7 @@ public class Wave_System : MonoBehaviour
     public List<AudioClip> roundNoises = new List<AudioClip>(); // the round noises
 
     private User_Interface m_Canvas;
+    public AchivementTracker m_Achivement;
 
     //Kurtis Watson
     private Player_Controller r_playerController;
@@ -51,6 +52,7 @@ public class Wave_System : MonoBehaviour
     //Kurtis Watson
     private void Start()
     {
+
         m_currentIntermissionTime = intermissionTime;
         // get the different components neccesart for this script to function
         m_wispPoint = GameObject.FindGameObjectsWithTag("WispPoint");
@@ -60,6 +62,8 @@ public class Wave_System : MonoBehaviour
         audio = GameObject.FindObjectOfType<Audio_System>(); // get audio system
         r_pickupSystem = FindObjectOfType<Pickup_System>();
         m_Canvas = GameObject.Find("Canvas").GetComponent<User_Interface>();
+
+        m_Achivement = GameObject.FindObjectOfType<AchivementTracker>();
     }
 
     //Kurtis Watson
@@ -106,6 +110,8 @@ public class Wave_System : MonoBehaviour
             m_fogMath = r_prototypeClasses.m_fogStrength / enemiesLeft; //Calculate the amount of fog to decrease each enemy kill.
             curRound += 1; //Increase current round by one.
             m_enemiesKilled = false;
+
+           
         }
     }
 
@@ -170,6 +176,18 @@ public class Wave_System : MonoBehaviour
             notChosen = true; //Auto selection (used in Prototype_Classes).
             m_isIntermission = false; //Stops countdown as it has reached 0.
             r_prototypeClasses.m_canSelect = false; //Disable player selecting stone.
+        }
+
+        // Ben Soars
+
+        //achivement
+        if (m_Achivement) // if there is an achivement tracker in the scene
+        {
+            if (curRound > 1)
+            {
+                m_Achivement.UnlockAchivement(1); // unlock the beat round 1 achivement
+            }
+
         }
     }
 
