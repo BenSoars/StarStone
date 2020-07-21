@@ -20717,6 +20717,11 @@ PrefabInstance:
       objectReference: {fileID: 208922590}
     - target: {fileID: 745732647775295139, guid: decec99c3a54a654d862175cb6806af1,
         type: 3}
+      propertyPath: staffs.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 745732647775295139, guid: decec99c3a54a654d862175cb6806af1,
+        type: 3}
       propertyPath: starstoneToAnimate
       value: 
       objectReference: {fileID: 1311847811}
@@ -20844,6 +20849,21 @@ PrefabInstance:
         type: 3}
       propertyPath: InitialModule.startSpeed.scalar
       value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 6157398070858953341, guid: decec99c3a54a654d862175cb6806af1,
+        type: 3}
+      propertyPath: InitialModule.startColor.maxColor.r
+      value: 0.85882354
+      objectReference: {fileID: 0}
+    - target: {fileID: 6157398070858953341, guid: decec99c3a54a654d862175cb6806af1,
+        type: 3}
+      propertyPath: InitialModule.startColor.maxColor.b
+      value: 0.035294138
+      objectReference: {fileID: 0}
+    - target: {fileID: 6157398070858953341, guid: decec99c3a54a654d862175cb6806af1,
+        type: 3}
+      propertyPath: InitialModule.startColor.maxColor.g
+      value: 0.5620418
       objectReference: {fileID: 0}
     - target: {fileID: 7970758723244287899, guid: decec99c3a54a654d862175cb6806af1,
         type: 3}

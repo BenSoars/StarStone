@@ -14,7 +14,8 @@ public class Prototype_Weapon : MonoBehaviour
 
     private LineRenderer m_lr;
 
-    public Transform m_shotPoint;
+    private Transform shotPoint;
+    public GameObject particles;
 
     public GameObject m_hitDamageText;
     public GameObject beamParticles;
@@ -46,6 +47,9 @@ public class Prototype_Weapon : MonoBehaviour
     {
         f_prototypeWeapon();
 
+        shotPoint = GameObject.Find("Staff").transform.FindChild("Orb").transform;
+        particles.transform.position = shotPoint.position;
+
         m_currentDamageCoolDown -= Time.deltaTime;
         m_laserDamage = UnityEngine.Random.Range(5, 10);
     }
@@ -60,15 +64,15 @@ public class Prototype_Weapon : MonoBehaviour
             beamParticles.active = true;
             beamNoise.enabled = true;
             r_prototypeClasses.m_stonePower[r_prototypeClasses.m_classState] -= 0.01f;
-            m_lr.SetPosition(0, transform.position);
+            m_lr.SetPosition(0, shotPoint.position);
             m_lr.enabled = true;
-            if (Physics.Raycast(m_shotPoint.position, m_shotPoint.forward, out m_laserHit))
+            if (Physics.SphereCast(shotPoint.position, 0.2f, shotPoint.forward, out m_laserHit)) //SphereCast allows for a thicker Raycast.
             {
                 if (m_laserHit.collider)
                 {
                     m_lr.SetPosition(1, m_laserHit.point);
                 }
-
+                Debug.DrawRay(shotPoint.position, shotPoint.forward * m_laserHit.distance);
                 if (m_laserHit.collider.gameObject.CompareTag("Enemy") && m_currentDamageCoolDown <= 0)
                 {
                     enemyHit = m_laserHit.collider.gameObject.GetComponent<Enemy_Controller>();

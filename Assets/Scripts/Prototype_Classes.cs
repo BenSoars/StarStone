@@ -20,6 +20,7 @@ public class Prototype_Classes : MonoBehaviour
 
     public GameObject invisibilityEffect;
     public GameObject m_pushBack;
+    public GameObject[] staffs;
 
     public int m_classState;
 
@@ -84,6 +85,7 @@ public class Prototype_Classes : MonoBehaviour
         for (int i = 0; i < m_activeStone.Length; i++)
         {
             m_activeStone[m_classState] = false;
+            staffs[m_classState].active = false;
         }
         r_waveSystem.notChosen = false;
         m_currentFog = m_fogStrength;
@@ -125,6 +127,7 @@ public class Prototype_Classes : MonoBehaviour
                     break;                    
             }
 
+            staffs[m_classState].active = true;
             m_activeStone[m_classState] = true;
         }
 
@@ -136,6 +139,7 @@ public class Prototype_Classes : MonoBehaviour
 
  
             m_classState = Random.Range(0, 3);
+            staffs[m_classState].active = true;
             m_activeStone[m_classState] = true;
         }
 
