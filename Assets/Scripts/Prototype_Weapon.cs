@@ -12,6 +12,8 @@ public class Prototype_Weapon : MonoBehaviour
     private Prototype_Classes r_prototypeClasses;
     private Enemy_Controller enemyHit;
 
+    private Animator anim;
+
     private LineRenderer m_lr;
 
     private Transform shotPoint;
@@ -36,6 +38,7 @@ public class Prototype_Weapon : MonoBehaviour
         r_playerController = FindObjectOfType<Player_Controller>();
         r_prototypeClasses = FindObjectOfType<Prototype_Classes>();
 
+        anim = GetComponentInChildren<Animator>();
         m_lr = GetComponent<LineRenderer>();
         beamNoise.volume = PlayerPrefs.GetFloat("volumeLevel");
         beamNoise.enabled = false;
@@ -45,6 +48,7 @@ public class Prototype_Weapon : MonoBehaviour
     [System.Obsolete]
     void Update()
     {
+        f_animation();
         f_prototypeWeapon();
 
         shotPoint = GameObject.Find("Staff").transform.FindChild("Orb").transform;
@@ -59,7 +63,7 @@ public class Prototype_Weapon : MonoBehaviour
     void f_prototypeWeapon()
     {
         RaycastHit m_laserHit;
-        if (Input.GetKey(KeyCode.Mouse0) && r_prototypeClasses.m_stonePower[r_prototypeClasses.m_classState] > 0)
+        if (Input.GetKey(KeyCode.Mouse0) && r_prototypeClasses.m_stonePower[r_prototypeClasses.m_classState] > 0 && r_playerController.isSprinting == false)
         {
             beamParticles.active = true;
             beamNoise.enabled = true;
@@ -108,6 +112,7 @@ public class Prototype_Weapon : MonoBehaviour
         {
             case 0:
                 m_lr.SetColors(Color.yellow, Color.yellow);
+                
                 break;
             case 1:
                 m_lr.SetColors(Color.white, Color.white);
@@ -119,5 +124,11 @@ public class Prototype_Weapon : MonoBehaviour
                 m_lr.SetColors(Color.blue, Color.blue);
                 break;
         }
+        beamParticles.GetComponent<ParticleSystem>().startColor = m_lr.startColor;
+    }
+
+    void f_animation()
+    {
+        //anim.SetBool("Run", r_playerController.isSprinting);
     }
 }

@@ -129,6 +129,7 @@ public class Prototype_Classes : MonoBehaviour
 
             staffs[m_classState].active = true;
             m_activeStone[m_classState] = true;
+            GameObject.Find("Prototype").transform.GetChild(m_classState).transform.SetSiblingIndex(0);
         }
 
         if (r_waveSystem.notChosen == true)
