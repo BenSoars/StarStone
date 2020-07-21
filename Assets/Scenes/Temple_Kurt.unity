@@ -8,8 +8,9 @@ OcclusionCullingSettings:
     smallestOccluder: 5
     smallestHole: 0.25
     backfaceThreshold: 100
-  m_SceneGUID: 00000000000000000000000000000000
-  m_OcclusionCullingData: {fileID: 0}
+  m_SceneGUID: 5931897c1f4b66747a6d5ca7d8ec4e9f
+  m_OcclusionCullingData: {fileID: 36300000, guid: baa19c445bb60654f93bbbe7707f42e2,
+    type: 2}
 --- !u!104 &2
 RenderSettings:
   m_ObjectHideFlags: 0
@@ -1724,6 +1725,7 @@ MonoBehaviour:
   audio: {fileID: 0}
   roundNoises:
   - {fileID: 8300000, guid: 2ef7ef7c13ab8d343abf3e9e6c729a10, type: 3}
+  m_Achivement: {fileID: 0}
   m_wisps:
   - {fileID: 42458450682264745, guid: 6befa5c3aa19d1842a12f708f5aab1c0, type: 3}
   - {fileID: 4912677542973487342, guid: 49ceda97bbd165a459db2f8f4ef86096, type: 3}
@@ -20607,7 +20609,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0, y: 3.9982e-41, z: 0, w: 0}
+  m_BoundingSphereOverride: {x: 0, y: 2.4702e-41, z: 0, w: 2.046875}
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
@@ -36888,7 +36890,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 8
+  m_StaticEditorFlags: 10
   m_IsActive: 1
 --- !u!23 &313497239090512381
 MeshRenderer:
