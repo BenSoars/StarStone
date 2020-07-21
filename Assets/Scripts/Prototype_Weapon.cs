@@ -38,7 +38,6 @@ public class Prototype_Weapon : MonoBehaviour
         r_playerController = FindObjectOfType<Player_Controller>();
         r_prototypeClasses = FindObjectOfType<Prototype_Classes>();
 
-        anim = GetComponentInChildren<Animator>();
         m_lr = GetComponent<LineRenderer>();
         beamNoise.volume = PlayerPrefs.GetFloat("volumeLevel");
         beamNoise.enabled = false;
@@ -48,10 +47,11 @@ public class Prototype_Weapon : MonoBehaviour
     [System.Obsolete]
     void Update()
     {
+        anim = GetComponentInChildren<Animator>();
         f_animation();
         f_prototypeWeapon();
 
-        shotPoint = GameObject.Find("Staff").transform.FindChild("Orb").transform;
+        shotPoint = GameObject.Find("Staff_Whole").transform.FindChild("Orb").transform;
         particles.transform.position = shotPoint.position;
 
         m_currentDamageCoolDown -= Time.deltaTime;
@@ -72,6 +72,7 @@ public class Prototype_Weapon : MonoBehaviour
             m_lr.enabled = true;
             if (Physics.SphereCast(shotPoint.position, 0.2f, shotPoint.forward, out m_laserHit)) //SphereCast allows for a thicker Raycast.
             {
+                anim.SetBool("Firing", true);
                 if (m_laserHit.collider)
                 {
                     m_lr.SetPosition(1, m_laserHit.point);
@@ -106,6 +107,7 @@ public class Prototype_Weapon : MonoBehaviour
             m_lr.enabled = false;
             beamNoise.enabled = false;
             beamParticles.active = false;
+            anim.SetBool("Firing", false);
         }
 
         switch (r_prototypeClasses.m_classState)
@@ -129,6 +131,6 @@ public class Prototype_Weapon : MonoBehaviour
 
     void f_animation()
     {
-        //anim.SetBool("Run", r_playerController.isSprinting);
+        anim.SetBool("Run", r_playerController.isSprinting);
     }
 }

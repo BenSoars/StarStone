@@ -38,7 +38,7 @@ public class Easter_Eggs : MonoBehaviour
         }
 
         Debug.Log("Runes Found: " + runesFound);
-        if(runesFound == 8 && musicPlayed == false)
+        if(runesFound == 5 && musicPlayed == false)
         {
             musicPlayed = true;
             audioSource.clip = song;
