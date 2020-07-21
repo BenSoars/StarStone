@@ -13,14 +13,17 @@ public class Rune_Controller : MonoBehaviour
     public Material globalColor;
 
     private Prototype_Classes prototypeClasses;
+    private Easter_Eggs easterEggs;
 
     private bool shake;
     public bool animated;
 
+    public bool stopActivation;
 
     private void Start()
     {
         prototypeClasses = FindObjectOfType<Prototype_Classes>();
+        easterEggs = FindObjectOfType<Easter_Eggs>();
     }
     private void Update()
     {
@@ -42,6 +45,15 @@ public class Rune_Controller : MonoBehaviour
         globalColor.SetColor("_EmissionColor", prototypeClasses.stoneColor);
 
 
+    }
+
+    public void f_runeEasterEgg()
+    {
+        if(stopActivation == false)
+        {
+            stopActivation = true;
+            easterEggs.runesFound += 1;
+        }
     }
 
     void resetShake()

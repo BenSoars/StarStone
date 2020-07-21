@@ -94,6 +94,7 @@ public class Pickup_System : MonoBehaviour
                 currentPart.transform.parent = null; //Unparent the picked up item from the player so it can be dropped.
                 currentPart.GetComponent<Rigidbody>().isKinematic = false;
                 currentPart.GetComponent<BoxCollider>().enabled = true;
+                currentPart.GetComponent<Clock_ID>().pickedUp = false;
 
                 weaponHands.active = true; //Enable to player to be able to melee.
                 repairHands.active = false; //Switch back to weapon classes.
@@ -110,7 +111,8 @@ public class Pickup_System : MonoBehaviour
                 currentPart.transform.localPosition = Vector3.zero; 
                 currentPart.GetComponent<Rigidbody>().isKinematic = true;
                 currentPart.GetComponent<BoxCollider>().enabled = false;
-                
+                currentPart.GetComponent<Clock_ID>().pickedUp = true;
+
                 weaponHands.active = false; //Disable player from being able to melee.
                 repairHands.active = true; //Switch player hands to carrying the object.          
             }
