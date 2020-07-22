@@ -46,12 +46,16 @@ public class Cutscene_Handler : MonoBehaviour
                 index++;
                 cutsceneTextMesh.text = "";
                 StartCoroutine(f_typewriter());
-                if(index == 5 || Input.GetKeyDown(KeyCode.Space))
+                if(index == 5)
                 {
-                    index = 5;
                     SceneManager.LoadScene("Temple_Kurt");
                 }
             }
+        }
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            SceneManager.LoadScene("Temple_Kurt");
         }
 
         //bool test = false;

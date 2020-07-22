@@ -204,7 +204,7 @@ public class Prototype_Classes : MonoBehaviour
                 case 0:
                     if (stonePower[0] >= 15)
                     {
-                        FindObjectOfType<Ability_Handler>().f_spawnInvisibilty();
+                        FindObjectOfType<Ability_Handler>().StartCoroutine("f_spawnInvisibility");
                         stonePower[0] -= 15;
                     }
                     break;

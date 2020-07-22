@@ -57,12 +57,15 @@ public class Ability_Handler : MonoBehaviour
         Instantiate(pushBack, m_shotPoint.transform.position, m_shotPoint.rotation);
     }
 
-    public void f_spawnInvisibilty()
+    public IEnumerator f_spawnInvisibility()
     {
         m_handsAnim.SetBool(animationType[0], true);
         playerController.isPlayerInvisible = true;
         invisibility.active = true;
-        Invoke("reset", 10);
+        yield return new WaitForSeconds(10);
+        playerController.isPlayerInvisible = false;
+        invisibility.active = false;
+        StartCoroutine(f_resetAnimations());
     }
 
     public void f_spawnWall()
@@ -114,14 +117,6 @@ public class Ability_Handler : MonoBehaviour
             Instantiate(m_Infector, new Vector3(m_hitscanCast.point.x, m_hitscanCast.point.y - 2, m_hitscanCast.point.z), Quaternion.LookRotation(Vector3.forward)); //Spawns a tornade of position of player crosshair.
         }
     }
-
-    private void reset()
-    {
-        playerController.isPlayerInvisible = false;
-        invisibility.active = false;
-        StartCoroutine(f_resetAnimations());
-    }
-
 
     IEnumerator f_resetAnimations()
     {
