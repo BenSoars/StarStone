@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEditorInternal;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.PostProcessing;
@@ -22,7 +23,14 @@ public class Prototype_Classes : MonoBehaviour
     public GameObject m_pushBack;
     public GameObject[] staffs;
 
+    public GameObject weapons;
+    public GameObject hands;
+
     public int m_classState;
+
+    private bool abilityState;
+    private bool stateQ;
+    private bool stateV;
 
     private float m_defaultDefence;
     private float m_defaultHealth;
@@ -31,6 +39,8 @@ public class Prototype_Classes : MonoBehaviour
 
     public float[] m_stonePower;
     public bool[] m_activeStone;
+
+    public string[] animationType;
 
     public bool newValue;
     private bool m_stonePowerSet;
@@ -43,6 +53,8 @@ public class Prototype_Classes : MonoBehaviour
     public float m_currentFog;
 
     public Color stoneColor;
+
+    private Animator handsAnim;
 
     void Start()
     {
@@ -96,6 +108,8 @@ public class Prototype_Classes : MonoBehaviour
         r_waveSystem.m_isIntermission = false;
         r_waveSystem.m_newWave = true;
         m_canSelect = false;
+
+        handsAnim = hands.GetComponent<Animator>();
     }
 
     void f_startstoneSelect()
@@ -184,11 +198,37 @@ public class Prototype_Classes : MonoBehaviour
     {
         if (Input.GetKeyDown("q"))
         {
+            abilityState = !abilityState;
+            stateQ = true;
+        }
+        if (Input.GetKeyDown("v"))
+        {
+            abilityState = !abilityState;
+            stateV = true;
+        }
+
+        if (abilityState == true)
+        {
+            hands.active = true;
+            weapons.active = false;
+        }
+        else
+        {
+            abilityState = false;
+            hands.active = false;
+            weapons.active = true;
+            stateQ = false;
+            stateV = false;
+        }
+
+        if (Input.GetKeyDown(KeyCode.Mouse0) && stateQ == true)
+        {
             switch (m_classState)
             {
                 case 0:
                     if (m_stonePower[0] >= 15)
                     {
+                        handsAnim.SetBool(animationType[0], true);
                         invisibilityEffect.active = true;
                         r_playerController.isPlayerInvisible = true;
                         Invoke("f_resetInvisible", 10);
@@ -208,14 +248,14 @@ public class Prototype_Classes : MonoBehaviour
                         Instantiate(m_pushBack, m_shotPoint.transform.position, m_shotPoint.rotation); // 'm_shotPoint.rotation' makes the position of firing relative to where the player is looking based on camera rotation.
                         m_stonePower[2] -= 15;
                     }
-                        break;
+                    break;
                 case 3:
                     //Ring of blue fire that enemies can't come into. -10% power.
                     break;
             }
         }
 
-        if (Input.GetKeyDown("v"))
+        if (Input.GetKeyDown(KeyCode.Mouse0) && stateV == true)
         {
             switch (m_classState)
             {
