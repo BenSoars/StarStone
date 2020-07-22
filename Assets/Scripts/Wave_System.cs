@@ -25,6 +25,8 @@ public class Wave_System : MonoBehaviour
 
     private User_Interface m_Canvas;
     public AchivementTracker m_Achivement;
+    public AchivementSpecialConditions m_SpecialTracker;
+    private bool m_checkRound;
 
     //Kurtis Watson
     private Player_Controller r_playerController;
@@ -62,8 +64,8 @@ public class Wave_System : MonoBehaviour
         audio = GameObject.FindObjectOfType<Audio_System>(); // get audio system
         r_pickupSystem = FindObjectOfType<Pickup_System>();
         m_Canvas = GameObject.Find("Canvas").GetComponent<User_Interface>();
-
         m_Achivement = GameObject.FindObjectOfType<AchivementTracker>();
+        m_SpecialTracker = GameObject.FindObjectOfType<AchivementSpecialConditions>();
     }
 
     //Kurtis Watson
@@ -110,8 +112,8 @@ public class Wave_System : MonoBehaviour
             m_fogMath = r_prototypeClasses.m_fogStrength / enemiesLeft; //Calculate the amount of fog to decrease each enemy kill.
             curRound += 1; //Increase current round by one.
             m_enemiesKilled = false;
+            
 
-           
         }
     }
 
@@ -168,7 +170,16 @@ public class Wave_System : MonoBehaviour
     {
         if (m_isIntermission == true) //Countdown for intermission between rounds.
         {
+            if (m_checkRound == false)
+            {
+                m_SpecialTracker.CheckForRoundAchivements();
+                m_checkRound = true;
+            } 
             m_currentIntermissionTime -= Time.deltaTime;
+        }
+        else
+        {
+            m_checkRound = false;
         }
 
         if (m_currentIntermissionTime <= 0 && m_isIntermission == true) //If the player hasn't chosen a stone, the game will do it automatically.
@@ -186,7 +197,10 @@ public class Wave_System : MonoBehaviour
             if (curRound > 1)
             {
                 m_Achivement.UnlockAchivement(1); // unlock the beat round 1 achivement
+                
             }
+            
+
 
         }
     }

@@ -30,6 +30,7 @@ public class Enemy_Controller : MonoBehaviour
     private Wave_System r_waveSystem;
     private Rigidbody m_rb;
     private Animator r_anim;
+    private AchivementSpecialConditions m_achivement;
 
     public List<GameObject> m_ItemDrops = new List<GameObject>(); // item drop
     public bool m_isGrounded = true; // is grounded check
@@ -75,7 +76,7 @@ public class Enemy_Controller : MonoBehaviour
         r_player = GameObject.FindObjectOfType<Player_Controller>();
         r_waveSystem = FindObjectOfType<Wave_System>();
         r_prototypeClasses = FindObjectOfType<Prototype_Classes>();
-
+        m_achivement = GameObject.FindObjectOfType<AchivementSpecialConditions>();
         m_defaultRunSpeed = m_runSpeed; // set the default run speed
         m_hurtBox.m_damage = m_enemyDamage; // set the hurtbox damage to represent the enemy damage
 
@@ -127,10 +128,21 @@ public class Enemy_Controller : MonoBehaviour
 
             Destroy(gameObject); // destroy self
 
+            if (m_achivement) // if there is a special conditions checker
+            {
+                m_achivement.setKillTimer(); // set the timer to be max
+                m_achivement.KilledEnemies += 1; // increase the amount of killed enemies
+                PlayerPrefs.SetInt("TotalKills", PlayerPrefs.GetInt("TotalKills") + 1); // add to the total of killed enemies
+                PlayerPrefs.Save();
+                m_achivement.CheckForKillAchivements(); // check for new achivements
+            }
+
             //Kurtis Watson
             GameObject isNewWisp = Instantiate(m_whisp, transform.position, Quaternion.identity); // spawn a wisp
             isNewWisp.GetComponent<Wisp_Controller>().m_enemySpawn = true; // set the wisp to recognise it was spawned from a defeated enemy
             r_waveSystem.enemiesLeft -= 1; // take away from the enemies left
+
+            
         }
 
 

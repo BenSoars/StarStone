@@ -8,11 +8,14 @@ public class Options : MonoBehaviour
     // Ben Soars
     public Slider volumeSlider;
     public AudioSource testSound; // the test sound that plays when altering volume
-
+    public Text displayTotalKills;
+ 
+    
     void Start()
     {
         FirstTime();
         volumeSlider.value = PlayerPrefs.GetFloat("volumeLevel");
+        displayTotalKills.text = PlayerPrefs.GetInt("TotalKills").ToString();
     }
 
     void FirstTime() {

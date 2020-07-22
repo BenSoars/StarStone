@@ -8,12 +8,13 @@ public class Enemy_Damage : MonoBehaviour
 
     public float m_damage; // the damage the attack deals, is altered from the enemy controller
     public BoxCollider m_hurtBox; // the hurtbox collider
-
+    private AchivementSpecialConditions m_SpecialTracker;
     public Player_Controller r_player;
     // Start is called before the first frame update
-    
+
     void OnEnable() // when enabled renable the hurtbox if it's disabled
     {
+        m_SpecialTracker = GameObject.FindObjectOfType<AchivementSpecialConditions>();
         m_hurtBox.enabled = true;
     }
 
@@ -25,6 +26,7 @@ public class Enemy_Damage : MonoBehaviour
             r_player.playerHealth -= m_damage * r_player.defenceValue; // take health away based on damage and defence
             m_hurtBox.enabled = false; // disable the hurtbox to prevent multiple hits per frames]
             r_player.audio.playPlayerHurt();
+            m_SpecialTracker.imperfectRun();
         }
     }
 }

@@ -26,6 +26,12 @@ public class Projectile : MonoBehaviour
     public bool m_faceDirectionOfTravel; // 
 
     public GameObject m_hitDamageText;
+    private AchivementSpecialConditions m_SpecialTracker;
+
+    void Start()
+    {
+        m_SpecialTracker = GameObject.FindObjectOfType<AchivementSpecialConditions>();
+    }
 
     void Update()
     {
@@ -43,10 +49,11 @@ public class Projectile : MonoBehaviour
             GameObject m_textObject = Instantiate(m_hitDamageText, other.transform.position, Quaternion.identity); // create a damage text number
             m_textObject.GetComponentInChildren<TextMeshPro>().text = "" + m_damage; // display the damage dealt to the text
             stickyProjectile(other); // run the sticky projectile test
+           
         } else if (other.gameObject.CompareTag ("Player") && m_enemy == true) // if it's an enemy projectile
         {
             Player_Controller player = other.GetComponent<Player_Controller>(); // get the player component
-
+            m_SpecialTracker.imperfectRun();
             player.playerHealth -= m_damage; // take damage from projecile
             player.audio.playPlayerHurt(); // play player hurt sound effect
             stickyProjectile(other); // run the sticky projectile test

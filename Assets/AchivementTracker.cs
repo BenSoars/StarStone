@@ -18,6 +18,9 @@ public class AchivementTracker : MonoBehaviour
     public List<Sprite> unlockImages = new List<Sprite>(); // list of all unlockable images
     public List<string> unlockDesc = new List<string>(); // list of all the descriptions
 
+    private bool m_isActive;
+    public AchivementTracker[] m_extraAchivements; // used to make sure there aren't multiple achivement handlers in the scene
+
     void Awake()
     {
         DontDestroyOnLoad(gameObject); // carry between scenes
@@ -26,8 +29,26 @@ public class AchivementTracker : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        resetProgress();
+        Invoke("becomeActive", 0.2f);
         achivementSound.volume = PlayerPrefs.GetFloat("volumeLevel"); // sets the volume to match the saved volume
+    }
+
+    void FixedUpdate()
+    {
+        if (m_isActive)
+        {
+            m_extraAchivements = FindObjectsOfType<AchivementTracker>();
+            if (m_extraAchivements.Length > 1)
+            {
+                for (int i = 0; i < m_extraAchivements.Length; i++)
+                {
+                    if (m_extraAchivements[i] == this)
+                    {
+                        Destroy(m_extraAchivements[i].gameObject);
+                    }
+                }
+            }
+        }
     }
        
     public void UnlockAchivement(int checkUnlock)
@@ -55,5 +76,9 @@ public class AchivementTracker : MonoBehaviour
         PlayerPrefs.Save(); // save the unlocked achivement
     }
 
+    private void becomeActive()
+    {
+        m_isActive = true;
+    }
 
 }
