@@ -16,7 +16,7 @@ public class Ability_Handler : MonoBehaviour
 
     public GameObject pushBack;
     public GameObject invisibility;
-    public GameObject m_wall; //Ability Game Objects.
+    public GameObject wall; //Ability Game Objects.
     public GameObject m_storm;
     public GameObject m_knife;
     public GameObject m_Tornado;
@@ -52,9 +52,13 @@ public class Ability_Handler : MonoBehaviour
         }
     }
 
-    public void f_spawnPush()
+    public IEnumerator f_spawnPushback()
     {
+        m_handsAnim.SetBool(animationType[4], true);
+        yield return new WaitForSeconds(0.5f);
         Instantiate(pushBack, m_shotPoint.transform.position, m_shotPoint.rotation);
+        yield return new WaitForSeconds(0.3f);
+        StartCoroutine(f_resetAnimations());
     }
 
     public IEnumerator f_spawnInvisibility()
@@ -68,27 +72,34 @@ public class Ability_Handler : MonoBehaviour
         StartCoroutine(f_resetAnimations());
     }
 
-    public void f_spawnWall()
+    public IEnumerator f_spawnWall()
     {
+        m_handsAnim.SetBool(animationType[1], true);
         if (Physics.Raycast(m_shotPoint.position, m_shotPoint.forward, out m_hitscanCast, Mathf.Infinity)) //Creates a Raycast in direction player is looking.
         {
-            GameObject o_wall = Instantiate(m_wall, new Vector3(m_hitscanCast.point.x, m_hitscanCast.point.y - 2, m_hitscanCast.point.z), Quaternion.LookRotation(Vector3.forward)); //Instantiate a wall that summons at the position of the players crosshair location.
+            GameObject o_wall = Instantiate(wall, new Vector3(m_hitscanCast.point.x, m_hitscanCast.point.y - 2, m_hitscanCast.point.z), Quaternion.LookRotation(Vector3.forward)); //Instantiate a wall that summons at the position of the players crosshair location.
             o_wall.transform.eulerAngles = new Vector3(o_wall.transform.eulerAngles.x, playerController.playerRotX, o_wall.transform.eulerAngles.z); //Rotate the wall based on angle of player.
         }
+        yield return new WaitForSeconds(0.7f);
+        StartCoroutine(f_resetAnimations());
     }
 
-    public void f_spawnStorm()
+    public IEnumerator f_spawnStorm()
     {
+        m_handsAnim.SetBool(animationType[3], true);
         if (Physics.Raycast(m_shotPoint.position, m_shotPoint.forward, out m_hitscanCast, Mathf.Infinity)) //Creates a Raycast.
         {
             Instantiate(m_storm, new Vector3(m_hitscanCast.point.x, m_hitscanCast.point.y - 2, m_hitscanCast.point.z), Quaternion.LookRotation(Vector3.forward));
         }
+        yield return new WaitForSeconds(1.3f);
+        StartCoroutine(f_resetAnimations());
     }
 
-    public void f_spawnKnives()
+    public IEnumerator f_spawnKnives()
     {
+        m_handsAnim.SetBool(animationType[5], true);
+        yield return new WaitForSeconds(0.6f);
         float m_sideDirection = -40; //Angle of first knife.
-
         for (int i = 0; i < m_totalKnives; i++) //Instantiate a set amount of knives.
         {
             GameObject knife = Instantiate(m_knife, m_shotPoint.position, Quaternion.identity); 
@@ -98,16 +109,20 @@ public class Ability_Handler : MonoBehaviour
             m_krb.AddForce(m_shotPoint.right * m_sideDirection); 
 
             m_sideDirection += 10; //> change the RigidBody force from the right direction so it 'spreads' correctly.
-
         }
+        yield return new WaitForSeconds(0.2f);
+        StartCoroutine(f_resetAnimations());
     }
 
-    public void f_spawnTornado()
+    public IEnumerator f_spawnTornado()
     {
+        m_handsAnim.SetBool(animationType[2], true);
         if (Physics.Raycast(m_shotPoint.position, m_shotPoint.forward, out m_hitscanCast, Mathf.Infinity)) //Creates a Raycast.
         {
             Instantiate(m_Tornado, new Vector3(m_hitscanCast.point.x, m_hitscanCast.point.y - 2, m_hitscanCast.point.z), Quaternion.LookRotation(Vector3.forward)); //Spawns a tornade of position of player crosshair.
         }
+        yield return new WaitForSeconds(1.3f);
+        StartCoroutine(f_resetAnimations());
     }
 
     public void f_spawnInfector()
@@ -124,9 +139,8 @@ public class Ability_Handler : MonoBehaviour
         {
             m_handsAnim.SetBool(animationType[i], false);
         }
-        yield return new WaitForSeconds(0.1f);
-        prototypeClasses.stateV = false;
-        prototypeClasses.stateQ = false;
+        yield return new WaitForSeconds(0.5f);
+        prototypeClasses.canSwitch = true;
         prototypeClasses.abilityState = !prototypeClasses.abilityState;
     }
 }

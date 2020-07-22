@@ -146,9 +146,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   abilitySpeed: 1000
-  upliftForce: 1
-  knockbackForce: 1
-  damageRadius: 1
+  upliftForce: 30
+  knockbackForce: 1000
+  damageRadius: 10
 --- !u!114 &2330088124434672821
 MonoBehaviour:
   m_ObjectHideFlags: 0

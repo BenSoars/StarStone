@@ -1753,7 +1753,7 @@ Light:
   serializedVersion: 10
   m_Type: 2
   m_Shape: 0
-  m_Color: {r: 1, g: 0.8675709, b: 0, a: 1}
+  m_Color: {r: 0.8018868, g: 0.04160734, b: 0.7540829, a: 1}
   m_Intensity: 1
   m_Range: 10
   m_SpotAngle: 30
@@ -5138,7 +5138,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4059563601594045013}
   m_LocalRotation: {x: 0.0000031460074, y: -0.000007454306, z: 0.000001968816, w: 1}
-  m_LocalPosition: {x: -0.0000000047683715, y: 0.0027102763, z: 0.0000000020861626}
+  m_LocalPosition: {x: -0.0000000047683715, y: 0.002710276, z: 0.0000000020861626}
   m_LocalScale: {x: 1, y: 1.0000001, z: 1}
   m_Children:
   - {fileID: 7019188190545573749}
@@ -8542,7 +8542,7 @@ Light:
   serializedVersion: 10
   m_Type: 2
   m_Shape: 0
-  m_Color: {r: 1, g: 0.8675709, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: 1
   m_Range: 10
   m_SpotAngle: 30
@@ -13313,6 +13313,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prototypeWeapon: {fileID: 6879699983474076598}
   shotPoint: {fileID: 567909998898289762}
+  canSwitch: 0
   staffs:
   - {fileID: 5721826604860843943}
   - {fileID: 1755948503065925760}
@@ -13351,7 +13352,7 @@ MonoBehaviour:
   pushBack: {fileID: 1851148228268403614, guid: af108dce561144945bf7271e1c761477,
     type: 3}
   invisibility: {fileID: 4421925856445925348}
-  m_wall: {fileID: 8105937169651061196, guid: a61e8a30f90ffde45b284f96c1dfe150, type: 3}
+  wall: {fileID: 8105937169651061196, guid: a61e8a30f90ffde45b284f96c1dfe150, type: 3}
   m_storm: {fileID: 2084821073527653411, guid: 69f10fff7f1e53b489cc042a5eaf74b3, type: 3}
   m_knife: {fileID: 6854262673099413662, guid: ab9f3b6c2cb9ff2468e3648ce6f5cd46, type: 3}
   m_Tornado: {fileID: 3247021307327370051, guid: 95fedcde153b44b45bd7a91473f0ae11,

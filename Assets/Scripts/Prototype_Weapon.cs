@@ -55,7 +55,7 @@ public class Prototype_Weapon : MonoBehaviour
         particles.transform.position = shotPoint.position;
 
         m_currentDamageCoolDown -= Time.deltaTime;
-        m_laserDamage = UnityEngine.Random.Range(5, 10);
+        m_laserDamage = UnityEngine.Random.Range(10, 15);
     }
 
 
@@ -67,7 +67,7 @@ public class Prototype_Weapon : MonoBehaviour
         {
             beamParticles.active = true;
             beamNoise.enabled = true;
-            r_prototypeClasses.stonePower[r_prototypeClasses.classState] -= 0.01f;
+            r_prototypeClasses.stonePower[r_prototypeClasses.classState] -= 0.025f;
             m_lr.SetPosition(0, shotPoint.position);
             m_lr.enabled = true;
             if (Physics.SphereCast(shotPoint.position, 0.2f, shotPoint.forward, out m_laserHit)) //SphereCast allows for a thicker Raycast.

@@ -11,11 +11,14 @@ public class Weapon_Switch : MonoBehaviour
 
     public int currentWeapon;
 
+    //Kurtis Watson
+    private Prototype_Classes prototypeClasses;
+
     // Start is called before the first frame update
     void Start()
     {
         currentWeapon = 1;
-      
+        prototypeClasses = FindObjectOfType<Prototype_Classes>();
     }
 
     // Update is called once per frame
@@ -31,21 +34,25 @@ public class Weapon_Switch : MonoBehaviour
             }
         }
 
-        if (Input.GetAxis("Mouse ScrollWheel") > 0f) // forward
+        if (prototypeClasses.canSwitch == true)
         {
-            currentWeapon++; // increase current weapon number
-        }
-        else if (Input.GetAxis("Mouse ScrollWheel") < 0f) // backwards
-        {
-            currentWeapon--; // decrease current weapon number
-        }
+            if (Input.GetAxis("Mouse ScrollWheel") > 0f) // forward
+            {
+                currentWeapon++; // increase current weapon number
+            }
+            else if (Input.GetAxis("Mouse ScrollWheel") < 0f) // backwards
+            {
+                currentWeapon--; // decrease current weapon number
+            }
 
-        if (currentWeapon > m_Weapons.Count) // if the current weapon is larger than the total count
-        {
-            currentWeapon = 1; // set to 1, to reflect the first weapon
-        } else if (currentWeapon < 1)
-        {
-            currentWeapon = m_Weapons.Count; // set to the total amount to reflect the last in the array
+            if (currentWeapon > m_Weapons.Count) // if the current weapon is larger than the total count
+            {
+                currentWeapon = 1; // set to 1, to reflect the first weapon
+            }
+            else if (currentWeapon < 1)
+            {
+                currentWeapon = m_Weapons.Count; // set to the total amount to reflect the last in the array
+            }
         }
 
         f_disableAll(); // check the weapon active status
