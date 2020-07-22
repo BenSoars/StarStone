@@ -17,6 +17,6 @@ public class Orb_Controller : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        GetComponent<MeshRenderer>().material = m_materials[r_prototypeClasses.m_chosenBuff]; //Change colour of orb based on chosen enemy buff.
+        GetComponent<MeshRenderer>().material = m_materials[r_prototypeClasses.chosenBuff]; //Change colour of orb based on chosen enemy buff.
     }
 }

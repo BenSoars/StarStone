@@ -106,7 +106,7 @@ public class Wave_System : MonoBehaviour
             enemiesLeft = spawnedEnemies.Count; //Set the count for the enemies left.
             r_prototypeClasses.m_fogStrength = 0.2f; //Fog strength.
             r_prototypeClasses.m_currentFog = 0.2f; //Reset current fog.
-            r_prototypeClasses.m_stonePower[r_prototypeClasses.m_chosenBuff] -= enemiesLeft * 2; //Decrease the chosen enemy buff by two times the amount of enemies.
+            r_prototypeClasses.stonePower[r_prototypeClasses.chosenBuff] -= enemiesLeft * 2; //Decrease the chosen enemy buff by two times the amount of enemies.
             m_fogMath = r_prototypeClasses.m_fogStrength / enemiesLeft; //Calculate the amount of fog to decrease each enemy kill.
             curRound += 1; //Increase current round by one.
             m_enemiesKilled = false;
@@ -143,9 +143,9 @@ public class Wave_System : MonoBehaviour
             }
             m_enemiesKilled = true; //Stops the pick-ups from spawning more than one item a round (Notes etc. above in %2 function).
             m_startedWaves = false; //Begin the wave (required for a different script).
-            r_prototypeClasses.m_canSelect = true; //Allow the player to choose a new Starstone.
-            r_prototypeClasses.m_activeStone[r_prototypeClasses.m_classState] = false; //Disable the current stone so that it can be chosen again.
-            r_prototypeClasses.m_activeStone[r_prototypeClasses.m_chosenBuff] = false; //Disable the current enemy buff so it can be chosen again.
+            r_prototypeClasses.canSelect = true; //Allow the player to choose a new Starstone.
+            r_prototypeClasses.activeStone[r_prototypeClasses.classState] = false; //Disable the current stone so that it can be chosen again.
+            r_prototypeClasses.activeStone[r_prototypeClasses.chosenBuff] = false; //Disable the current enemy buff so it can be chosen again.
             m_spawnValue += 1; //Increments by one to indicate to the game on whether to spawn a gear cog or a lab note.
             r_userInterface.f_waveTimer(); //Update the round time limit.
         }
@@ -175,7 +175,7 @@ public class Wave_System : MonoBehaviour
         {
             notChosen = true; //Auto selection (used in Prototype_Classes).
             m_isIntermission = false; //Stops countdown as it has reached 0.
-            r_prototypeClasses.m_canSelect = false; //Disable player selecting stone.
+            r_prototypeClasses.canSelect = false; //Disable player selecting stone.
         }
 
         // Ben Soars

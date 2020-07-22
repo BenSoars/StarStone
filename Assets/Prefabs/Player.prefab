@@ -2095,7 +2095,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8386456219935881521
 Transform:
   m_ObjectHideFlags: 0
@@ -13311,41 +13311,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a938f5b129ad6f439dcd5a02a2a9fbe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  r_prototypeWeapon: {fileID: 6879699983474076598}
-  m_shotPoint: {fileID: 567909998898289762}
-  invisibilityEffect: {fileID: 4421925856445925348}
-  m_pushBack: {fileID: 1851148228268403614, guid: af108dce561144945bf7271e1c761477,
-    type: 3}
+  prototypeWeapon: {fileID: 6879699983474076598}
+  shotPoint: {fileID: 567909998898289762}
   staffs:
   - {fileID: 5721826604860843943}
   - {fileID: 1755948503065925760}
   - {fileID: 3728063721937455697}
   - {fileID: 0}
-  weapons: {fileID: 7591412883134558846}
-  hands: {fileID: 1526581604740186071}
-  m_classState: 0
-  m_stonePower:
+  abilityState: 0
+  stateQ: 0
+  stateV: 0
+  classState: 0
+  stonePower:
   - 0
   - 0
   - 0
   - 0
-  m_activeStone: 00000000
-  animationType:
-  - Invisible
-  - Wall
-  - Tornado
-  - Cloud
-  - Pushback
-  - Knives
-  - Ring
-  - Chain
-  newValue: 0
-  m_canSelect: 0
-  m_chosenBuff: 0
+  activeStone: 00000000
+  stoneColor: {r: 0, g: 0, b: 0, a: 0}
+  canSelect: 0
+  chosenBuff: 0
   buffChosen: 0
   m_fogStrength: 0
   m_currentFog: 0
-  stoneColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!114 &1031861635661113235
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13360,6 +13348,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_totalKnives: 9
   m_shotPoint: {fileID: 567909998898289762}
+  pushBack: {fileID: 1851148228268403614, guid: af108dce561144945bf7271e1c761477,
+    type: 3}
+  invisibility: {fileID: 4421925856445925348}
   m_wall: {fileID: 8105937169651061196, guid: a61e8a30f90ffde45b284f96c1dfe150, type: 3}
   m_storm: {fileID: 2084821073527653411, guid: 69f10fff7f1e53b489cc042a5eaf74b3, type: 3}
   m_knife: {fileID: 6854262673099413662, guid: ab9f3b6c2cb9ff2468e3648ce6f5cd46, type: 3}
@@ -13367,6 +13358,17 @@ MonoBehaviour:
     type: 3}
   m_Infector: {fileID: 5813459701485193558, guid: 2f1a8e8830d7e42408df0bb637c3b3d3,
     type: 3}
+  weapons: {fileID: 7591412883134558846}
+  hands: {fileID: 1526581604740186071}
+  animationType:
+  - Invisible
+  - Wall
+  - Tornado
+  - Cloud
+  - Pushback
+  - Knives
+  - Ring
+  - Infect
 --- !u!114 &301809673055505178
 MonoBehaviour:
   m_ObjectHideFlags: 0

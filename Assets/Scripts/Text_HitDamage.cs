@@ -8,7 +8,7 @@ public class Text_HitDamage : MonoBehaviour
 {
     private Player_Controller r_playerController;
     private Gun_Generic r_gunGeneric;
-    private Prototype_Weapon r_prototypeWeapon;
+    private Prototype_Weapon prototypeWeapon;
 
     private float m_bulletDamageText;
 
@@ -18,7 +18,7 @@ public class Text_HitDamage : MonoBehaviour
     {
         r_playerController = FindObjectOfType<Player_Controller>();
         r_gunGeneric = FindObjectOfType<Gun_Generic>();
-        r_prototypeWeapon = FindObjectOfType<Prototype_Weapon>();       
+        prototypeWeapon = FindObjectOfType<Prototype_Weapon>();       
     }
 
     // Update is called once per frame

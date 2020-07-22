@@ -91,12 +91,12 @@ public class User_Interface : MonoBehaviour
 
         m_currentHealth.text = "" + r_playerController.playerHealth.ToString("F0");
 
-        m_currentStoneCharge.text = "" + r_prototypeClasses.m_stonePower[r_prototypeClasses.m_classState].ToString("F0");
+        m_currentStoneCharge.text = "" + r_prototypeClasses.stonePower[r_prototypeClasses.classState].ToString("F0");
 
-        m_SS1.text = r_prototypeClasses.m_stonePower[0].ToString("F0");
-        m_SS2.text = r_prototypeClasses.m_stonePower[1].ToString("F0");
-        m_SS3.text = r_prototypeClasses.m_stonePower[2].ToString("F0");
-        m_SS4.text = r_prototypeClasses.m_stonePower[3].ToString("F0");
+        m_SS1.text = r_prototypeClasses.stonePower[0].ToString("F0");
+        m_SS2.text = r_prototypeClasses.stonePower[1].ToString("F0");
+        m_SS3.text = r_prototypeClasses.stonePower[2].ToString("F0");
+        m_SS4.text = r_prototypeClasses.stonePower[3].ToString("F0");
 
         if (r_waveSystem.enemiesLeft == 0 && r_waveSystem.curRound > 0)
         {
@@ -133,7 +133,7 @@ public class User_Interface : MonoBehaviour
             }
         }
 
-        switch (r_prototypeClasses.m_classState)
+        switch (r_prototypeClasses.classState)
         {
             case 0:
                 abilityIcon1.sprite = abilityIcons[0];
@@ -158,7 +158,7 @@ public class User_Interface : MonoBehaviour
         }
 
         timeTillNextRound.text = "NEXT ROUND IN " + r_waveSystem.m_currentIntermissionTime.ToString("F0");
-        starstoneIcon.sprite = startstoneIcons[r_prototypeClasses.m_classState];
+        starstoneIcon.sprite = startstoneIcons[r_prototypeClasses.classState];
 
     }
 
@@ -261,7 +261,7 @@ public class User_Interface : MonoBehaviour
         if (Physics.Raycast(cameraLook.transform.position, cameraLook.transform.forward, out m_objectHit, 50f))
         {
             float distance = Vector3.Distance(cameraLook.transform.position, m_objectHit.collider.transform.position);
-            if ((m_objectHit.collider.gameObject.GetComponent("Starstone_ID") as Starstone_ID) && distance <= 3 && r_prototypeClasses.m_canSelect == true)
+            if ((m_objectHit.collider.gameObject.GetComponent("Starstone_ID") as Starstone_ID) && distance <= 3 && r_prototypeClasses.canSelect == true)
             {
                 isLooking = true;
                 stone = m_objectHit.collider.gameObject;

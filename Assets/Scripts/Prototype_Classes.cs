@@ -9,77 +9,67 @@ using UnityEngine.Rendering.PostProcessing;
 //Kurtis Watson
 public class Prototype_Classes : MonoBehaviour
 {
-    private Player_Controller r_playerController;
-    private Gun_Generic r_gunGeneric;
-    public Prototype_Weapon r_prototypeWeapon;
-    private Wave_System r_waveSystem;
-    private Rune_Controller r_runeController;
+    [Header("Script References")]
+    [Space(2)]
+    private Player_Controller m_playerController;
+    public Prototype_Weapon prototypeWeapon;
+    private Wave_System m_waveSystem;
 
-    private Rune_Controller[] runeAnim;
+    [Header("Weapon Mechanics")]
+    [Space(2)] 
+    public Transform shotPoint;
 
-    public Transform m_shotPoint;
-
-    public GameObject invisibilityEffect;
-    public GameObject m_pushBack;
-    public GameObject[] staffs;
-
-    public GameObject weapons;
-    public GameObject hands;
-
-    public int m_classState;
-
-    private bool abilityState;
-    private bool stateQ;
-    private bool stateV;
-
+    [Header("Default Stats Before Buffs")]
+    [Space(2)]
     private float m_defaultDefence;
     private float m_defaultHealth;
     private float m_defaultDamageCooldown;
-    private float m_defaultBulletDamage;
 
-    public float[] m_stonePower;
-    public bool[] m_activeStone;
+    [Header("Staff Mechanics")]
+    [Space(2)]
+    public GameObject[] staffs;
+    public bool abilityState;
+    public bool stateQ;
+    public bool stateV;
 
-    public string[] animationType;
+    [Header("Rune Mechanics")]
+    [Space(2)]
+    private Rune_Controller[] m_runeAnim;
 
-    public bool newValue;
-    private bool m_stonePowerSet;
-    public bool m_canSelect;
-
-    public int m_chosenBuff;
+    [Header("Stone Mechanics")]
+    [Space(2)]
+    public int classState;
+    public float[] stonePower;
+    public bool[] activeStone;
+    public Color stoneColor;
+    public bool canSelect;
+    public int chosenBuff;
     public bool buffChosen;
 
+    [Header("Environment")]
+    [Space(2)]
     public float m_fogStrength;
     public float m_currentFog;
 
-    public Color stoneColor;
-
-    private Animator handsAnim;
-
     void Start()
-    {
-        if (m_stonePowerSet == false)
+    { 
+        for (int i = 0; i < activeStone.Length; i++) //Set Starstone powers at first launch.
         {
-            m_stonePowerSet = true;
-            for (int i = 0; i < m_activeStone.Length; i++)
-            {
-                m_stonePower[i] = Random.Range(30, 80);
-            }
+            stonePower[i] = Random.Range(30, 80);
         }
 
-        runeAnim = FindObjectsOfType<Rune_Controller>();
+        m_runeAnim = FindObjectsOfType<Rune_Controller>(); //Reference Rune_Controller.
+        m_playerController = FindObjectOfType<Player_Controller>();
+        m_waveSystem = FindObjectOfType<Wave_System>();
 
-        m_currentFog = m_fogStrength;
-        m_canSelect = true;
+        m_currentFog = m_fogStrength; //Set current fog.
+        canSelect = true; //Allow the player to select a starstone.
 
-        r_playerController = FindObjectOfType<Player_Controller>();
-        r_gunGeneric = FindObjectOfType<Gun_Generic>();
-        r_waveSystem = FindObjectOfType<Wave_System>();
-        r_runeController = FindObjectOfType<Rune_Controller>();
+       
 
-        m_defaultDefence = r_playerController.defenceValue;
-        m_defaultHealth = r_playerController.playerHealth;
-        m_defaultDamageCooldown = r_prototypeWeapon.m_damageCoolDown;
+        m_defaultDefence = m_playerController.defenceValue;
+        m_defaultHealth = m_playerController.playerHealth;
+        m_defaultDamageCooldown = prototypeWeapon.m_damageCoolDown;
         //m_defaultBulletDamage = r_gunGeneric.m_bulletDamage;
     }
 
@@ -94,29 +84,27 @@ public class Prototype_Classes : MonoBehaviour
 
     void f_defaultSettings() //Reset to 0
     {
-        for (int i = 0; i < m_activeStone.Length; i++)
+        for (int i = 0; i < activeStone.Length; i++)
         {
-            m_activeStone[m_classState] = false;
-            staffs[m_classState].active = false;
+            activeStone[classState] = false;
+            staffs[classState].active = false;
         }
-        r_waveSystem.notChosen = false;
+        m_waveSystem.notChosen = false;
         m_currentFog = m_fogStrength;
         RenderSettings.fog = false;
-        r_playerController.defenceValue = m_defaultDefence;
-        r_prototypeWeapon.m_damageCoolDown = m_defaultDamageCooldown;
+        m_playerController.defenceValue = m_defaultDefence;
+        prototypeWeapon.m_damageCoolDown = m_defaultDamageCooldown;
         //r_gunGeneric.m_bulletDamage = m_defaultBulletDamage;
-        r_waveSystem.m_isIntermission = false;
-        r_waveSystem.m_newWave = true;
-        m_canSelect = false;
-
-        handsAnim = hands.GetComponent<Animator>();
+        m_waveSystem.m_isIntermission = false;
+        m_waveSystem.m_newWave = true;
+        canSelect = false;
     }
 
     void f_startstoneSelect()
     {
         RaycastHit m_stoneSelect;
 
-        if (Physics.Raycast(m_shotPoint.position, m_shotPoint.forward, out m_stoneSelect, 3f, 1 << 11) && Input.GetKeyDown("f") && m_canSelect == true)
+        if (Physics.Raycast(shotPoint.position, shotPoint.forward, out m_stoneSelect, 3f, 1 << 11) && Input.GetKeyDown("f") && canSelect == true)
         {
             buffChosen = true;
             f_animateRunes();
@@ -125,37 +113,36 @@ public class Prototype_Classes : MonoBehaviour
             switch (m_stoneSelect.collider.gameObject.name)
             {
                 case ("Yellow"): //Yellow
-                    m_classState = 0;
-                    r_playerController.defenceValue = 0.75f;
+                    classState = 0;
+                    m_playerController.defenceValue = 0.75f;
                     break;
                 case ("White"): //White
-                    m_classState = 1;
-                    r_playerController.playerHealth = m_defaultHealth * 1.3f;
+                    classState = 1;
+                    m_playerController.playerHealth = m_defaultHealth * 1.3f;
                     break;
                 case ("Pink"): //Pink
-                    m_classState = 2;
+                    classState = 2;
                     break;
                 case ("Blue"): //Blue
-                    m_classState = 3;
-                    r_prototypeWeapon.m_damageCoolDown = m_defaultDamageCooldown / 2;
-                    break;                    
+                    classState = 3;
+                    prototypeWeapon.m_damageCoolDown = m_defaultDamageCooldown / 2;
+                    break;
             }
 
-            staffs[m_classState].active = true;
-            m_activeStone[m_classState] = true;
-            GameObject.Find("Prototype").transform.GetChild(m_classState).transform.SetSiblingIndex(0);
+            staffs[classState].active = true;
+            activeStone[classState] = true;
         }
 
-        if (r_waveSystem.notChosen == true)
+        if (m_waveSystem.notChosen == true)
         {
             f_animateRunes();
-            buffChosen = true;       
+            buffChosen = true;
             f_defaultSettings();
 
- 
-            m_classState = Random.Range(0, 3);
-            staffs[m_classState].active = true;
-            m_activeStone[m_classState] = true;
+
+            classState = Random.Range(0, 3);
+            staffs[classState].active = true;
+            activeStone[classState] = true;
         }
 
         if (buffChosen == true)
@@ -163,12 +150,12 @@ public class Prototype_Classes : MonoBehaviour
             GameObject.Find("Canvas").GetComponent<User_Interface>().runtimeUI.active = true;
             buffChosen = false;
             float max = int.MinValue;
-            for (int i = 0; i < m_activeStone.Length; i++)
+            for (int i = 0; i < activeStone.Length; i++)
             {
-                if (m_activeStone[i] == false && m_stonePower[i] > max)
+                if (activeStone[i] == false && stonePower[i] > max)
                 {
-                    max = m_stonePower[i];
-                    m_chosenBuff = i;
+                    max = stonePower[i];
+                    chosenBuff = i;
                 }
             }
         }
@@ -176,10 +163,10 @@ public class Prototype_Classes : MonoBehaviour
 
     void f_enemyBuff()
     {
-        switch (m_chosenBuff)
+        switch (chosenBuff)
         {
             case 0:
-                
+
                 break;
             case 1:
                 //r_gunGeneric.m_bulletDamage = r_gunGeneric.m_bulletDamage * 0.75f;
@@ -206,47 +193,33 @@ public class Prototype_Classes : MonoBehaviour
             abilityState = !abilityState;
             stateV = true;
         }
-
-        if (abilityState == true)
-        {
-            hands.active = true;
-            weapons.active = false;
-        }
-        else
-        {
+        if(Input.GetAxis("Mouse ScrollWheel") > 0f){
             abilityState = false;
-            hands.active = false;
-            weapons.active = true;
-            stateQ = false;
-            stateV = false;
         }
 
         if (Input.GetKeyDown(KeyCode.Mouse0) && stateQ == true)
         {
-            switch (m_classState)
+            switch (classState)
             {
                 case 0:
-                    if (m_stonePower[0] >= 15)
+                    if (stonePower[0] >= 15)
                     {
-                        handsAnim.SetBool(animationType[0], true);
-                        invisibilityEffect.active = true;
-                        r_playerController.isPlayerInvisible = true;
-                        Invoke("f_resetInvisible", 10);
-                        m_stonePower[0] -= 15;
+                        FindObjectOfType<Ability_Handler>().f_spawnInvisibilty();
+                        stonePower[0] -= 15;
                     }
                     break;
                 case 1:
-                    if (m_stonePower[1] >= 15)
+                    if (stonePower[1] >= 15)
                     {
                         FindObjectOfType<Ability_Handler>().f_spawnTornado();
-                        m_stonePower[1] -= 15;
+                        stonePower[1] -= 15;
                     }
                     break;
                 case 2:
-                    if (m_stonePower[2] >= 15)
+                    if (stonePower[2] >= 15)
                     {
-                        Instantiate(m_pushBack, m_shotPoint.transform.position, m_shotPoint.rotation); // 'm_shotPoint.rotation' makes the position of firing relative to where the player is looking based on camera rotation.
-                        m_stonePower[2] -= 15;
+                        FindObjectOfType<Ability_Handler>().f_spawnPush();
+                        stonePower[2] -= 15;
                     }
                     break;
                 case 3:
@@ -257,65 +230,59 @@ public class Prototype_Classes : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Mouse0) && stateV == true)
         {
-            switch (m_classState)
+            switch (classState)
             {
                 case 0:
-                    if (m_stonePower[0] >= 20)
+                    if (stonePower[0] >= 20)
                     {
                         FindObjectOfType<Ability_Handler>().f_spawnWall();
-                        m_stonePower[0] -= 20;
+                        stonePower[0] -= 20;
                     }
                     break;
                 case 1:
-                    if (m_stonePower[1] >= 25)
+                    if (stonePower[1] >= 25)
                     {
                         FindObjectOfType<Ability_Handler>().f_spawnStorm();
-                        m_stonePower[1] -= 25;
+                        stonePower[1] -= 25;
                     }
                     break;
                 case 2:
-                    if (m_stonePower[2] >= 15)
+                    if (stonePower[2] >= 15)
                     {
                         FindObjectOfType<Ability_Handler>().f_spawnKnives();
-                        m_stonePower[2] -= 15;
+                        stonePower[2] -= 15;
                     }
                     //Knives.
                     break;
                 case 3:
-                    if (m_stonePower[3] >= 25)
+                    if (stonePower[3] >= 25)
                     {
                         FindObjectOfType<Ability_Handler>().f_spawnInfector();
-                        m_stonePower[3] -= 25;
+                        stonePower[3] -= 25;
                     }
                     break;
-            }           
+            }
         }
     }
 
     void f_chargeStones()
     {
-        if (m_canSelect == false)
+        if (canSelect == false)
         {
-            for (int i = 0; i < m_activeStone.Length; i++)
+            for (int i = 0; i < activeStone.Length; i++)
             {
-                if (m_activeStone[i] != true && m_stonePower[i] < 100)
+                if (activeStone[i] != true && stonePower[i] < 100)
                 {
-                    m_stonePower[i] += 0.002f;
+                    stonePower[i] += 0.002f;
                 }
-                //Debug.Log("Star stone: " + i + "    Power: " + m_stonePower[i]);
+                //Debug.Log("Star stone: " + i + "    Power: " + stonePower[i]);
             }
         }
     }
 
-    void f_resetInvisible()
-    {
-        invisibilityEffect.active = false;
-        r_playerController.isPlayerInvisible = false;
-    }
-
     void f_setStoneColor()
     {
-        switch (m_chosenBuff)
+        switch (chosenBuff)
         {
             case 0:
                 stoneColor = Color.yellow;
@@ -334,9 +301,10 @@ public class Prototype_Classes : MonoBehaviour
 
     void f_animateRunes()
     {
-        for (int i = 0; i < runeAnim.Length; i++)
+        for (int i = 0; i < m_runeAnim.Length; i++)
         {
-            runeAnim[i].animated = true;
+            m_runeAnim[i].animated = true;
         }
     }
+
 }

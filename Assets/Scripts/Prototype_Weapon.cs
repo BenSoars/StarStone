@@ -63,11 +63,11 @@ public class Prototype_Weapon : MonoBehaviour
     void f_prototypeWeapon()
     {
         RaycastHit m_laserHit;
-        if (Input.GetKey(KeyCode.Mouse0) && r_prototypeClasses.m_stonePower[r_prototypeClasses.m_classState] > 0 && r_playerController.isSprinting == false)
+        if (Input.GetKey(KeyCode.Mouse0) && r_prototypeClasses.stonePower[r_prototypeClasses.classState] > 0 && r_playerController.isSprinting == false)
         {
             beamParticles.active = true;
             beamNoise.enabled = true;
-            r_prototypeClasses.m_stonePower[r_prototypeClasses.m_classState] -= 0.01f;
+            r_prototypeClasses.stonePower[r_prototypeClasses.classState] -= 0.01f;
             m_lr.SetPosition(0, shotPoint.position);
             m_lr.enabled = true;
             if (Physics.SphereCast(shotPoint.position, 0.2f, shotPoint.forward, out m_laserHit)) //SphereCast allows for a thicker Raycast.
@@ -81,7 +81,7 @@ public class Prototype_Weapon : MonoBehaviour
                 if (m_laserHit.collider.gameObject.CompareTag("Enemy") && m_currentDamageCoolDown <= 0)
                 {
                     enemyHit = m_laserHit.collider.gameObject.GetComponent<Enemy_Controller>();
-                    switch (r_prototypeClasses.m_classState)
+                    switch (r_prototypeClasses.classState)
                     {
                         case 0: //Yellow
                             m_laserDamage = m_laserDamage * 2;
@@ -110,7 +110,7 @@ public class Prototype_Weapon : MonoBehaviour
             anim.SetBool("Firing", false);
         }
 
-        switch (r_prototypeClasses.m_classState)
+        switch (r_prototypeClasses.classState)
         {
             case 0:
                 m_lr.SetColors(Color.yellow, Color.yellow);
