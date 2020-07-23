@@ -14,6 +14,9 @@ public class Clock_Controller : MonoBehaviour
     private Pickup_System pickupSystem;
     public Gun_Generic gunGeneric;
 
+    public int globalMin;
+    public int globalHour;
+
     private int m_desiredMin;
     private int m_desiredHour;
 

@@ -45,6 +45,8 @@ public class Pickup_System : MonoBehaviour
 
     private int repairedParts;
 
+    private int noteID;
+
     private void Start()
     {
         animator = gameObject.transform.GetChild(0).gameObject.transform.GetChild(3).GetComponent<Animator>();
@@ -70,7 +72,23 @@ public class Pickup_System : MonoBehaviour
         if (m_spawnNote == true)
         {
             userInterface.f_popupText();
-            Instantiate(m_note, m_desiredLocation.position, Quaternion.identity); //Instantiate the note at the chosen location.
+            GameObject note = Instantiate(m_note, m_desiredLocation.position, Quaternion.identity); //Instantiate the note at the chosen location.
+            noteID += 3;
+            switch (noteID) {
+                case 1:
+                    note.GetComponent<Note>().NoteName = "";
+                    note.GetComponent<Note>().NoteText = "";
+                    break;
+                case 2:
+                    note.GetComponent<Note>().NoteName = "";
+                    note.GetComponent<Note>().NoteText = "";
+                    break;
+                case 3:
+                    note.GetComponent<Note>().NoteName = "Aztec Ruins";
+                    note.GetComponent<Note>().NoteText = "Time: " + clockController.m_desiredHour + ":" + clockController.m_desiredMin + " - Ruins have been check and the generator is in full working order. Fuel consumption gathered from the Temples core is at a steady rate and the stones are charging as expected.";
+                    break;
+            }
+            
         }
         if (m_spawnCogs == true)
         {
