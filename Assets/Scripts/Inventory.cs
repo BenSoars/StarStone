@@ -9,7 +9,6 @@ public class Inventory : MonoBehaviour
 
     public List<string> noteName = new List<string>(); // the storred note names
     public List<string> noteContents = new List<string>(); // the storred note contents   
-    public List<Sprite> noteImage = new List<Sprite>(); // the storred note images
     private bool m_isVisible; // if the notes/inventory are visible
     private int currentNote; // the currently viewed note
     public GameObject notesVisible; // the visible Ui element showing the notes
@@ -34,8 +33,6 @@ public class Inventory : MonoBehaviour
             // display the current note contents on the note on screen
             m_noteNameDisplay.text = noteName[currentNote]; 
             m_noteContentsDisplay.text = noteContents[currentNote];
-            m_noteImageDisplay.sprite = noteImage[currentNote];
-
 
             // switch to next note
             if (Input.GetKeyDown(KeyCode.Z))

@@ -94,6 +94,7 @@ public class AchivementSpecialConditions : MonoBehaviour
         if (timerRoundCheck >= 0)
         {
             timerRoundCheck -= Time.deltaTime;
+            Debug.Log("timer round: " + timerRoundCheck.ToString());
         }
         
     }

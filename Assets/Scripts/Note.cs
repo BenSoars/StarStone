@@ -7,8 +7,6 @@ public class Note : MonoBehaviour
     // Ben Soars
     public string NoteName; // the Note name
     public string NoteText; // the Note's contents
-    public Sprite NoteImage; // an image for the note
-
     private Inventory m_invSystem; // the inventory system access
 
     void Start()
@@ -29,7 +27,6 @@ public class Note : MonoBehaviour
     {
         m_invSystem.noteName.Add(NoteName); // add to the inventory list
         m_invSystem.noteContents.Add(NoteText); // add to the inventory list
-        m_invSystem.noteImage.Add(NoteImage); // add to the inventory list
         Destroy(gameObject); // add to the inventory list
     }
 }

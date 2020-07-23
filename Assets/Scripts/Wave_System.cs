@@ -197,10 +197,10 @@ public class Wave_System : MonoBehaviour
             if (curRound > 1)
             {
                 m_Achivement.UnlockAchivement(1); // unlock the beat round 1 achivement
-                
+               
             }
-            
 
+            m_SpecialTracker.setRoundChecker();
 
         }
     }
