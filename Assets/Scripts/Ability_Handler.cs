@@ -64,6 +64,7 @@ public class Ability_Handler : MonoBehaviour
     public IEnumerator f_spawnInvisibility()
     {
         m_handsAnim.SetBool(animationType[0], true);
+        yield return new WaitForSeconds(2);
         playerController.isPlayerInvisible = true;
         invisibility.active = true;
         yield return new WaitForSeconds(10);

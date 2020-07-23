@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using UnityEditorInternal;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.PostProcessing;
@@ -46,6 +45,7 @@ public class Prototype_Classes : MonoBehaviour
     public bool canSelect;
     public int chosenBuff;
     public bool buffChosen;
+    public GameObject defaultStaff;
 
     [Header("Environment")]
     [Space(2)]
@@ -70,7 +70,7 @@ public class Prototype_Classes : MonoBehaviour
         m_defaultDefence = m_playerController.defenceValue;
         m_defaultHealth = m_playerController.playerHealth;
         m_defaultDamageCooldown = prototypeWeapon.m_damageCoolDown;
-        //m_defaultBulletDamage = r_gunGeneric.m_bulletDamage;
+        defaultStaff.active = true;
     }
 
     void Update()
@@ -80,6 +80,11 @@ public class Prototype_Classes : MonoBehaviour
         f_chargeStones();
         f_ability();
         f_setStoneColor();
+
+        if(m_waveSystem.curRound > 0)
+        {
+            defaultStaff.active = false;
+        }
     }
 
     void f_defaultSettings() //Reset to 0

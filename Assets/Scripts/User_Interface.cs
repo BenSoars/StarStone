@@ -91,8 +91,6 @@ public class User_Interface : MonoBehaviour
 
         m_currentHealth.text = "" + r_playerController.playerHealth.ToString("F0");
 
-        m_currentStoneCharge.text = "" + r_prototypeClasses.stonePower[r_prototypeClasses.classState].ToString("F0");
-
         m_SS1.text = r_prototypeClasses.stonePower[0].ToString("F0");
         m_SS2.text = r_prototypeClasses.stonePower[1].ToString("F0");
         m_SS3.text = r_prototypeClasses.stonePower[2].ToString("F0");
@@ -158,7 +156,12 @@ public class User_Interface : MonoBehaviour
         }
 
         timeTillNextRound.text = "NEXT ROUND IN " + r_waveSystem.m_currentIntermissionTime.ToString("F0");
-        starstoneIcon.sprite = startstoneIcons[r_prototypeClasses.classState];
+        if (r_waveSystem.curRound > 0)
+        {
+            m_currentStoneCharge.text = "" + r_prototypeClasses.stonePower[r_prototypeClasses.classState].ToString("F0");
+            starstoneIcon.sprite = startstoneIcons[r_prototypeClasses.classState];
+        }
+        
 
     }
 
@@ -276,10 +279,11 @@ public class User_Interface : MonoBehaviour
                 abilityPreview1.enabled = false;
                 abilityPreview2.enabled = false;
             }
-            if (Input.GetKeyDown("f"))
+            if (Input.GetKeyDown("f") && m_objectHit.collider.gameObject.GetComponent("Starstone_ID") as Starstone_ID)
             {
                 Invoke("f_bugFix", 10);
                 isLooking = false;
+
                 stone.GetComponentInChildren<Animator>().SetBool("Chosen", true);
             }
             stone.GetComponentInChildren<Animator>().SetBool("Looking", isLooking);

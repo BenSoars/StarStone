@@ -64,7 +64,7 @@ public class Prototype_Weapon : MonoBehaviour
     void f_prototypeWeapon()
     {
         RaycastHit m_laserHit;
-        if (Input.GetKey(KeyCode.Mouse0) && r_prototypeClasses.stonePower[r_prototypeClasses.classState] > 0 && r_playerController.isSprinting == false && clockController.canShoot == true)
+        if (Input.GetKey(KeyCode.Mouse0) && r_prototypeClasses.stonePower[r_prototypeClasses.classState] > 0 && r_playerController.isSprinting == false && clockController.canShoot == true && r_prototypeClasses.defaultStaff.active == false)
         {
             beamParticles.active = true;
             beamNoise.enabled = true;
