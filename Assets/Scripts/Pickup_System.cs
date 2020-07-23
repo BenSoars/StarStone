@@ -85,7 +85,7 @@ public class Pickup_System : MonoBehaviour
                     break;
                 case 3:
                     note.GetComponent<Note>().NoteName = "Aztec Ruins";
-                    note.GetComponent<Note>().NoteText = "Time: " + clockController + ":" + clockController + " - Ruins have been check and the generator is in full working order. Fuel consumption gathered from the Temples core is at a steady rate and the stones are charging as expected.";
+                    note.GetComponent<Note>().NoteText = "Time: " + clockController.globalHour + ":" + clockController.globalMin + " - Ruins have been check and the generator is in full working order. Fuel consumption gathered from the Temples core is at a steady rate and the stones are charging as expected.";
                     break;
             }
             

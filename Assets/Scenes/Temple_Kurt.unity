@@ -21587,7 +21587,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 2.7e-44, y: -3.6893493e+19, z: 7.7e-44, w: 1.8053378e-23}
+  m_BoundingSphereOverride: {x: 0, y: 1.1788e-41, z: 0, w: 0}
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
@@ -22660,6 +22660,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   camera: {fileID: 896352354}
   gunGeneric: {fileID: 396844714}
+  globalMin: 
+  globalHour: 
   hourHand: {fileID: 1042219939}
   minuteHand: {fileID: 1996884005}
   player: {fileID: 1788502975}
@@ -33197,7 +33199,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1978663804
 Transform:
   m_ObjectHideFlags: 0

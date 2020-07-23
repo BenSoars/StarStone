@@ -866,14 +866,19 @@ MonoBehaviour:
   audio: {fileID: 0}
   roundNoises:
   - {fileID: 8300000, guid: 2ef7ef7c13ab8d343abf3e9e6c729a10, type: 3}
+  m_Achivement: {fileID: 0}
+  m_SpecialTracker: {fileID: 0}
   m_wisps:
   - {fileID: 42458450682264745, guid: 6befa5c3aa19d1842a12f708f5aab1c0, type: 3}
   - {fileID: 4912677542973487342, guid: 49ceda97bbd165a459db2f8f4ef86096, type: 3}
   - {fileID: 5187828249536963387, guid: cbaa0c4a0dbc4af47a943da25a3413d3, type: 3}
   - {fileID: 21340656321066126, guid: ec6d49e52b2116b45bcf4e7192782c54, type: 3}
-  m_intermissionTime: 5
   m_newWave: 0
   m_fogMath: 0
+  m_isIntermission: 0
+  notChosen: 0
+  intermissionTime: 0
+  m_currentIntermissionTime: 0
 --- !u!4 &170729075
 Transform:
   m_ObjectHideFlags: 0
@@ -10748,7 +10753,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &368234958
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11235,7 +11240,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &544592756
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18700,7 +18705,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1740953282
 MonoBehaviour:
   m_ObjectHideFlags: 0

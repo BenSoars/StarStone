@@ -290,7 +290,7 @@ public class Prototype_Classes : MonoBehaviour
             {
                 if (activeStone[i] != true && stonePower[i] < 100)
                 {
-                    stonePower[i] += 0.005f;
+                    stonePower[i] += 0.003f;
                 }
                 //Debug.Log("Star stone: " + i + "    Power: " + stonePower[i]);
             }

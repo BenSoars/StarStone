@@ -14,8 +14,8 @@ public class Clock_Controller : MonoBehaviour
     private Pickup_System pickupSystem;
     public Gun_Generic gunGeneric;
 
-    public int globalMin;
-    public int globalHour;
+    public string globalMin;
+    public string globalHour;
 
     private int m_desiredMin;
     private int m_desiredHour;
@@ -48,6 +48,19 @@ public class Clock_Controller : MonoBehaviour
         m_animator = GetComponentInChildren<Animator>();
         m_desiredMin = UnityEngine.Random.Range(1, 11);
         m_desiredHour = UnityEngine.Random.Range(1, 11);
+
+        if (m_desiredHour < 10)
+        {
+            globalHour = "0" + m_desiredHour;
+        }
+        else globalHour = m_desiredHour.ToString();
+
+        if (m_desiredMin == 12)
+        {
+            globalMin = "12";
+        }
+        else globalMin = "" + m_desiredMin * 5;
+
         Debug.Log("Hour: " + m_desiredHour + " Min: " + m_desiredMin);
     }
 
