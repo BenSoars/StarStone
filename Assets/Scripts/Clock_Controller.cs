@@ -9,7 +9,10 @@ public class Clock_Controller : MonoBehaviour
 {
     private Animator m_animator;
 
+    public Camera camera;
+
     private Pickup_System pickupSystem;
+    public Gun_Generic gunGeneric;
 
     private int m_desiredMin;
     private int m_desiredHour;
@@ -27,6 +30,8 @@ public class Clock_Controller : MonoBehaviour
 
     private bool m_isActive;
 
+    public bool canShoot;
+
     public List<GameObject> clockParts = new List<GameObject>(); 
 
     private void Start()
@@ -37,7 +42,6 @@ public class Clock_Controller : MonoBehaviour
         {
             clockParts[i].active = false;
         }
-
         m_animator = GetComponentInChildren<Animator>();
         m_desiredMin = UnityEngine.Random.Range(1, 11);
         m_desiredHour = UnityEngine.Random.Range(1, 11);
@@ -56,20 +60,31 @@ public class Clock_Controller : MonoBehaviour
         m_animator.SetBool("Active", m_isActive);
         f_checkTime();
 
+
         if (m_animator.GetCurrentAnimatorStateInfo(0).IsName("gearsTurning") && m_animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f)
         {
             portal.active = true;
         }
+        RaycastHit m_clockHit;
+        if (Physics.Raycast(camera.transform.position, camera.transform.forward, out m_clockHit, 4f))
+        {
+            if (m_clockHit.collider.gameObject.name == "Steampunk Clock") //Repair the clock.
+            {
+                canShoot = false;
+            }
+            else canShoot = true;
+        }
+        
 
         if (Vector3.Distance(transform.position, player.transform.position) < 3 && pickupSystem.clockFixed == true)
         {
-            if (Input.GetKeyDown(KeyCode.Mouse0))
+            if (Input.GetKeyDown(KeyCode.Mouse0) && m_isActive == false)
             {
                 smallRotation += 30;
                 m_currentHour += 1;
             }
 
-            if (Input.GetKeyDown(KeyCode.Mouse1))
+            if (Input.GetKeyDown(KeyCode.Mouse1) && m_isActive == false)
             {
                 bigRotation += 30;
                 m_currentMin += 1;
@@ -94,6 +109,7 @@ public class Clock_Controller : MonoBehaviour
     {
         if(m_desiredHour == m_currentHour && m_desiredMin == m_currentMin)
         {
+            canShoot = true;
             m_isActive = true;
             Debug.Log("Time is correct");
         }

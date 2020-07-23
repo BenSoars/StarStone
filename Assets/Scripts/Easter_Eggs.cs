@@ -38,10 +38,10 @@ public class Easter_Eggs : MonoBehaviour
             }
         }
 
-        Debug.Log("Runes Found: " + runesFound);
+        //Debug.Log("Runes Found: " + runesFound);
         if(runesFound == 5 && musicPlayed == false)
         {
-            m_achivement.UnlockAchivement(11); // unlock the achivement
+            //m_achivement.UnlockAchivement(11); // unlock the achivement
             musicPlayed = true;
             audioSource.clip = song;
             audioSource.Play();

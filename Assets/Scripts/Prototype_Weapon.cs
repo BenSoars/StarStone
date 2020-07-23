@@ -10,6 +10,7 @@ public class Prototype_Weapon : MonoBehaviour
 {
     private Player_Controller r_playerController;
     private Prototype_Classes r_prototypeClasses;
+    public Clock_Controller clockController;
     private Enemy_Controller enemyHit;
 
     private Animator anim;
@@ -63,7 +64,7 @@ public class Prototype_Weapon : MonoBehaviour
     void f_prototypeWeapon()
     {
         RaycastHit m_laserHit;
-        if (Input.GetKey(KeyCode.Mouse0) && r_prototypeClasses.stonePower[r_prototypeClasses.classState] > 0 && r_playerController.isSprinting == false)
+        if (Input.GetKey(KeyCode.Mouse0) && r_prototypeClasses.stonePower[r_prototypeClasses.classState] > 0 && r_playerController.isSprinting == false && clockController.canShoot == true)
         {
             beamParticles.active = true;
             beamNoise.enabled = true;

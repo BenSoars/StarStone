@@ -20,7 +20,7 @@ public class Pickup_System : MonoBehaviour
 
     public bool m_spawnNote;
     public bool m_spawnCogs;
-    private bool itemHeld;
+    public bool itemHeld;
     private bool isRepairing;
 
     public int currentPartID;
@@ -29,6 +29,7 @@ public class Pickup_System : MonoBehaviour
 
     private Clock_Controller clockController;
     private User_Interface userInterface;
+    public Prototype_Classes prototypeClasses;
 
     public float currentRepairTime;
     public float repairTime;
@@ -95,7 +96,7 @@ public class Pickup_System : MonoBehaviour
                 currentPart.GetComponent<Rigidbody>().isKinematic = false;
                 currentPart.GetComponent<BoxCollider>().enabled = true;
                 currentPart.GetComponent<Clock_ID>().pickedUp = false;
-
+                
                 weaponHands.active = true; //Enable to player to be able to melee.
                 repairHands.active = false; //Switch back to weapon classes.
             }
@@ -117,7 +118,7 @@ public class Pickup_System : MonoBehaviour
                 repairHands.active = true; //Switch player hands to carrying the object.          
             }
 
-            if (m_clockHit.collider.gameObject.name == "Steampunk Clock" && Input.GetKey("f") && itemHeld == true && closeEnough <= 4) //Repair the clock.
+            if (m_clockHit.collider.gameObject.name == "Steampunk Clock" && itemHeld == true && closeEnough <= 4 && Input.GetKey(KeyCode.Mouse0)) //Repair the clock.
             { 
                 isRepairing = true; //Activate animation.
                 currentRepairTime += Time.deltaTime; //Increase the current repair time if the player is holding 'F'.

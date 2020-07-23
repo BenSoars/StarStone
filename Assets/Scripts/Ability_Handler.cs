@@ -43,7 +43,7 @@ public class Ability_Handler : MonoBehaviour
             hands.active = true;
             weapons.active = false;
         }
-        else
+        else if(GetComponent<Pickup_System>().itemHeld == false)
         {
             hands.active = false;
             weapons.active = true;

@@ -101,6 +101,7 @@ public class Gun_Generic : Melee_Attack
     //Kurtis Watson
     [Tooltip("The gameobject that is used for the damage text")]
     public GameObject m_hitDamageText; // the hit text
+    public Clock_Controller clockController;
   
 
     void Start()
@@ -108,8 +109,6 @@ public class Gun_Generic : Melee_Attack
        
         m_player = GameObject.FindObjectOfType<Player_Controller>(); // get player component
         m_audio = GameObject.FindObjectOfType<Audio_System>(); // get audio system
-        
-  
 
         m_savedMaxAmmo = m_maxAmmo; // save the max ammo of the weapon
     }
@@ -239,7 +238,7 @@ public class Gun_Generic : Melee_Attack
             {
                 if (m_player.isSprinting == false && coolDownTimer <= 0) // if the player isn't sprinting and the cooldown isn't bigger than 0
                 {
-                    if (Input.GetKeyDown(KeyCode.Mouse0)) // and the player has fired their weapon
+                    if (Input.GetKeyDown(KeyCode.Mouse0) && clockController.canShoot == true) // and the player has fired their weapon
                     {
                         if (m_currentAmmo > 0) // if there is ammo
                         {

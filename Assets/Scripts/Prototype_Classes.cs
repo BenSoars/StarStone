@@ -202,7 +202,6 @@ public class Prototype_Classes : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Mouse0) && stateQ == true)
         {
             stateQ = false;
-            canSwitch = false;
             switch (classState)
             {
                 case 0:
@@ -210,26 +209,27 @@ public class Prototype_Classes : MonoBehaviour
                     {
                         FindObjectOfType<Ability_Handler>().StartCoroutine("f_spawnInvisibility");
                         stonePower[0] -= 15;
+                        canSwitch = false;
                     }
-                    else stateQ = false;
                     break;
                 case 1:
                     if (stonePower[1] >= 15)
                     {
                         FindObjectOfType<Ability_Handler>().StartCoroutine("f_spawnTornado");
                         stonePower[1] -= 15;
+                        canSwitch = false;
                     }
-                    else stateQ = false;
                     break;
                 case 2:
                     if (stonePower[2] >= 15)
                     {
                         FindObjectOfType<Ability_Handler>().StartCoroutine("f_spawnPushback");
                         stonePower[2] -= 15;
+                        canSwitch = false;
                     }
-                    else stateQ = false;
                     break;
                 case 3:
+                    canSwitch = false;
                     //Ring of blue fire that enemies can't come into. -10% power.
                     break;
             }
@@ -238,7 +238,6 @@ public class Prototype_Classes : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Mouse0) && stateV == true)
         {
             stateV = false;
-            canSwitch = false;
             switch (classState)
             {
                 case 0:
@@ -246,24 +245,24 @@ public class Prototype_Classes : MonoBehaviour
                     {
                         FindObjectOfType<Ability_Handler>().StartCoroutine("f_spawnWall");
                         stonePower[0] -= 20;
+                        canSwitch = false;
                     }
-                    else stateV = false;
                     break;
                 case 1:
                     if (stonePower[1] >= 25)
                     {
                         FindObjectOfType<Ability_Handler>().StartCoroutine("f_spawnStorm");
                         stonePower[1] -= 25;
+                        canSwitch = false;
                     }
-                    else stateV = false;
                     break;
                 case 2:
                     if (stonePower[2] >= 15)
                     {
                         FindObjectOfType<Ability_Handler>().StartCoroutine("f_spawnKnives");
                         stonePower[2] -= 15;
+                        canSwitch = false;
                     }
-                    else stateV = false;
                     //Knives.
                     break;
                 case 3:
@@ -271,8 +270,8 @@ public class Prototype_Classes : MonoBehaviour
                     {
                         FindObjectOfType<Ability_Handler>().f_spawnInfector();
                         stonePower[3] -= 25;
+                        canSwitch = false;
                     }
-                    else stateV = false;
                     break;
             }
         }
@@ -286,7 +285,7 @@ public class Prototype_Classes : MonoBehaviour
             {
                 if (activeStone[i] != true && stonePower[i] < 100)
                 {
-                    stonePower[i] += 0.002f;
+                    stonePower[i] += 0.005f;
                 }
                 //Debug.Log("Star stone: " + i + "    Power: " + stonePower[i]);
             }
