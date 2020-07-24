@@ -13,9 +13,9 @@ public class Enemy_Controller : MonoBehaviour
     [Tooltip("Enemy movement speed, used when the enemy is wandering around")]
     public float m_moveSpeed = 2; // the default movement speed
     [Tooltip("Enemy running speed, used when the enemy spots the player")]
-    public float m_runSpeed = 4; // the running speed, used when it spots the player
-    public float m_enemyHealth = 3; // the enemy health
-    public float m_enemyDamage = 5; // the damage the enemy does to the player
+    public float m_runSpeed; // the running speed, used when it spots the player
+    public float m_enemyHealth; // the enemy health
+    public float m_enemyDamage; // the damage the enemy does to the player
     public float m_attackTime = 2; //the time inbetween attacks
     public int m_spawnChance = 3; // chance for it to spawn an item on death
     public bool m_isStunned; // is stunend

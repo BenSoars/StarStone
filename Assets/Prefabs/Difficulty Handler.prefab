@@ -1,0 +1,66 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3170200391802772419
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3170200391802772417}
+  - component: {fileID: 3170200391802772418}
+  m_Layer: 0
+  m_Name: Difficulty Handler
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3170200391802772417
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3170200391802772419}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 202.9297, y: 153.2196, z: -30.581018}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3170200391802772418
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3170200391802772419}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39709d37ebca36f40a10a31159fc9058, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dropdown: {fileID: 0}
+  enemySmall: {fileID: 429346716407466653, guid: 0395127d264edeb4a9756be6d4b5c819,
+    type: 3}
+  enemyMedium: {fileID: 42458450682264745, guid: 4d4b05e08e0b0a6499519b925ddfa91b,
+    type: 3}
+  enemyLarge: {fileID: 8653534323981115242, guid: 30a515d93317d6e46a11e2c362aafc9d,
+    type: 3}
+  enemyRange: {fileID: 4234072971488087977, guid: e0c482f454bc0f04baa2c97bfd1011a9,
+    type: 3}
+  defaultSmallHealth: 50
+  defaultSmallSpeed: 5
+  defaultSmallDamage: 3
+  defaultMediumHealth: 100
+  defaultMediumSpeed: 4
+  defaultMediumDamage: 7
+  defaultLargeHealth: 150
+  defaultLargeSpeed: 3
+  defaultLargeDamage: 15
+  defaultRangeHealth: 75
+  defaultRangeSpeed: 1
+  defaultRangeDamage: 5
