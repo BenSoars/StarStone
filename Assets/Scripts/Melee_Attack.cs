@@ -12,18 +12,18 @@ public class Melee_Attack : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        startAttack();
+        startAttack(); // start the start attack code, to check
     }
 
     public void startAttack()
     {
-        meleeHurtBox.enabled = true;
-        Attacking = true;
+        meleeHurtBox.enabled = true; // enable the hurtbox
+        Attacking = true; // set the attacking bool to true
     }
 
     public void stopAttack()
     {
-        meleeHurtBox.enabled = false;
-        Attacking = false;
+        meleeHurtBox.enabled = false; // disable the hurtbox
+        Attacking = false; // set the attacking bool to false
     }
 }
