@@ -563,13 +563,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 124203330}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0f4a1947591044547849c1867c7d3b78, type: 3}
+  m_Script: {fileID: 11500000, guid: 0f771e0baa90f6d4eaaed63c42a28ce2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  achivementName: {fileID: 812403438}
-  achivementDesc: {fileID: 1780400198}
-  achivementImage: {fileID: 970496058}
-  achivementSound: {fileID: 124203333}
+  AchievementName: {fileID: 812403438}
+  AchievementDesc: {fileID: 1780400198}
+  AchievementImage: {fileID: 970496058}
+  AchievementSound: {fileID: 124203333}
   m_anim: {fileID: 187292469}
   unlockNames:
   - Welcome!!
@@ -586,7 +586,7 @@ MonoBehaviour:
   - Rock Star
   - Perfect Run
   - Speed Run
-  - It's about Time
+  - It's About Time
   unlockImages:
   - {fileID: 21300000, guid: e45c93fabb8ca0b45ae1f539e22f19e9, type: 3}
   - {fileID: 21300000, guid: 8fbd873fc4607d44093b6d28b0ffca8c, type: 3}
@@ -605,21 +605,21 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 1eef3bbf105fd9140aa4fb569d06cf06, type: 3}
   unlockDesc:
   - Start the game for the first time!
-  - Survive Round 1
-  - Get a Game Over
+  - Survive round 1
+  - Get a game over
   - Kill two enemies in quick succession
   - Kill three enemies in quick succession
   - Kill four enemies in quick succession
-  - Kill a total of 10 Enemies
-  - Kill a total of 50 Enemies
-  - Kill a total of 100 Enemies
-  - Kill a total of 250 Enemies
-  - Kill a total of 500 Enemies
+  - Kill a total of 10 enemies
+  - Kill a total of 50 enemies
+  - Kill a total of 100 enemies
+  - Kill a total of 250 enemies
+  - Kill a total of 500 enemies
   - Find a secret...
   - Complete a round without taking any damage
-  - Beat a round in under a minute
-  - Fix the Clock
-  m_extraAchivements: []
+  - Complete a round in under a minute
+  - Fix the clock!
+  m_extraAchievements: []
 --- !u!4 &124203332
 Transform:
   m_ObjectHideFlags: 0
@@ -4640,7 +4640,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 124203331}
-        m_MethodName: UnlockAchivement
+        m_MethodName: UnlockAchievement
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6380,7 +6380,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0bb4039c59d44ea44a97a575f569d7a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  allAchivements:
+  allAchievements:
   - {fileID: 138354394}
   - {fileID: 185383048}
   - {fileID: 1497482307}
