@@ -8,13 +8,13 @@ public class Enemy_Damage : MonoBehaviour
 
     public float m_damage; // the damage the attack deals, is altered from the enemy controller
     public BoxCollider m_hurtBox; // the hurtbox collider
-    private AchivementSpecialConditions m_SpecialTracker;
+    private AchievementSpecialConditions m_SpecialTracker;
     public Player_Controller r_player;
     // Start is called before the first frame update
 
     void OnEnable() // when enabled renable the hurtbox if it's disabled
     {
-        m_SpecialTracker = GameObject.FindObjectOfType<AchivementSpecialConditions>();
+        m_SpecialTracker = GameObject.FindObjectOfType<AchievementSpecialConditions>();
         m_hurtBox.enabled = true;
     }
 

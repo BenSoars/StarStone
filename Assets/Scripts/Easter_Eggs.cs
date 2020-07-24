@@ -12,7 +12,7 @@ public class Easter_Eggs : MonoBehaviour
     [Header("Rune Components")]
     [Space(2)]
     public int runesFound; 
-    private AchivementTracker m_achivement;
+    private AchievementTracker m_Achievement;
 
     [Header("Audio Components")]
     [Space(2)]
@@ -23,7 +23,7 @@ public class Easter_Eggs : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        m_achivement = GameObject.FindObjectOfType<AchivementTracker>();
+        m_Achievement = GameObject.FindObjectOfType<AchievementTracker>();
     }
 
     // Update is called once per frame
@@ -47,7 +47,7 @@ public class Easter_Eggs : MonoBehaviour
 
         if(runesFound == 5 && m_musicPlayed == false)
         {
-            //m_achivement.UnlockAchivement(11); // unlock the achivement
+            //m_Achievement.UnlockAchievement(11); // unlock the Achievement
             m_musicPlayed = true;
             audioSource.clip = song;
             audioSource.Play();

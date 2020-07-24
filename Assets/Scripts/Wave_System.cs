@@ -24,8 +24,8 @@ public class Wave_System : MonoBehaviour
     public List<AudioClip> roundNoises = new List<AudioClip>(); // the round noises
 
     private User_Interface m_Canvas;
-    public AchivementTracker m_Achivement;
-    public AchivementSpecialConditions m_SpecialTracker;
+    public AchievementTracker m_Achievement;
+    public AchievementSpecialConditions m_SpecialTracker;
     private bool m_checkRound;
 
     //Kurtis Watson
@@ -64,8 +64,8 @@ public class Wave_System : MonoBehaviour
         audio = GameObject.FindObjectOfType<Audio_System>(); // get audio system
         r_pickupSystem = FindObjectOfType<Pickup_System>();
         m_Canvas = GameObject.Find("Canvas").GetComponent<User_Interface>();
-        m_Achivement = GameObject.FindObjectOfType<AchivementTracker>();
-        m_SpecialTracker = GameObject.FindObjectOfType<AchivementSpecialConditions>();
+        m_Achievement = GameObject.FindObjectOfType<AchievementTracker>();
+        m_SpecialTracker = GameObject.FindObjectOfType<AchievementSpecialConditions>();
     }
 
     //Kurtis Watson
@@ -172,7 +172,7 @@ public class Wave_System : MonoBehaviour
         {
             if (m_checkRound == false)
             {
-                m_SpecialTracker.CheckForRoundAchivements();
+                m_SpecialTracker.CheckForRoundAchievements();
                 m_checkRound = true;
             } 
             m_currentIntermissionTime -= Time.deltaTime;
@@ -191,12 +191,12 @@ public class Wave_System : MonoBehaviour
 
         // Ben Soars
 
-        //achivement
-        if (m_Achivement) // if there is an achivement tracker in the scene
+        //Achievement
+        if (m_Achievement) // if there is an Achievement tracker in the scene
         {
             if (curRound > 1)
             {
-                m_Achivement.UnlockAchivement(1); // unlock the beat round 1 achivement
+                m_Achievement.UnlockAchievement(1); // unlock the beat round 1 Achievement
                
             }
 

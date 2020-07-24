@@ -26,11 +26,11 @@ public class Projectile : MonoBehaviour
     public bool m_faceDirectionOfTravel; // 
 
     public GameObject m_hitDamageText;
-    private AchivementSpecialConditions m_SpecialTracker;
+    private AchievementSpecialConditions m_SpecialTracker;
 
     void Start()
     {
-        m_SpecialTracker = GameObject.FindObjectOfType<AchivementSpecialConditions>();
+        m_SpecialTracker = GameObject.FindObjectOfType<AchievementSpecialConditions>();
     }
 
     void Update()
