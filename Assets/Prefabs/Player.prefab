@@ -17938,18 +17938,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bc2d210d5628c34cb394a6638732e04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_totalKnives: 9
-  m_shotPoint: {fileID: 567909998898289762}
   pushBack: {fileID: 1851148228268403614, guid: af108dce561144945bf7271e1c761477,
     type: 3}
   invisibility: {fileID: 4421925856445925348}
   wall: {fileID: 8105937169651061196, guid: a61e8a30f90ffde45b284f96c1dfe150, type: 3}
-  m_storm: {fileID: 2084821073527653411, guid: 69f10fff7f1e53b489cc042a5eaf74b3, type: 3}
-  m_knife: {fileID: 6854262673099413662, guid: ab9f3b6c2cb9ff2468e3648ce6f5cd46, type: 3}
-  m_Tornado: {fileID: 3247021307327370051, guid: 95fedcde153b44b45bd7a91473f0ae11,
+  storm: {fileID: 2084821073527653411, guid: 69f10fff7f1e53b489cc042a5eaf74b3, type: 3}
+  knife: {fileID: 6854262673099413662, guid: ab9f3b6c2cb9ff2468e3648ce6f5cd46, type: 3}
+  tornado: {fileID: 3247021307327370051, guid: 95fedcde153b44b45bd7a91473f0ae11, type: 3}
+  infector: {fileID: 5813459701485193558, guid: 2f1a8e8830d7e42408df0bb637c3b3d3,
     type: 3}
-  m_Infector: {fileID: 5813459701485193558, guid: 2f1a8e8830d7e42408df0bb637c3b3d3,
-    type: 3}
+  totalKnives: 9
+  shotPoint: {fileID: 567909998898289762}
   weapons: {fileID: 7591412883134558846}
   hands: {fileID: 1526581604740186071}
   animationType:

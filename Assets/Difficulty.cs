@@ -58,40 +58,43 @@ public class Difficulty : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        switch (dropdown.value)
+        if (SceneManager.GetActiveScene().name == "MainMenu")
         {
-            case 0:
-                if (percentChosen == false)
-                {
-                    percentChosen = true;
-                    percent = 0.75f;
-                    dropDownValue = dropdown.value;
-                    valuesSet = false;
-                }
-                break;
-            case 1:
-                if (percentChosen == false)
-                {
-                    percentChosen = true;
-                    percent = 1;
-                    dropDownValue = dropdown.value;
-                    valuesSet = false;
-                }
-                break;
-            case 2:
-                if (percentChosen == false)
-                {
-                    percentChosen = true;
-                    percent = 1.25f;
-                    dropDownValue = dropdown.value;
-                    valuesSet = false;
-                }
-                break;
-        }
+            switch (dropdown.value)
+            {
+                case 0:
+                    if (percentChosen == false)
+                    {
+                        percentChosen = true;
+                        percent = 0.75f;
+                        dropDownValue = dropdown.value;
+                        valuesSet = false;
+                    }
+                    break;
+                case 1:
+                    if (percentChosen == false)
+                    {
+                        percentChosen = true;
+                        percent = 1;
+                        dropDownValue = dropdown.value;
+                        valuesSet = false;
+                    }
+                    break;
+                case 2:
+                    if (percentChosen == false)
+                    {
+                        percentChosen = true;
+                        percent = 1.25f;
+                        dropDownValue = dropdown.value;
+                        valuesSet = false;
+                    }
+                    break;
+            }
 
-        if (dropDownValue != dropdown.value)
-        {
-            percentChosen = false;
+            if (dropDownValue != dropdown.value)
+            {
+                percentChosen = false;
+            }
         }
 
         if (SceneManager.GetActiveScene().name == "MainMenu" && valuesSet == false)
@@ -113,7 +116,7 @@ public class Difficulty : MonoBehaviour
             enemyRange.GetComponent<Enemy_Controller>().m_enemyDamage = defaultRangeDamage * percent;
             enemyRange.GetComponent<Enemy_Controller>().m_runSpeed = defaultRangeSpeed * percent;
 
-            Debug.Log(enemyRange.GetComponent<Enemy_Controller>().m_enemyHealth);
+            Debug.Log("Enemy Health:" + enemyMedium.GetComponent<Enemy_Controller>().m_enemyHealth);
         }
     }
 }

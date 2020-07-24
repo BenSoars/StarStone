@@ -10,88 +10,65 @@ using UnityEngine.SceneManagement;
 //Kurtis Watson
 public class Cutscene_Handler : MonoBehaviour
 {
+    [Header("Text Components")]
+    [Space(2)]
     public TextMeshProUGUI cutsceneTextMesh;
-
     public string[] cutsceneText;
-    
-    private int index;
+    private int m_index;
     public float typewriterSpeed;
 
-    private float currentTime;
-    public float timeBetweenSentences;
-
-    private bool sentenceFinish;
-    private bool pauseCutscene;
-
+    [Header("Cutscene Components")]
+    [Space(2)]
     public Image shrine;
-    public Image COD;
-    
+    private float m_currentTime;
+    public float timeBetweenSentences;
+    private bool m_sentenceFinish;
 
     // Start is called before the first frame update
     void Start()
     {
         StartCoroutine(f_typewriter());
-        COD.enabled = false;
     }
 
     private void Update()
     {
-        if (sentenceFinish == true)
+        if (m_sentenceFinish == true)
         {
-            currentTime += Time.deltaTime;
-            if (currentTime >= timeBetweenSentences)
+            m_currentTime += Time.deltaTime; //Add to the intermission between sentences.
+            if (m_currentTime >= timeBetweenSentences)
             {
-                sentenceFinish = false;
-                currentTime = 0;
-                index++;
-                cutsceneTextMesh.text = "";
-                StartCoroutine(f_typewriter());
-                if(index == 5)
+                m_sentenceFinish = false;
+                m_currentTime = 0; //Reset time.
+                m_index++; //Increase index ready for the next sentence.
+                cutsceneTextMesh.text = ""; //Show no text.
+                StartCoroutine(f_typewriter()); //Begin typing next sentence.
+                if (m_index == 5) //If the index is 5 (finished first cutscene) then load the game scene.
                 {
-                    SceneManager.LoadScene("Temple_Kurt");
+                    SceneManager.LoadScene("Game_Scene");
                 }
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space)) //Skip the cutscene entirely.
         {
-            SceneManager.LoadScene("Temple_Kurt");
-        }
-
-        //bool test = false;
-        //if(index == 4 && test == false)
-        //{            
-        //    Debug.Log("Paused");
-        //    test = true;
-        //    pauseCutscene = true;
-        //}
-
-        if (Input.GetKeyDown("g"))
-        {
-            shrine.enabled = false;
-            COD.enabled = true;
-            pauseCutscene = false;
-            StartCoroutine(f_typewriter());
+            SceneManager.LoadScene("Game_Scene");
         }
     }
 
     IEnumerator f_typewriter()
     {
-        if (pauseCutscene == false)
+        foreach (char letter in cutsceneText[m_index].ToCharArray()) //Grab each individual letter from the current index string.
         {
-            foreach (char letter in cutsceneText[index].ToCharArray())
-            {
-                cutsceneTextMesh.text += letter;
-                yield return new WaitForSeconds(typewriterSpeed);
-            }
-            if (index < cutsceneText.Length)
-            {
-                sentenceFinish = true;
-            }
-            else
-            {
-                cutsceneTextMesh.text = "";
-            }
+            cutsceneTextMesh.text += letter; //Add the letter to the current text shown on screen.
+            yield return new WaitForSeconds(typewriterSpeed); //Wait before adding another letter.
+        }
+        if (m_index < cutsceneText.Length) //Check if all characters have been added.
+        {
+            m_sentenceFinish = true; 
+        }
+        else
+        {
+            cutsceneTextMesh.text = "";
         }
     }
 }

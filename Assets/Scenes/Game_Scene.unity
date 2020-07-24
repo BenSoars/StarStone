@@ -22659,14 +22659,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   camera: {fileID: 896352354}
+  player: {fileID: 1788502975}
   gunGeneric: {fileID: 396844714}
+  canShoot: 0
   globalMin: 
   globalHour: 
   hourHand: {fileID: 1042219939}
   minuteHand: {fileID: 1996884005}
-  player: {fileID: 1788502975}
   portal: {fileID: 2014653829}
-  canShoot: 0
   clockParts:
   - {fileID: 1225622367}
   - {fileID: 1091237225}

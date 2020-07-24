@@ -2,50 +2,54 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//Kurtis Watson
 public class Clock_ID : MonoBehaviour
 {
+    [Header("Clock Mechanics")]
+    [Space(2)]
     public int clockPartID;
-
     public bool pickedUp;
+
+
+    [Header("Light Mechanics")]
+    [Space(2)]
     public Light light;
-
-    private float currentIntensity;
-
-    private bool increaseIntensity;
-
-    private Pickup_System pickupSystem;
-    private void Start()
-    {
-
-    }
+    private float m_currentIntensity;
+    private bool m_increaseIntensity;
 
     private void Update()
     {
-        if (light.intensity <= 0)
+        f_lightEffect();
+    }
+
+    void f_lightEffect()
+    {
+        if (light.intensity <= 0) //Check the intensity, if it below 0 then increase the intensity.
         {
-            increaseIntensity = true;
+            m_increaseIntensity = true;
 
         }
-        else if (light.intensity >= 2)
+        else if (light.intensity >= 2) //If the intensity is above 2 then lower the intensity.
         {
-            increaseIntensity = false;
+            m_increaseIntensity = false;
         }
 
-        if (increaseIntensity == true)
+        if (m_increaseIntensity == true)
         {
-            currentIntensity += 0.03f;
+            m_currentIntensity += 0.03f; //Increase intensity.
         }
-        else currentIntensity -= 0.03f;
+        else m_currentIntensity -= 0.03f; //Decrease intensity.
+
 
         if (pickedUp == false)
         {
-            light.enabled = true;
-            light.intensity = currentIntensity;
+            light.enabled = true; //Enable light if the player isn't holding it.
+            light.intensity = m_currentIntensity;
         }
         else
         {
             light.enabled = false;
-            light.intensity = 0;
+            light.intensity = 0; //Reset light intensity.
         }
     }
 }

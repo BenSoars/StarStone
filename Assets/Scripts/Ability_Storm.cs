@@ -7,10 +7,17 @@ public class Ability_Storm : MonoBehaviour
 {
     private void Start()
     {
-        GetComponent<BoxCollider>().enabled = false;
+        GetComponent<BoxCollider>().enabled = false; //Disable trigger until cloud has risen.
         GetComponent<ParticleSystem>().Stop();
         Invoke("f_startRain", 2); //Animation of cloud rising is 2 seconds long as so when the cloud is in the correct position, the rain will begin.
+    } 
+    
+    void f_startRain() //Start the particle effect.
+    {
+        GetComponent<BoxCollider>().enabled = true; //Enable trigger to start damaging enemies.
+        GetComponent<ParticleSystem>().Play();
     }
+
     private void OnTriggerStay(Collider other)
     {
         if (other.gameObject.CompareTag("Enemy")) //Check for enemy collision.
@@ -20,9 +27,5 @@ public class Ability_Storm : MonoBehaviour
         }
     }
 
-    void f_startRain()
-    {
-        GetComponent<BoxCollider>().enabled = true;
-        GetComponent<ParticleSystem>().Play();
-    }
+   
 }

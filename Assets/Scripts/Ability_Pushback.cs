@@ -5,21 +5,25 @@ using UnityEngine;
 
 //Kurtis Watson
 public class Ability_Pushback : MonoBehaviour
-{    
+{
+    [Header("Game Object Components")]
     private SphereCollider m_sphereCollider;
+    private Rigidbody m_rb;
 
+    [Header("Pushback Values")]
+    [Space(2)]
     public float abilitySpeed; //Values to change the strength of the pushback.
     public float upliftForce; // the upwards velocity
     public float knockbackForce; // the force at which the knockback is applied
     public float damageRadius; // the damage radius
 
-    private Rigidbody m_rb;
+
 
     public void Start()
     {
         m_sphereCollider = gameObject.GetComponent<SphereCollider>();
-        m_rb = GetComponent<Rigidbody>(); // get the rigidbody
-        m_rb.AddForce(transform.forward * abilitySpeed);
+        m_rb = GetComponent<Rigidbody>(); // Get the rigidbody of pushback to allow for force to be added.
+        m_rb.AddForce(transform.forward * abilitySpeed); //Add force to the object.
     }
 
     public void Update()

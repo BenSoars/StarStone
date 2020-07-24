@@ -2,16 +2,23 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//Kurtis Watson
 public class Easter_Eggs : MonoBehaviour
 {
-    public int runesFound;
+    [Header("Raycast Components")]
+    [Space(2)]
     public Transform camera;
 
-    private bool musicPlayed;
+    [Header("Rune Components")]
+    [Space(2)]
+    public int runesFound; 
     private AchivementTracker m_achivement;
 
+    [Header("Audio Components")]
+    [Space(2)]
     public AudioSource audioSource;
     public AudioClip song;
+    private bool m_musicPlayed;
 
     // Start is called before the first frame update
     void Start()
@@ -29,20 +36,19 @@ public class Easter_Eggs : MonoBehaviour
     {
         RaycastHit m_objectHit;
 
-        if (Physics.Raycast(camera.position, camera.forward, out m_objectHit, 3f) && Input.GetKeyDown("f"))
+        if (Physics.Raycast(camera.position, camera.forward, out m_objectHit, 3f)) //Create a raycast.
         {
             float distance = Vector3.Distance(camera.transform.position, m_objectHit.collider.transform.position);
-            if ((m_objectHit.collider.gameObject.name == "Rune") && distance <= 3 && Input.GetKeyDown("f"))
+            if ((m_objectHit.collider.gameObject.name == "Rune") && distance <= 3 && Input.GetKeyDown("f")) //Check if player is looking at a rune.
             {
                 m_objectHit.collider.gameObject.GetComponentInChildren<Rune_Controller>().f_runeEasterEgg();
             }
         }
 
-        //Debug.Log("Runes Found: " + runesFound);
-        if(runesFound == 5 && musicPlayed == false)
+        if(runesFound == 5 && m_musicPlayed == false)
         {
             //m_achivement.UnlockAchivement(11); // unlock the achivement
-            musicPlayed = true;
+            m_musicPlayed = true;
             audioSource.clip = song;
             audioSource.Play();
         }

@@ -2703,11 +2703,13 @@ MonoBehaviour:
   runtimeUI: {fileID: 9131466606133188564}
   locateClockText: {fileID: 8883656020953261066}
   stone: {fileID: 0}
+  difficultyHandler: {fileID: 3170200391802772419, guid: f4c3db54aefbb9440b8879fd647251a3,
+    type: 3}
   m_SS1: {fileID: 0}
   m_SS2: {fileID: 0}
   m_SS3: {fileID: 0}
   m_SS4: {fileID: 0}
-  m_waveTimes: 4b00000050000000550000005a0000005a0000005a0000005f0000005f00000064000000640000006400000064000000000000000000000000000000
+  m_waveTimes: 640000006e00000078000000820000008c00000096000000a0000000aa000000b4000000be000000c8000000d2000000dc000000e6000000f0000000
   starstoneIcon: {fileID: 3649358158341532004}
   abilityPreview1: {fileID: 2288438538343276552}
   abilityPreview2: {fileID: 2920814896504226762}
@@ -2742,7 +2744,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   noteName: []
   noteContents: []
-  noteImage: []
   notesVisible: {fileID: 7753394725587387149}
   m_noteNameDisplay: {fileID: 5345167631390463360}
   m_noteContentsDisplay: {fileID: 6522593228818380803}

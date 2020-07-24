@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using TMPro;
+using System.Security.Cryptography;
 
 //Kurtis Watson
 public class User_Interface : MonoBehaviour
@@ -32,6 +33,7 @@ public class User_Interface : MonoBehaviour
     public GameObject locateClockText;
 
     public GameObject stone;
+    public GameObject difficultyHandler;
 
     public TMPro.TextMeshPro m_SS1;
     public TMPro.TextMeshPro m_SS2;
@@ -230,6 +232,7 @@ public class User_Interface : MonoBehaviour
     public void exitButton()
     {
         Destroy(gameObject);
+        Destroy(difficultyHandler);
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
         gameUI.active = false;

@@ -4,15 +4,16 @@ using UnityEngine;
 
 public class Ability_Wall : MonoBehaviour
 {
-    public Animator anim;
+    private Animator anim;
     // Start is called before the first frame update
     void Start()
     {
-        Invoke("f_lowerWall", 7);
+        anim = GetComponent<Animator>();
+        Invoke("f_lowerWall", 7); //Lower wall after 7 seconds.
     }
 
     void f_lowerWall()
     {
-        anim.Play("anim_wallLower");
+        anim.Play("anim_wallLower"); //Activate wall lower animation.
     }
 }
