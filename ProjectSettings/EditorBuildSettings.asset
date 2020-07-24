@@ -12,7 +12,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Opening_Scene.unity
     guid: 9d0dcd48684ba104397b7964a92b1bd6
   - enabled: 1
-    path: Assets/Scenes/Temple_Kurt.unity
+    path: Assets/Scenes/Game_Scene.unity
     guid: 5931897c1f4b66747a6d5ca7d8ec4e9f
   - enabled: 1
     path: Assets/Scenes/GameOver.unity
