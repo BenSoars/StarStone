@@ -4,20 +4,20 @@ using UnityEngine;
 
 public class Unlock_Doors : MonoBehaviour
 {
+    [Header("Door Components")]
+    [Space(2)]
     public Animator anim;
-    // Update is called once per frame
-
-    private Wave_System waveSystem;
+    private Wave_System m_waveSystem;
 
     private void Start()
     {
-        waveSystem = FindObjectOfType<Wave_System>();
+        m_waveSystem = FindObjectOfType<Wave_System>();
     }
     void Update()
     {
-        anim.SetBool("Open", waveSystem.m_startedWaves);
+        anim.SetBool("Open", m_waveSystem.m_startedWaves); //Open the doors.
 
-        if(waveSystem.m_startedWaves == true)
+        if(m_waveSystem.m_startedWaves == true) //Destroy object after 4 seconds (Invoked).
         {
             Invoke("f_removeObject", 4);
         }

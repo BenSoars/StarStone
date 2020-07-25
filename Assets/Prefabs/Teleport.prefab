@@ -4899,7 +4899,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b28b8703f2cfba4083d1e8b7fa5f785, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_desiredLocation: {fileID: 1453544238474070399}
+  desiredLocation: {fileID: 1453544238474070399}
 --- !u!1 &6193495049383899180
 GameObject:
   m_ObjectHideFlags: 0

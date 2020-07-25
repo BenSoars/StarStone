@@ -4,15 +4,17 @@ using UnityEngine;
 
 public class Prototype_Default : MonoBehaviour
 {
+    [Header("Default Staff Components")]
+    [Space(2)]
     public Transform shotPoint;
     public GameObject particles;
-    private Animator anim;
+    private Animator m_anim;
+    private bool m_isPlaying;
 
-    private bool isPlaying;
     // Start is called before the first frame update
     void Start()
     {
-        anim = GetComponent<Animator>();
+        m_anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -20,11 +22,11 @@ public class Prototype_Default : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
-            if(isPlaying == false)
+            if(m_isPlaying == false) //This loop stops the player from spamming the animation.
             {
-                isPlaying = true;
+                m_isPlaying = true;
                 Invoke("resetAnimation", 0.5f);
-                anim.SetBool("Shake", isPlaying);
+                m_anim.SetBool("Shake", m_isPlaying); //Play animation.
                 Instantiate(particles, shotPoint);
             }                 
         }
@@ -32,7 +34,7 @@ public class Prototype_Default : MonoBehaviour
 
     void resetAnimation()
     {
-        anim.SetBool("Shake", false);
-        isPlaying = false;
+        m_anim.SetBool("Shake", false);
+        m_isPlaying = false;
     }
 }

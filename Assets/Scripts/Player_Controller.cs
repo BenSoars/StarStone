@@ -6,55 +6,53 @@ using UnityEngine.SceneManagement;
 //Kurtis Watson
 public class Player_Controller : MonoBehaviour
 {
-    private Animator m_animator;
-    public Transform m_camera;
-    public Rigidbody m_rb;
-    public Audio_System audio; // get the audio system component to play sounds
-
+    [Header("Player Properties")]
+    [Space(2)]
+    public Transform camera;
+    public Rigidbody rb;
+    public float playerHealth;
+    public float extraGravity;
+    public float playerRotX;
+    public bool isSprinting;
+    public bool isCrouching;
+    public bool isPlayerActive;
     public Transform m_shotPoint;
-
-    private Ability_Melee r_abilityMelee;
-
-    public float camRotSpeed;
-    public float camMinY;
-    public float camMaxY;
-    public float camSmoothSpeed;
-
     public float walkSpeed;
     public float sprintSpeed; 
     public float maxSpeed;
     public float jumpHeight;
-
-    public int enemiesKilled;
-
-    public float playerHealth;
-    public float extraGravity;
-    public float playerRotX;
-
+    private Animator m_animator;    
+    private float m_speed; 
+    public float defenceValue = 1;  
+    
+    [Header("Camera Rotation Properties")]
+    [Space(2)]
+    public float camRotSpeed;
+    public float camMinY;
+    public float camMaxY;
+    public float camSmoothSpeed;
     private float m_camRotY;
     private Vector3 m_directionIntentX;
     private Vector3 m_directionIntentY;
-    private float m_speed; 
+    public int enemiesKilled;
 
-    // Ladder Values \\     
+    [Header("Ladder Properties")]
+    [Space(2)]
     public bool grounded;
     public bool canPlayerMove;
     public bool isLadder;
     public bool isUsingLadder;
     public bool topOfLadder;
     public bool isPlayerInvisible;
-
     public Transform desiredPos;
 
-    public bool isSprinting;
-    public bool isCrouching;
-
-    public bool isPlayerActive;
+    [Header("Audio")]
+    [Space(2)]
+    public Audio_System audio; // get the audio system component to play sounds
+    public AudioSource runSound;    
 
     //public Rigidbody grenade;
     //public int grenadeAmount = 3;
-    public float defenceValue = 1;
-    public AudioSource runSound;
     
     private void Start()
     {
@@ -62,7 +60,6 @@ public class Player_Controller : MonoBehaviour
         canPlayerMove = true;
         audio = GameObject.FindObjectOfType<Audio_System>(); // get audio system
         m_animator = GetComponent<Animator>();
-        r_abilityMelee = GameObject.FindObjectOfType<Ability_Melee>();
         runSound.volume = PlayerPrefs.GetFloat("volumeLevel"); // set volume of run sound
         runSound.enabled = false; // stop run sound
     }
@@ -101,9 +98,7 @@ public class Player_Controller : MonoBehaviour
             {
                 f_playerJump();
             }
-            gameObject.GetComponentInChildren<Camera>().enabled = true;
         }
-        else gameObject.GetComponentInChildren<Camera>().enabled = false;
     }
 
     //Kurtis Watson
@@ -119,25 +114,25 @@ public class Player_Controller : MonoBehaviour
 
         transform.rotation = Quaternion.Lerp(transform.rotation, m_targetRotation, Time.deltaTime * camSmoothSpeed);
 
-        m_camera.localRotation = Quaternion.Lerp(m_camera.localRotation, m_camTargetRotation, Time.deltaTime * camSmoothSpeed);
+        camera.localRotation = Quaternion.Lerp(camera.localRotation, m_camTargetRotation, Time.deltaTime * camSmoothSpeed);
     }
 
     //Kurtis Watson
     void f_moveAround()
     {
-        m_directionIntentX = m_camera.right;
+        m_directionIntentX = camera.right;
         m_directionIntentX.y = 0;
         
         m_directionIntentX.Normalize(); //Normalize makes the numbers more 'usable' for the engine.
 
-        m_directionIntentY = m_camera.forward;
+        m_directionIntentY = camera.forward;
         m_directionIntentY.y = 0;
         m_directionIntentY.Normalize();
 
         if (canPlayerMove == true)
         {
-            m_rb.velocity = m_directionIntentY * Input.GetAxis("Vertical") * m_speed + m_directionIntentX * Input.GetAxis("Horizontal") * m_speed + Vector3.up * m_rb.velocity.y;
-            m_rb.velocity = Vector3.ClampMagnitude(m_rb.velocity, maxSpeed);
+            rb.velocity = m_directionIntentY * Input.GetAxis("Vertical") * m_speed + m_directionIntentX * Input.GetAxis("Horizontal") * m_speed + Vector3.up * rb.velocity.y;
+            rb.velocity = Vector3.ClampMagnitude(rb.velocity, maxSpeed);
 
             if (Input.GetKey(KeyCode.LeftShift))
             {
@@ -161,7 +156,7 @@ public class Player_Controller : MonoBehaviour
             }
             m_animator.SetBool("Crouch", isCrouching);
 
-            if (isSprinting && m_rb.velocity != Vector3.zero && grounded == true)
+            if (isSprinting && rb.velocity != Vector3.zero && grounded == true)
             {
                 runSound.enabled = true; // Start run sound
             } else
@@ -176,7 +171,7 @@ public class Player_Controller : MonoBehaviour
     {
         if (canPlayerMove == true)
         {
-            m_rb.AddForce(Vector3.down * extraGravity);
+            rb.AddForce(Vector3.down * extraGravity);
         }
     }
 
@@ -190,7 +185,7 @@ public class Player_Controller : MonoBehaviour
     //Kurtis Watson
     void f_playerJump()
     {
-        m_rb.AddForce(Vector3.up * jumpHeight, ForceMode.Impulse); //Adds a force to the player object in the upwards direction.
+        rb.AddForce(Vector3.up * jumpHeight, ForceMode.Impulse); //Adds a force to the player object in the upwards direction.
     }
 
     //Kurtis Watson
@@ -209,21 +204,21 @@ public class Player_Controller : MonoBehaviour
 
         if (Input.GetKeyDown("f") && isUsingLadder == true)
         {
-            m_rb.useGravity = true; //Fall off the ladder.
+            rb.useGravity = true; //Fall off the ladder.
             isUsingLadder = false;
             canPlayerMove = true; //Allow the player to move again in all directions.
         }
         
-        else if (Physics.Raycast(m_camera.transform.position, m_camera.transform.forward, out m_ladderHit, 2f, 1<<10)) //Shoots a raycast forward of the players position at a distance of '2f'.
+        else if (Physics.Raycast(camera.transform.position, camera.transform.forward, out m_ladderHit, 2f, 1<<10)) //Shoots a raycast forward of the players position at a distance of '2f'.
         {
             if (m_ladderHit.collider != null && m_ladderHit.collider.gameObject.layer == 10) //Check for the Ladder Layer.
             {
                 if (Input.GetKeyDown("f") && isUsingLadder == false)
                 {
                     isUsingLadder = true;
-                    m_rb.useGravity = false; //Remove gravity to stop the player being pulled down when using the ladder.
+                    rb.useGravity = false; //Remove gravity to stop the player being pulled down when using the ladder.
                     canPlayerMove = false; //Stop left and right movement.
-                    m_rb.velocity = Vector3.zero;
+                    rb.velocity = Vector3.zero;
 
                     if (topOfLadder == true)
                     {
@@ -250,9 +245,9 @@ public class Player_Controller : MonoBehaviour
     //Kurtis Watson
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.name == "Top Stop Point")
+        if(other.gameObject.name == "Top Stop Point") //Take the player off the ladder.
         {
-            m_rb.useGravity = true;
+            rb.useGravity = true;
             isUsingLadder = false;
             canPlayerMove = true;
         }

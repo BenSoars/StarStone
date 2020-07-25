@@ -6,20 +6,20 @@ using UnityEngine.UI;
 //Kurtis Watson
 public class Repair_Bar : MonoBehaviour
 {
-    private Pickup_System pickupSystem;
-
+    [Header("Repair Bar Components")]
+    [Space(2)]
+    private Pickup_System m_pickupSystem;
     public Image loadingBar;
 
-    private float maxTotal = 1;
     // Start is called before the first frame update
     void Start()
     {
-        pickupSystem = FindObjectOfType<Pickup_System>();
+        m_pickupSystem = FindObjectOfType<Pickup_System>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        loadingBar.fillAmount = pickupSystem.currentRepairTime / (maxTotal * 5);
+        loadingBar.fillAmount = m_pickupSystem.currentRepairTime / 5; //Sets the fill amount of a 'time left to repair' bar so the player can visualise repair time.
     }
 }

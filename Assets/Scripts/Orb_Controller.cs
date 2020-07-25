@@ -5,9 +5,11 @@ using UnityEngine;
 //Kurtis Watson
 public class Orb_Controller : MonoBehaviour
 {
+    [Header("Script References")]
+    [Space(2)]
     private Prototype_Classes r_prototypeClasses;
 
-    public List<Material> m_materials = new List<Material>();
+    public List<Material> materials = new List<Material>();
 
     private void Start()
     {
@@ -17,6 +19,6 @@ public class Orb_Controller : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        GetComponent<MeshRenderer>().material = m_materials[r_prototypeClasses.chosenBuff]; //Change colour of orb based on chosen enemy buff.
+        GetComponent<MeshRenderer>().material = materials[r_prototypeClasses.chosenBuff]; //Change colour of orb based on chosen enemy buff.
     }
 }

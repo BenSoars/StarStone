@@ -6,57 +6,55 @@ using UnityEngine;
 //Kurtis Watson
 public class Pickup_System : MonoBehaviour
 {
-    public List<Transform> m_locations = new List<Transform>();
-
+    [Header("Pickup Mechanics")]
+    [Space(2)]
     private Transform m_desiredLocation;
-
-    public GameObject m_note;
-    private int m_clockPart;
-
+    private List<Transform> m_locations = new List<Transform>();   
     public GameObject floatPoint;
     public GameObject currentPart;
-
-    public List<GameObject> clockPart = new List<GameObject>();
-
-    public bool m_spawnNote;
-    public bool m_spawnCogs;
+    public bool spawnNote;
+    public bool spawnCogs;
     public bool itemHeld;
-    private bool isRepairing;
-
+    private bool m_isRepairing;
     public int currentPartID;
+    public Animator animator;
+    public Transform camera;
 
-    public Transform cameraLook;
-
-    private Clock_Controller clockController;
-    private User_Interface userInterface;
+    [Header("Script References")]
+    [Space(2)]
+    private Clock_Controller m_clockController;
+    private User_Interface m_userInterface;
     public Prototype_Classes prototypeClasses;
 
     public float currentRepairTime;
     public float repairTime;
 
-
-    private GameObject weaponHand;
+    [Header("Player Attributes")]
+    [Space(2)]
     public GameObject weaponHands;
     public GameObject repairHands;
 
-    private Animator animator;
-
+    [Header("Clock Mechanics")]
+    [Space(2)]
     public bool clockFixed;
-
-    private int repairedParts;
-
-    private int noteID;
+    private int m_clockPart;
+    public List<GameObject> clockPart = new List<GameObject>();
+    private int m_repairedParts;
+    public GameObject note;
+    private int m_noteID;
 
     private void Start()
     {
-        animator = gameObject.transform.GetChild(0).gameObject.transform.GetChild(3).GetComponent<Animator>();
-        repairHands.active = false;
+        //animator = gameObject.transform.GetChild(0).gameObject.transform.GetChild(3).GetComponent<Animator>(); //Get the animator of the hands.
+        repairHands.active = false; //Disable player being able to see repair hands.
 
-        
-        Debug.Log("Animator: " + animator.gameObject);
+        for (int i = 1; i < 19; i++) //Add all the spawnpoints to a list.
+        {
+            m_locations.Add(GameObject.Find("SpawnPoint_" + i).transform);
+        }
 
-        clockController = FindObjectOfType<Clock_Controller>();
-        userInterface = FindObjectOfType<User_Interface>();
+        m_clockController = FindObjectOfType<Clock_Controller>(); //Reference the required scripts.
+        m_userInterface = FindObjectOfType<User_Interface>();
     }
 
     private void Update()
@@ -67,32 +65,32 @@ public class Pickup_System : MonoBehaviour
 
     void f_spawnPickup()
     {
-        int random = Random.Range(0, m_locations.Count);
-        m_desiredLocation = m_locations[random];
-        if (m_spawnNote == true)
+        int random = Random.Range(0, m_locations.Count); //Choose a random location to spawn the note.
+        m_desiredLocation = m_locations[random]; //Set the desired location from a random value in the list.
+        if (spawnNote == true)
         {
-            userInterface.f_popupText();
-            GameObject note = Instantiate(m_note, m_desiredLocation.position, Quaternion.identity); //Instantiate the note at the chosen location.
-            noteID += 3;
-            switch (noteID) {
+            m_userInterface.f_popupText(); //Indicate to the player that a note has spawned.
+            GameObject m_note = Instantiate(note, m_desiredLocation.position, Quaternion.identity); //Instantiate the note at the chosen location.
+            m_noteID += 3;
+            switch (m_noteID) {
                 case 1:
-                    note.GetComponent<Note>().NoteName = "";
-                    note.GetComponent<Note>().NoteText = "";
+                    m_note.GetComponent<Note>().NoteName = "";
+                    m_note.GetComponent<Note>().NoteText = "";
                     break;
                 case 2:
-                    note.GetComponent<Note>().NoteName = "";
-                    note.GetComponent<Note>().NoteText = "";
+                    m_note.GetComponent<Note>().NoteName = "";
+                    m_note.GetComponent<Note>().NoteText = "";
                     break;
                 case 3:
-                    note.GetComponent<Note>().NoteName = "Aztec Ruins";
-                    note.GetComponent<Note>().NoteText = "Time: " + clockController.globalHour + ":" + clockController.globalMin + " - Ruins have been check and the generator is in full working order. Fuel consumption gathered from the Temples core is at a steady rate and the stones are charging as expected.";
+                    m_note.GetComponent<Note>().NoteName = "Aztec Ruins";
+                    m_note.GetComponent<Note>().NoteText = "Time: " + m_clockController.globalHour + ":" + m_clockController.globalMin + " - Ruins have been check and the generator is in full working order. Fuel consumption gathered from the Temples core is at a steady rate and the stones are charging as expected.";
                     break;
             }
             
         }
-        if (m_spawnCogs == true)
+        if (spawnCogs == true)
         {
-            userInterface.f_popupText();
+            m_userInterface.f_popupText(); //Indicate to the player that a clock part has spawned.
             Instantiate(clockPart[m_clockPart], m_desiredLocation.position, Quaternion.identity); //Instantiate the note at the chosen location.
             m_clockPart += 1;
         }
@@ -102,9 +100,9 @@ public class Pickup_System : MonoBehaviour
     {
         RaycastHit m_clockHit;
 
-        animator.SetBool("Repairing", isRepairing); //Activate the animator.
+        animator.SetBool("Repairing", m_isRepairing); //Activate the animator.
 
-        if (Physics.Raycast(cameraLook.transform.position, cameraLook.transform.forward, out m_clockHit, 100f))
+        if (Physics.Raycast(camera.transform.position, camera.transform.forward, out m_clockHit, 100f))
         {
             float closeEnough = Vector3.Distance(transform.position, m_clockHit.collider.gameObject.transform.position); //Check distance between player and scene objects.
             if (Input.GetKeyDown("f") && m_clockHit.collider.gameObject.name != "Steampunk Clock" && itemHeld == true) //Drop clock part.
@@ -138,25 +136,25 @@ public class Pickup_System : MonoBehaviour
 
             if (m_clockHit.collider.gameObject.name == "Steampunk Clock" && itemHeld == true && closeEnough <= 4 && Input.GetKey(KeyCode.Mouse0)) //Repair the clock.
             { 
-                isRepairing = true; //Activate animation.
+                m_isRepairing = true; //Activate animation.
                 currentRepairTime += Time.deltaTime; //Increase the current repair time if the player is holding 'F'.
-                userInterface.repairBar.active = true; //Enable the repair bar so the player can see repair progress.
+                m_userInterface.repairBar.active = true; //Enable the repair bar so the player can see repair progress.
 
                 if (currentRepairTime >= repairTime)
                 {
                     Destroy(currentPart); //Remove the held gameobject after it has been added to the clock.
                     itemHeld = false;
-                    repairedParts += 1; //Increase the clock repaired parts by 1 to check for if the player can set time.
+                    m_repairedParts += 1; //Increase the clock repaired parts by 1 to check for if the player can set time.
                     
-                    isRepairing = false;
+                    m_isRepairing = false;
                     currentRepairTime = 0;                                      
-                    userInterface.repairBar.active = false;
-                    clockController.clockParts[currentPartID].active = true;
+                    m_userInterface.repairBar.active = false;
+                    m_clockController.clockParts[currentPartID].active = true;
 
                     weaponHands.active = true;
                     repairHands.active = false;
 
-                    if(repairedParts == 5) //Check if all parts have been added >
+                    if(m_repairedParts == 5) //Check if all parts have been added >
                     {
                         clockFixed = true; //if so it will allow the player to begin adjusting the clocks time.
                     }
@@ -164,9 +162,9 @@ public class Pickup_System : MonoBehaviour
             }
             else
             {
-                isRepairing = false;
+                m_isRepairing = false;
                 currentRepairTime = 0; //Reset current repair time.
-                userInterface.repairBar.active = false; //Hide repair bar on the UI.
+                m_userInterface.repairBar.active = false; //Hide repair bar on the UI.
             }
         }
     }

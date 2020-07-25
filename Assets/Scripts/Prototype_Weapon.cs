@@ -8,36 +8,34 @@ using System;
 //Kurtis Watson
 public class Prototype_Weapon : MonoBehaviour
 {
-    private Player_Controller r_playerController;
-    private Prototype_Classes r_prototypeClasses;
+    [Header("Referenced Scripts")]
+    [Space(2)]
+    private Player_Controller m_playerController;
+    private Prototype_Classes m_prototypeClasses;
     public Clock_Controller clockController;
-    private Enemy_Controller enemyHit;
+    private Enemy_Controller m_enemyHit;
 
-    private Animator anim;
-
+    [Header("Weapon Mechanics")]
+    [Space(2)]
+    private Animator m_anim;
     private LineRenderer m_lr;
-
-    private Transform shotPoint;
+    private Transform m_shotPoint;
     public GameObject particles;
-
-    public GameObject m_hitDamageText;
+    public GameObject hitDamageText;
     public GameObject beamParticles;
-
-    public float m_laserDamage;
-
-    public float m_damageCoolDown;
+    public float laserDamage;
+    public float damageCoolDown;
     private float m_currentDamageCoolDown;
-
     public AudioSource beamNoise;
 
     // Use this for initialization
     void Start()
     {
-        m_damageCoolDown = 0.2f;
-        m_currentDamageCoolDown = m_damageCoolDown;
+        damageCoolDown = 0.2f;
+        m_currentDamageCoolDown = damageCoolDown;
 
-        r_playerController = FindObjectOfType<Player_Controller>();
-        r_prototypeClasses = FindObjectOfType<Prototype_Classes>();
+        m_playerController = FindObjectOfType<Player_Controller>();
+        m_prototypeClasses = FindObjectOfType<Prototype_Classes>();
 
         m_lr = GetComponent<LineRenderer>();
         beamNoise.volume = PlayerPrefs.GetFloat("volumeLevel");
@@ -48,74 +46,76 @@ public class Prototype_Weapon : MonoBehaviour
     [System.Obsolete]
     void Update()
     {
-        anim = GetComponentInChildren<Animator>();
+        m_anim = GetComponentInChildren<Animator>();
         f_animation();
         f_prototypeWeapon();
 
-        shotPoint = GameObject.Find("Staff_Whole").transform.FindChild("Orb").transform;
-        particles.transform.position = shotPoint.position;
+        m_shotPoint = GameObject.Find("Staff_Whole").transform.FindChild("Orb").transform; //Constantly update shotpoint as the orb changes position.
+        particles.transform.position = m_shotPoint.position;
 
-        m_currentDamageCoolDown -= Time.deltaTime;
-        m_laserDamage = UnityEngine.Random.Range(10, 15);
+        m_currentDamageCoolDown -= Time.deltaTime; //Have a cooldown for each hit of the laser.
+        laserDamage = UnityEngine.Random.Range(10, 15); //Make the damage of the staff random.
     }
 
 
     [System.Obsolete]
     void f_prototypeWeapon()
     {
-        RaycastHit m_laserHit;
-        if (Input.GetKey(KeyCode.Mouse0) && r_prototypeClasses.stonePower[r_prototypeClasses.classState] > 0 && r_playerController.isSprinting == false && clockController.canShoot == true && r_prototypeClasses.defaultStaff.active == false)
+        RaycastHit m_laserHit; //Create a raycast.
+
+        if (Input.GetKey(KeyCode.Mouse0) && m_prototypeClasses.stonePower[m_prototypeClasses.classState] > 0 && m_playerController.isSprinting == false && clockController.canShoot == true && m_prototypeClasses.defaultStaff.active == false) //Checks for default staff because sometimes it would shoot a laser.
         {
-            beamParticles.active = true;
-            beamNoise.enabled = true;
-            r_prototypeClasses.stonePower[r_prototypeClasses.classState] -= 0.025f;
-            m_lr.SetPosition(0, shotPoint.position);
-            m_lr.enabled = true;
-            if (Physics.SphereCast(shotPoint.position, 0.2f, shotPoint.forward, out m_laserHit)) //SphereCast allows for a thicker Raycast.
+            beamParticles.active = true; //Enable particle effect.
+            beamNoise.enabled = true; //Enable audio.
+            m_prototypeClasses.stonePower[m_prototypeClasses.classState] -= 0.025f; //Decrease current starstone power (drain).
+            m_lr.SetPosition(0, m_shotPoint.position); //Set position of laser.
+            m_lr.enabled = true; //Enable laser.
+            if (Physics.SphereCast(m_shotPoint.position, 0.2f, m_shotPoint.forward, out m_laserHit)) //SphereCast allows for a thicker Raycast.
             {
-                anim.SetBool("Firing", true);
+                m_anim.SetBool("Firing", true); //Start shooting animation.
                 if (m_laserHit.collider)
                 {
-                    m_lr.SetPosition(1, m_laserHit.point);
+                    m_lr.SetPosition(1, m_laserHit.point); //Shoot the laser towards where the laser hits.
                 }
-                Debug.DrawRay(shotPoint.position, shotPoint.forward * m_laserHit.distance);
-                if (m_laserHit.collider.gameObject.CompareTag("Enemy") && m_currentDamageCoolDown <= 0)
+
+                if (m_laserHit.collider.gameObject.CompareTag("Enemy") && m_currentDamageCoolDown <= 0) //Check if the laser hits the enemy.
                 {
-                    enemyHit = m_laserHit.collider.gameObject.GetComponent<Enemy_Controller>();
-                    switch (r_prototypeClasses.classState)
+                    m_enemyHit = m_laserHit.collider.gameObject.GetComponent<Enemy_Controller>(); //Grab the enemy hits controller script.
+                    switch (m_prototypeClasses.classState) //Each stone has a different buff.
                     {
                         case 0: //Yellow
-                            m_laserDamage = m_laserDamage * 2;
+                            laserDamage = laserDamage * 2; //Double damage.
                             break;
                         case 1: //White
+                            damageCoolDown = 0.125f;
                             break;
                         case 2: //Pink
-                            enemyHit.m_isStunned = true;
+                            m_enemyHit.m_isStunned = true; //Stun enemy.
                             break;
                         case 3: //Blue
-                            r_playerController.playerHealth += 1;
+                            m_playerController.playerHealth += 0.15f; //Increase player health.
                             break;
                     }
-                    m_laserHit.collider.gameObject.GetComponent<Enemy_Controller>().m_enemyHealth -= m_laserDamage;      
-                    GameObject textObject = Instantiate(m_hitDamageText, m_laserHit.point, Quaternion.identity);
-                    textObject.GetComponentInChildren<TextMeshPro>().text = "" + m_laserDamage;
-                    m_currentDamageCoolDown = m_damageCoolDown;
+                    m_enemyHit.m_enemyHealth -= laserDamage; //Damage the enemy.   
+                    GameObject textObject = Instantiate(hitDamageText, m_laserHit.point, Quaternion.identity); //Spawn hit text on player.
+                    textObject.GetComponentInChildren<TextMeshPro>().text = "" + laserDamage; //Change the value of the instantiated text to the value the enemy is hit for.
+                    m_currentDamageCoolDown = damageCoolDown;
                 }
             }
         }
         else
         {
-            m_lr.enabled = false;
-            beamNoise.enabled = false;
-            beamParticles.active = false;
-            anim.SetBool("Firing", false);
+            damageCoolDown = 0.2f; //Reset damage cooldown.
+            m_lr.enabled = false; //Disable line renderer.
+            beamNoise.enabled = false; //Stop audio.
+            beamParticles.active = false; //Disable particles.
+            m_anim.SetBool("Firing", false); //Stop animation.
         }
 
-        switch (r_prototypeClasses.classState)
+        switch (m_prototypeClasses.classState) //Set line render colours.
         {
             case 0:
-                m_lr.SetColors(Color.yellow, Color.yellow);
-                
+                m_lr.SetColors(Color.yellow, Color.yellow);             
                 break;
             case 1:
                 m_lr.SetColors(Color.white, Color.white);
@@ -127,11 +127,11 @@ public class Prototype_Weapon : MonoBehaviour
                 m_lr.SetColors(Color.blue, Color.blue);
                 break;
         }
-        beamParticles.GetComponent<ParticleSystem>().startColor = m_lr.startColor;
+        beamParticles.GetComponent<ParticleSystem>().startColor = m_lr.startColor; //Set colour of particles equal to the colours set above based on class state.
     }
 
     void f_animation()
     {
-        anim.SetBool("Run", r_playerController.isSprinting);
+        m_anim.SetBool("Run", m_playerController.isSprinting); //Animate player sprinting based on 'isSprinting' value in referenced script.
     }
 }

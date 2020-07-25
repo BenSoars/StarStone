@@ -137,11 +137,11 @@ public class Wave_System : MonoBehaviour
             m_isIntermission = true; //Begin intermission countdown.
             if (m_spawnValue % 2 == 0) //Check for if the spawn value is a value of 2.
             {               
-                r_pickupSystem.m_spawnNote = true; //Spawn note if value of 2.
+                r_pickupSystem.spawnNote = true; //Spawn note if value of 2.
             }
             else
             {
-                r_pickupSystem.m_spawnCogs = true; //Spawn cogs if not a value of 2.
+                r_pickupSystem.spawnCogs = true; //Spawn cogs if not a value of 2.
             }
             m_enemiesKilled = true; //Stops the pick-ups from spawning more than one item a round (Notes etc. above in %2 function).
             m_startedWaves = false; //Begin the wave (required for a different script).

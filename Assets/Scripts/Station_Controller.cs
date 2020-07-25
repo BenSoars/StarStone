@@ -4,15 +4,17 @@ using UnityEngine;
 
 public class Station_Controller : MonoBehaviour
 {
+    [Header("Station Components")]
+    [Space(2)]
+    private Weapon_Switch m_weaponSwitch;
     public Transform cameraLook;
-
     public Animator animator;
+    private bool m_isUpgrading;
+    private bool m_weaponUpgraded;
 
-    private bool isUpgrading;
-    private bool weaponUpgraded;
 
-    private Weapon_Switch weaponSwitch;
-
+    [Header("Weapon Handler")]
+    [Space(2)]
     public GameObject weaponHands;
     public GameObject repairHands;
 
@@ -25,33 +27,30 @@ public class Station_Controller : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        weaponSwitch = FindObjectOfType<Weapon_Switch>();
+        m_weaponSwitch = FindObjectOfType<Weapon_Switch>();
     }
 
     // Update is called once per frame
     void Update()
     {
-
-        if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f && animator.GetCurrentAnimatorStateInfo(0).IsName("upgradeWeapon1") || animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f && animator.GetCurrentAnimatorStateInfo(0).IsName("upgradeWeapon2"))
+        if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f && animator.GetCurrentAnimatorStateInfo(0).IsName("upgradeWeapon1") || animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f && animator.GetCurrentAnimatorStateInfo(0).IsName("upgradeWeapon2")) //Check if the animation is at its end.
         {
-            weaponUpgraded = true;
-     
+            m_weaponUpgraded = true;    
         }
 
-        RaycastHit m_stationHit;
+        RaycastHit m_stationHit; //Create a raycast.
 
-        if (Physics.Raycast(cameraLook.transform.position, cameraLook.transform.forward, out m_stationHit, 5f))
+        if (Physics.Raycast(cameraLook.transform.position, cameraLook.transform.forward, out m_stationHit, 5f)) //Shoot the raycast from the camera forward.
         {
-            if (m_stationHit.collider.gameObject.tag == "Upgrade" && Input.GetKeyDown("f"))
+            if (m_stationHit.collider.gameObject.tag == "Upgrade" && Input.GetKeyDown("f")) //Check for an object hit with the tag "Upgrade" and for user events.
             {
-                if (weaponUpgraded == false && weaponSwitch.currentWeapon == 1 || weaponSwitch.currentWeapon == 2)
+                if (m_weaponUpgraded == false && m_weaponSwitch.currentWeapon == 1 || m_weaponSwitch.currentWeapon == 2) //Checks if the current weapon value is equal to 1 or 2.
                 {
-                    Debug.Log(animator);
-                    isUpgrading = true;
-                    switch (weaponSwitch.currentWeapon)
+                    m_isUpgrading = true; //Sets hands to idle (no weapons).
+                    switch (m_weaponSwitch.currentWeapon) //Checks for current weapon.
                     {
                         case 1:
-                            animator.SetBool("Upgrading1", true);
+                            animator.SetBool("Upgrading1", true); //Set the animation true for that specific weapon.
                             break;
                         case 2:
                             animator.SetBool("Upgrading2", true);
@@ -59,36 +58,35 @@ public class Station_Controller : MonoBehaviour
                     }
                 }
 
-                if (weaponUpgraded == true)
+                if (m_weaponUpgraded == true) //Checks if the upgrade is complete.
                 {
-                    weaponUpgraded = false;
-                    weaponHands.active = true;
-                    repairHands.active = false;
-                    isUpgrading = false;
+                    m_weaponUpgraded = false; 
+                    weaponHands.active = true; //Enables weapons again.
+                    repairHands.active = false; //Disables repair hands.
+                    m_isUpgrading = false;
 
-                    switch (weaponSwitch.currentWeapon)
+                    switch (m_weaponSwitch.currentWeapon)
                     {
                         case 1:
-                            weapon1.GetComponent<Gun_Generic>().damageMultiplier = 2f;
+                            weapon1.GetComponent<Gun_Generic>().damageMultiplier = 1.6f;
                             upgradedWeapon1.active = true;
                             break;
                         case 2:
-                            weapon2.GetComponent<Gun_Generic>().damageMultiplier = 2f;
+                            weapon2.GetComponent<Gun_Generic>().damageMultiplier = 1.6f;
                             upgradedWeapon2.active = true;
                             break;
                     }
 
-                    animator.SetBool("Upgrading1", false);
+                    animator.SetBool("Upgrading1", false); //Set value to false as the upgrade is finished.
                     animator.SetBool("Upgrading2", false);
-
                 }
             }
         }
 
-        if(isUpgrading == true)
+        if(m_isUpgrading == true) //If upgrade is in progress >
         {
-            weaponHands.active = false;
-            repairHands.active = true;
+            weaponHands.active = false; //Disable player weapons.   
+            repairHands.active = true; //Enable repair hands.
         }
     }
 }

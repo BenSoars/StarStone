@@ -49,8 +49,8 @@ public class Easter_Eggs : MonoBehaviour
         {
             //m_Achievement.UnlockAchievement(11); // unlock the Achievement
             m_musicPlayed = true;
-            audioSource.clip = song;
-            audioSource.Play();
+            audioSource.clip = song; //Set the song.
+            audioSource.Play(); //Play the song.
         }
     }
 }

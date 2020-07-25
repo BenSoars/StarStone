@@ -18,13 +18,6 @@ public class Difficulty : MonoBehaviour
     public GameObject enemyLarge;
     public GameObject enemyRange;
 
-    [Header("Percentage Mechanics")]
-    [Space(2)]
-    private float percent;
-    private bool percentChosen;
-    private bool valuesSet;
-    private int dropDownValue;
-
     [Header("Small Enemy")]
     [Space(2)]
     public float defaultSmallHealth;
@@ -49,6 +42,13 @@ public class Difficulty : MonoBehaviour
     public float defaultRangeSpeed;
     public float defaultRangeDamage;
 
+    [Header("Percentage Mechanics")]
+    [Space(2)]
+    private float percent;
+    private bool percentChosen;
+    private bool valuesSet;
+    private int dropDownValue;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -58,49 +58,25 @@ public class Difficulty : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (SceneManager.GetActiveScene().name == "MainMenu")
+        if (SceneManager.GetActiveScene().name == "MainMenu") //Only update in the Main Menu.
         {
-            switch (dropdown.value)
+            switch (dropdown.value) //Check current selected dropdown menu value.
             {
                 case 0:
-                    if (percentChosen == false)
-                    {
-                        percentChosen = true;
-                        percent = 0.75f;
-                        dropDownValue = dropdown.value;
-                        valuesSet = false;
-                    }
+                    percent = 0.75f; //Set the percentage based on dropdown selection.
                     break;
                 case 1:
-                    if (percentChosen == false)
-                    {
-                        percentChosen = true;
-                        percent = 1;
-                        dropDownValue = dropdown.value;
-                        valuesSet = false;
-                    }
+                    percent = 1;
                     break;
                 case 2:
-                    if (percentChosen == false)
-                    {
-                        percentChosen = true;
-                        percent = 1.25f;
-                        dropDownValue = dropdown.value;
-                        valuesSet = false;
-                    }
+                    percent = 1.25f;
                     break;
-            }
-
-            if (dropDownValue != dropdown.value)
-            {
-                percentChosen = false;
             }
         }
 
-        if (SceneManager.GetActiveScene().name == "MainMenu" && valuesSet == false)
+        if (SceneManager.GetActiveScene().name == "MainMenu")
         {
-            valuesSet = true;
-            enemySmall.GetComponent<Enemy_Controller>().m_enemyHealth = defaultSmallHealth * percent;
+            enemySmall.GetComponent<Enemy_Controller>().m_enemyHealth = defaultSmallHealth * percent; //Set all of the enemy values based on the percentage.
             enemySmall.GetComponent<Enemy_Controller>().m_enemyDamage = defaultSmallDamage * percent;
             enemySmall.GetComponent<Enemy_Controller>().m_runSpeed = defaultSmallSpeed * percent;
 
@@ -115,8 +91,6 @@ public class Difficulty : MonoBehaviour
             enemyRange.GetComponent<Enemy_Controller>().m_enemyHealth = defaultRangeHealth * percent;
             enemyRange.GetComponent<Enemy_Controller>().m_enemyDamage = defaultRangeDamage * percent;
             enemyRange.GetComponent<Enemy_Controller>().m_runSpeed = defaultRangeSpeed * percent;
-
-            Debug.Log("Enemy Health:" + enemyMedium.GetComponent<Enemy_Controller>().m_enemyHealth);
         }
     }
 }
