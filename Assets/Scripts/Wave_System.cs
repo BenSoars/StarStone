@@ -6,63 +6,70 @@ using UnityEngine.SceneManagement;
 
 public class Wave_System : MonoBehaviour
 {
-
-
     //Ben Soars
+    [Header("Wave Components")]
     public List<GameObject> enemyTypes = new List<GameObject>(); // the enemy types
-    public List<Transform> spawnPoints = new List<Transform>(); // the spawn points for the enemies
-
     public List<string> amountOf = new List<string>(); // the amount of enemies per wave
     public List<GameObject> spawnedEnemies = new List<GameObject>(); // the spawned enemies
     public int enemiesLeft; // the amount of enemies remaining
-
     public int curRound; // the current round the player is on
     public List<int> enemyArray = new List<int>(); 
-    public bool m_startedWaves; // used to check if the wave has been started
 
+    [Header("Audio System")]
+    [Space(2)]
     public Audio_System audio; // get the audio system component to play sounds
     public List<AudioClip> roundNoises = new List<AudioClip>(); // the round noises
 
+    [Header("Achievement System Components")]
+    [Space(2)]
     private User_Interface m_Canvas;
     public AchievementTracker m_Achievement;
     public AchievementSpecialConditions m_SpecialTracker;
     private bool m_checkRound;
 
-    //Kurtis Watson
-    private Player_Controller r_playerController;
-    private User_Interface r_userInterface;
-    private Prototype_Classes r_prototypeClasses;
-    private Pickup_System r_pickupSystem;
-
-    public List<GameObject> m_wisps = new List<GameObject>();
-
+    //Kurtis Watson     
+    [Header("Wisp Components")]
+    [Space(2)]
+    public List<GameObject> wisps = new List<GameObject>();  
+    public List<Transform> spawnPoints = new List<Transform>(); //Stores the spawnpoints for the enemy.
+    public bool m_startedWaves; //Detects if the wave has started.
     private GameObject[] m_wispPoint;
     private int m_random;
-
-    public bool m_newWave;
+    public bool newWave;
     private bool m_enemiesKilled;
-
     private Text m_enemyCount;
-    public float m_fogMath;
-    private float m_spawnValue;
 
-    public bool m_isIntermission;
+    [Header("Script References")]
+    [Space(2)]
+    private User_Interface m_userInterface;
+    private Prototype_Classes m_prototypeClasses;
+    private Pickup_System m_pickupSystem;
+
+    [Header("Fog Values")]
+    [Space(2)]
+    public float fogMath;
+
+    [Header("Intermission Components")]
+    [Space(2)]
+    public bool isIntermission;
     public bool notChosen;
     public float intermissionTime;
-    public float m_currentIntermissionTime;
+    public float currentIntermissionTime;
+
+    [Header("Drop Manager")]
+    [Space(2)]
+    private float m_spawnValue; //Detects whether to spawn a note or a clock part.
 
     //Kurtis Watson
     private void Start()
     {
+        currentIntermissionTime = intermissionTime;
 
-        m_currentIntermissionTime = intermissionTime;
-        // get the different components neccesart for this script to function
         m_wispPoint = GameObject.FindGameObjectsWithTag("WispPoint");
-        r_playerController = FindObjectOfType<Player_Controller>();
-        r_userInterface = FindObjectOfType<User_Interface>();
-        r_prototypeClasses = FindObjectOfType<Prototype_Classes>();
+        m_userInterface = FindObjectOfType<User_Interface>();
+        m_prototypeClasses = FindObjectOfType<Prototype_Classes>();
         audio = GameObject.FindObjectOfType<Audio_System>(); // get audio system
-        r_pickupSystem = FindObjectOfType<Pickup_System>();
+        m_pickupSystem = FindObjectOfType<Pickup_System>();
         m_Canvas = GameObject.Find("Canvas").GetComponent<User_Interface>();
         m_Achievement = GameObject.FindObjectOfType<AchievementTracker>();
         m_SpecialTracker = GameObject.FindObjectOfType<AchievementSpecialConditions>();
@@ -78,9 +85,9 @@ public class Wave_System : MonoBehaviour
             m_enemyCount = GameObject.Find("EnemyCount").GetComponent<Text>();
         }
 
-        if (m_newWave == true)
+        if (newWave == true)
         {
-            r_userInterface.f_waveTimer();
+            m_userInterface.f_waveTimer();
             f_spawnWisps(); // spawn wisps
         }
     }
@@ -90,8 +97,8 @@ public class Wave_System : MonoBehaviour
     {
         if (SceneManager.GetActiveScene().name != "Temple_Clean") //Stop enemies spawning in clean scene.
         {
-            m_newWave = false;
-            m_currentIntermissionTime = intermissionTime; //Reset current intermission time.
+            newWave = false;
+            currentIntermissionTime = intermissionTime; //Reset current intermission time.
              //Stop a new wave of enemies spawning. 
             m_startedWaves = true; //Update UI values.
             f_sortOutEnemys(); //Spawn enemies of different types.
@@ -101,15 +108,15 @@ public class Wave_System : MonoBehaviour
                 for (int i = 0; i < enemyArray[k]; i++)
                 {
                     m_random = Random.Range(1, 4);
-                    GameObject spawned = Instantiate(m_wisps[k], m_wispPoint[m_random].transform.position, Quaternion.identity); //Spawn wisps at a random point.
+                    GameObject spawned = Instantiate(wisps[k], m_wispPoint[m_random].transform.position, Quaternion.identity); //Spawn wisps at a random point.
                     spawnedEnemies.Add(spawned); //Add enemy spawned to enemies spawned list.
                 }
             }
             enemiesLeft = spawnedEnemies.Count; //Set the count for the enemies left.
-            r_prototypeClasses.m_fogStrength = 0.2f; //Fog strength.
-            r_prototypeClasses.m_currentFog = 0.2f; //Reset current fog.
-            r_prototypeClasses.stonePower[r_prototypeClasses.chosenBuff] -= enemiesLeft * 2; //Decrease the chosen enemy buff by two times the amount of enemies.
-            m_fogMath = r_prototypeClasses.m_fogStrength / enemiesLeft; //Calculate the amount of fog to decrease each enemy kill.
+            m_prototypeClasses.m_fogStrength = 0.2f; //Fog strength.
+            m_prototypeClasses.m_currentFog = 0.2f; //Reset current fog.
+            m_prototypeClasses.stonePower[m_prototypeClasses.chosenBuff] -= enemiesLeft * 2; //Decrease the chosen enemy buff by two times the amount of enemies.
+            fogMath = m_prototypeClasses.m_fogStrength / enemiesLeft; //Calculate the amount of fog to decrease each enemy kill.
             curRound += 1; //Increase current round by one.
             m_enemiesKilled = false;
             
@@ -122,7 +129,7 @@ public class Wave_System : MonoBehaviour
     {
         if (m_Canvas.runtimeUI.activeInHierarchy == true && m_enemyCount)
         {
-            m_enemyCount.text = ("" + enemiesLeft);
+            m_enemyCount.text = ("" + enemiesLeft); //Display enemies left on the runtime UI.
         }
     }
 
@@ -133,23 +140,29 @@ public class Wave_System : MonoBehaviour
         
         if (spawnedEnemies.Count <= 0 && enemiesLeft == 0 && m_enemiesKilled == false && curRound > 0)
         {
-            r_prototypeClasses.buffChosen = false; //Bug fix.
-            m_isIntermission = true; //Begin intermission countdown.
-            if (m_spawnValue % 2 == 0) //Check for if the spawn value is a value of 2.
-            {               
-                r_pickupSystem.spawnNote = true; //Spawn note if value of 2.
-            }
-            else
-            {
-                r_pickupSystem.spawnCogs = true; //Spawn cogs if not a value of 2.
+            m_prototypeClasses.buffChosen = false; //Bug fix.
+            isIntermission = true; //Begin intermission countdown.
+            switch (curRound) {
+                case 1: 
+                case 3: 
+                case 6: 
+                case 9: 
+                case 11:
+                    m_pickupSystem.spawnCogs = true;
+                        break;
+                case 2:
+                case 5:
+                case 10:
+                    m_pickupSystem.spawnNote = true;
+                    break;
             }
             m_enemiesKilled = true; //Stops the pick-ups from spawning more than one item a round (Notes etc. above in %2 function).
             m_startedWaves = false; //Begin the wave (required for a different script).
-            r_prototypeClasses.canSelect = true; //Allow the player to choose a new Starstone.
-            r_prototypeClasses.activeStone[r_prototypeClasses.classState] = false; //Disable the current stone so that it can be chosen again.
-            r_prototypeClasses.activeStone[r_prototypeClasses.chosenBuff] = false; //Disable the current enemy buff so it can be chosen again.
+            m_prototypeClasses.canSelect = true; //Allow the player to choose a new Starstone.
+            m_prototypeClasses.activeStone[m_prototypeClasses.classState] = false; //Disable the current stone so that it can be chosen again.
+            m_prototypeClasses.activeStone[m_prototypeClasses.chosenBuff] = false; //Disable the current enemy buff so it can be chosen again.
             m_spawnValue += 1; //Increments by one to indicate to the game on whether to spawn a gear cog or a lab note.
-            r_userInterface.f_waveTimer(); //Update the round time limit.
+            m_userInterface.f_waveTimer(); //Update the round time limit.
         }
         else
         {
@@ -166,32 +179,32 @@ public class Wave_System : MonoBehaviour
         }
     }
 
+    //Kurtis Watson
     void f_intermission()
     {
-        if (m_isIntermission == true) //Countdown for intermission between rounds.
+        if (isIntermission == true) //Countdown for intermission between rounds.
         {
             if (m_checkRound == false)
             {
                 m_SpecialTracker.CheckForRoundAchievements();
                 m_checkRound = true;
             } 
-            m_currentIntermissionTime -= Time.deltaTime;
+            currentIntermissionTime -= Time.deltaTime;
         }
         else
         {
             m_checkRound = false;
         }
 
-        if (m_currentIntermissionTime <= 0 && m_isIntermission == true) //If the player hasn't chosen a stone, the game will do it automatically.
+        if (currentIntermissionTime <= 0 && isIntermission == true) //If the player hasn't chosen a stone, the game will do it automatically.
         {
             notChosen = true; //Auto selection (used in Prototype_Classes).
-            m_isIntermission = false; //Stops countdown as it has reached 0.
-            r_prototypeClasses.canSelect = false; //Disable player selecting stone.
+            isIntermission = false; //Stops countdown as it has reached 0.
+            m_prototypeClasses.canSelect = false; //Disable player selecting stone.
         }
 
-        // Ben Soars
 
-        //Achievement
+        // Ben Soars - Achievement
         if (m_Achievement) // if there is an Achievement tracker in the scene
         {
             if (curRound > 1)
@@ -199,9 +212,7 @@ public class Wave_System : MonoBehaviour
                 m_Achievement.UnlockAchievement(1); // unlock the beat round 1 Achievement
                
             }
-
             m_SpecialTracker.setRoundChecker();
-
         }
     }
 

@@ -18,6 +18,7 @@ public class Ability_Handler : MonoBehaviour
     public GameObject knife;
     public GameObject tornado;
     public GameObject infector;
+    public GameObject healthArea;
 
     public int totalKnives;
 
@@ -135,6 +136,16 @@ public class Ability_Handler : MonoBehaviour
         yield return new WaitForSeconds(0.2f);
         StartCoroutine(f_resetAnimations());
     } 
+
+    public IEnumerator f_spawnHealthPad()
+    {
+        if (Physics.Raycast(shotPoint.position, shotPoint.forward, out m_hitscanCast, Mathf.Infinity)) //Creates a Raycast.
+        {
+            Instantiate(healthArea, new Vector3(m_hitscanCast.point.x, m_hitscanCast.point.y - 2, m_hitscanCast.point.z), Quaternion.LookRotation(Vector3.forward)); //Intantiate a tornado at crosshair location.
+        }
+        yield return new WaitForSeconds(0.3f);
+        StartCoroutine(f_resetAnimations());
+    }
 
     public void f_spawnInfector() //Spawn infector. 
     {

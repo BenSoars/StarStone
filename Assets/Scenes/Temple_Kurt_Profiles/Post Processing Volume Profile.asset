@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   settings:
   - {fileID: 1472166039667160878}
-  - {fileID: 1877265649123356560}
-  - {fileID: 3128272259134294532}
   - {fileID: 1050683735139933447}
+  - {fileID: 5537966607603456006}
+  - {fileID: 5584259634084521965}
 --- !u!114 &1050683735139933447
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -1350,7 +1350,35 @@ MonoBehaviour:
   sampleCount:
     overrideState: 1
     value: 4
---- !u!114 &1877265649123356560
+--- !u!114 &5537966607603456006
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 556797029e73b2347956b6579e77e05b, type: 3}
+  m_Name: DepthOfField
+  m_EditorClassIdentifier: 
+  active: 1
+  enabled:
+    overrideState: 1
+    value: 1
+  focusDistance:
+    overrideState: 1
+    value: 200
+  aperture:
+    overrideState: 1
+    value: 0.05
+  focalLength:
+    overrideState: 1
+    value: 242.1
+  kernelSize:
+    overrideState: 1
+    value: 3
+--- !u!114 &5584259634084521965
 MonoBehaviour:
   m_ObjectHideFlags: 3
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1368,7 +1396,7 @@ MonoBehaviour:
     value: 1
   intensity:
     overrideState: 1
-    value: 10
+    value: 1
   threshold:
     overrideState: 0
     value: 1
@@ -1397,31 +1425,3 @@ MonoBehaviour:
   dirtIntensity:
     overrideState: 0
     value: 0
---- !u!114 &3128272259134294532
-MonoBehaviour:
-  m_ObjectHideFlags: 3
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 556797029e73b2347956b6579e77e05b, type: 3}
-  m_Name: DepthOfField
-  m_EditorClassIdentifier: 
-  active: 1
-  enabled:
-    overrideState: 1
-    value: 1
-  focusDistance:
-    overrideState: 1
-    value: 2
-  aperture:
-    overrideState: 1
-    value: 32
-  focalLength:
-    overrideState: 1
-    value: 300
-  kernelSize:
-    overrideState: 1
-    value: 3

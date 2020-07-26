@@ -104,8 +104,8 @@ public class Prototype_Classes : MonoBehaviour
         RenderSettings.fog = false;
         m_playerController.defenceValue = m_defaultDefence;
         prototypeWeapon.damageCoolDown = m_defaultDamageCooldown;
-        m_waveSystem.m_isIntermission = false;
-        m_waveSystem.m_newWave = true; //Set new wave.
+        m_waveSystem.isIntermission = false;
+        m_waveSystem.newWave = true; //Set new wave.
         canSelect = false;
     }
 
@@ -239,8 +239,12 @@ public class Prototype_Classes : MonoBehaviour
                     }
                     break;
                 case 3:
-                    canSwitch = false;
-                    //Ring of blue fire that enemies can't come into. -10% power.
+                    if (stonePower[3] >= 15)
+                    {
+                        FindObjectOfType<Ability_Handler>().StartCoroutine("f_spawnHealthPad");
+                        stonePower[3] -= 15;
+                        canSwitch = false;
+                    }
                     break;
             }
         }

@@ -50,11 +50,11 @@ public class Wisp_Controller : MonoBehaviour
         //m_navAgent.SetDestination(wispPoint[m_random].transform.position);
         m_navAgent.SetDestination(m_desiredLocation.transform.position);
 
-        if (m_genDistance < 2f && m_enemySpawn == true)
+        if (m_genDistance <= 2.5f && m_enemySpawn == true)
         {
             Destroy(gameObject);
         }
-        else if (m_mapDistance < 2f && m_enemySpawn == false)
+        else if (m_mapDistance <= 2.5f && m_enemySpawn == false)
         {
             Instantiate(r_waveSystem.enemyTypes[m_type], transform.position, Quaternion.identity); //spawn the enemy type
             Destroy(gameObject);

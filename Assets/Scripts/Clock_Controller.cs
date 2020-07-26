@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 //Kurtis Watson
 public class Clock_Controller : MonoBehaviour
@@ -51,13 +52,19 @@ public class Clock_Controller : MonoBehaviour
         }
 
         portal.active = false; //Hide the portal object.
+
+        
     }
 
     // Update is called once per frame
     void Update()
     {
         f_clockMechanic();
-        f_checkTime();      
+        f_checkTime();
+        if(SceneManager.GetActiveScene().name == "Main_Menu")
+        {
+            m_animator.SetBool("Active", true);
+        }      
     }
 
     void f_setGlobalTime() //Set the time for the notes in a readable format.

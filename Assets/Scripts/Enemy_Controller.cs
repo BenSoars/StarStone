@@ -116,7 +116,7 @@ public class Enemy_Controller : MonoBehaviour
         if (m_enemyHealth <= 0)
         {
             //Kurtis Watson
-            r_prototypeClasses.m_currentFog = r_prototypeClasses.m_currentFog - r_waveSystem.m_fogMath; 
+            r_prototypeClasses.m_currentFog = r_prototypeClasses.m_currentFog - r_waveSystem.fogMath; 
 
             //Ben Soars
             int rando = UnityEngine.Random.Range(0, m_spawnChance); // generate a random nomber whtihin the range

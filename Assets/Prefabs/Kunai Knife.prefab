@@ -187,7 +187,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b39ca30e7e9b61e48ab85fe02149d40a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_damage: 25
+  m_damage: 75
   m_hurtBox: {fileID: 657296634273132561, guid: a42c2071c560a5e429b817b6c466b4e8,
     type: 3}
   m_rb: {fileID: 2824383119464962097, guid: a42c2071c560a5e429b817b6c466b4e8, type: 3}

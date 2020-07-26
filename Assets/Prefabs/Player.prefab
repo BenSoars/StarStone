@@ -17948,6 +17948,8 @@ MonoBehaviour:
   tornado: {fileID: 3247021307327370051, guid: 95fedcde153b44b45bd7a91473f0ae11, type: 3}
   infector: {fileID: 5813459701485193558, guid: 2f1a8e8830d7e42408df0bb637c3b3d3,
     type: 3}
+  healthArea: {fileID: 5021781499596884175, guid: 3e2d51261f52dc840a571d4794a38204,
+    type: 3}
   totalKnives: 9
   shotPoint: {fileID: 567909998898289762}
   weapons: {fileID: 7591412883134558846}
@@ -17973,6 +17975,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35e4b3e167a5b6242b22e57b682ac2a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  station: {fileID: 6146998418634085983, guid: 99b9f94f9f082bc46b10357af7c0028f, type: 3}
   cameraLook: {fileID: 8493438687375166386}
   animator: {fileID: 0}
   weaponHands: {fileID: 7591412883134558846}

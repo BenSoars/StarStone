@@ -23,6 +23,7 @@ public class Cutscene_Handler : MonoBehaviour
     private float m_currentTime;
     public float timeBetweenSentences;
     private bool m_sentenceFinish;
+    public Image transition;
 
     // Start is called before the first frame update
     void Start()
@@ -32,6 +33,10 @@ public class Cutscene_Handler : MonoBehaviour
 
     private void Update()
     {
+        var tempColor = transition.color;
+        tempColor.a -= 0.2f * Time.deltaTime;
+        transition.color = tempColor;
+
         if (m_sentenceFinish == true)
         {
             m_currentTime += Time.deltaTime; //Add to the intermission between sentences.

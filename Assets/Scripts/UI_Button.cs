@@ -12,7 +12,15 @@ public class UI_Button : MonoBehaviour
 
     public void loadScene (string sceneName) // used for UI button to load levels
     {
-        SceneManager.LoadScene(sceneName); // load scene
+        StartCoroutine(beginGame());
+    }
+
+    public IEnumerator beginGame()
+    {
+        GameObject.Find("Canvas").active = false;
+        GameObject.Find("Camera").GetComponent<Animator>().SetBool("Active", true);
+        yield return new WaitForSeconds(8);
+        SceneManager.LoadScene("Opening_Scene"); // load scene   
     }
 
     public void setAnimation(string triggerName)

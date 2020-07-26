@@ -31,7 +31,7 @@ public class Rune_Controller : MonoBehaviour
     }
     private void Update()
     {
-        animator.SetBool("m_shake", m_shake);
+        animator.SetBool("Shake", m_shake);
 
         if (animated == true)
         {          

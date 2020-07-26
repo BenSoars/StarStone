@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 //Kurtis Watson
 public class Player_Controller : MonoBehaviour
@@ -23,7 +24,7 @@ public class Player_Controller : MonoBehaviour
     public float jumpHeight;
     private Animator m_animator;    
     private float m_speed; 
-    public float defenceValue = 1;  
+    public float defenceValue = 1;
     
     [Header("Camera Rotation Properties")]
     [Space(2)]
@@ -56,6 +57,8 @@ public class Player_Controller : MonoBehaviour
     
     private void Start()
     {
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
         isPlayerActive = true;
         canPlayerMove = true;
         audio = GameObject.FindObjectOfType<Audio_System>(); // get audio system

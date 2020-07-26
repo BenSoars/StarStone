@@ -6,11 +6,14 @@ public class Station_Controller : MonoBehaviour
 {
     [Header("Station Components")]
     [Space(2)]
+    public GameObject station;
+    private Wave_System m_waveSystem;
     private Weapon_Switch m_weaponSwitch;
     public Transform cameraLook;
     public Animator animator;
     private bool m_isUpgrading;
     private bool m_weaponUpgraded;
+    private int chance;
 
 
     [Header("Weapon Handler")]
@@ -28,6 +31,8 @@ public class Station_Controller : MonoBehaviour
     void Start()
     {
         m_weaponSwitch = FindObjectOfType<Weapon_Switch>();
+        m_waveSystem = FindObjectOfType<Wave_System>();
+        station.active = false;
     }
 
     // Update is called once per frame
