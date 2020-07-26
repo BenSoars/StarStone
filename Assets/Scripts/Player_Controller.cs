@@ -7,6 +7,10 @@ using UnityEngine.UI;
 //Kurtis Watson
 public class Player_Controller : MonoBehaviour
 {
+    [Header("Referenced Scripts")]
+    [Space(2)]
+    private Portal_Controller m_portalController;
+
     [Header("Player Properties")]
     [Space(2)]
     public Transform camera;
@@ -25,7 +29,8 @@ public class Player_Controller : MonoBehaviour
     private Animator m_animator;    
     private float m_speed; 
     public float defenceValue = 1;
-    
+    public Image transition;
+
     [Header("Camera Rotation Properties")]
     [Space(2)]
     public float camRotSpeed;
@@ -61,6 +66,7 @@ public class Player_Controller : MonoBehaviour
         Cursor.visible = false;
         isPlayerActive = true;
         canPlayerMove = true;
+        m_portalController = FindObjectOfType<Portal_Controller>();
         audio = GameObject.FindObjectOfType<Audio_System>(); // get audio system
         m_animator = GetComponent<Animator>();
         runSound.volume = PlayerPrefs.GetFloat("volumeLevel"); // set volume of run sound
@@ -71,6 +77,32 @@ public class Player_Controller : MonoBehaviour
     void Update()
     {
         //f_drone();
+
+        var tempColor = transition.color;
+        if (m_portalController.transitionActive == false && tempColor.a >= 0)
+        {
+            tempColor.a -= 0.2f * Time.deltaTime;
+            transition.color = tempColor;
+        }
+
+        if (m_portalController.transitionActive == true)
+        {
+            tempColor.a += 0.2f * Time.deltaTime;
+            transition.color = tempColor;
+            if (tempColor.a >= 1)
+            {
+                SceneManager.LoadScene("Ending_Scene");
+                m_portalController.transitionActive = false;
+            }
+        }
+
+        if (tempColor.a <= 0)
+        {
+            transition.enabled = false;
+        }
+        else transition.enabled = true;
+
+
 
         if (playerHealth > 100) { playerHealth = 100; }
 

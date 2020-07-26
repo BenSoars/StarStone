@@ -6,6 +6,7 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using TMPro;
 using System.Security.Cryptography;
+using UnityEditor.Experimental.GraphView;
 
 //Kurtis Watson
 public class User_Interface : MonoBehaviour
@@ -33,7 +34,6 @@ public class User_Interface : MonoBehaviour
     public GameObject gameUI;
     public GameObject repairBar;
     public GameObject pauseMenu;
-    public Image transition;
     public GameObject runtimeUI;
     public GameObject locateClockText;
     public GameObject stone;
@@ -82,20 +82,11 @@ public class User_Interface : MonoBehaviour
         m_prototypeClasses = FindObjectOfType<Prototype_Classes>();
         m_pickupSystem = FindObjectOfType<Pickup_System>();
         timeTillNextRound.enabled = false;
-        transition.enabled = true;
     }
 
     // Update is called once per frame
     void Update()
     {
-        var tempColor = transition.color;
-        tempColor.a -= 0.2f * Time.deltaTime;
-        transition.color = tempColor;
-
-        if(tempColor.a <= 0)
-        {
-            transition.enabled = false;
-        }
         f_starstoneFunctions();
         f_interactionText();
         f_pauseMenu();
