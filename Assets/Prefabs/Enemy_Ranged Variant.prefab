@@ -55,7 +55,7 @@ PrefabInstance:
     - target: {fileID: 42458450682264744, guid: 4d4b05e08e0b0a6499519b925ddfa91b,
         type: 3}
       propertyPath: m_ItemDrops.Array.size
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 42458450682264744, guid: 4d4b05e08e0b0a6499519b925ddfa91b,
         type: 3}
@@ -105,6 +105,17 @@ PrefabInstance:
       propertyPath: soundsList.Array.data[0]
       value: 
       objectReference: {fileID: 8300000, guid: a0588470e3cd3b04fb599829fe2daddc, type: 3}
+    - target: {fileID: 42458450682264744, guid: 4d4b05e08e0b0a6499519b925ddfa91b,
+        type: 3}
+      propertyPath: m_attackTime
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 42458450682264744, guid: 4d4b05e08e0b0a6499519b925ddfa91b,
+        type: 3}
+      propertyPath: m_ItemDrops.Array.data[2]
+      value: 
+      objectReference: {fileID: 4088087161858035614, guid: 885e3a98b9c464d46945e84f7e39cc74,
+        type: 3}
     - target: {fileID: 42458450682264745, guid: 4d4b05e08e0b0a6499519b925ddfa91b,
         type: 3}
       propertyPath: m_Name

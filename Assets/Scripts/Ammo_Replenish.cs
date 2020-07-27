@@ -24,15 +24,20 @@ public class Ammo_Replenish : MonoBehaviour
 
             if (Gun) // if the player has a gun equiped
             {
-                if (Gun.name == GunType || GunType == "ALL")
+                Debug.Log("found gun, " + Gun);
+
+                if (Gun.m_name == GunType)
                 {
                     Gun.m_maxAmmo += AmmoWorth; // increase the ammo count
-                    
+                    Debug.Log("was correct Gun");
                     
                     Gun.f_updateUI(); // update the UI so it reflects the current amount
                     Destroy(gameObject); // destroy the ammo so it can't be infinate
 
                     m_audio.playOther(pickupSound); // play pickup sound
+                } else
+                {
+                    Debug.Log(Gun.m_name + " was not the same gun type as " + GunType);
                 }
             }
         }

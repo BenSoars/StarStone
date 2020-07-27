@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5762886321429660737}
   - component: {fileID: 7295019275847874979}
   m_Layer: 14
-  m_Name: Ammo
+  m_Name: Ammo_Shotgun
   m_TagString: Ammo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -79,8 +79,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e14fc4112d952804eb256a1db791cb04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GunType: ALL
-  AmmoWorth: 100
+  GunType: SHOTGUN
+  AmmoWorth: 15
   pickupSound: {fileID: 8300000, guid: a18578509e44a6040bb3aa0a8ba4fbb7, type: 3}
 --- !u!114 &7295019275847874979
 MonoBehaviour:
@@ -154,7 +154,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: b555b46585bd966469c6671cc8c00f18, type: 2}
+  - {fileID: 2100000, guid: 008c047f680bcac4ea785d4e4c6e01ec, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -186,7 +186,7 @@ Light:
   serializedVersion: 10
   m_Type: 2
   m_Shape: 0
-  m_Color: {r: 0.12724805, g: 1, b: 0, a: 1}
+  m_Color: {r: 1, g: 0, b: 0.009791374, a: 1}
   m_Intensity: 1
   m_Range: 10
   m_SpotAngle: 30
