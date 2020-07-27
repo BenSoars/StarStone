@@ -44,6 +44,7 @@ public class Wave_System : MonoBehaviour
     private User_Interface m_userInterface;
     private Prototype_Classes m_prototypeClasses;
     private Pickup_System m_pickupSystem;
+    private Player_Controller m_playerContoller;
 
     [Header("Fog Values")]
     [Space(2)]
@@ -73,6 +74,12 @@ public class Wave_System : MonoBehaviour
         m_Canvas = GameObject.Find("Canvas").GetComponent<User_Interface>();
         m_Achievement = GameObject.FindObjectOfType<AchievementTracker>();
         m_SpecialTracker = GameObject.FindObjectOfType<AchievementSpecialConditions>();
+        m_playerContoller = FindObjectOfType<Player_Controller>();
+
+        for (int i = 1; i < 19; i++) //Add all the spawnpoints to a list.
+        {
+            spawnPoints.Add(GameObject.Find("SpawnPoint_" + i).transform);
+        }
     }
 
     //Kurtis Watson
@@ -97,6 +104,7 @@ public class Wave_System : MonoBehaviour
     {
         if (SceneManager.GetActiveScene().name != "Temple_Clean") //Stop enemies spawning in clean scene.
         {
+            m_playerContoller.playerHealth = 100;
             newWave = false;
             currentIntermissionTime = intermissionTime; //Reset current intermission time.
              //Stop a new wave of enemies spawning. 
@@ -143,16 +151,16 @@ public class Wave_System : MonoBehaviour
             m_prototypeClasses.buffChosen = false; //Bug fix.
             isIntermission = true; //Begin intermission countdown.
             switch (curRound) {
-                case 1: 
-                case 3: 
+                case 2: 
+                case 4: 
                 case 6: 
-                case 9: 
-                case 11:
+                case 8: 
+                case 10:
                     m_pickupSystem.spawnCogs = true;
                         break;
-                case 2:
-                case 5:
-                case 10:
+                case 3:
+                case 7:
+                case 9:
                     m_pickupSystem.spawnNote = true;
                     break;
             }

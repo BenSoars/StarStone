@@ -147,12 +147,14 @@ public class Ability_Handler : MonoBehaviour
         StartCoroutine(f_resetAnimations());
     }
 
-    public void f_spawnInfector() //Spawn infector. 
+    public IEnumerator f_spawnInfector() //Spawn infector. 
     {
         if (Physics.Raycast(shotPoint.position, shotPoint.forward, out m_hitscanCast, Mathf.Infinity)) //Creates a Raycast.
         {
             Instantiate(infector, new Vector3(m_hitscanCast.point.x, m_hitscanCast.point.y - 2, m_hitscanCast.point.z), Quaternion.LookRotation(Vector3.forward)); //Spawns a tornade of position of player crosshair.
         }
+        yield return new WaitForSeconds(0.3f);
+        StartCoroutine(f_resetAnimations());
     } 
 
     IEnumerator f_resetAnimations() //Reset animations states and allow the player to switch weapons again. 

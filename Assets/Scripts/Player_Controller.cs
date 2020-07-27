@@ -10,6 +10,7 @@ public class Player_Controller : MonoBehaviour
     [Header("Referenced Scripts")]
     [Space(2)]
     private Portal_Controller m_portalController;
+    private Game_End m_gameEnd;
 
     [Header("Player Properties")]
     [Space(2)]
@@ -30,7 +31,7 @@ public class Player_Controller : MonoBehaviour
     private float m_speed; 
     public float defenceValue = 1;
     public Image transition;
-
+    
     [Header("Camera Rotation Properties")]
     [Space(2)]
     public float camRotSpeed;
@@ -79,6 +80,7 @@ public class Player_Controller : MonoBehaviour
         //f_drone();
 
         var tempColor = transition.color;
+
         if (m_portalController.transitionActive == false && tempColor.a >= 0)
         {
             tempColor.a -= 0.2f * Time.deltaTime;
@@ -89,11 +91,17 @@ public class Player_Controller : MonoBehaviour
         {
             tempColor.a += 0.2f * Time.deltaTime;
             transition.color = tempColor;
-            if (tempColor.a >= 1)
+            if (tempColor.a >= 1 && SceneManager.GetActiveScene() == SceneManager.GetSceneByName("Game_Scene"))
             {
                 SceneManager.LoadScene("Ending_Scene");
                 m_portalController.transitionActive = false;
             }
+            if (tempColor.a >= 1 && SceneManager.GetActiveScene() == SceneManager.GetSceneByName("Ending_Scene"))
+            {
+                m_gameEnd = FindObjectOfType<Game_End>();
+                m_gameEnd.startCredits = true;
+            }
+
         }
 
         if (tempColor.a <= 0)
