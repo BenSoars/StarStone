@@ -152,13 +152,13 @@ public class Wave_System : MonoBehaviour
             isIntermission = true; //Begin intermission countdown.
             switch (curRound) {
                 case 2: 
-                case 4: 
+                case 3: 
                 case 6: 
-                case 8: 
-                case 10:
+                case 10: 
+                case 11:
                     m_pickupSystem.spawnCogs = true;
                         break;
-                case 3:
+                case 5:
                 case 7:
                 case 9:
                     m_pickupSystem.spawnNote = true;
