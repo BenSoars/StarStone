@@ -104,7 +104,7 @@ MonoBehaviour:
   m_moveSpeed: 3
   m_runSpeed: 4
   m_enemyHealth: 100
-  m_enemyDamage: 7
+  m_enemyDamage: 8
   m_attackTime: 1
   m_spawnChance: 2
   m_isStunned: 0

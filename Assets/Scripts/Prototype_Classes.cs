@@ -282,7 +282,7 @@ public class Prototype_Classes : MonoBehaviour
                 case 3:
                     if (stonePower[3] >= 25)
                     {
-                        FindObjectOfType<Ability_Handler>().f_spawnInfector();
+                        FindObjectOfType<Ability_Handler>().StartCoroutine("f_spawnInfector");
                         stonePower[3] -= 25;
                         canSwitch = false;
                     }

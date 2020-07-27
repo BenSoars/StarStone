@@ -27,10 +27,13 @@ public class Cutscene_Handler : MonoBehaviour
     public Image transition;
     public bool m_pauseText;
     private bool m_isSkipped;
+    private bool m_sceneSkipped;
+    private float m_defaultTypeWriterSpeed;
 
     // Start is called before the first frame update
     void Start()
     {
+        m_defaultTypeWriterSpeed = typewriterSpeed;
         DontDestroyOnLoad(gameObject);
         StartCoroutine(f_typewriter());
     }
@@ -62,12 +65,14 @@ public class Cutscene_Handler : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space) && m_isSkipped == false)
         {
+            m_index = 5;
             m_isSkipped = true;
-            StartCoroutine(f_skipScene());
+            typewriterSpeed = 0.001f;
         }
 
         if (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("Ending_Scene") && m_stopTextLoop == false)
         {
+            typewriterSpeed = m_defaultTypeWriterSpeed;
             m_index = 5;
             m_pauseText = false;
             m_stopTextLoop = true; //Stop the text repeating hundreds of time (stops coroutine being called more than once). 
@@ -87,7 +92,15 @@ public class Cutscene_Handler : MonoBehaviour
             }
             if (m_index < cutsceneText.Length) //Check if all characters have been added.
             {
-                m_sentenceFinish = true;
+                if (m_isSkipped == false)
+                {
+                    m_sentenceFinish = true;
+                }
+                else if(m_isSkipped == true && m_sceneSkipped == false)
+                {
+                    m_sceneSkipped = true;
+                    StartCoroutine(f_skipScene());
+                }
             }
             else
             {
@@ -98,10 +111,12 @@ public class Cutscene_Handler : MonoBehaviour
 
     IEnumerator f_skipScene()
     {
+        m_index = 5;
         cutsceneTextMesh.text = ""; //Create blank text.   
         m_pauseText = true;
-        m_isSkipped = true;  
+        m_sentenceFinish = true;
         yield return new WaitForSeconds(1.5f);
         SceneManager.LoadScene("Game_Scene");
     }
+
 }
