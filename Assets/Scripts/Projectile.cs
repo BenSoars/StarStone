@@ -59,10 +59,10 @@ public class Projectile : MonoBehaviour
             stickyProjectile(other); // run the sticky projectile test
         }
 
-        else if (m_sticky && !other.gameObject.CompareTag("Player")) // if it's anything else, other than the player
-        {
-            stickyProjectile(other); // run the sticky projectile test
-        }
+        //else if (m_sticky && !other.gameObject.CompareTag("Player")) // if it's anything else, other than the player
+        //{
+        //    stickyProjectile(other); // run the sticky projectile test
+        //}
     }
 
     void stickyProjectile(Collider col)
