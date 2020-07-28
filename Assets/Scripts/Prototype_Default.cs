@@ -6,6 +6,7 @@ public class Prototype_Default : MonoBehaviour
 {
     [Header("Default Staff Components")]
     [Space(2)]
+    [Tooltip("Set position of particle point.")]
     public Transform shotPoint;
     public GameObject particles;
     private Animator m_anim;

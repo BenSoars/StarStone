@@ -116,6 +116,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 752ada9aeea9af54cb2e4ff6634cd686, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  minWispSpeed: 7
+  maxWispSpeed: 16
   m_desiredLocation: {fileID: 0}
   m_enemySpawn: 0
   m_type: 0

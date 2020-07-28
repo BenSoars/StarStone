@@ -23,7 +23,12 @@ public class Prototype_Weapon : MonoBehaviour
     public GameObject particles;
     public GameObject hitDamageText;
     public GameObject beamParticles;
-    public float laserDamage;
+    [Tooltip("Set the minimum damage of the laser.")]
+    public float minLaserDamage;
+    [Tooltip("Set the maximum damage of the laser.")]
+    public float maxLaserDamage;
+    private float m_laserDamage;
+    [Tooltip("Set how long between laser hits.")]
     public float damageCoolDown;
     private float m_currentDamageCoolDown;
     public AudioSource beamNoise;
@@ -54,7 +59,7 @@ public class Prototype_Weapon : MonoBehaviour
         particles.transform.position = m_shotPoint.position;
 
         m_currentDamageCoolDown -= Time.deltaTime; //Have a cooldown for each hit of the laser.
-        laserDamage = UnityEngine.Random.Range(10, 15); //Make the damage of the staff random.
+        m_laserDamage = UnityEngine.Random.Range(minLaserDamage, maxLaserDamage); //Make the damage of the staff random.
     }
 
 
@@ -84,7 +89,7 @@ public class Prototype_Weapon : MonoBehaviour
                     switch (m_prototypeClasses.classState) //Each stone has a different buff.
                     {
                         case 0: //Yellow
-                            laserDamage = laserDamage * 2; //Double damage.
+                            m_laserDamage = m_laserDamage * 2; //Double damage.
                             break;
                         case 1: //White
                             damageCoolDown = 0.125f;
@@ -96,9 +101,9 @@ public class Prototype_Weapon : MonoBehaviour
                             m_playerController.playerHealth += 0.15f; //Increase player health.
                             break;
                     }
-                    m_enemyHit.m_enemyHealth -= laserDamage; //Damage the enemy.   
+                    m_enemyHit.m_enemyHealth -= m_laserDamage; //Damage the enemy.   
                     GameObject textObject = Instantiate(hitDamageText, m_laserHit.point, Quaternion.identity); //Spawn hit text on player.
-                    textObject.GetComponentInChildren<TextMeshPro>().text = "" + laserDamage; //Change the value of the instantiated text to the value the enemy is hit for.
+                    textObject.GetComponentInChildren<TextMeshPro>().text = "" + m_laserDamage.ToString("0"); //Change the value of the instantiated text to the value the enemy is hit for.
                     m_currentDamageCoolDown = damageCoolDown;
                 }
             }

@@ -48,12 +48,14 @@ public class Wave_System : MonoBehaviour
 
     [Header("Fog Values")]
     [Space(2)]
+    [Tooltip("Calculate the fog intensity based on how many enemies are left.")]
     public float fogMath;
 
     [Header("Intermission Components")]
     [Space(2)]
     public bool isIntermission;
     public bool notChosen;
+    [Tooltip("Set the time length of the intermission phases between rounds.")]
     public float intermissionTime;
     public float currentIntermissionTime;
 

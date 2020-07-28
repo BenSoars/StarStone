@@ -4,26 +4,22 @@ using UnityEngine;
 
 public class Upgrade_Pushback : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [Header("Pushback Forces")]
+    [Space(2)]
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    [Tooltip("Set the explosion force (how much the player is pushed by the force).")]
+    public float explosionForce;
+    [Tooltip("Set how high the player is lifted when inside the trigger.")]
+    public float upwardsForce;
 
     private void OnTriggerStay(Collider other)
     {
         if(other.gameObject.name == "Player")
         {
-            Rigidbody player = other.gameObject.GetComponent<Rigidbody>();
-            player.AddExplosionForce(1000, transform.position, 200);
-            player.AddForce(transform.up * 350);
-            player.velocity = Vector3.zero;
+            Rigidbody player = other.gameObject.GetComponent<Rigidbody>(); //Find the players rigidbody.
+            player.AddExplosionForce(explosionForce, transform.position, 200); //Apply an explosion force to the rigidbody.
+            player.AddForce(transform.up * upwardsForce); //Add an uplift force to the rigidbody.
+            player.velocity = Vector3.zero; //Set the players velocity to 0;
         }
     }
 }

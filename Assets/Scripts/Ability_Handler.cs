@@ -8,16 +8,25 @@ public class Ability_Handler : MonoBehaviour
     [Header("Script Access")]
     private Player_Controller m_playerController;
     private Prototype_Classes m_prototypeClasses;
+    private Wave_System m_waveSystem;
 
     [Header("Ability Mechanics")]
     [Space(2)]
+    [Tooltip("The object that is spawned when the pushback ability is used.")]
     public GameObject pushBack; //Ability Game Objects.
+    [Tooltip("The object that adds a post process to the players screen.")]
     public GameObject invisibility;
+    [Tooltip("The obejct that is spawned when the wall ability is used.")]
     public GameObject wall;
+    [Tooltip("The object that is spawned when the wall ability is activated.")]
     public GameObject storm;
+    [Tooltip("The object that is spawned when the knife throwing ability is activated.")]
     public GameObject knife;
+    [Tooltip("The object that is spawned when the tornado object is used.")]
     public GameObject tornado;
+    [Tooltip("The object that is spawned when the infector is used.")]
     public GameObject infector;
+    [Tooltip("The object that is spawned when the player uses the health zone ability.")]
     public GameObject healthArea;
     [Tooltip("How many knives for the player to throw during knife ability.")]
     public int totalKnives;
@@ -39,6 +48,7 @@ public class Ability_Handler : MonoBehaviour
     {
         m_playerController = GameObject.FindObjectOfType<Player_Controller>();
         m_prototypeClasses = FindObjectOfType<Prototype_Classes>();
+        m_waveSystem = FindObjectOfType<Wave_System>();
 
         m_handsAnim = hands.GetComponent<Animator>();
     }
@@ -50,7 +60,7 @@ public class Ability_Handler : MonoBehaviour
 
     void abilityStateHandler()
     {
-        if (m_prototypeClasses.abilityState == true) //Check if the player has activated their abilities.
+        if (m_prototypeClasses.abilityState == true && m_waveSystem.curRound > 0) //Check if the player has activated their abilities.
         {
             hands.active = true;
             weapons.active = false;

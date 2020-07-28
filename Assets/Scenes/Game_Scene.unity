@@ -13341,6 +13341,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dac2e164a3a3b11418c9cfe8efef14f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  explosionForce: 1000
+  upwardsForce: 350
 --- !u!4 &405930076 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: b755400b484cca746b9d712b67a158a0,
@@ -22702,7 +22704,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0, y: 3.4904e-41, z: 0, w: 0}
+  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 5.574959}
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
@@ -34669,7 +34671,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1978663804
 Transform:
   m_ObjectHideFlags: 0

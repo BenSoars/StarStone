@@ -2510,7 +2510,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Color: {r: 0.5566038, g: 0.002625496, b: 0.002625496, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -3068,7 +3068,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentTimeText: {fileID: 6088104185912925412}
-  currentHealth: {fileID: 0}
   currentStoneCharge: {fileID: 1248981581612680890}
   timeTillNextRound: {fileID: 2501106275484184220}
   chooseStone: {fileID: 4651103207713582647}
@@ -3085,10 +3084,6 @@ MonoBehaviour:
   stone: {fileID: 0}
   difficultyHandler: {fileID: 3170200391802772419, guid: f4c3db54aefbb9440b8879fd647251a3,
     type: 3}
-  SS1: {fileID: 0}
-  SS2: {fileID: 0}
-  SS3: {fileID: 0}
-  SS4: {fileID: 0}
   starstoneIcon: {fileID: 3649358158341532004}
   abilityPreview1: {fileID: 2288438538343276552}
   abilityPreview2: {fileID: 2920814896504226762}

@@ -14496,7 +14496,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8306334561688732944
 Transform:
   m_ObjectHideFlags: 0
@@ -17148,7 +17148,8 @@ MonoBehaviour:
   hitDamageText: {fileID: 716313641932058393, guid: 6d1c9af70de7b834eb4915020237bcca,
     type: 3}
   beamParticles: {fileID: 7970758723244287899}
-  laserDamage: 0
+  minLaserDamage: 10
+  maxLaserDamage: 20
   damageCoolDown: 0
   beamNoise: {fileID: 4038250209114937181}
 --- !u!82 &4038250209114937181
