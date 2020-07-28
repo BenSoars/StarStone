@@ -14681,10 +14681,6 @@ MonoBehaviour:
   m_isStunned: 0
   m_isRanged: 0
   m_projectile: {fileID: 0}
-  m_ItemDrops:
-  - {fileID: 5762886321429660750, guid: e8fea09451d242e47a7ae1e2c4f6f86f, type: 3}
-  - {fileID: 1328950134255430560, guid: 0905edf88bc54574bb94d689a6dcae3e, type: 3}
-  - {fileID: 4088087161858035614, guid: 885e3a98b9c464d46945e84f7e39cc74, type: 3}
   m_isGrounded: 1
   m_state: 1
   m_eyePos: {fileID: 7606662960965605279}
@@ -14707,10 +14703,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
+  m_Radius: 0.79762775
+  m_Height: 2.0507307
   m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0.14015198, y: 0.00243028, z: 0}
 --- !u!195 &8653534323981115252
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -14720,7 +14716,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 8653534323981115242}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.5
+  m_Radius: 1
   m_Speed: 3.5
   m_Acceleration: 8
   avoidancePriority: 50
