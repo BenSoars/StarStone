@@ -47352,6 +47352,7 @@ GameObject:
   - component: {fileID: 3119247292592006894}
   - component: {fileID: 1385909806161018369}
   - component: {fileID: 7075918084457695642}
+  - component: {fileID: 2488870145473938858}
   m_Layer: 0
   m_Name: Shrine_Pillars_03
   m_TagString: Untagged
@@ -47359,6 +47360,20 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!64 &2488870145473938858
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2488870145473938857}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -428934433504275001, guid: 3d939ee2312042b4dacaeedd3be46473, type: 3}
 --- !u!1 &2527421589331750239
 GameObject:
   m_ObjectHideFlags: 0
@@ -47783,6 +47798,7 @@ GameObject:
   - component: {fileID: 8133042474392928358}
   - component: {fileID: 4918234530343050797}
   - component: {fileID: 1919865324001628582}
+  - component: {fileID: 2876706728163889343}
   m_Layer: 0
   m_Name: Shrine_Pillars_02
   m_TagString: Untagged
@@ -47790,6 +47806,20 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!64 &2876706728163889343
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2876706728163889342}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 8569162180578090309, guid: 3d939ee2312042b4dacaeedd3be46473, type: 3}
 --- !u!33 &2882146279283959702
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -48276,6 +48306,7 @@ GameObject:
   - component: {fileID: 7185752791965999841}
   - component: {fileID: 4130734998922011911}
   - component: {fileID: 249352160841305817}
+  - component: {fileID: 3221893729083568402}
   m_Layer: 0
   m_Name: Shrine_Balcony_01
   m_TagString: Untagged
@@ -48283,6 +48314,20 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!64 &3221893729083568402
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3221893729083568401}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -7665346559816639987, guid: 3d939ee2312042b4dacaeedd3be46473, type: 3}
 --- !u!23 &3259536908781843787
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -48531,6 +48576,7 @@ GameObject:
   - component: {fileID: 460882101507486077}
   - component: {fileID: 785082627620087892}
   - component: {fileID: 4991969076708177210}
+  - component: {fileID: 3497041112079671083}
   m_Layer: 0
   m_Name: Shrine_Roof_01
   m_TagString: Untagged
@@ -48538,6 +48584,20 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!64 &3497041112079671083
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3497041112079671082}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 298186876654052473, guid: 3d939ee2312042b4dacaeedd3be46473, type: 3}
 --- !u!1 &3520556357107499358
 GameObject:
   m_ObjectHideFlags: 0
@@ -49356,6 +49416,7 @@ GameObject:
   - component: {fileID: 3873732015716626721}
   - component: {fileID: 1429639271571069901}
   - component: {fileID: 4403902542092667664}
+  - component: {fileID: 4497030932660712718}
   m_Layer: 0
   m_Name: Shrine_Pillars_04
   m_TagString: Untagged
@@ -49363,6 +49424,20 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!64 &4497030932660712718
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4497030932660712717}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -7801645957941821161, guid: 3d939ee2312042b4dacaeedd3be46473, type: 3}
 --- !u!1 &4543452926134897816
 GameObject:
   m_ObjectHideFlags: 0
@@ -49407,6 +49482,7 @@ GameObject:
   - component: {fileID: 3850647310456897340}
   - component: {fileID: 2545206055859483624}
   - component: {fileID: 1506477130262326480}
+  - component: {fileID: 4549306258510877676}
   m_Layer: 0
   m_Name: Shrine_Roof_02
   m_TagString: Untagged
@@ -49414,6 +49490,20 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!64 &4549306258510877676
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4549306258510877675}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -2245043435293284342, guid: 3d939ee2312042b4dacaeedd3be46473, type: 3}
 --- !u!1 &4566020254677078785
 GameObject:
   m_ObjectHideFlags: 0
@@ -49425,6 +49515,7 @@ GameObject:
   - component: {fileID: 6818300402497140851}
   - component: {fileID: 2882146279283959702}
   - component: {fileID: 3950889065264434817}
+  - component: {fileID: 4566020254677078786}
   m_Layer: 0
   m_Name: Box_02
   m_TagString: Untagged
@@ -49432,6 +49523,20 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!64 &4566020254677078786
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4566020254677078785}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -8452686383891971122, guid: 3d939ee2312042b4dacaeedd3be46473, type: 3}
 --- !u!4 &4579947915150395087
 Transform:
   m_ObjectHideFlags: 0
@@ -55179,6 +55284,7 @@ GameObject:
   - component: {fileID: 5372895688562513207}
   - component: {fileID: 7209043524091279904}
   - component: {fileID: 9070781054776288909}
+  - component: {fileID: 5527732903307816244}
   m_Layer: 0
   m_Name: Shrine_Pillars_01
   m_TagString: Untagged
@@ -55186,6 +55292,20 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!64 &5527732903307816244
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5527732903307816243}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -5385635623378236807, guid: 3d939ee2312042b4dacaeedd3be46473, type: 3}
 --- !u!1 &5558573400902318301
 GameObject:
   m_ObjectHideFlags: 0
@@ -60391,6 +60511,7 @@ GameObject:
   - component: {fileID: 3725402104673599987}
   - component: {fileID: 436639151626285258}
   - component: {fileID: 3707950781044580740}
+  - component: {fileID: 5940202066003634342}
   m_Layer: 0
   m_Name: Stairs_Roof
   m_TagString: Untagged
@@ -60398,6 +60519,20 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!64 &5940202066003634342
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5940202066003634341}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 2683114899600558283, guid: 3d939ee2312042b4dacaeedd3be46473, type: 3}
 --- !u!33 &5941099874438126926
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -60978,6 +61113,46 @@ PrefabInstance:
       propertyPath: m_textInfo.pageCount
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 665078620302493097, guid: 23e70938c35368744948706caab60da2,
+        type: 3}
+      propertyPath: m_textInfo.characterCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 665078620302493097, guid: 23e70938c35368744948706caab60da2,
+        type: 3}
+      propertyPath: m_textInfo.wordCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 665078620302493097, guid: 23e70938c35368744948706caab60da2,
+        type: 3}
+      propertyPath: m_textInfo.lineCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 665078620302493097, guid: 23e70938c35368744948706caab60da2,
+        type: 3}
+      propertyPath: m_textInfo.pageCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1056824242242272162, guid: 23e70938c35368744948706caab60da2,
+        type: 3}
+      propertyPath: m_textInfo.characterCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1056824242242272162, guid: 23e70938c35368744948706caab60da2,
+        type: 3}
+      propertyPath: m_textInfo.wordCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1056824242242272162, guid: 23e70938c35368744948706caab60da2,
+        type: 3}
+      propertyPath: m_textInfo.lineCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1056824242242272162, guid: 23e70938c35368744948706caab60da2,
+        type: 3}
+      propertyPath: m_textInfo.pageCount
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1248981581612680890, guid: 23e70938c35368744948706caab60da2,
         type: 3}
       propertyPath: m_textInfo.characterCount
@@ -61282,6 +61457,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 7305707931188734429, guid: 23e70938c35368744948706caab60da2,
+        type: 3}
+      propertyPath: m_textInfo.characterCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7305707931188734429, guid: 23e70938c35368744948706caab60da2,
+        type: 3}
+      propertyPath: m_textInfo.wordCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7305707931188734429, guid: 23e70938c35368744948706caab60da2,
+        type: 3}
+      propertyPath: m_textInfo.lineCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7305707931188734429, guid: 23e70938c35368744948706caab60da2,
+        type: 3}
+      propertyPath: m_textInfo.pageCount
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7605227561904064949, guid: 23e70938c35368744948706caab60da2,
         type: 3}
@@ -61664,6 +61859,7 @@ GameObject:
   - component: {fileID: 3928538021034995349}
   - component: {fileID: 8519142733921708656}
   - component: {fileID: 3163078559209268363}
+  - component: {fileID: 6700769721662799660}
   m_Layer: 0
   m_Name: Tunnel_05
   m_TagString: Untagged
@@ -61671,6 +61867,20 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!64 &6700769721662799660
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6700769721662799659}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4742023749732533275, guid: 3d939ee2312042b4dacaeedd3be46473, type: 3}
 --- !u!4 &6737613659247432840
 Transform:
   m_ObjectHideFlags: 0
@@ -62172,6 +62382,7 @@ GameObject:
   - component: {fileID: 97711083997072299}
   - component: {fileID: 3884520723373035825}
   - component: {fileID: 3092842274530931070}
+  - component: {fileID: 7188740663948396934}
   m_Layer: 0
   m_Name: Ramp_Roof
   m_TagString: Untagged
@@ -62179,6 +62390,20 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!64 &7188740663948396934
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7188740663948396933}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -283067896718159661, guid: 3d939ee2312042b4dacaeedd3be46473, type: 3}
 --- !u!1 &7197041235130076562
 GameObject:
   m_ObjectHideFlags: 0
@@ -62911,6 +63136,7 @@ GameObject:
   - component: {fileID: 6450348618299210020}
   - component: {fileID: 7656079700238834314}
   - component: {fileID: 3259536908781843787}
+  - component: {fileID: 8132006903621399624}
   m_Layer: 0
   m_Name: Stairs_Roof2
   m_TagString: Untagged
@@ -62918,6 +63144,20 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!64 &8132006903621399624
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8132006903621399623}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 1670393887450899592, guid: 3d939ee2312042b4dacaeedd3be46473, type: 3}
 --- !u!4 &8133042474392928358
 Transform:
   m_ObjectHideFlags: 0
@@ -64136,6 +64376,7 @@ GameObject:
   - component: {fileID: 8555860648223191435}
   - component: {fileID: 2766326650596499850}
   - component: {fileID: 1160410022863420589}
+  - component: {fileID: 9112008168627556930}
   m_Layer: 0
   m_Name: Pillar_02
   m_TagString: Untagged
@@ -64143,6 +64384,20 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!64 &9112008168627556930
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9112008168627556929}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -7721746990013305702, guid: 3d939ee2312042b4dacaeedd3be46473, type: 3}
 --- !u!1001 &9113278939146816506
 PrefabInstance:
   m_ObjectHideFlags: 0
