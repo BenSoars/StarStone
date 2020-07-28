@@ -5,7 +5,6 @@ using UnityEngine;
 public class Ammo_Replenish : MonoBehaviour
 {
     // Ben Soars
-    public string GunType = "ALL";
     public int AmmoWorth;
     public AudioClip pickupSound; // the sound that will play when picked up
 
@@ -20,24 +19,21 @@ public class Ammo_Replenish : MonoBehaviour
     {
         if (other.CompareTag("Player")) // when the player walks over it
         {
-            Gun_Generic Gun = FindObjectOfType<Gun_Generic>();
+            Weapon_Switch weapons = FindObjectOfType<Weapon_Switch>();
 
-            if (Gun) // if the player has a gun equiped
+            for (int i = 0; i < 2; i++)
             {
-                Debug.Log("found gun, " + Gun);
-
-                if (Gun.m_name == GunType)
+                Gun_Generic Gun = weapons.m_Weapons[i].GetComponent<Gun_Generic>();
+                if (Gun) // if the player has a gun equiped
                 {
+
                     Gun.m_maxAmmo += AmmoWorth; // increase the ammo count
-                    Debug.Log("was correct Gun");
-                    
+
+
                     Gun.f_updateUI(); // update the UI so it reflects the current amount
                     Destroy(gameObject); // destroy the ammo so it can't be infinate
 
                     m_audio.playOther(pickupSound); // play pickup sound
-                } else
-                {
-                    Debug.Log(Gun.m_name + " was not the same gun type as " + GunType);
                 }
             }
         }

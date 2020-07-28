@@ -169,6 +169,10 @@ public class Gun_Generic : Melee_Attack
         m_maxAmmo -= (m_clipSize - m_currentAmmo);
         coolDownTimer = m_reloadTime;
         m_currentAmmo = m_clipSize;
+        if (m_maxAmmo <= 0)
+        {
+            m_maxAmmo = 0;
+        }
         
         f_updateUI();
     }

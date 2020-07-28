@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5762886321429660737}
   - component: {fileID: 7295019275847874979}
   m_Layer: 14
-  m_Name: Ammo_Shotgun
+  m_Name: Ammo_Small
   m_TagString: Ammo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -79,8 +79,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e14fc4112d952804eb256a1db791cb04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GunType: SHOTGUN
-  AmmoWorth: 15
+  AmmoWorth: 10
   pickupSound: {fileID: 8300000, guid: a18578509e44a6040bb3aa0a8ba4fbb7, type: 3}
 --- !u!114 &7295019275847874979
 MonoBehaviour:
