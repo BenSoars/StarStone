@@ -166,7 +166,7 @@ public class Ability_Handler : MonoBehaviour
         {
             Instantiate(infector, new Vector3(m_hitscanCast.point.x, m_hitscanCast.point.y - 2, m_hitscanCast.point.z), Quaternion.LookRotation(Vector3.forward)); //Spawns a tornade of position of player crosshair.
         }
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(1f);
         StartCoroutine(f_resetAnimations());
     } 
 

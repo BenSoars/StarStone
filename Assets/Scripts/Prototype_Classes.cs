@@ -212,84 +212,96 @@ public class Prototype_Classes : MonoBehaviour
                 abilityState = false;
             }
         }
-        if (Input.GetKeyDown(KeyCode.Mouse0) && stateQ == true)
-        {
-            stateQ = false;
-            switch (classState) //Check for Class State.
-            {
-                case 0:
-                    if (stonePower[0] >= 15) //Check if the player has enough power in their current starstone.
-                    {
-                        FindObjectOfType<Ability_Handler>().StartCoroutine("f_spawnInvisibility"); //Begin Coroutine to execute ability.
-                        stonePower[0] -= 15; //Decrease starstone power as it has been 'drained'.
-                        canSwitch = false; //Don't allow the player to switch weapons.
-                    }
-                    break;
-                case 1:
-                    if (stonePower[1] >= 15)
-                    {
-                        FindObjectOfType<Ability_Handler>().StartCoroutine("f_spawnTornado");
-                        stonePower[1] -= 15;
-                        canSwitch = false;
-                    }
-                    break;
-                case 2:
-                    if (stonePower[2] >= 15)
-                    {
-                        FindObjectOfType<Ability_Handler>().StartCoroutine("f_spawnPushback");
-                        stonePower[2] -= 15;
-                        canSwitch = false;
-                    }
-                    break;
-                case 3:
-                    if (stonePower[3] >= 15)
-                    {
-                        FindObjectOfType<Ability_Handler>().StartCoroutine("f_spawnHealthPad");
-                        stonePower[3] -= 15;
-                        canSwitch = false;
-                    }
-                    break;
-            }
-        }
 
-        if (Input.GetKeyDown(KeyCode.Mouse0) && stateV == true)
+        RaycastHit m_hitscanCast;
+        if (Physics.Raycast(shotPoint.position, shotPoint.forward, out m_hitscanCast, Mathf.Infinity)) //Creates a Raycast.
         {
-            stateV = false;
-            switch (classState)
+            if (Input.GetKeyDown(KeyCode.Mouse0) && stateQ == true)
+            {               
+                switch (classState) //Check for Class State.
+                {
+                    case 0:
+                        if (stonePower[0] >= 15) //Check if the player has enough power in their current starstone.
+                        {
+                            FindObjectOfType<Ability_Handler>().StartCoroutine("f_spawnInvisibility"); //Begin Coroutine to execute ability.
+                            stonePower[0] -= 15; //Decrease starstone power as it has been 'drained'.
+                            canSwitch = false; //Don't allow the player to switch weapons.
+                            stateQ = false;
+                        }
+                        break;
+                    case 1:
+                        if (stonePower[1] >= 15 && m_hitscanCast.collider.gameObject.tag == "Ground")
+                        {
+                            FindObjectOfType<Ability_Handler>().StartCoroutine("f_spawnTornado");
+                            stonePower[1] -= 15;
+                            canSwitch = false;
+                            stateQ = false;
+                        }
+                        break;
+                    case 2:
+                        if (stonePower[2] >= 15)
+                        {
+                            FindObjectOfType<Ability_Handler>().StartCoroutine("f_spawnPushback");
+                            stonePower[2] -= 15;
+                            canSwitch = false;
+                            stateQ = false;
+                        }
+                        break;
+                    case 3:
+                        if (stonePower[3] >= 15 && m_hitscanCast.collider.gameObject.tag == "Ground")
+                        {
+                            FindObjectOfType<Ability_Handler>().StartCoroutine("f_spawnHealthPad");
+                            stonePower[3] -= 15;
+                            canSwitch = false;
+                            stateQ = false;
+                        }
+                        break;
+                }
+            }
+
+
+            if (Input.GetKeyDown(KeyCode.Mouse0) && stateV == true)
             {
-                case 0:
-                    if (stonePower[0] >= 20)
-                    {
-                        FindObjectOfType<Ability_Handler>().StartCoroutine("f_spawnWall"); //Begin Coroutine to execute ability.
-                        stonePower[0] -= 20; //Decrease starstone power as it has been 'drained'.
-                        canSwitch = false; //Don't allow the player to switch weapons.
-                    }
-                    break;
-                case 1:
-                    if (stonePower[1] >= 25)
-                    {
-                        FindObjectOfType<Ability_Handler>().StartCoroutine("f_spawnStorm");
-                        stonePower[1] -= 25;
-                        canSwitch = false;
-                    }
-                    break;
-                case 2:
-                    if (stonePower[2] >= 15)
-                    {
-                        FindObjectOfType<Ability_Handler>().StartCoroutine("f_spawnKnives");
-                        stonePower[2] -= 15;
-                        canSwitch = false;
-                    }
-                    //Knives.
-                    break;
-                case 3:
-                    if (stonePower[3] >= 25)
-                    {
-                        FindObjectOfType<Ability_Handler>().StartCoroutine("f_spawnInfector");
-                        stonePower[3] -= 25;
-                        canSwitch = false;
-                    }
-                    break;
+                switch (classState)
+                {
+                    case 0:
+                        if (stonePower[0] >= 20 && m_hitscanCast.collider.gameObject.tag == "Ground")
+                        {
+                            FindObjectOfType<Ability_Handler>().StartCoroutine("f_spawnWall"); //Begin Coroutine to execute ability.
+                            stonePower[0] -= 20; //Decrease starstone power as it has been 'drained'.
+                            canSwitch = false; //Don't allow the player to switch weapons.
+                            stateV = false;
+                        }
+                        break;
+                    case 1:
+                        if (stonePower[1] >= 25 && m_hitscanCast.collider.gameObject.tag == "Ground")
+                        {
+                            FindObjectOfType<Ability_Handler>().StartCoroutine("f_spawnStorm");
+                            stonePower[1] -= 25;
+                            canSwitch = false;
+                            stateV = false;
+                        }
+                        break;
+                    case 2:
+                        if (stonePower[2] >= 15)
+                        {
+                            FindObjectOfType<Ability_Handler>().StartCoroutine("f_spawnKnives");
+                            stonePower[2] -= 15;
+                            canSwitch = false;
+                            stateV = false;
+                        }
+                        //Knives.
+                        break;
+                    case 3:
+                        if (stonePower[3] >= 25 && m_hitscanCast.collider.gameObject.tag == "Ground")
+                        {
+                            FindObjectOfType<Ability_Handler>().StartCoroutine("f_spawnInfector");
+                            stonePower[3] -= 25;
+                            canSwitch = false;
+                            stateV = false;
+                        }
+                        break;
+                }
             }
         }
     }
