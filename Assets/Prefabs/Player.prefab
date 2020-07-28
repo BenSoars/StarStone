@@ -3709,7 +3709,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &8386456219935881521
 Transform:
   m_ObjectHideFlags: 0
@@ -14496,7 +14496,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &8306334561688732944
 Transform:
   m_ObjectHideFlags: 0
@@ -21506,16 +21506,16 @@ MonoBehaviour:
   camera: {fileID: 8493438687375166386}
   rb: {fileID: 8493438686635508284}
   playerHealth: 100
+  walkSpeed: 6
+  sprintSpeed: 9
+  maxSpeed: 15
+  jumpHeight: 9
   extraGravity: 10
   playerRotX: 0
   isSprinting: 0
   isCrouching: 0
   isPlayerActive: 0
   m_shotPoint: {fileID: 8493438687375166386}
-  walkSpeed: 6
-  sprintSpeed: 9
-  maxSpeed: 15
-  jumpHeight: 9
   defenceValue: 1
   transition: {fileID: 4047961056276737324}
   camRotSpeed: 3
@@ -21587,8 +21587,8 @@ MonoBehaviour:
   chosenBuff: 0
   buffChosen: 0
   defaultStaff: {fileID: 3003906889949971419}
-  m_fogStrength: 0
-  m_currentFog: 0
+  fogStrength: 0
+  currentFog: 0
 --- !u!114 &1031861635661113235
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21669,8 +21669,8 @@ MonoBehaviour:
   animator: {fileID: 2577788732411997817}
   camera: {fileID: 8493438687375166386}
   prototypeClasses: {fileID: 745732647775295139}
-  currentRepairTime: 0
   repairTime: 5
+  currentRepairTime: 0
   weaponHands: {fileID: 7591412883134558846}
   repairHands: {fileID: 6109202852940058352}
   clockFixed: 0
