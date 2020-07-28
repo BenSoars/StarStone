@@ -65,7 +65,7 @@ public class Player_Controller : MonoBehaviour
 
     [Header("Audio")]
     [Space(2)]
-    public Audio_System audio; // get the audio system component to play sounds
+    public Audio_System audio; //Get the audio system component to allow for sounds.
     public AudioSource runSound;    
 
     //public Rigidbody grenade;
@@ -75,20 +75,44 @@ public class Player_Controller : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+
         isPlayerActive = true;
         canPlayerMove = true;
+
         m_portalController = FindObjectOfType<Portal_Controller>();
-        audio = GameObject.FindObjectOfType<Audio_System>(); // get audio system
+        audio = GameObject.FindObjectOfType<Audio_System>(); //Get the audio system.
         m_animator = GetComponent<Animator>();
-        runSound.volume = PlayerPrefs.GetFloat("volumeLevel"); // set volume of run sound
-        runSound.enabled = false; // stop run sound
+
+        runSound.volume = PlayerPrefs.GetFloat("volumeLevel"); //Set the volume of the run sound.
+        runSound.enabled = false; //Stop the run sound.
     }
 
     //Kurtis Watson
     void Update()
     {
         //f_drone();
+        f_transition();
 
+        if (playerHealth > 100) { playerHealth = 100; } //Set player health to 100 if max health is exceeded.
+
+        if (isPlayerActive == true)
+        {            
+            f_climb();
+            f_lookAround();
+            f_moveAround();
+            f_strongerGravity();
+            f_groundCheck();
+
+            if (grounded == true && Input.GetButtonDown("Jump"))
+            {
+                f_playerJump();
+            }
+        }
+    }
+
+    //Kurtis Watson
+    void f_transition()
+    {
         var tempColor = transition.color;
 
         if (m_portalController.transitionActive == false && tempColor.a >= 0)
@@ -120,38 +144,6 @@ public class Player_Controller : MonoBehaviour
         }
         else transition.enabled = true;
 
-
-
-        if (playerHealth > 100) { playerHealth = 100; }
-
-        if (isPlayerActive == true)
-        {
-            //// Ben Soars
-            //if (Input.GetKeyDown("g") && grenadeAmount > 0)
-            //{
-            //    Rigidbody thrownObject = Instantiate(grenade, m_shotPoint.transform.position, m_shotPoint.rotation); // create grenade
-            //    thrownObject.AddForce(m_shotPoint.forward * 100); // push forwards
-            //    thrownObject.AddForce(m_shotPoint.up * 50); // throw slightly upwards#
-            //    grenadeAmount += 1;
-            //}
-
-            //Kurtis Watson
-            //if (Input.GetKeyDown("e"))
-            //{
-            //    r_abilityMelee.f_melee();
-            //}
-            
-            f_climb();
-            f_lookAround();
-            f_moveAround();
-            f_strongerGravity();
-            f_groundCheck();
-
-            if (grounded == true && Input.GetButtonDown("Jump"))
-            {
-                f_playerJump();
-            }
-        }
     }
 
     //Kurtis Watson
@@ -187,26 +179,26 @@ public class Player_Controller : MonoBehaviour
             rb.velocity = m_directionIntentY * Input.GetAxis("Vertical") * m_speed + m_directionIntentX * Input.GetAxis("Horizontal") * m_speed + Vector3.up * rb.velocity.y;
             rb.velocity = Vector3.ClampMagnitude(rb.velocity, maxSpeed);
 
-            if (Input.GetKey(KeyCode.LeftShift))
+            if (Input.GetKey(KeyCode.LeftShift) && Input.GetKey("w")) //Make sure the player is moving forward to sprint.
             {
-                isSprinting = true;
-               
+                isSprinting = true;              
                 m_speed = sprintSpeed; //Set sprint speed.
             }
-            if (!Input.GetKey(KeyCode.LeftShift))
+            else
             {
-                isSprinting = false;
-               
+                isSprinting = false;               
                 m_speed = walkSpeed; //Reset speed.
             }
+
             if (Input.GetKey(KeyCode.LeftControl))
             {
                 isCrouching = true; //Set true so the animator can run correctly.
             }
-            if (!Input.GetKey(KeyCode.LeftControl))
+            else
             {
                 isCrouching = false;
             }
+
             m_animator.SetBool("Crouch", isCrouching);
 
             if (isSprinting && rb.velocity != Vector3.zero && grounded == true)
@@ -242,6 +234,7 @@ public class Player_Controller : MonoBehaviour
     }
 
     //Kurtis Watson
+    #region Drone
     //void f_drone()
     //{
     //    if (Input.GetKeyDown("c"))
@@ -249,6 +242,7 @@ public class Player_Controller : MonoBehaviour
     //        isPlayerActive = !isPlayerActive; //Switch to either the drone or player based on current bool value.
     //    }
     //}
+    #endregion
 
     //Kurtis Watson
     void f_climb()
@@ -319,4 +313,22 @@ public class Player_Controller : MonoBehaviour
         }
     }
 
+
+    //private void f_grenade()
+    //{
+    //    // Ben Soars
+    //    if (Input.GetKeyDown("g") && grenadeAmount > 0)
+    //    {
+    //        Rigidbody thrownObject = Instantiate(grenade, m_shotPoint.transform.position, m_shotPoint.rotation); // create grenade
+    //        thrownObject.AddForce(m_shotPoint.forward * 100); // push forwards
+    //        thrownObject.AddForce(m_shotPoint.up * 50); // throw slightly upwards#
+    //        grenadeAmount += 1;
+    //    }
+
+    //    Kurtis Watson
+    //    if (Input.GetKeyDown("e"))
+    //    {
+    //        r_abilityMelee.f_melee();
+    //    }
+    //}
 }
