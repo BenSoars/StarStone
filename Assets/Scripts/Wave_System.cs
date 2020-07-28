@@ -22,7 +22,7 @@ public class Wave_System : MonoBehaviour
 
     [Header("Achievement System Components")]
     [Space(2)]
-    private User_Interface m_Canvas;
+    private User_Interface m_canvas;
     public AchievementTracker m_Achievement;
     public AchievementSpecialConditions m_SpecialTracker;
     private bool m_checkRound;
@@ -73,7 +73,7 @@ public class Wave_System : MonoBehaviour
         m_prototypeClasses = FindObjectOfType<Prototype_Classes>();
         audio = GameObject.FindObjectOfType<Audio_System>(); // get audio system
         m_pickupSystem = FindObjectOfType<Pickup_System>();
-        m_Canvas = GameObject.Find("Canvas").GetComponent<User_Interface>();
+        m_canvas = GameObject.Find("Canvas").GetComponent<User_Interface>();
         m_Achievement = GameObject.FindObjectOfType<AchievementTracker>();
         m_SpecialTracker = GameObject.FindObjectOfType<AchievementSpecialConditions>();
         m_playerContoller = FindObjectOfType<Player_Controller>();
@@ -89,7 +89,7 @@ public class Wave_System : MonoBehaviour
     {
         f_updateUI();
 
-        if (m_Canvas.runtimeUI.activeInHierarchy == true)
+        if (m_canvas.runtimeUI.activeInHierarchy == true)
         {
             m_enemyCount = GameObject.Find("EnemyCount").GetComponent<Text>();
         }
@@ -137,7 +137,7 @@ public class Wave_System : MonoBehaviour
     //Kurtis Watson
     void f_updateUI()
     {
-        if (m_Canvas.runtimeUI.activeInHierarchy == true && m_enemyCount)
+        if (m_canvas.runtimeUI.activeInHierarchy == true && m_enemyCount)
         {
             m_enemyCount.text = ("" + enemiesLeft); //Display enemies left on the runtime UI.
         }

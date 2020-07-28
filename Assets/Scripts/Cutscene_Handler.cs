@@ -32,6 +32,8 @@ public class Cutscene_Handler : MonoBehaviour
     private bool m_sceneSkipped;
     private float m_defaultTypeWriterSpeed;
 
+    private bool test;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -46,6 +48,18 @@ public class Cutscene_Handler : MonoBehaviour
         tempColor.a -= 0.2f * Time.deltaTime;
         transition.color = tempColor;
 
+        if (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("Ending_Scene") && m_stopTextLoop == false)
+        {
+            test = true;
+            typewriterSpeed = m_defaultTypeWriterSpeed;
+            m_index = 5;
+            m_pauseText = false;
+            m_stopTextLoop = true; //Stop the text repeating hundreds of time (stops coroutine being called more than once). 
+            m_sentenceFinish = true;
+            m_isSkipped = false;
+            StartCoroutine(f_typewriter());
+        }
+
         if (m_sentenceFinish == true)
         {
             m_currentTime += Time.deltaTime; //Add to the intermission between sentences.
@@ -59,7 +73,7 @@ public class Cutscene_Handler : MonoBehaviour
             }
         }
 
-        if(m_index == 5 && m_isSkipped == false) //Index 5 is null and is used for the switching between game scenes (smoother and more reliable).
+        if (m_index == 5 && m_isSkipped == false && test == false) //Index 5 is null and is used for the switching between game scenes (smoother and more reliable).
         {
             m_isSkipped = true;
             StartCoroutine(f_skipScene()); //Smooth scene transfer (no text shown on screen because of coroutine delay).
@@ -70,16 +84,6 @@ public class Cutscene_Handler : MonoBehaviour
             m_index = 5;
             m_isSkipped = true;
             typewriterSpeed = 0.001f;
-        }
-
-        if (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("Ending_Scene") && m_stopTextLoop == false)
-        {
-            typewriterSpeed = m_defaultTypeWriterSpeed;
-            m_index = 5;
-            m_pauseText = false;
-            m_stopTextLoop = true; //Stop the text repeating hundreds of time (stops coroutine being called more than once). 
-            m_sentenceFinish = true;
-            StartCoroutine(f_typewriter());                    
         }
     }
 

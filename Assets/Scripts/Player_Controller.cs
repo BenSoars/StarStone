@@ -9,7 +9,7 @@ public class Player_Controller : MonoBehaviour
 {
     [Header("Referenced Scripts")]
     [Space(2)]
-    private Portal_Controller m_portalController;
+    public Portal_Controller portalController;
     private Game_End m_gameEnd;
 
     [Header("Player Properties")]
@@ -66,11 +66,11 @@ public class Player_Controller : MonoBehaviour
     [Header("Audio")]
     [Space(2)]
     public Audio_System audio; //Get the audio system component to allow for sounds.
-    public AudioSource runSound;    
+    public AudioSource runSound;
 
     //public Rigidbody grenade;
     //public int grenadeAmount = 3;
-    
+
     private void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
@@ -79,7 +79,6 @@ public class Player_Controller : MonoBehaviour
         isPlayerActive = true;
         canPlayerMove = true;
 
-        m_portalController = FindObjectOfType<Portal_Controller>();
         audio = GameObject.FindObjectOfType<Audio_System>(); //Get the audio system.
         m_animator = GetComponent<Animator>();
 
@@ -115,27 +114,21 @@ public class Player_Controller : MonoBehaviour
     {
         var tempColor = transition.color;
 
-        if (m_portalController.transitionActive == false && tempColor.a >= 0)
+        if (portalController.transitionActive == false && tempColor.a >= 0)
         {
             tempColor.a -= 0.2f * Time.deltaTime;
             transition.color = tempColor;
         }
 
-        if (m_portalController.transitionActive == true)
+        if (portalController.transitionActive == true)
         {
             tempColor.a += 0.2f * Time.deltaTime;
             transition.color = tempColor;
             if (tempColor.a >= 1 && SceneManager.GetActiveScene() == SceneManager.GetSceneByName("Game_Scene"))
             {
                 SceneManager.LoadScene("Ending_Scene");
-                m_portalController.transitionActive = false;
+                portalController.transitionActive = false;
             }
-            if (tempColor.a >= 1 && SceneManager.GetActiveScene() == SceneManager.GetSceneByName("Ending_Scene"))
-            {
-                m_gameEnd = FindObjectOfType<Game_End>();
-                m_gameEnd.startCredits = true;
-            }
-
         }
 
         if (tempColor.a <= 0)

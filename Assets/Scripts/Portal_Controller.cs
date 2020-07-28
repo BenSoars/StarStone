@@ -12,7 +12,7 @@ public class Portal_Controller : MonoBehaviour
 
     private void Start()
     {
-        DontDestroyOnLoad(this.gameObject);
+        
     }
 
     private void OnTriggerEnter(Collider other)

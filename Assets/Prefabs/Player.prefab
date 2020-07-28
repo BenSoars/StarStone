@@ -1058,7 +1058,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2088629377349311305
 Transform:
   m_ObjectHideFlags: 0
@@ -3709,7 +3709,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8386456219935881521
 Transform:
   m_ObjectHideFlags: 0
@@ -21504,6 +21504,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c815536ffe9cba14182702e624a4a77d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  portalController: {fileID: 0}
   camera: {fileID: 8493438687375166386}
   rb: {fileID: 8493438686635508284}
   playerHealth: 100
@@ -21590,6 +21591,7 @@ MonoBehaviour:
   defaultStaff: {fileID: 3003906889949971419}
   fogStrength: 0
   currentFog: 0
+  runtimeUI: {fileID: 0}
 --- !u!114 &1031861635661113235
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21644,7 +21646,7 @@ MonoBehaviour:
   rockAnim: {fileID: 0}
   upgradeOpenText: {fileID: 0}
   weaponHands: {fileID: 7591412883134558846}
-  repairHands: {fileID: 6109202852940058352}
+  repairHands: {fileID: 1526581604740186071}
   weapon1: {fileID: 1908995038181295553}
   weapon2: {fileID: 7591412882415260590}
   upgradedWeapon1: {fileID: 3807913791343538445}

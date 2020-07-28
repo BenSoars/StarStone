@@ -6,7 +6,6 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using TMPro;
 using System.Security.Cryptography;
-using UnityEditor.Experimental.GraphView;
 
 //Kurtis Watson
 public class User_Interface : MonoBehaviour
@@ -188,7 +187,7 @@ public class User_Interface : MonoBehaviour
                 Destroy(gameObject); //Delete the UI from the scene.
                 Cursor.lockState = CursorLockMode.None; //Unlock the cursor.
                 Cursor.visible = true; //Make cursor visible.
-                SceneManager.LoadScene("GameOver"); //Load the final game scene.
+                SceneManager.LoadScene("Game_Over"); //Load the final game scene.
             }
         }
         #endregion

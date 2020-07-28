@@ -143,6 +143,7 @@ public class Station_Controller : MonoBehaviour
                 }
                 break;
             default:
+                m_showText = false;
                 m_disableUpgrade = true;
                 rockAnim.SetBool("Active", false); //Lower the rock to stop the player from accessing the upgrade station area.
                 break;

@@ -12,16 +12,17 @@ public class Game_End : MonoBehaviour
     private Portal_Controller m_portalController;
     public TextMeshProUGUI exitPrompt;
     public bool transitionActive;
-    public bool startCredits;
     private bool m_playerEnter;
-    private Animator anim;
+    public Animator anim;
     public Image transition;
     public GameObject cutsceneTextCanvas;
+    public Image test;
+    public Image background;
 
     void Start()
     {
+        background.enabled = false;
         exitPrompt.enabled = false;
-        anim = GetComponentInChildren<Animator>();
         cutsceneTextCanvas = GameObject.Find("Cutscene Text");
         m_portalController = FindObjectOfType<Portal_Controller>();
     }
@@ -35,11 +36,12 @@ public class Game_End : MonoBehaviour
             m_portalController.transitionActive = true; //Start transition to black screen.
             Destroy(cutsceneTextCanvas); //Destroy the cutscene text canvas.
             exitPrompt.enabled = false; //Disable exit prompt.
-
+            Invoke("f_startCredits", 6);
         }
-        if (startCredits == true)
+
+        if (anim.GetCurrentAnimatorStateInfo(0).IsName("Active") && anim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f)
         {
-            anim.SetBool("Active", true); //Begin scrolling credits.
+            SceneManager.LoadScene("Main_Menu");
         }
     }
 
@@ -53,5 +55,12 @@ public class Game_End : MonoBehaviour
     {
             exitPrompt.enabled = false; //Hide exit instructions.
             m_playerEnter = false;
+    }
+
+    void f_startCredits()
+    {
+        anim.SetBool("Active", true);
+        background.enabled = true;
+        Destroy(test);
     }
 }

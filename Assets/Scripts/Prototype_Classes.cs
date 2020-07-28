@@ -52,10 +52,11 @@ public class Prototype_Classes : MonoBehaviour
 
     [Header("Environment")]
     [Space(2)]
-
     [Tooltip("Set the starting intensity of the fog at round start.")]
     public float fogStrength;
     public float currentFog;
+
+    public GameObject runtimeUI;
 
     void Start()
     { 
@@ -158,7 +159,7 @@ public class Prototype_Classes : MonoBehaviour
 
         if (buffChosen == true)
         {
-            GameObject.Find("Canvas").GetComponent<User_Interface>().runtimeUI.active = true; //Enable in game UI.
+            runtimeUI.active = true; //Enable in game UI.
             buffChosen = false;
             float max = int.MinValue; 
             for (int i = 0; i < activeStone.Length; i++) //This will determine the highest valued starstone after the enemy has chosen.
@@ -169,6 +170,11 @@ public class Prototype_Classes : MonoBehaviour
                     chosenBuff = i;
                 }
             }
+        }
+
+        if(m_waveSystem.isIntermission == true)
+        {
+            runtimeUI.active = false; //Checks to see if the game is intermission phase and set the runtime UI disabled.
         }
     }
 
@@ -230,9 +236,9 @@ public class Prototype_Classes : MonoBehaviour
                         }
                         break;
                     case 1:
-                        if (stonePower[1] >= 15 && m_hitscanCast.collider.gameObject.tag == "Ground")
+                        if (stonePower[1] >= 15 && m_hitscanCast.collider.gameObject.tag == "Ground") //Detects if the raycast has hit the ground, if so it allows the player to place.
                         {
-                            FindObjectOfType<Ability_Handler>().StartCoroutine("f_spawnTornado");
+                            FindObjectOfType<Ability_Handler>().StartCoroutine("f_spawnTornado"); 
                             stonePower[1] -= 15;
                             canSwitch = false;
                             stateQ = false;
@@ -265,7 +271,7 @@ public class Prototype_Classes : MonoBehaviour
                 switch (classState)
                 {
                     case 0:
-                        if (stonePower[0] >= 20 && m_hitscanCast.collider.gameObject.tag == "Ground")
+                        if (stonePower[0] >= 20 && m_hitscanCast.collider.gameObject.tag == "Ground") //Detects if the raycast has hit the ground, if so it allows the player to place.
                         {
                             FindObjectOfType<Ability_Handler>().StartCoroutine("f_spawnWall"); //Begin Coroutine to execute ability.
                             stonePower[0] -= 20; //Decrease starstone power as it has been 'drained'.
