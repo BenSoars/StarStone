@@ -9,9 +9,13 @@ public class Note : MonoBehaviour
     public string NoteText; // the Note's contents
     private Inventory m_invSystem; // the inventory system access
 
+    //Kurtis Watson
+    private User_Interface m_userInterface;
+
     void Start()
     {
         m_invSystem = GameObject.FindObjectOfType<Inventory>(); // get access to the note system
+        m_userInterface = FindObjectOfType<User_Interface>();
     }
 
     // Start is called before the first frame update
@@ -28,5 +32,8 @@ public class Note : MonoBehaviour
         m_invSystem.noteName.Add(NoteName); // add to the inventory list
         m_invSystem.noteContents.Add(NoteText); // add to the inventory list
         Destroy(gameObject); // add to the inventory list
+
+        //Kurtis Watson
+        m_userInterface.collectedNotes += 1;
     }
 }

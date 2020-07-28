@@ -39,7 +39,7 @@ public class Pickup_System : MonoBehaviour
     public bool clockFixed;
     private int m_clockPart;
     public List<GameObject> clockPart = new List<GameObject>();
-    private int m_repairedParts;
+    public int repairedParts;
     public GameObject note;
     private int m_noteID;
 
@@ -144,7 +144,7 @@ public class Pickup_System : MonoBehaviour
                 {
                     Destroy(currentPart); //Remove the held gameobject after it has been added to the clock.
                     itemHeld = false;
-                    m_repairedParts += 1; //Increase the clock repaired parts by 1 to check for if the player can set time.
+                    repairedParts += 1; //Increase the clock repaired parts by 1 to check for if the player can set time.
                     
                     m_isRepairing = false;
                     currentRepairTime = 0;                                      
@@ -154,7 +154,7 @@ public class Pickup_System : MonoBehaviour
                     weaponHands.active = true;
                     repairHands.active = false;
 
-                    if(m_repairedParts == 5) //Check if all parts have been added >
+                    if(repairedParts == 5) //Check if all parts have been added >
                     {
                         clockFixed = true; //if so it will allow the player to begin adjusting the clocks time.
                     }

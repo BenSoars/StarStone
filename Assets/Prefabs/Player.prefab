@@ -3156,7 +3156,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &8386456219935881521
 Transform:
   m_ObjectHideFlags: 0
@@ -18153,6 +18153,8 @@ MonoBehaviour:
   station: {fileID: 6146998418634085983, guid: 99b9f94f9f082bc46b10357af7c0028f, type: 3}
   cameraLook: {fileID: 8493438687375166386}
   animator: {fileID: 0}
+  rockAnim: {fileID: 0}
+  upgradeOpenText: {fileID: 0}
   weaponHands: {fileID: 7591412883134558846}
   repairHands: {fileID: 6109202852940058352}
   weapon1: {fileID: 1908995038181295553}
@@ -18191,6 +18193,7 @@ MonoBehaviour:
   - {fileID: 7182388069129122217, guid: 85ef52bf6cf85c64886dd20421da9c2b, type: 3}
   - {fileID: 7625486624456581553, guid: f27f0ece923ea5346b56323fdfaa5a8d, type: 3}
   - {fileID: 3374482455240836894, guid: 6dddf3f39316a6e43bf00cf02a1baae8, type: 3}
+  repairedParts: 0
   note: {fileID: 1033052027369876156, guid: c38ac8c3ae000e04dae3ee914d878c7e, type: 3}
 --- !u!114 &9031854256961507002
 MonoBehaviour:

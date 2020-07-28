@@ -28,6 +28,8 @@ public class User_Interface : MonoBehaviour
     public TMPro.TextMeshProUGUI interactText;
     public TMPro.TextMeshProUGUI noteSpawnedText;
     public TMPro.TextMeshProUGUI cogSpawnedText;
+    public TMPro.TextMeshProUGUI clockPartsLeft;
+    public TMPro.TextMeshProUGUI notesLeft;
 
     [Header("UI Game Objects")]
     [Space(2)]
@@ -51,8 +53,9 @@ public class User_Interface : MonoBehaviour
     public Image abilityPreview2;
     public Image abilityIcon1;
     public Image abilityIcon2;
+    public Image healthBar;
     public Sprite[] startstoneIcons;
-    public Sprite[] abilityIcons;
+    public Sprite[] abilityIcons;   
 
     [Header("Runtime Components")]
     public Camera camera;
@@ -65,6 +68,7 @@ public class User_Interface : MonoBehaviour
     private bool m_bugFix;
     private bool m_findClock;
     public List<int> waveTimes = new List<int>();
+    public int collectedNotes;
 
     private void Start()
     {
@@ -75,6 +79,7 @@ public class User_Interface : MonoBehaviour
         //transition.active = false;
         pauseMenu.active = false;
         repairBar.active = false;
+        chooseStone.enabled = false;
         noteSpawnedText.enabled = false;
         cogSpawnedText.enabled = false;
         m_waveSystem = FindObjectOfType<Wave_System>();
@@ -129,8 +134,6 @@ public class User_Interface : MonoBehaviour
         //SS3.text = m_prototypeClasses.stonePower[2].ToString("F0");
         //SS4.text = m_prototypeClasses.stonePower[3].ToString("F0");
 
-        currentHealth.text = "" + m_playerController.playerHealth.ToString("F0"); //Display current health.
-
         if (m_waveSystem.enemiesLeft == 0 && m_waveSystem.curRound > 0)
         {
             timeTillNextRound.enabled = true; //Enable the time till next round text gameobject (intermission text).
@@ -173,6 +176,26 @@ public class User_Interface : MonoBehaviour
             currentStoneCharge.text = "" + m_prototypeClasses.stonePower[m_prototypeClasses.classState].ToString("F0"); //Display starstone charge on runtime UI.
             starstoneIcon.sprite = startstoneIcons[m_prototypeClasses.classState]; //Display correct starstone image (bottom right).
         }
+
+        healthBar.fillAmount = m_playerController.playerHealth / 100; //Set health bar fill amount based on player health.
+
+
+        if(m_prototypeClasses.stateQ == true) //Change colour of ability icons on the UI screen to indicate to the player which ability is activated.
+        {
+            abilityIcon1.color = Color.red;
+        }
+        else if (m_prototypeClasses.stateV == true)
+        {
+            abilityIcon2.color = Color.red;
+        }
+        else
+        {
+            abilityIcon1.color = Color.white;
+            abilityIcon2.color = Color.white;
+        }
+
+        clockPartsLeft.text = m_pickupSystem.repairedParts + " / 5";
+        notesLeft.text = collectedNotes + " / 3";
     }
 
     public void f_popupText()

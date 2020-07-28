@@ -139,21 +139,23 @@ public class Ability_Handler : MonoBehaviour
 
     public IEnumerator f_spawnHealthPad()
     {
+        m_handsAnim.SetBool(animationType[6], true); //Begin knife throwing animation.
         if (Physics.Raycast(shotPoint.position, shotPoint.forward, out m_hitscanCast, Mathf.Infinity)) //Creates a Raycast.
         {
             Instantiate(healthArea, new Vector3(m_hitscanCast.point.x, m_hitscanCast.point.y - 2, m_hitscanCast.point.z), Quaternion.LookRotation(Vector3.forward)); //Intantiate a tornado at crosshair location.
         }
-        yield return new WaitForSeconds(0.3f);
+        yield return new WaitForSeconds(3f);
         StartCoroutine(f_resetAnimations());
     }
 
     public IEnumerator f_spawnInfector() //Spawn infector. 
     {
+        m_handsAnim.SetBool(animationType[7], true); //Begin knife throwing animation.
         if (Physics.Raycast(shotPoint.position, shotPoint.forward, out m_hitscanCast, Mathf.Infinity)) //Creates a Raycast.
         {
             Instantiate(infector, new Vector3(m_hitscanCast.point.x, m_hitscanCast.point.y - 2, m_hitscanCast.point.z), Quaternion.LookRotation(Vector3.forward)); //Spawns a tornade of position of player crosshair.
         }
-        yield return new WaitForSeconds(0.3f);
+        yield return new WaitForSeconds(3f);
         StartCoroutine(f_resetAnimations());
     } 
 
