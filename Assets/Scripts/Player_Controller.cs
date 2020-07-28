@@ -16,27 +16,37 @@ public class Player_Controller : MonoBehaviour
     [Space(2)]
     public Transform camera;
     public Rigidbody rb;
-    public float playerHealth;
+    [Tooltip("Set the players max health.")]
+    public float playerHealth;    
+    [Tooltip("Set the players walk speed.")]
+    public float walkSpeed;
+    [Tooltip("Set the players sprint speed.")]
+    public float sprintSpeed;
+    [Tooltip("Set the max speed of the player.")]
+    public float maxSpeed;
+    [Tooltip("Set how high the player can jump.")]
+    public float jumpHeight;
+    [Tooltip("Set the level of gravity in the game after player jumps.")]
     public float extraGravity;
     public float playerRotX;
     public bool isSprinting;
     public bool isCrouching;
     public bool isPlayerActive;
     public Transform m_shotPoint;
-    public float walkSpeed;
-    public float sprintSpeed; 
-    public float maxSpeed;
-    public float jumpHeight;
     private Animator m_animator;    
-    private float m_speed; 
+    private float m_speed;
+    [Tooltip("Set the default defence value before abilities.")]
     public float defenceValue = 1;
     public Image transition;
     
     [Header("Camera Rotation Properties")]
     [Space(2)]
     public float camRotSpeed;
+    [Tooltip("Set the maximum Y look rotation.")]
     public float camMinY;
+    [Tooltip("Set the maximum X look rotation.")]
     public float camMaxY;
+    [Tooltip("Set how smoother the camera is (the higher the faster the player looks).")]
     public float camSmoothSpeed;
     private float m_camRotY;
     private Vector3 m_directionIntentX;

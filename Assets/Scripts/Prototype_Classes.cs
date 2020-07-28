@@ -16,7 +16,8 @@ public class Prototype_Classes : MonoBehaviour
     public Gun_Generic m_gunGeneric;
 
     [Header("Weapon Mechanics")]
-    [Space(2)] 
+    [Space(2)]
+    [Tooltip("Position where the laser is shot from.")]
     public Transform shotPoint;
     public bool canSwitch;
 
@@ -51,8 +52,10 @@ public class Prototype_Classes : MonoBehaviour
 
     [Header("Environment")]
     [Space(2)]
-    public float m_fogStrength;
-    public float m_currentFog;
+
+    [Tooltip("Set the starting intensity of the fog at round start.")]
+    public float fogStrength;
+    public float currentFog;
 
     void Start()
     { 
@@ -65,7 +68,7 @@ public class Prototype_Classes : MonoBehaviour
         m_playerController = FindObjectOfType<Player_Controller>();
         m_waveSystem = FindObjectOfType<Wave_System>();
 
-        m_currentFog = m_fogStrength; //Set current fog.
+        currentFog = fogStrength; //Set current fog.
         canSelect = true; //Allow the player to select a starstone.
         canSwitch = true; //Allow the player to switch weapons.
 
@@ -100,7 +103,7 @@ public class Prototype_Classes : MonoBehaviour
 
         m_gunGeneric.m_bulletDamage = m_defaultDamage;
         m_waveSystem.notChosen = false; //Set players weapon state to not chosen to indicate they need to select a weapon.
-        m_currentFog = m_fogStrength; //Reset fog.
+        currentFog = fogStrength; //Reset fog.
         RenderSettings.fog = false;
         m_playerController.defenceValue = m_defaultDefence;
         prototypeWeapon.damageCoolDown = m_defaultDamageCooldown;
@@ -177,8 +180,8 @@ public class Prototype_Classes : MonoBehaviour
                 m_gunGeneric.m_bulletDamage = m_defaultDamage * 0.80f;
                 break;
             case 1:
-                m_fogStrength = Mathf.Lerp(m_fogStrength, m_currentFog, Time.deltaTime * 2); //Smooth fog adjustment.
-                RenderSettings.fogDensity = m_fogStrength;
+                fogStrength = Mathf.Lerp(fogStrength, currentFog, Time.deltaTime * 2); //Smooth fog adjustment.
+                RenderSettings.fogDensity = fogStrength;
                 RenderSettings.fog = true;
                 break;
             case 2:

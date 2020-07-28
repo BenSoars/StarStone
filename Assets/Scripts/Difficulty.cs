@@ -20,26 +20,38 @@ public class Difficulty : MonoBehaviour
 
     [Header("Small Enemy")]
     [Space(2)]
+    [Tooltip("Set default health for small enemy.")]
     public float defaultSmallHealth;
+    [Tooltip("Set default speed for small enemy.")]
     public float defaultSmallSpeed;
+    [Tooltip("Set default damage for small enemy.")]
     public float defaultSmallDamage;
 
     [Header("Medium Enemy")]
     [Space(2)]
+    [Tooltip("Set default health for medium enemy.")]
     public float defaultMediumHealth;
+    [Tooltip("Set default speed for medium enemy.")]
     public float defaultMediumSpeed;
+    [Tooltip("Set default damage for medium enemy.")]
     public float defaultMediumDamage;
 
     [Header("Large Enemy")]
     [Space(2)]
+    [Tooltip("Set default health for large enemy.")]
     public float defaultLargeHealth;
+    [Tooltip("Set default speed for large enemy.")]
     public float defaultLargeSpeed;
+    [Tooltip("Set default damage for large enemy.")]
     public float defaultLargeDamage;
 
     [Header("Range Enemy")]
     [Space(2)]
+    [Tooltip("Set default health for ranged enemy.")]
     public float defaultRangeHealth;
+    [Tooltip("Set default speed for ranged enemy.")]
     public float defaultRangeSpeed;
+    [Tooltip("Set default damage for ranged enemy.")]
     public float defaultRangeDamage;
 
     [Header("Percentage Mechanics")]

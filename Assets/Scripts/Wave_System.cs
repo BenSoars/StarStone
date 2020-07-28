@@ -121,10 +121,10 @@ public class Wave_System : MonoBehaviour
                 }
             }
             enemiesLeft = spawnedEnemies.Count; //Set the count for the enemies left.
-            m_prototypeClasses.m_fogStrength = 0.2f; //Fog strength.
-            m_prototypeClasses.m_currentFog = 0.2f; //Reset current fog.
+            m_prototypeClasses.fogStrength = 0.2f; //Fog strength.
+            m_prototypeClasses.currentFog = 0.2f; //Reset current fog.
             m_prototypeClasses.stonePower[m_prototypeClasses.chosenBuff] -= enemiesLeft * 2; //Decrease the chosen enemy buff by two times the amount of enemies.
-            fogMath = m_prototypeClasses.m_fogStrength / enemiesLeft; //Calculate the amount of fog to decrease each enemy kill.
+            fogMath = m_prototypeClasses.fogStrength / enemiesLeft; //Calculate the amount of fog to decrease each enemy kill.
             curRound += 1; //Increase current round by one.
             m_enemiesKilled = false;
             
@@ -152,15 +152,15 @@ public class Wave_System : MonoBehaviour
             isIntermission = true; //Begin intermission countdown.
             switch (curRound) {
                 case 2: 
-                case 3: 
+                case 4: 
                 case 6: 
-                case 10: 
-                case 11:
+                case 7: 
+                case 9:
                     m_pickupSystem.spawnCogs = true;
                         break;
+                case 3:
                 case 5:
-                case 7:
-                case 9:
+                case 8:
                     m_pickupSystem.spawnNote = true;
                     break;
             }

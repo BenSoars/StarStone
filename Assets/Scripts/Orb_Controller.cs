@@ -9,6 +9,7 @@ public class Orb_Controller : MonoBehaviour
     [Space(2)]
     private Prototype_Classes r_prototypeClasses;
 
+    [Tooltip("Set the colour of the orbs material based on list values.")]
     public List<Material> materials = new List<Material>();
 
     private void Start()

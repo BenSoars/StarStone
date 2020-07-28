@@ -12,16 +12,18 @@ public class Cutscene_Handler : MonoBehaviour
 {
     [Header("Text Components")]
     [Space(2)]
-    public TextMeshProUGUI cutsceneTextMesh;
+    [Tooltip("Text to display during the cutscenes. Number '5' is the cut off point for first cutscene.")]
+    public TextMeshProUGUI cutsceneTextMesh;   
     public string[] cutsceneText;
     private int m_index;
+    [Tooltip("How fast each letter should appear one after the other.")]
     public float typewriterSpeed;
     private bool m_stopTextLoop;
 
     [Header("Cutscene Components")]
     [Space(2)]
-    public Image shrine;
     private float m_currentTime;
+    [Tooltip("How much time before the next sentence starts displaying.")]
     public float timeBetweenSentences;
     private bool m_sentenceFinish;
     public Image transition;

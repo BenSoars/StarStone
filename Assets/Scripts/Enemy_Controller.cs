@@ -117,7 +117,7 @@ public class Enemy_Controller : MonoBehaviour
         if (m_enemyHealth <= 0)
         {
             //Kurtis Watson
-            r_prototypeClasses.m_currentFog = r_prototypeClasses.m_currentFog - r_waveSystem.fogMath;
+            r_prototypeClasses.currentFog = r_prototypeClasses.currentFog - r_waveSystem.fogMath;
 
             //Ben Soars
             m_itemDrop.dropItem(transform); // call the item drop coroutine

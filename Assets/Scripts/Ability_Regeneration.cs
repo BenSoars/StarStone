@@ -11,7 +11,7 @@ public class Ability_Regeneration : MonoBehaviour
     {
         if(other.gameObject.tag == "Player")
         {
-            other.gameObject.GetComponent<Player_Controller>().playerHealth += 0.1f; //Increase player health when they are stood inside the trigger collider.
+            other.gameObject.GetComponent<Player_Controller>().playerHealth += healthPerSecond * Time.deltaTime; //Increase player health when they are stood inside the trigger collider.
         }
     }
 }

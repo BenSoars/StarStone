@@ -26,9 +26,10 @@ public class Pickup_System : MonoBehaviour
     private User_Interface m_userInterface;
     public Prototype_Classes prototypeClasses;
 
-    public float currentRepairTime;
+    [Tooltip("Set how long it takes for the player to repair the clock.")]
     public float repairTime;
-
+    public float currentRepairTime;
+    
     [Header("Player Attributes")]
     [Space(2)]
     public GameObject weaponHands;
