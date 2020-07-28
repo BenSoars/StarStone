@@ -100,7 +100,7 @@ public class Gun_Generic : Melee_Attack
 
     //Kurtis Watson
     [Tooltip("The gameobject that is used for the damage text")]
-    public GameObject m_hitDamageText; // the hit text
+    public GameObject hitDamageText; // the hit text
     public Clock_Controller clockController;
   
 
@@ -152,7 +152,7 @@ public class Gun_Generic : Melee_Attack
                     {
                         m_hitscanCast.transform.gameObject.GetComponent<Enemy_Controller>().m_enemyHealth -= m_bulletDamage; // damage the player
                         //Kurtis Watson
-                        GameObject m_textObject = Instantiate(m_hitDamageText, m_hitscanCast.point, Quaternion.identity); // spawn a damage 
+                        GameObject m_textObject = Instantiate(hitDamageText, m_hitscanCast.point, Quaternion.identity); // spawn a damage 
                         m_textObject.GetComponentInChildren<TextMeshPro>().text = "" + m_bulletDamage; // assign damage dealt to the text
                     }
                 }
@@ -176,9 +176,6 @@ public class Gun_Generic : Melee_Attack
         {
             m_maxAmmo = m_savedMaxAmmo;
         }
-
-        
-        
         f_updateUI();
     }
 
