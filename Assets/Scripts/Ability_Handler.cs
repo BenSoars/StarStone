@@ -13,17 +13,17 @@ public class Ability_Handler : MonoBehaviour
     [Space(2)]
     public GameObject pushBack; //Ability Game Objects.
     public GameObject invisibility;
-    public GameObject wall; 
+    public GameObject wall;
     public GameObject storm;
     public GameObject knife;
     public GameObject tornado;
     public GameObject infector;
     public GameObject healthArea;
-
+    [Tooltip("How many knives for the player to throw during knife ability.")]
     public int totalKnives;
 
     [Header("Player Mechanics")]
-    [Space(2)] 
+    [Space(2)]
     public Transform shotPoint; //Where bullets are shot from.
     private RaycastHit m_hitscanCast; //The raycast that determines the direction of the bullet.
     public GameObject weapons;
@@ -32,6 +32,7 @@ public class Ability_Handler : MonoBehaviour
     [Header("Animation Mechanics")]
     [Space(2)]
     private Animator m_handsAnim;
+    [Tooltip("Stores each type of animation string names that can be called in animator.")]
     public string[] animationType; //Store the animation type as a string so that it can be called easier, as well as being able to set all animations in the array to false when required; thus allowing the player to return to idle ability hands animation.
 
     private void Start()

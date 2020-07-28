@@ -12,12 +12,14 @@ public class Ability_Pushback : MonoBehaviour
 
     [Header("Pushback Values")]
     [Space(2)]
+    [Tooltip("Set the fast the object moves.")]
     public float abilitySpeed; //Values to change the strength of the pushback.
+    [Tooltip("Set the strength of the uplift force.")]
     public float upliftForce; // the upwards velocity
+    [Tooltip("Set the strength of the pushback force.")]
     public float knockbackForce; // the force at which the knockback is applied
+    [Tooltip("Set the radius of the ability.")]
     public float damageRadius; // the damage radius
-
-
 
     public void Start()
     {

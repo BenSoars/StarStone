@@ -19,45 +19,62 @@ public class User_Interface : MonoBehaviour
 
     [Header("Text Mesh Pro UGUI")]
     [Space(2)]
-
+    [Tooltip("Current time left before round end.")]
     public TMPro.TextMeshProUGUI currentTimeText;
-    public TMPro.TextMeshProUGUI currentHealth;
+    [Tooltip("Current Starstone charge.")]
     public TMPro.TextMeshProUGUI currentStoneCharge;
+    [Tooltip("Intermission time.")]
     public TMPro.TextMeshProUGUI timeTillNextRound;
+    [Tooltip("Alert the player to select a new Starstone.")]
     public TMPro.TextMeshProUGUI chooseStone;
+    [Tooltip("Text that is displayed when a player is looking at an interactable object.")]
     public TMPro.TextMeshProUGUI interactText;
+    [Tooltip("Alert the player a note has spawned.")]
     public TMPro.TextMeshProUGUI noteSpawnedText;
+    [Tooltip("Alert the player a clock part has spawned.")]
     public TMPro.TextMeshProUGUI cogSpawnedText;
+    [Tooltip("Display the amount of clock parts left to collect.")]
     public TMPro.TextMeshProUGUI clockPartsLeft;
+    [Tooltip("Display the amount of notes left to collect.")]
     public TMPro.TextMeshProUGUI notesLeft;
 
     [Header("UI Game Objects")]
     [Space(2)]
+    [Tooltip("Game UI reference.")]
     public GameObject gameUI;
+    [Tooltip("Repair bar reference.")]
     public GameObject repairBar;
+    [Tooltip("Pause menu reference.")]
     public GameObject pauseMenu;
+    [Tooltip("During gametime UI reference.")]
     public GameObject runtimeUI;
+    [Tooltip("Alert the player to find the clock.")]
     public GameObject locateClockText;
+    [Tooltip("Store the current starstone the player is looking at here.")]
     public GameObject stone;
+    [Tooltip("Reference the difficulty handler.")]
     public GameObject difficultyHandler;
 
-    [Header("In-game Individual Canvas")]
-    public TMPro.TextMeshPro SS1;
-    public TMPro.TextMeshPro SS2;
-    public TMPro.TextMeshPro SS3;
-    public TMPro.TextMeshPro SS4;
-
     [Header("UI Images")]
+    [Tooltip("Display current starstone image on UI.")]
     public Image starstoneIcon;
+    [Tooltip("Show the allogated Q ability on screen.")]
     public Image abilityPreview1;
+    [Tooltip("Show the allogated V ability on screen.")]
     public Image abilityPreview2;
+    [Tooltip("Show the chosen Q ability on screen,")]
     public Image abilityIcon1;
+    [Tooltip("Show the chosen V ability on screen.")]
     public Image abilityIcon2;
+    [Tooltip("Health bar on screen.")]
     public Image healthBar;
+    [Tooltip("Stores the different sprites used for the starstone icons on the runtime UI.")]
     public Sprite[] startstoneIcons;
+    [Tooltip("Stores the different sprites for the starstone ability icons on the runtime UI.")]
     public Sprite[] abilityIcons;   
 
     [Header("Runtime Components")]
+    [Tooltip("Camera reference.")]
     public Camera camera;
     private string m_interactionText;      
     private float m_targetTime;
@@ -67,8 +84,16 @@ public class User_Interface : MonoBehaviour
     private bool m_isLooking;
     private bool m_bugFix;
     private bool m_findClock;
+    [Tooltip("Stores the wave times for each round.")]
     public List<int> waveTimes = new List<int>();
+    [Tooltip("Stores the amount of notes the player has collected.")]
     public int collectedNotes;
+
+    //[Header("In-game Individual Canvas")] //This was to display the starstone power in game.
+    //public TMPro.TextMeshPro SS1;
+    //public TMPro.TextMeshPro SS2;
+    //public TMPro.TextMeshPro SS3;
+    //public TMPro.TextMeshPro SS4;
 
     private void Start()
     {
@@ -129,11 +154,7 @@ public class User_Interface : MonoBehaviour
 
     public void f_runtimeUI()
     {
-        //SS1.text = m_prototypeClasses.stonePower[0].ToString("F0"); //This was for testing purposes (to show the startsone power as text).
-        //SS2.text = m_prototypeClasses.stonePower[1].ToString("F0");
-        //SS3.text = m_prototypeClasses.stonePower[2].ToString("F0");
-        //SS4.text = m_prototypeClasses.stonePower[3].ToString("F0");
-
+        #region Starstone Animation Handler and Intermission Time
         if (m_waveSystem.enemiesLeft == 0 && m_waveSystem.curRound > 0)
         {
             timeTillNextRound.enabled = true; //Enable the time till next round text gameobject (intermission text).
@@ -150,7 +171,9 @@ public class User_Interface : MonoBehaviour
             chooseStone.enabled = false;
             timeTillNextRound.enabled = false;
         }
+        #endregion
 
+        #region Current Wave Time
         if (m_waveSystem.m_startedWaves == true && runtimeUI.active == true)
         {
             m_currentSecond = Mathf.FloorToInt(m_targetTime % 60); //Calculate time left into minute/hour readable format.
@@ -168,8 +191,7 @@ public class User_Interface : MonoBehaviour
                 SceneManager.LoadScene("GameOver"); //Load the final game scene.
             }
         }
-
-        timeTillNextRound.text = "NEXT ROUND IN " + m_waveSystem.currentIntermissionTime.ToString("F0"); //Display intermission time.
+        #endregion
 
         if (m_waveSystem.curRound > 0)
         {
@@ -177,10 +199,8 @@ public class User_Interface : MonoBehaviour
             starstoneIcon.sprite = startstoneIcons[m_prototypeClasses.classState]; //Display correct starstone image (bottom right).
         }
 
-        healthBar.fillAmount = m_playerController.playerHealth / 100; //Set health bar fill amount based on player health.
-
-
-        if(m_prototypeClasses.stateQ == true) //Change colour of ability icons on the UI screen to indicate to the player which ability is activated.
+        #region State Indicator
+        if (m_prototypeClasses.stateQ == true) //Change colour of ability icons on the UI screen to indicate to the player which ability is activated.
         {
             abilityIcon1.color = Color.red;
         }
@@ -193,9 +213,17 @@ public class User_Interface : MonoBehaviour
             abilityIcon1.color = Color.white;
             abilityIcon2.color = Color.white;
         }
+        #endregion
 
-        clockPartsLeft.text = m_pickupSystem.repairedParts + " / 5";
-        notesLeft.text = collectedNotes + " / 3";
+        timeTillNextRound.text = "NEXT ROUND IN " + m_waveSystem.currentIntermissionTime.ToString("F0"); //Display intermission time.
+        healthBar.fillAmount = m_playerController.playerHealth / 100; //Set health bar fill amount based on player health.
+        clockPartsLeft.text = m_pickupSystem.repairedParts + " / 5"; //Display collected clock parts on the UI.
+        notesLeft.text = collectedNotes + " / 3"; //Display the total amount of collected notes on the UI.
+
+        //SS1.text = m_prototypeClasses.stonePower[0].ToString("F0"); //This was for testing purposes (to show the startsone power as text).
+        //SS2.text = m_prototypeClasses.stonePower[1].ToString("F0");
+        //SS3.text = m_prototypeClasses.stonePower[2].ToString("F0");
+        //SS4.text = m_prototypeClasses.stonePower[3].ToString("F0");
     }
 
     public void f_popupText()
