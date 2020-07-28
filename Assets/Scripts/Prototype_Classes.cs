@@ -223,7 +223,7 @@ public class Prototype_Classes : MonoBehaviour
         if (Physics.Raycast(shotPoint.position, shotPoint.forward, out m_hitscanCast, Mathf.Infinity)) //Creates a Raycast.
         {
             if (Input.GetKeyDown(KeyCode.Mouse0) && stateQ == true)
-            {               
+            {
                 switch (classState) //Check for Class State.
                 {
                     case 0:
@@ -238,7 +238,7 @@ public class Prototype_Classes : MonoBehaviour
                     case 1:
                         if (stonePower[1] >= 15 && m_hitscanCast.collider.gameObject.tag == "Ground") //Detects if the raycast has hit the ground, if so it allows the player to place.
                         {
-                            FindObjectOfType<Ability_Handler>().StartCoroutine("f_spawnTornado"); 
+                            FindObjectOfType<Ability_Handler>().StartCoroutine("f_spawnTornado");
                             stonePower[1] -= 15;
                             canSwitch = false;
                             stateQ = false;

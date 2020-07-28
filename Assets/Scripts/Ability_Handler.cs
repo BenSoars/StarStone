@@ -65,7 +65,7 @@ public class Ability_Handler : MonoBehaviour
             hands.active = true;
             weapons.active = false;
         }
-        else if (GetComponent<Pickup_System>().itemHeld == false) //If the player isn't holding a clock item the show weapons.
+        else //if (GetComponent<Pickup_System>().itemHeld == false) //If the player isn't holding a clock item the show weapons.
         {
             hands.active = false;
             weapons.active = true;
