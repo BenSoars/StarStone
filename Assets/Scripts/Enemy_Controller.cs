@@ -32,7 +32,8 @@ public class Enemy_Controller : MonoBehaviour
     private Animator r_anim;
     private AchievementSpecialConditions m_Achievement;
 
-    public List<GameObject> m_ItemDrops = new List<GameObject>(); // item drop
+    private Item_Drop_System m_itemDrop;
+
     public bool m_isGrounded = true; // is grounded check
 
     private Vector3 m_lastPosition; // the last position the enemy saw the player at
@@ -79,7 +80,7 @@ public class Enemy_Controller : MonoBehaviour
         m_Achievement = GameObject.FindObjectOfType<AchievementSpecialConditions>();
         m_defaultRunSpeed = m_runSpeed; // set the default run speed
         m_hurtBox.m_damage = m_enemyDamage; // set the hurtbox damage to represent the enemy damage
-
+        m_itemDrop = FindObjectOfType<Item_Drop_System>();
         soundEffect.volume = PlayerPrefs.GetFloat("volumeLevel"); // set the sound to match the sound effect volume
     }
 
@@ -116,15 +117,11 @@ public class Enemy_Controller : MonoBehaviour
         if (m_enemyHealth <= 0)
         {
             //Kurtis Watson
-            r_prototypeClasses.m_currentFog = r_prototypeClasses.m_currentFog - r_waveSystem.fogMath; 
+            r_prototypeClasses.m_currentFog = r_prototypeClasses.m_currentFog - r_waveSystem.fogMath;
 
             //Ben Soars
-            int rando = UnityEngine.Random.Range(0, m_spawnChance); // generate a random nomber whtihin the range
-            if (rando == 1) 
-            {
-                rando = UnityEngine.Random.Range(0, m_ItemDrops.Count); // choose which item to spawn
-                Instantiate(m_ItemDrops[rando], transform.position, Quaternion.identity); //spawn the item it chose
-            }
+            m_itemDrop.dropItem(transform); // call the item drop coroutine
+            
 
             Destroy(gameObject); // destroy self
 

@@ -30,7 +30,7 @@ PrefabInstance:
     - target: {fileID: 5762886321429660737, guid: e8fea09451d242e47a7ae1e2c4f6f86f,
         type: 3}
       propertyPath: AmmoWorth
-      value: 25
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 5762886321429660738, guid: e8fea09451d242e47a7ae1e2c4f6f86f,
         type: 3}
@@ -87,10 +87,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5762886321429660738, guid: e8fea09451d242e47a7ae1e2c4f6f86f,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5762886321429660738, guid: e8fea09451d242e47a7ae1e2c4f6f86f,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5762886321429660738, guid: e8fea09451d242e47a7ae1e2c4f6f86f,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5762886321429660750, guid: e8fea09451d242e47a7ae1e2c4f6f86f,
         type: 3}
       propertyPath: m_Name
-      value: Ammo_Crossbow Variant
+      value: Ammo_Large
       objectReference: {fileID: 0}
     - target: {fileID: 5762886322336284122, guid: e8fea09451d242e47a7ae1e2c4f6f86f,
         type: 3}

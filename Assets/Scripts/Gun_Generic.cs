@@ -172,7 +172,12 @@ public class Gun_Generic : Melee_Attack
         if (m_maxAmmo <= 0)
         {
             m_maxAmmo = 0;
+        } else if (m_maxAmmo > m_savedMaxAmmo)
+        {
+            m_maxAmmo = m_savedMaxAmmo;
         }
+
+        
         
         f_updateUI();
     }
