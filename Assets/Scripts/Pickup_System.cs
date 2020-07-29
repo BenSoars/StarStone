@@ -116,20 +116,20 @@ public class Pickup_System : MonoBehaviour
                 currentPart.GetComponent<Rigidbody>().isKinematic = false;
                 currentPart.GetComponent<BoxCollider>().enabled = true;
                 currentPart.GetComponent<Clock_ID>().pickedUp = false;
-                
+
                 weaponHands.active = true; //Enable to player to be able to melee.
                 repairHands.active = false; //Switch back to weapon classes.
             }
 
             if (m_clockHit.collider.gameObject.layer == 13 && Input.GetKeyDown("f") && itemHeld == false && closeEnough <= 3) //Pickup the clock part.
-            {   
+            {
                 itemHeld = true; //Bool to enable the player to be able to drop the item.
-                
+
                 currentPart = m_clockHit.collider.gameObject; //Grab the current gameobject the player was looking at and set it as the current held part.
                 currentPartID = currentPart.GetComponent<Clock_ID>().clockPartID; //Grab the ID of the object and store it in a variable.
-                
+
                 currentPart.transform.parent = floatPoint.transform; //Move the picked up object to between the players hands (carrying the item).
-                currentPart.transform.localPosition = Vector3.zero; 
+                currentPart.transform.localPosition = Vector3.zero;
                 currentPart.GetComponent<Rigidbody>().isKinematic = true;
                 currentPart.GetComponent<BoxCollider>().enabled = false;
                 currentPart.GetComponent<Clock_ID>().pickedUp = true;
@@ -139,7 +139,7 @@ public class Pickup_System : MonoBehaviour
             }
 
             if (m_clockHit.collider.gameObject.name == "Steampunk Clock" && itemHeld == true && closeEnough <= 4 && Input.GetKey(KeyCode.Mouse0)) //Repair the clock.
-            { 
+            {
                 m_isRepairing = true; //Activate animation.
                 currentRepairTime += Time.deltaTime; //Increase the current repair time if the player is holding 'F'.
                 m_userInterface.repairBar.active = true; //Enable the repair bar so the player can see repair progress.
@@ -149,16 +149,16 @@ public class Pickup_System : MonoBehaviour
                     Destroy(currentPart); //Remove the held gameobject after it has been added to the clock.
                     itemHeld = false;
                     repairedParts += 1; //Increase the clock repaired parts by 1 to check for if the player can set time.
-                    
+
                     m_isRepairing = false;
-                    currentRepairTime = 0;                                      
+                    currentRepairTime = 0;
                     m_userInterface.repairBar.active = false;
                     m_clockController.clockParts[currentPartID].active = true;
 
                     weaponHands.active = true;
                     repairHands.active = false;
 
-                    if(repairedParts == 5) //Check if all parts have been added >
+                    if (repairedParts == 5) //Check if all parts have been added >
                     {
                         clockFixed = true; //if so it will allow the player to begin adjusting the clocks time.
                         if (m_achivement)
@@ -168,6 +168,7 @@ public class Pickup_System : MonoBehaviour
                     }
                 }
             }
+
             else
             {
                 m_isRepairing = false;

@@ -53,6 +53,7 @@ public class User_Interface : MonoBehaviour
     public GameObject stone;
     [Tooltip("Reference the difficulty handler.")]
     public GameObject difficultyHandler;
+    public GameObject timeLeft;
 
     [Header("UI Images")]
     [Tooltip("Display current starstone image on UI.")]
@@ -111,6 +112,7 @@ public class User_Interface : MonoBehaviour
         m_prototypeClasses = FindObjectOfType<Prototype_Classes>();
         m_pickupSystem = FindObjectOfType<Pickup_System>();
         timeTillNextRound.enabled = false;
+
     }
 
     // Update is called once per frame

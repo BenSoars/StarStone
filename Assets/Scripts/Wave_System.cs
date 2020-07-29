@@ -13,7 +13,8 @@ public class Wave_System : MonoBehaviour
     public List<GameObject> spawnedEnemies = new List<GameObject>(); // the spawned enemies
     public int enemiesLeft; // the amount of enemies remaining
     public int curRound; // the current round the player is on
-    public List<int> enemyArray = new List<int>(); 
+    public List<int> enemyArray = new List<int>();
+    public bool canSpawnEnemies;
 
     [Header("Audio System")]
     [Space(2)]
@@ -68,6 +69,8 @@ public class Wave_System : MonoBehaviour
     {
         currentIntermissionTime = intermissionTime;
 
+        canSpawnEnemies = true;
+
         m_wispPoint = GameObject.FindGameObjectsWithTag("WispPoint");
         m_userInterface = FindObjectOfType<User_Interface>();
         m_prototypeClasses = FindObjectOfType<Prototype_Classes>();
@@ -104,34 +107,29 @@ public class Wave_System : MonoBehaviour
     //Kurtis Watson
     void f_spawnWisps()
     {
-        if (SceneManager.GetActiveScene().name != "Temple_Clean") //Stop enemies spawning in clean scene.
+        m_playerContoller.playerHealth = 100;
+        newWave = false;
+        currentIntermissionTime = intermissionTime; //Reset current intermission time.
+                                                    //Stop a new wave of enemies spawning. 
+        m_startedWaves = true; //Update UI values.
+        f_sortOutEnemys(); //Spawn enemies of different types.
+        audio.playImportant(roundNoises[0]);
+        for (int k = 0; k < enemyArray.Count; k++)
         {
-            m_playerContoller.playerHealth = 100;
-            newWave = false;
-            currentIntermissionTime = intermissionTime; //Reset current intermission time.
-             //Stop a new wave of enemies spawning. 
-            m_startedWaves = true; //Update UI values.
-            f_sortOutEnemys(); //Spawn enemies of different types.
-            audio.playImportant(roundNoises[0]);
-            for (int k = 0; k < enemyArray.Count; k++)
+            for (int i = 0; i < enemyArray[k]; i++)
             {
-                for (int i = 0; i < enemyArray[k]; i++)
-                {
-                    m_random = Random.Range(1, 4);
-                    GameObject spawned = Instantiate(wisps[k], m_wispPoint[m_random].transform.position, Quaternion.identity); //Spawn wisps at a random point.
-                    spawnedEnemies.Add(spawned); //Add enemy spawned to enemies spawned list.
-                }
+                m_random = Random.Range(1, 4);
+                GameObject spawned = Instantiate(wisps[k], m_wispPoint[m_random].transform.position, Quaternion.identity); //Spawn wisps at a random point.
+                spawnedEnemies.Add(spawned); //Add enemy spawned to enemies spawned list.
             }
-            enemiesLeft = spawnedEnemies.Count; //Set the count for the enemies left.
-            m_prototypeClasses.fogStrength = 0.2f; //Fog strength.
-            m_prototypeClasses.currentFog = 0.2f; //Reset current fog.
-            m_prototypeClasses.stonePower[m_prototypeClasses.chosenBuff] -= enemiesLeft * 2; //Decrease the chosen enemy buff by two times the amount of enemies.
-            fogMath = m_prototypeClasses.fogStrength / enemiesLeft; //Calculate the amount of fog to decrease each enemy kill.
-            curRound += 1; //Increase current round by one.
-            m_enemiesKilled = false;
-            
-
         }
+        enemiesLeft = spawnedEnemies.Count; //Set the count for the enemies left.
+        m_prototypeClasses.fogStrength = 0.2f; //Fog strength.
+        m_prototypeClasses.currentFog = 0.2f; //Reset current fog.
+        m_prototypeClasses.stonePower[m_prototypeClasses.chosenBuff] -= enemiesLeft * 2; //Decrease the chosen enemy buff by two times the amount of enemies.
+        fogMath = m_prototypeClasses.fogStrength / enemiesLeft; //Calculate the amount of fog to decrease each enemy kill.
+        curRound += 1; //Increase current round by one.
+        m_enemiesKilled = false;
     }
 
     //Kurtis Watson
@@ -229,20 +227,36 @@ public class Wave_System : MonoBehaviour
     //Ben Soars
     void f_sortOutEnemys()
     {
-        if (curRound <= amountOf.Count) // if the current round isn't the last
+        if (SceneManager.GetActiveScene().name == "Game_Scene")
         {
-            string[] varArray = amountOf[curRound].Split('_'); // split the current amount of enemies
-
-            enemyArray.Clear(); // clear the current array
-            for (int i = 0; i < enemyTypes.Count; i++) // for loop for all the enemy types
+            if (curRound <= amountOf.Count) // if the current round isn't the last
             {
-                enemyArray.Add(System.Convert.ToInt32(varArray[i]));// convert the string into a string if it can
+                string[] varArray = amountOf[curRound].Split('_'); // split the current amount of enemies
+
+                enemyArray.Clear(); // clear the current array
+                for (int i = 0; i < enemyTypes.Count; i++) // for loop for all the enemy types
+                {
+                    enemyArray.Add(System.Convert.ToInt32(varArray[i]));// convert the string into a string if it can
+                }
             }
-        } else
+            else
+            {
+                SceneManager.LoadScene("Main_Menu"); // load 
+            }
+        }      
+        
+        if(SceneManager.GetActiveScene().name == "Tutorial_Scene" && canSpawnEnemies == true)
         {
-            SceneManager.LoadScene("MainMenu"); // load 
+            if (curRound < 1) // if the current round isn't the last
+            {
+                string[] varArray = amountOf[curRound].Split('_'); // split the current amount of enemies
+
+                enemyArray.Clear(); // clear the current array
+                for (int i = 0; i < enemyTypes.Count; i++) // for loop for all the enemy types
+                {
+                    enemyArray.Add(System.Convert.ToInt32(varArray[i]));// convert the string into a string if it can
+                }
+            }
         }
-         
-       
     }
 }

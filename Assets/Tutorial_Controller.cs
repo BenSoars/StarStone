@@ -7,11 +7,13 @@ public class Tutorial_Controller : MonoBehaviour
 {
     private Prototype_Classes m_prototypeClasses;
     private Clock_Controller m_clockController;
+    private Wave_System m_waveSystem;
 
     public TextMeshProUGUI wText;
     public TextMeshProUGUI aText;
     public TextMeshProUGUI sText;
     public TextMeshProUGUI dText;
+    public TextMeshProUGUI spaceText;
 
     public TextMeshProUGUI leftClickText;
     public TextMeshProUGUI rightClickText;
@@ -34,6 +36,7 @@ public class Tutorial_Controller : MonoBehaviour
     private bool m_aPressed;
     private bool m_sPressed;
     private bool m_dPressed;
+    private bool m_spacePressed;
 
     private bool m_leftClickPressed;
     private bool m_rightClickPressed;
@@ -56,13 +59,20 @@ public class Tutorial_Controller : MonoBehaviour
     public GameObject noteBarrier;
     public GameObject killEnemiesText;
     public GameObject clockBarrier;
+    public GameObject abilityExample;
+    public GameObject QorV;
+    public GameObject leftClickAbility;
+    public GameObject uiDescription;
 
     private bool notesComplete;
+
+    public Transform shotPoint;
 
     private void Start()
     {
         m_prototypeClasses = FindObjectOfType<Prototype_Classes>();
         m_clockController = FindObjectOfType<Clock_Controller>();
+        m_waveSystem = FindObjectOfType<Wave_System>();
 
         findNotesText.enabled = false;
         tabClickText.enabled = false;
@@ -71,6 +81,9 @@ public class Tutorial_Controller : MonoBehaviour
         killEnemiesText.active = false;
         fixClockText.enabled = false;
         timeToSetText.enabled = false;
+        leftClickAbility.active = false;
+        uiDescription.active = false;
+        abilityExample.active = false;
     }
     // Update is called once per frame
     void Update()
@@ -79,7 +92,8 @@ public class Tutorial_Controller : MonoBehaviour
         f_shootCheck();
         f_noteCheck();
         f_stoneCheck();
-        if (m_mouseCheck == 3)
+        f_abilityInstructions();
+        if (m_mouseCheck == 3) //Stop the player from choosing the stone early.
         {
             m_prototypeClasses.canSelect = true;
         }
@@ -88,11 +102,11 @@ public class Tutorial_Controller : MonoBehaviour
 
     void f_movementCheck()
     {
-        if (Input.GetKeyDown("w") && m_wPressed == false)
+        if (Input.GetKeyDown("w") && m_wPressed == false) //Detect to see if they are following the tutorial correctly by clicking the correct keys.
         {
-            wText.color = Color.green;
-            m_wPressed = true;
-            m_WASD += 1;
+            wText.color = Color.green; //Set the text to green to indicate to the player than have followed the tutorial correctly.
+            m_wPressed = true; //Stop loop being entered again.
+            m_WASD += 1; //Add 1 to the buttons clicked count to detect if they have clicked all buttons required.
         }
         if (Input.GetKeyDown("a") && m_aPressed == false)
         {
@@ -112,92 +126,110 @@ public class Tutorial_Controller : MonoBehaviour
             m_dPressed = true;
             m_WASD += 1;
         }
-
-        if (m_WASD == 4)
+        if (Input.GetKeyDown(KeyCode.Space) && m_spacePressed == false)
         {
-            WASD.active = false;
-            mouseCheck.active = true;
+            spaceText.color = Color.green;
+            m_spacePressed = true;
+            m_WASD += 1;
+        }
 
-            m_prototypeClasses.canSelect = true;
-            m_prototypeClasses.fogStrength = 0; //Set current fog.
+        if (m_WASD == 5) //If they have pressed all 5 buttons required >
+        {
+            WASD.active = false; // > disable the WASD gameobject and >
+            mouseCheck.active = true; // move onto the next part of the tutorial.
+
+            m_prototypeClasses.canSelect = true; //Allow the player to select a stone.
+            m_prototypeClasses.fogStrength = 0; //Set current fog to 0 during tutorial.
         }
     }
 
     void f_shootCheck()
     {
-        if (Input.GetKeyDown(KeyCode.Mouse0) && m_leftClickPressed == false)
+        if (m_WASD == 5) //Shot the buttons being clicked early.
         {
-            leftClickText.color = Color.green;
-            m_leftClickPressed = true;
-            m_mouseCheck += 1;
-        }
-
-        if (Input.GetKeyDown(KeyCode.Mouse1) && m_rightClickPressed == false)
-        {
-            rightClickText.color = Color.green;
-            m_rightClickPressed = true;
-            m_mouseCheck += 1;
-        }
-
-        if (Input.GetKeyDown(KeyCode.Mouse2) && m_scrollWheelPressed == false)
-        {
-            middleClickText.color = Color.green;
-            m_scrollWheelPressed = true;
-            m_mouseCheck += 1;
-        }
-
-        if(m_mouseCheck == 3)
-        {
-            if (note != null)
+            if (Input.GetKeyDown(KeyCode.Mouse0) && m_leftClickPressed == false) //Check for left button mouse click.
             {
-                findNotesText.enabled = true;
+                leftClickText.color = Color.green; //Set to green to indicate it has been clicked.
+                m_leftClickPressed = true; //Stop loop.
+                m_mouseCheck += 1; //Add 1 to the end check to see if all instructions have been followed.
             }
-            mouseCheck.active = false;
-            noteBarrier.active = false;      
+
+            if (Input.GetKeyDown(KeyCode.Mouse1) && m_rightClickPressed == false)
+            {
+                rightClickText.color = Color.green;
+                m_rightClickPressed = true;
+                m_mouseCheck += 1;
+            }
+
+            if (Input.GetKeyDown(KeyCode.Mouse2) && m_scrollWheelPressed == false)
+            {
+                middleClickText.color = Color.green;
+                m_scrollWheelPressed = true;
+                m_mouseCheck += 1;
+            }
+
+            if (m_mouseCheck == 3)
+            {
+                if (note != null)
+                {
+                    findNotesText.enabled = true;
+                }
+                mouseCheck.active = false;
+                noteBarrier.active = false;
+            }
         }
     }
 
     void f_noteCheck()
     {
-        if (note == null && findNotesText.enabled == true)
+        if (m_mouseCheck == 3) //If all mouse button instructions have been followed then this loop will run.
         {
-            findNotesText.enabled = false;
-            tabClickText.enabled = true;
-        }
+            if (note == null && findNotesText.enabled == true) //If there is no longer a note (player picked it up) >
+            {
+                findNotesText.enabled = false; // > turn off the find note text >
+                tabClickText.enabled = true; // > and instruct them to click 'TAB'.
+            }
 
-        if (Input.GetKeyDown(KeyCode.Tab) && tabClickText.enabled == true)
-        {
-            m_tabClicked = true;
-            tabClickText.enabled = false;
-            tabExitText.enabled = true;
-        }
+            if (Input.GetKeyDown(KeyCode.Tab) && tabClickText.enabled == true) //If the player presses tab >
+            {
+                m_tabClicked = true; // indicate to the program it has been pressed >
+                tabClickText.enabled = false; // > hide the click tab text >
+                tabExitText.enabled = true; // > and show the player how to exit the notes system by pressing tab again.
+            }
 
-        else if(Input.GetKeyDown(KeyCode.Tab) && m_tabClicked == true)
-        {
-            stoneBarrier.active = false;
-            notesComplete = true;
-            tabExitText.enabled = false;
+            else if (Input.GetKeyDown(KeyCode.Tab) && m_tabClicked == true)
+            {
+                stoneBarrier.active = false; //Allow the player 
+                notesComplete = true; //This bool is true when the player has followed the instructions on how the note system works.
+                tabExitText.enabled = false;
+            }
         }
     }
 
     void f_stoneCheck()
     {
-        if(notesComplete == true)
-        {            
-            locateStarstoneText.enabled = true;
-        }
-        if(Input.GetKeyDown("f") && locateStarstoneText.enabled == true)
+        if (notesComplete == true) 
         {
-            notesComplete = false;
-            locateStarstoneText.enabled = false;
-            killEnemiesText.active = true;
+            locateStarstoneText.enabled = true; //Display locate starstone text.
         }
 
-        if (Input.GetKeyDown(KeyCode.Alpha1) && m_1pressed == false)
+        RaycastHit m_rayHit;
+        if (Physics.Raycast(shotPoint.position, shotPoint.forward, out m_rayHit) && Input.GetKeyDown("f") && locateStarstoneText.enabled == true) //If the player presses f then >
         {
-            num1.color = Color.green;
-            m_1pressed = true;
-            m_numbersPressed += 1;
+            if (m_rayHit.collider.gameObject.layer == LayerMask.NameToLayer("Stones"))
+            {
+                m_waveSystem.canSpawnEnemies = false;
+                notesComplete = false;
+                locateStarstoneText.enabled = false;
+                killEnemiesText.active = true; // > indicate to the player that there are enemies that can be killed.
+            }
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha1) && m_1pressed == false) //Check if the player has switched to another weapon.
+        {
+            num1.color = Color.green; //Change text color to indicate they have done it correctly.
+            m_1pressed = true; //Stop loop.
+            m_numbersPressed += 1; //Add 1 to numbers pressed during weapon switch tutorial.
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha2) && m_2pressed == false)
@@ -214,13 +246,40 @@ public class Tutorial_Controller : MonoBehaviour
             m_numbersPressed += 1;
         }
 
-        if(m_numbersPressed == 3)
+        if (m_numbersPressed == 3) //If all buttons have been pressed in weapon switching tutorial >
         {
-            fixClockText.enabled = true;
-            timeToSetText.enabled = true;
-            timeToSetText.text = "Set time to " + m_clockController.globalHour + ":" + m_clockController.globalMin + "."; 
-            killEnemiesText.active = false;
-            clockBarrier.active = false;
+            m_numbersPressed = 4; //Stop loop.
+            killEnemiesText.active = false; //Hide find enemy text.
+            abilityExample.active = true; //Begin ability usage tutorial.
         }
+    }
+
+    void f_abilityInstructions()
+    {
+        if (abilityExample == true)
+        {
+            if (QorV.active == true && Input.GetKeyDown("q") || QorV.active == true && Input.GetKeyDown("v")) //Detect if the player has pressed either of the ability activation buttons.
+            {
+                QorV.active = false; //Hide Q or V instructions.
+                leftClickAbility.active = true; //Show left click to use instructions.
+            }
+
+            if (Input.GetKeyDown(KeyCode.Mouse0) && leftClickAbility.active == true) //If the player uses the ability correctly
+            {
+                leftClickAbility.active = false;
+                Invoke("f_fixClock", 11.5f); //Begin clock tutorial.
+                uiDescription.active = true; //Show UI icons description.
+            }
+        }
+    }
+
+    void f_fixClock()
+    {
+        uiDescription.active = false;
+        fixClockText.enabled = true;
+        timeToSetText.enabled = true;
+        timeToSetText.text = "Set time to " + m_clockController.globalHour + ":" + m_clockController.globalMin + ".";
+        killEnemiesText.active = false;
+        clockBarrier.active = false;
     }
 }
