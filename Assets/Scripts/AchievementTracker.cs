@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class AchievementTracker : MonoBehaviour
 {
@@ -31,6 +32,7 @@ public class AchievementTracker : MonoBehaviour
     {
         Invoke("becomeActive", 0.2f);
         AchievementSound.volume = PlayerPrefs.GetFloat("volumeLevel"); // sets the volume to match the saved volume
+        
     }
 
     void FixedUpdate()
@@ -48,6 +50,11 @@ public class AchievementTracker : MonoBehaviour
                     }
                 }
             }
+        }
+
+        if (SceneManager.GetActiveScene().name == "Tutorial_Scene")
+        {
+            Destroy(gameObject);
         }
     }
        
