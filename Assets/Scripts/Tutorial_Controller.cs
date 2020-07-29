@@ -68,6 +68,11 @@ public class Tutorial_Controller : MonoBehaviour
 
     public Transform shotPoint;
 
+    public GameObject noteReleased;
+    public GameObject clockPartReleased;
+    public GameObject findClock;
+    public GameObject packapunch;
+
     private void Start()
     {
         m_prototypeClasses = FindObjectOfType<Prototype_Classes>();
@@ -93,11 +98,11 @@ public class Tutorial_Controller : MonoBehaviour
         f_noteCheck();
         f_stoneCheck();
         f_abilityInstructions();
-        if (m_mouseCheck == 3) //Stop the player from choosing the stone early.
-        {
-            m_prototypeClasses.canSelect = true;
-        }
-        else m_prototypeClasses.canSelect = false;
+
+        noteReleased.active = false;
+        clockPartReleased.active = false;
+        findClock.active = false;
+        packapunch.active = false;
     }
 
     void f_movementCheck()
@@ -138,7 +143,6 @@ public class Tutorial_Controller : MonoBehaviour
             WASD.active = false; // > disable the WASD gameobject and >
             mouseCheck.active = true; // move onto the next part of the tutorial.
 
-            m_prototypeClasses.canSelect = true; //Allow the player to select a stone.
             m_prototypeClasses.fogStrength = 0; //Set current fog to 0 during tutorial.
         }
     }
@@ -214,8 +218,10 @@ public class Tutorial_Controller : MonoBehaviour
         }
 
         RaycastHit m_rayHit;
-        if (Physics.Raycast(shotPoint.position, shotPoint.forward, out m_rayHit) && Input.GetKeyDown("f") && locateStarstoneText.enabled == true) //If the player presses f then >
+        float distance = Vector3.Distance(shotPoint.transform.position, GameObject.Find("Yellow").transform.position);
+        if (Physics.Raycast(shotPoint.position, shotPoint.forward, out m_rayHit) && Input.GetKeyDown("f") && locateStarstoneText.enabled == true && distance <= 4) //If the player presses f then >
         {
+            m_prototypeClasses.canSelect = false;
             if (m_rayHit.collider.gameObject.layer == LayerMask.NameToLayer("Stones"))
             {
                 m_waveSystem.canSpawnEnemies = false;
