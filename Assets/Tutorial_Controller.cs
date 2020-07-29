@@ -6,6 +6,8 @@ using UnityEngine;
 public class Tutorial_Controller : MonoBehaviour
 {
     private Prototype_Classes m_prototypeClasses;
+    private Clock_Controller m_clockController;
+
     public TextMeshProUGUI wText;
     public TextMeshProUGUI aText;
     public TextMeshProUGUI sText;
@@ -19,7 +21,14 @@ public class Tutorial_Controller : MonoBehaviour
     public TextMeshProUGUI tabClickText;
     public TextMeshProUGUI tabExitText;
 
-    public TextMeshProUGUI locateClockText;
+    public TextMeshProUGUI locateStarstoneText;
+
+    public TextMeshProUGUI fixClockText;
+    public TextMeshProUGUI timeToSetText;
+
+    public TextMeshProUGUI num1;
+    public TextMeshProUGUI num2;
+    public TextMeshProUGUI num3;
 
     private bool m_wPressed;
     private bool m_aPressed;
@@ -30,24 +39,38 @@ public class Tutorial_Controller : MonoBehaviour
     private bool m_rightClickPressed;
     private bool m_scrollWheelPressed;
 
-    private bool m_tabPressed;
+    private bool m_tabClicked;
+
+    private bool m_1pressed;
+    private bool m_2pressed;
+    private bool m_3pressed;
 
     private int m_WASD;
     private int m_mouseCheck;
+    private int m_numbersPressed;
 
     public GameObject stoneBarrier;
     public GameObject WASD;
     public GameObject mouseCheck;
     public GameObject note;
     public GameObject noteBarrier;
+    public GameObject killEnemiesText;
+    public GameObject clockBarrier;
+
+    private bool notesComplete;
 
     private void Start()
     {
         m_prototypeClasses = FindObjectOfType<Prototype_Classes>();
+        m_clockController = FindObjectOfType<Clock_Controller>();
+
         findNotesText.enabled = false;
         tabClickText.enabled = false;
         tabExitText.enabled = false;
-        locateClockText.enabled = false;
+        locateStarstoneText.enabled = false;
+        killEnemiesText.active = false;
+        fixClockText.enabled = false;
+        timeToSetText.enabled = false;
     }
     // Update is called once per frame
     void Update()
@@ -55,6 +78,7 @@ public class Tutorial_Controller : MonoBehaviour
         f_movementCheck();
         f_shootCheck();
         f_noteCheck();
+        f_stoneCheck();
         if (m_mouseCheck == 3)
         {
             m_prototypeClasses.canSelect = true;
@@ -143,13 +167,60 @@ public class Tutorial_Controller : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Tab) && tabClickText.enabled == true)
         {
+            m_tabClicked = true;
             tabClickText.enabled = false;
             tabExitText.enabled = true;
         }
 
-        if(Input.GetKeyDown(KeyCode.Tab) && tabExitText.enabled == true)
+        else if(Input.GetKeyDown(KeyCode.Tab) && m_tabClicked == true)
         {
+            stoneBarrier.active = false;
+            notesComplete = true;
+            tabExitText.enabled = false;
+        }
+    }
 
+    void f_stoneCheck()
+    {
+        if(notesComplete == true)
+        {            
+            locateStarstoneText.enabled = true;
+        }
+        if(Input.GetKeyDown("f") && locateStarstoneText.enabled == true)
+        {
+            notesComplete = false;
+            locateStarstoneText.enabled = false;
+            killEnemiesText.active = true;
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha1) && m_1pressed == false)
+        {
+            num1.color = Color.green;
+            m_1pressed = true;
+            m_numbersPressed += 1;
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha2) && m_2pressed == false)
+        {
+            num2.color = Color.green;
+            m_2pressed = true;
+            m_numbersPressed += 1;
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha3) && m_3pressed == false)
+        {
+            num3.color = Color.green;
+            m_3pressed = true;
+            m_numbersPressed += 1;
+        }
+
+        if(m_numbersPressed == 3)
+        {
+            fixClockText.enabled = true;
+            timeToSetText.enabled = true;
+            timeToSetText.text = "Set time to " + m_clockController.globalHour + ":" + m_clockController.globalMin + "."; 
+            killEnemiesText.active = false;
+            clockBarrier.active = false;
         }
     }
 }

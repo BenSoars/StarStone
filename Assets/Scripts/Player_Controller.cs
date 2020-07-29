@@ -132,6 +132,11 @@ public class Player_Controller : MonoBehaviour
                 SceneManager.LoadScene("Ending_Scene");
                 portalController.transitionActive = false;
             }
+            if (tempColor.a >= 1 && SceneManager.GetActiveScene() == SceneManager.GetSceneByName("Tutorial_Scene"))
+            {
+                SceneManager.LoadScene("Main_Menu");
+                portalController.transitionActive = false;
+            }
         }
 
         if (tempColor.a <= 0)
