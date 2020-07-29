@@ -22,6 +22,11 @@ PrefabInstance:
       propertyPath: m_Color.b
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1668527416199008414, guid: e8fea09451d242e47a7ae1e2c4f6f86f,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 3cbd787bbd2e3cf44aefc4b3d827a137, type: 2}
     - target: {fileID: 5762886321429660737, guid: e8fea09451d242e47a7ae1e2c4f6f86f,
         type: 3}
       propertyPath: GunType
@@ -112,5 +117,7 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: b555b46585bd966469c6671cc8c00f18, type: 2}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5762886322336284122, guid: e8fea09451d242e47a7ae1e2c4f6f86f, type: 3}
+    - {fileID: 5762886322336284125, guid: e8fea09451d242e47a7ae1e2c4f6f86f, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: e8fea09451d242e47a7ae1e2c4f6f86f, type: 3}

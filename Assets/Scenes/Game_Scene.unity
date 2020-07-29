@@ -121,7 +121,7 @@ NavMeshSettings:
     accuratePlacement: 0
     debug:
       m_Flags: 0
-  m_NavMeshData: {fileID: 23800000, guid: 084798cb11076b644a60c74eb6ee2f4e, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: 47eaef22b6cce0f4ea24b0f53e4f7c4d, type: 2}
 --- !u!1 &2278363
 GameObject:
   m_ObjectHideFlags: 0
@@ -2017,6 +2017,7 @@ MonoBehaviour:
   enemiesLeft: 0
   curRound: 0
   enemyArray: 
+  canSpawnEnemies: 0
   audio: {fileID: 0}
   roundNoises:
   - {fileID: 8300000, guid: 2ef7ef7c13ab8d343abf3e9e6c729a10, type: 3}
@@ -61245,7 +61246,7 @@ GameObject:
   m_Name: pTorus1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!64 &6059151588999656159
