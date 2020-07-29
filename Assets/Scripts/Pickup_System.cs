@@ -44,6 +44,8 @@ public class Pickup_System : MonoBehaviour
     public GameObject note;
     private int m_noteID;
 
+    private AchievementTracker m_achivement;
+
     private void Start()
     {
         //animator = gameObject.transform.GetChild(0).gameObject.transform.GetChild(3).GetComponent<Animator>(); //Get the animator of the hands.
@@ -56,6 +58,7 @@ public class Pickup_System : MonoBehaviour
 
         m_clockController = FindObjectOfType<Clock_Controller>(); //Reference the required scripts.
         m_userInterface = FindObjectOfType<User_Interface>();
+        m_achivement = FindObjectOfType<AchievementTracker>();
     }
 
     private void Update()
@@ -158,6 +161,10 @@ public class Pickup_System : MonoBehaviour
                     if(repairedParts == 5) //Check if all parts have been added >
                     {
                         clockFixed = true; //if so it will allow the player to begin adjusting the clocks time.
+                        if (m_achivement)
+                        {
+                            m_achivement.UnlockAchievement(14);
+                        }
                     }
                 }
             }

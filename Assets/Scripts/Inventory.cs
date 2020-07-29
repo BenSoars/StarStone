@@ -17,6 +17,13 @@ public class Inventory : MonoBehaviour
     public Text m_noteContentsDisplay; // the note contents text area
     public Image m_noteImageDisplay; // the note image area
 
+    private AchievementTracker m_achivement;
+
+    void Start()
+    {
+        m_achivement = FindObjectOfType<AchievementTracker>();
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -53,6 +60,13 @@ public class Inventory : MonoBehaviour
                     currentNote = noteName.Count - 1; // go to the most recently picked up note
                 }
             }
+
+            if (m_achivement && noteName.Count >= 3)
+            {
+                m_achivement.UnlockAchievement(15);
+            }
         }
+        
+
     }
 }

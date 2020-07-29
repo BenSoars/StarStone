@@ -33,12 +33,15 @@ public class Station_Controller : MonoBehaviour
     private bool isUpgrading1;
     private bool isUpgrading2;
 
+    private AchievementTracker m_achivement;
+
     // Start is called before the first frame update
     void Start()
     {
         upgradeOpenText.enabled = false;
         m_weaponSwitch = FindObjectOfType<Weapon_Switch>();
         m_waveSystem = FindObjectOfType<Wave_System>();
+        m_achivement = FindObjectOfType<AchievementTracker>();
     }
 
     // Update is called once per frame
@@ -90,6 +93,10 @@ public class Station_Controller : MonoBehaviour
                             upgradedWeapon2.active = true;
                             m_disableUpgrade = true;
                             break;
+                    }
+                    if (m_achivement)
+                    {
+                        m_achivement.UnlockAchievement(16);
                     }
 
                     animator.SetBool("Upgrading1", false); //Set value to false as the upgrade is finished.
