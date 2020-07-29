@@ -14586,6 +14586,26 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 574893493}
   m_Mesh: {fileID: -5707882991119269570, guid: 81882647aafb0f847add668e7808f176, type: 3}
+--- !u!1 &574913584 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5052437513250119996, guid: decec99c3a54a654d862175cb6806af1,
+    type: 3}
+  m_PrefabInstance: {fileID: 1153539373}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &574913588
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 574913584}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ada6dca11d94cf42905215f0cf8331e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_LevelName: Game_Over
+  m_delayTime: 0
 --- !u!4 &575760902 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2784990953288748697, guid: 7989c253eae3424488784cb58e2ad063,
@@ -23220,6 +23240,11 @@ PrefabInstance:
         type: 3}
       propertyPath: InitialModule.startColor.maxColor.g
       value: 0.5620418
+      objectReference: {fileID: 0}
+    - target: {fileID: 6793041837516107455, guid: decec99c3a54a654d862175cb6806af1,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6879699983474076598, guid: decec99c3a54a654d862175cb6806af1,
         type: 3}

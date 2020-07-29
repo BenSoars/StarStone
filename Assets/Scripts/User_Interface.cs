@@ -184,12 +184,11 @@ public class User_Interface : MonoBehaviour
 
             if (m_targetTime <= 0 || m_playerController.playerHealth <= 0) //Checks if player has either died or ran out of time.
             {
-                GameObject.FindGameObjectWithTag("Player").GetComponent<Animator>().SetBool("Dead", true);
+                Animator playerAnim = GameObject.FindGameObjectWithTag("Player").GetComponent<Animator>();
+                playerAnim.SetBool("Dead", true);
                 Destroy(gameObject); //Delete the UI from the scene.
                 Cursor.lockState = CursorLockMode.None; //Unlock the cursor.
                 Cursor.visible = true; //Make cursor visible.
-                gameUI.active = false;
-                runtimeUI.active = false;
                 m_playerController.canPlayerMove = false;
                 //SceneManager.LoadScene("Game_Over"); //Load the final game scene.
             }
