@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Note : MonoBehaviour
 {
@@ -23,7 +24,14 @@ public class Note : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player")) // if the player walks over the note
         {
-            pickUpNote(); // collect the note, run the function
+            if (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("Tutorial_Scene"))
+            {
+                Destroy(gameObject);
+            }
+            else
+            {
+                pickUpNote(); // collect the note, run the function
+            }
         }
     }
 

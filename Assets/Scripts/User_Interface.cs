@@ -190,7 +190,6 @@ public class User_Interface : MonoBehaviour
                 Cursor.lockState = CursorLockMode.None; //Unlock the cursor.
                 Cursor.visible = true; //Make cursor visible.
                 m_playerController.canPlayerMove = false;
-                //SceneManager.LoadScene("Game_Over"); //Load the final game scene.
             }
         }
         #endregion

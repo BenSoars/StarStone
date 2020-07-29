@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering.PostProcessing;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -11,6 +12,7 @@ public class Player_Controller : MonoBehaviour
     [Space(2)]
     public Portal_Controller portalController;
     private Game_End m_gameEnd;
+    private Prototype_Classes m_prototypeClasses;
 
     [Header("Player Properties")]
     [Space(2)]
@@ -81,6 +83,7 @@ public class Player_Controller : MonoBehaviour
 
         audio = GameObject.FindObjectOfType<Audio_System>(); //Get the audio system.
         m_animator = GetComponent<Animator>();
+        m_prototypeClasses = FindObjectOfType<Prototype_Classes>();
 
         runSound.volume = PlayerPrefs.GetFloat("volumeLevel"); //Set the volume of the run sound.
         runSound.enabled = false; //Stop the run sound.
