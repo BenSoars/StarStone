@@ -54,7 +54,7 @@ public class Wisp_Controller : MonoBehaviour
         }
         else if (m_mapDistance <= 2.5f && m_enemySpawn == false)
         {
-            Instantiate(r_waveSystem.enemyTypes[m_type], transform.position, Quaternion.identity); //spawn the enemy type
+            Instantiate(r_waveSystem.enemyTypes[m_type], transform.position, Quaternion.identity); //Spawn the enemy type.
             Destroy(gameObject);
         }
     }

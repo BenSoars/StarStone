@@ -227,7 +227,7 @@ public class Wave_System : MonoBehaviour
     //Ben Soars
     void f_sortOutEnemys()
     {
-        if (SceneManager.GetActiveScene().name == "Game_Scene")
+        if (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("Game_Scene"))
         {
             if (curRound <= amountOf.Count) // if the current round isn't the last
             {
@@ -245,8 +245,10 @@ public class Wave_System : MonoBehaviour
             }
         }      
         
-        if(SceneManager.GetActiveScene().name == "Tutorial_Scene" && canSpawnEnemies == true)
+        if(SceneManager.GetActiveScene() == SceneManager.GetSceneByName("Tutorial_Scene") && canSpawnEnemies == true)
         {
+            canSpawnEnemies = false;
+            curRound = 0;
             if (curRound < 1) // if the current round isn't the last
             {
                 string[] varArray = amountOf[curRound].Split('_'); // split the current amount of enemies

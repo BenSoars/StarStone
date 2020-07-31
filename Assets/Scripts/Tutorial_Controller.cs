@@ -219,15 +219,14 @@ public class Tutorial_Controller : MonoBehaviour
 
         RaycastHit m_rayHit;
         float distance = Vector3.Distance(shotPoint.transform.position, GameObject.Find("Yellow").transform.position);
-        if (Physics.Raycast(shotPoint.position, shotPoint.forward, out m_rayHit) && Input.GetKeyDown("f") && locateStarstoneText.enabled == true && distance <= 4) //If the player presses f then >
-        {
-            m_prototypeClasses.canSelect = false;
-            if (m_rayHit.collider.gameObject.layer == LayerMask.NameToLayer("Stones"))
+        if (Physics.Raycast(shotPoint.position, shotPoint.forward, out m_rayHit))
+        {       
+           if (m_rayHit.collider.gameObject.layer == LayerMask.NameToLayer("Stones") && Input.GetKeyDown("f") && locateStarstoneText.enabled == true && distance <= 4) //If the player presses f then >
             {
-                m_waveSystem.canSpawnEnemies = false;
+                m_waveSystem.canSpawnEnemies = true;
                 notesComplete = false;
                 locateStarstoneText.enabled = false;
-                killEnemiesText.active = true; // > indicate to the player that there are enemies that can be killed.
+                killEnemiesText.active = true; // > indicate to the player that there are enemies that can be killed. 
             }
         }
 

@@ -119,13 +119,13 @@ public class Player_Controller : MonoBehaviour
 
         if (portalController.transitionActive == false && tempColor.a >= 0)
         {
-            tempColor.a -= 0.2f * Time.deltaTime;
+            tempColor.a -= 0.5f * Time.deltaTime;
             transition.color = tempColor;
         }
 
         if (portalController.transitionActive == true)
         {
-            tempColor.a += 0.2f * Time.deltaTime;
+            tempColor.a += 0.5f * Time.deltaTime;
             transition.color = tempColor;
             if (tempColor.a >= 1 && SceneManager.GetActiveScene() == SceneManager.GetSceneByName("Game_Scene"))
             {

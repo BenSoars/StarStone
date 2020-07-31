@@ -183,7 +183,7 @@ public class Prototype_Classes : MonoBehaviour
         switch (chosenBuff)
         {
             case 0:
-                m_gunGeneric.m_bulletDamage = m_defaultDamage * 0.80f;
+                m_gunGeneric.m_bulletDamage = m_defaultDamage * 0.80f; //Enemy takes less damage from the laser.
                 break;
             case 1:
                 fogStrength = Mathf.Lerp(fogStrength, currentFog, Time.deltaTime * 2); //Smooth fog adjustment.

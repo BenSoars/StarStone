@@ -299,7 +299,7 @@ public class User_Interface : MonoBehaviour
         Cursor.visible = true;
         gameUI.active = false;
         m_pauseMenuActive = false;
-        SceneManager.LoadScene("MainMenu"); //Load main menu scene.
+        SceneManager.LoadScene("Main_Menu"); //Load main menu scene.
     }
 
     public void f_interactionText()
