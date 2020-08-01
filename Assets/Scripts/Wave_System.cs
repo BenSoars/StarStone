@@ -20,7 +20,7 @@ public class Wave
 
     // all are separated for clarity, and making it easier for the producer to understand what each value is for
 }
-    
+
 
 public class Wave_System : MonoBehaviour
 {
@@ -51,7 +51,7 @@ public class Wave_System : MonoBehaviour
     //Kurtis Watson     
     [Header("Wisp Components")]
     [Space(2)]
-    public List<GameObject> wisps = new List<GameObject>();  
+    public List<GameObject> wisps = new List<GameObject>();
     public List<Transform> spawnPoints = new List<Transform>(); //Stores the spawnpoints for the enemy.
     public bool m_startedWaves; //Detects if the wave has started.
     private GameObject[] m_wispPoint;
@@ -118,7 +118,7 @@ public class Wave_System : MonoBehaviour
         }
 
         if (newWave == true)
-        { 
+        {
             m_userInterface.f_waveTimer();
             f_spawnWisps(); // spawn wisps
         }
@@ -165,19 +165,20 @@ public class Wave_System : MonoBehaviour
     void FixedUpdate()
     {
         f_intermission();
-        
+
         if (spawnedEnemies.Count <= 0 && enemiesLeft == 0 && m_enemiesKilled == false && curRound > 0)
         {
             m_prototypeClasses.buffChosen = false; //Bug fix.
             isIntermission = true; //Begin intermission countdown.
-            switch (curRound) {
-                case 2: 
-                case 4: 
-                case 6: 
-                case 7: 
+            switch (curRound)
+            {
+                case 2:
+                case 4:
+                case 6:
+                case 7:
                 case 9:
                     m_pickupSystem.spawnCogs = true;
-                        break;
+                    break;
                 case 3:
                 case 5:
                 case 8:
@@ -216,7 +217,7 @@ public class Wave_System : MonoBehaviour
             {
                 m_SpecialTracker.CheckForRoundAchievements();
                 m_checkRound = true;
-            } 
+            }
             currentIntermissionTime -= Time.deltaTime;
         }
         else
@@ -238,37 +239,32 @@ public class Wave_System : MonoBehaviour
             if (curRound > 1)
             {
                 m_Achievement.UnlockAchievement(1); // unlock the beat round 1 Achievement
-               
+
             }
             m_SpecialTracker.setRoundChecker();
         }
     }
 
-    //Ben Soars
     void f_sortOutEnemys()
     {
-        if (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("Game_Scene"))
+        //Kurtis Watson
+        if (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("Tutorial_Scene") && canSpawnEnemies == true)
         {
-            if (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("Tutorial_Scene") && canSpawnEnemies == true)
-            {
-                canSpawnEnemies = false;
-                curRound = 0;
-            }
-
-            if (curRound <= Waves.Length) // if the current round isn't the last
-            {
-                m_enemyArray.Clear(); // clear the current array
-                m_enemyArray.Add(Waves[curRound].Basic);
-                m_enemyArray.Add(Waves[curRound].Small);
-                m_enemyArray.Add(Waves[curRound].Large);
-                m_enemyArray.Add(Waves[curRound].Ranged);
-            }
-            else
-            {
-                SceneManager.LoadScene("Game_Over"); // load 
-            }
-        }      
-        
-        
+            canSpawnEnemies = false;
+            curRound = 0;
+        }
+        //Ben Soars
+        if (curRound <= Waves.Length) // if the current round isn't the last
+        {
+            m_enemyArray.Clear(); // clear the current array
+            m_enemyArray.Add(Waves[curRound].Basic);
+            m_enemyArray.Add(Waves[curRound].Small);
+            m_enemyArray.Add(Waves[curRound].Large);
+            m_enemyArray.Add(Waves[curRound].Ranged);
+        }
+        else
+        {
+            SceneManager.LoadScene("Game_Over"); // load 
+        }
     }
 }
