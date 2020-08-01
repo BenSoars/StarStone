@@ -25,7 +25,7 @@ public class Projectile : MonoBehaviour
     [Tooltip("Enable this if you want the projectile to rotate in the direction it's traveling in")]
     public bool m_faceDirectionOfTravel; // 
 
-    public GameObject m_hitDamageText;
+    public GameObject m_hitDamageText; 
     private AchievementSpecialConditions m_SpecialTracker;
 
     void Start()

@@ -36,7 +36,7 @@ public class Enemy_Controller : MonoBehaviour
 
     public bool m_isGrounded = true; // is grounded check
 
-    private Vector3 m_lastPosition; // the last position the enemy saw the player at
+    private Vector3 lastPosition; // the last position the enemy saw the player at
     private int m_randomNumber;
 
     [System.Serializable]
@@ -150,7 +150,7 @@ public class Enemy_Controller : MonoBehaviour
             if (m_sightRaycast.collider.gameObject.CompareTag("Player") && r_player.isPlayerInvisible == false) // if it can see the player 
             {
                 m_state = CurrentState.Attack; // set the enemy to be attacking
-                m_lastPosition = r_player.transform.position; // set the last position of the player
+                lastPosition = r_player.transform.position; // set the last position of the player
 
             }
             else if (m_state == CurrentState.Attack) // if they're attacking and they can't see the player
@@ -193,7 +193,7 @@ public class Enemy_Controller : MonoBehaviour
                     }
                     break;
                 case (CurrentState.Check): // if enemy has lost player, search for last known position
-                        m_navAgent.SetDestination(m_lastPosition); 
+                        m_navAgent.SetDestination(lastPosition); 
 
                         m_navAgent.speed = m_runSpeed; // set to defined movespeed in script for consistancy's sake
                   
@@ -218,11 +218,6 @@ public class Enemy_Controller : MonoBehaviour
 
     void OnTriggerStay(Collider other)
     {
-        if (other.gameObject.CompareTag("Explosion")) // if the enemy is hit by an explosion
-        {
-            m_isGrounded = false; // set them to be no longer grounded
-            m_enemyHealth = 1; // set them to 1 health so they die on impact
-        }
 
         if (other.gameObject.CompareTag("Infected")) // if the enemy touches an infection point
         {
@@ -237,16 +232,6 @@ public class Enemy_Controller : MonoBehaviour
             
             m_enemyHealth -= 50; // set them to 1 health so they die on impact
         }
-    }
-
-    void OnCollisionEnter(Collision col)
-    {
-        if (col.gameObject.CompareTag("Ground") && m_isGrounded == false) // if the enemy touches the ground and isn't already grounded
-        {
-            m_enemyHealth = 0; // set the enemy to die on impact
-        }
-
-        
     }
 
     IEnumerator CanAttack() // attack function

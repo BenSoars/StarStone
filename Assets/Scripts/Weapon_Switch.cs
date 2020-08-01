@@ -6,7 +6,7 @@ public class Weapon_Switch : MonoBehaviour
 {
     // Ben Soars
     public string keyPressed; // the key that's been pressed 
-    private string m_prevPressed;
+    private string m_prevPressed; // store the previously pressed button
     public List<GameObject> m_Weapons = new List<GameObject>(); // the weapon gameobjects
 
     public int currentWeapon;
@@ -17,7 +17,7 @@ public class Weapon_Switch : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        currentWeapon = 1;
+        currentWeapon = 1; // set default weapon
         prototypeClasses = FindObjectOfType<Prototype_Classes>();
     }
 
@@ -55,11 +55,11 @@ public class Weapon_Switch : MonoBehaviour
             }
         }
 
-        f_disableAll(); // check the weapon active status
+        disableAll(); // check the weapon active status
 
     }
 
-    void f_disableAll()
+    void disableAll()
     {
         for (int i = 0; i < m_Weapons.Count; i++)
         {

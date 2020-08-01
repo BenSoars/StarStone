@@ -15,7 +15,7 @@ public class Enemy_Damage : MonoBehaviour
     void OnEnable() // when enabled renable the hurtbox if it's disabled
     {
         m_SpecialTracker = GameObject.FindObjectOfType<AchievementSpecialConditions>();
-        m_hurtBox.enabled = true;
+        m_hurtBox.enabled = true; // re-enable the box collider when it's enabled, as it could be turned off from the last use
     }
 
     void OnTriggerStay (Collider other) // if it enters a player
@@ -24,9 +24,9 @@ public class Enemy_Damage : MonoBehaviour
         {
             r_player = other.gameObject.GetComponent<Player_Controller>(); // get player componenet
             r_player.playerHealth -= m_damage * r_player.defenceValue; // take health away based on damage and defence
-            m_hurtBox.enabled = false; // disable the hurtbox to prevent multiple hits per frames]
-            r_player.audio.playPlayerHurt();
-            m_SpecialTracker.imperfectRun();
+            m_hurtBox.enabled = false; // disable the hurtbox to prevent multiple hits per frames
+            r_player.audio.playPlayerHurt(); // play hurt noise
+            m_SpecialTracker.imperfectRun(); // player was it, set run to be imperfect
         }
     }
 }

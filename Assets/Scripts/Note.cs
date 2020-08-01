@@ -24,9 +24,9 @@ public class Note : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player")) // if the player walks over the note
         {
-            if (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("Tutorial_Scene"))
+            if (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("Tutorial_Scene")) // if it's the tutorial level
             {
-                Destroy(gameObject);
+                Destroy(gameObject); // destroy self
             }
             else
             {
@@ -37,9 +37,9 @@ public class Note : MonoBehaviour
 
     void pickUpNote()
     {
-        m_invSystem.noteName.Add(NoteName); // add to the inventory list
-        m_invSystem.noteContents.Add(NoteText); // add to the inventory list
-        Destroy(gameObject); // add to the inventory list
+        m_invSystem.noteName.Add(NoteName); // add to title the inventory list
+        m_invSystem.noteContents.Add(NoteText); // add contents to the inventory list
+        Destroy(gameObject); //destroy self
 
         //Kurtis Watson
         m_userInterface.collectedNotes += 1;

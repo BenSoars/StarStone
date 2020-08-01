@@ -15,13 +15,12 @@ public class Inventory : MonoBehaviour
 
     public Text m_noteNameDisplay; // the note name text area
     public Text m_noteContentsDisplay; // the note contents text area
-    public Image m_noteImageDisplay; // the note image area
 
-    private AchievementTracker m_achivement;
+    private AchievementTracker m_achivement; // the achivement tracker component
 
     void Start()
     {
-        m_achivement = FindObjectOfType<AchievementTracker>();
+        m_achivement = FindObjectOfType<AchievementTracker>(); // find the achivement tracker component in the scene
     }
 
     // Update is called once per frame

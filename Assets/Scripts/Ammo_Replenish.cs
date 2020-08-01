@@ -5,10 +5,10 @@ using UnityEngine;
 public class Ammo_Replenish : MonoBehaviour
 {
     // Ben Soars
-    public int AmmoWorth;
+    public int AmmoWorth; // the amount of ammo that pack is worth
     public AudioClip pickupSound; // the sound that will play when picked up
 
-    private Audio_System m_audio;
+    private Audio_System m_audio; // the audio system that will play on pickup
 
     void Start()
     {
@@ -21,7 +21,7 @@ public class Ammo_Replenish : MonoBehaviour
         {
             Weapon_Switch weapons = FindObjectOfType<Weapon_Switch>();
 
-            for (int i = 0; i < 2; i++)
+            for (int i = 0; i < weapons.m_Weapons.Count - 1; i++) // for loop through all the weapons that can have ammo, in this case there are only two
             {
                 Gun_Generic Gun = weapons.m_Weapons[i].GetComponent<Gun_Generic>();
                 if (Gun) // if the player has a gun equiped

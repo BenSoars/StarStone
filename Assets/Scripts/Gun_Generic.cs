@@ -78,7 +78,7 @@ public class Gun_Generic : Melee_Attack
     public Rigidbody m_physicalBullet; // leave this blank if the gun is hitscan
     [Tooltip("The point at which the bullet will shoot from.")]
     public Transform m_shotPoint; // the point where the bullet is shot from
-    private Rigidbody m_shotBullet; // the bullet that's physic
+    private Rigidbody m_shotBullet; // the bullet that's physical
 
     private RaycastHit m_hitscanCast; // the hitscan raycast
     [Tooltip("The hitspark effect that is created when the hitscan hits a wall.")]
@@ -124,7 +124,7 @@ public class Gun_Generic : Melee_Attack
         m_bulletDamage = Random.Range(m_minBulletDamage, m_maxBulletDamage) * damageMultiplier; // generate random damage
         if (Anim) // if the gun has an animator
         {
-            Anim.SetTrigger("Shot"); // playr shot animations
+            Anim.SetTrigger("Shot"); // play shot animations
         }
 
         coolDownTimer = m_coolDown; // set the cooldown timer
@@ -139,7 +139,7 @@ public class Gun_Generic : Melee_Attack
             {
                 m_shotBullet = Instantiate(m_physicalBullet, m_shotPoint.transform.position, Quaternion.identity) as Rigidbody; // shoot bullet
                 m_shotBullet.AddForce(m_newAccuracy * m_shotForce); // push bullet out
-                m_shotBullet.GetComponent<Projectile>().m_damage = m_bulletDamage;
+                m_shotBullet.GetComponent<Projectile>().m_damage = m_bulletDamage; 
             }
             else
             {
