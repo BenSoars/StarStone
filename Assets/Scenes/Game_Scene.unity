@@ -751,7 +751,7 @@ Transform:
   - {fileID: 1222890876}
   - {fileID: 1888867587}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &84233853 stripped
 Transform:
@@ -1246,7 +1246,7 @@ Transform:
   - {fileID: 466647269}
   - {fileID: 269939959}
   m_Father: {fileID: 0}
-  m_RootOrder: 28
+  m_RootOrder: 29
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &99685247
 Animator:
@@ -1628,7 +1628,7 @@ PrefabInstance:
     - target: {fileID: 1247407473141221744, guid: bafac8eac91462d4a82b3bdc0d4a4ffd,
         type: 3}
       propertyPath: m_RootOrder
-      value: 29
+      value: 28
       objectReference: {fileID: 0}
     - target: {fileID: 1247407473141221744, guid: bafac8eac91462d4a82b3bdc0d4a4ffd,
         type: 3}
@@ -14102,7 +14102,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 780611a67e8e941a2b3aa96e5915a793, type: 3}
       propertyPath: m_RootOrder
-      value: 10
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 780611a67e8e941a2b3aa96e5915a793, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -62454,6 +62454,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 6427834453612790358, guid: 23e70938c35368744948706caab60da2,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7305707931188734429, guid: 23e70938c35368744948706caab60da2,
         type: 3}
