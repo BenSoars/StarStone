@@ -4,17 +4,37 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
+[System.Serializable] // serializable class used for
+public class Wave
+{
+    [Tooltip("The Wave Name")]
+    public string name; // the name of the wave, set to wave (number) for clarity
+    [Tooltip("Amount of Basic Type enemies per this wave")]
+    public int Basic; // the amunt of basic enemies
+    [Tooltip("Amount of Small Type enemies per this wave")]
+    public int Small; // the amount of smalle enemies
+    [Tooltip("Amount of Large Type enemies per this wave")]
+    public int Large; // the amount of large enemies
+    [Tooltip("Amount of Ranged Type enemies per this wave")]
+    public int Ranged; // the amount or ranged enemies
+
+    // all are separated for clarity, and making it easier for the producer to understand what each value is for
+}
+    
+
 public class Wave_System : MonoBehaviour
 {
     //Ben Soars
     [Header("Wave Components")]
     public List<GameObject> enemyTypes = new List<GameObject>(); // the enemy types
-    public List<string> amountOf = new List<string>(); // the amount of enemies per wave
+    //public List<string> amountOf = new List<string>(); // the amount of enemies per wave
     public List<GameObject> spawnedEnemies = new List<GameObject>(); // the spawned enemies
     public int enemiesLeft; // the amount of enemies remaining
     public int curRound; // the current round the player is on
-    public List<int> enemyArray = new List<int>();
+    private List<int> m_enemyArray = new List<int>();
     public bool canSpawnEnemies;
+
+    public Wave[] Waves;
 
     [Header("Audio System")]
     [Space(2)]
@@ -114,9 +134,9 @@ public class Wave_System : MonoBehaviour
         m_startedWaves = true; //Update UI values.
         f_sortOutEnemys(); //Spawn enemies of different types.
         audio.playImportant(roundNoises[0]);
-        for (int k = 0; k < enemyArray.Count; k++)
+        for (int k = 0; k < m_enemyArray.Count; k++)
         {
-            for (int i = 0; i < enemyArray[k]; i++)
+            for (int i = 0; i < m_enemyArray[k]; i++)
             {
                 m_random = Random.Range(1, 4);
                 GameObject spawned = Instantiate(wisps[k], m_wispPoint[m_random].transform.position, Quaternion.identity); //Spawn wisps at a random point.
@@ -229,36 +249,26 @@ public class Wave_System : MonoBehaviour
     {
         if (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("Game_Scene"))
         {
-            if (curRound <= amountOf.Count) // if the current round isn't the last
+            if (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("Tutorial_Scene") && canSpawnEnemies == true)
             {
-                string[] varArray = amountOf[curRound].Split('_'); // split the current amount of enemies
+                canSpawnEnemies = false;
+                curRound = 0;
+            }
 
-                enemyArray.Clear(); // clear the current array
-                for (int i = 0; i < enemyTypes.Count; i++) // for loop for all the enemy types
-                {
-                    enemyArray.Add(System.Convert.ToInt32(varArray[i]));// convert the string into a string if it can
-                }
+            if (curRound <= Waves.Length) // if the current round isn't the last
+            {
+                m_enemyArray.Clear(); // clear the current array
+                m_enemyArray.Add(Waves[curRound].Basic);
+                m_enemyArray.Add(Waves[curRound].Small);
+                m_enemyArray.Add(Waves[curRound].Large);
+                m_enemyArray.Add(Waves[curRound].Ranged);
             }
             else
             {
-                SceneManager.LoadScene("Main_Menu"); // load 
+                SceneManager.LoadScene("Game_Over"); // load 
             }
         }      
         
-        if(SceneManager.GetActiveScene() == SceneManager.GetSceneByName("Tutorial_Scene") && canSpawnEnemies == true)
-        {
-            canSpawnEnemies = false;
-            curRound = 0;
-            if (curRound < 1) // if the current round isn't the last
-            {
-                string[] varArray = amountOf[curRound].Split('_'); // split the current amount of enemies
-
-                enemyArray.Clear(); // clear the current array
-                for (int i = 0; i < enemyTypes.Count; i++) // for loop for all the enemy types
-                {
-                    enemyArray.Add(System.Convert.ToInt32(varArray[i]));// convert the string into a string if it can
-                }
-            }
-        }
+        
     }
 }

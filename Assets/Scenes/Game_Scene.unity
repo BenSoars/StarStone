@@ -2018,6 +2018,67 @@ MonoBehaviour:
   curRound: 0
   enemyArray: 
   canSpawnEnemies: 0
+  Waves:
+  - name: Wave 1
+    Basic: 2
+    Small: 1
+    Large: 2
+    Ranged: 0
+  - name: Wave 2
+    Basic: 4
+    Small: 1
+    Large: 2
+    Ranged: 0
+  - name: Wave 3
+    Basic: 5
+    Small: 2
+    Large: 3
+    Ranged: 0
+  - name: Wave 4
+    Basic: 6
+    Small: 2
+    Large: 4
+    Ranged: 0
+  - name: Wave 5
+    Basic: 6
+    Small: 3
+    Large: 2
+    Ranged: 2
+  - name: Wave 6
+    Basic: 5
+    Small: 4
+    Large: 1
+    Ranged: 4
+  - name: Wave 7
+    Basic: 3
+    Small: 4
+    Large: 5
+    Ranged: 2
+  - name: Wave 8
+    Basic: 6
+    Small: 2
+    Large: 4
+    Ranged: 2
+  - name: Wave 9
+    Basic: 8
+    Small: 1
+    Large: 0
+    Ranged: 5
+  - name: Wave 10
+    Basic: 0
+    Small: 8
+    Large: 2
+    Ranged: 4
+  - name: Wave 11
+    Basic: 4
+    Small: 3
+    Large: 4
+    Ranged: 5
+  - name: Wave 12
+    Basic: 5
+    Small: 5
+    Large: 5
+    Ranged: 5
   audio: {fileID: 0}
   roundNoises:
   - {fileID: 8300000, guid: 2ef7ef7c13ab8d343abf3e9e6c729a10, type: 3}
