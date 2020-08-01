@@ -7289,24 +7289,21 @@ MonoBehaviour:
   - {fileID: 8653534323981115242, guid: 30a515d93317d6e46a11e2c362aafc9d, type: 3}
   - {fileID: 429346716407466653, guid: 0395127d264edeb4a9756be6d4b5c819, type: 3}
   - {fileID: 4234072971488087977, guid: e0c482f454bc0f04baa2c97bfd1011a9, type: 3}
-  amountOf:
-  - 2_1_2_0
-  - 4_1_2_0
-  - 5_2_3_0
-  - 6_2_4_0
-  - 6_3_2_2
-  - 5_4_1_4
-  - 3_4_5_2
-  - 6_2_4_2
-  - 8_1_0_5
-  - 0_8_2_4
-  - 4_3_4_5
-  - 5_5_5_5
   spawnedEnemies: []
   enemiesLeft: 0
   curRound: 0
-  enemyArray: 
   canSpawnEnemies: 0
+  Waves:
+  - name: Wave
+    Basic: 2
+    Small: 2
+    Large: 1
+    Ranged: 0
+  - name: Wave
+    Basic: 2
+    Small: 2
+    Large: 1
+    Ranged: 0
   audio: {fileID: 0}
   roundNoises:
   - {fileID: 8300000, guid: 2ef7ef7c13ab8d343abf3e9e6c729a10, type: 3}
@@ -75006,7 +75003,6 @@ MonoBehaviour:
   notesVisible: {fileID: 3651810225086482906}
   m_noteNameDisplay: {fileID: 1376299134333263703}
   m_noteContentsDisplay: {fileID: 265895560542368468}
-  m_noteImageDisplay: {fileID: 0}
 --- !u!1 &6003505213105347762
 GameObject:
   m_ObjectHideFlags: 0

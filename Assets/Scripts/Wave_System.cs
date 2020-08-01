@@ -118,7 +118,7 @@ public class Wave_System : MonoBehaviour
         }
 
         if (newWave == true)
-        {
+        { 
             m_userInterface.f_waveTimer();
             f_spawnWisps(); // spawn wisps
         }
