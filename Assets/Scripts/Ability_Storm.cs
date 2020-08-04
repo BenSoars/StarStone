@@ -5,6 +5,9 @@ using UnityEngine;
 //Kurtis Watson
 public class Ability_Storm : MonoBehaviour
 {
+    [Header("Storm Values")]
+    [Tooltip("Set the damage per second for the storm.")]
+    public float stormDamage = 2;
     private void Start()
     {
         GetComponent<BoxCollider>().enabled = false; //Disable trigger until cloud has risen.
@@ -23,7 +26,7 @@ public class Ability_Storm : MonoBehaviour
         if (other.gameObject.CompareTag("Enemy")) //Check for enemy collision.
         {
             GameObject enemyHit = other.gameObject; //Access the specific collided object.
-            enemyHit.GetComponent<Enemy_Controller>().m_enemyHealth -= 2f; //Damage player -2 each hit.
+            enemyHit.GetComponent<Enemy_Controller>().m_enemyHealth -= stormDamage * Time.deltaTime; //Damage player -2 each hit.
         }
     }
 

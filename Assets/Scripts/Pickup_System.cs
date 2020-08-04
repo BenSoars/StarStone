@@ -5,12 +5,17 @@ using UnityEngine;
 
 //Kurtis Watson
 public class Pickup_System : MonoBehaviour
-{
+{    
+    [Header("Note Components")]    
+    [Tooltip("Set the date for the note.")]
+    public string[] noteDate;
+    [Tooltip("Set the text for the note.")]
+    public string[] noteText;
+
     [Header("Pickup Mechanics")]
-    [Space(2)]
-    private Transform m_desiredLocation;
-    private List<Transform> m_locations = new List<Transform>();   
     public GameObject floatPoint;
+    private Transform m_desiredLocation;
+    private List<Transform> m_locations = new List<Transform>();      
     public GameObject currentPart;
     public bool spawnNote;
     public bool spawnCogs;
@@ -46,6 +51,8 @@ public class Pickup_System : MonoBehaviour
 
     private AchievementTracker m_achivement;
 
+
+
     private void Start()
     {
         //animator = gameObject.transform.GetChild(0).gameObject.transform.GetChild(3).GetComponent<Animator>(); //Get the animator of the hands.
@@ -78,16 +85,16 @@ public class Pickup_System : MonoBehaviour
             m_noteID += 1;
             switch (m_noteID) {
                 case 1:
-                    m_note.GetComponent<Note>().NoteName = "21.06.1923";
-                    m_note.GetComponent<Note>().NoteText = "We should not have touched it. Oh God, whoever that is anymore. If only we could go back. Only a few weeks ago everything was normal. It was only until those damned power-hungry scientists went rogue and started poking around the new generator they started building.";
+                    m_note.GetComponent<Note>().NoteName = noteDate[0];
+                    m_note.GetComponent<Note>().NoteText = noteText[0];
                     break;
                 case 2:
-                    m_note.GetComponent<Note>().NoteName = "24.06.1923";
-                    m_note.GetComponent<Note>().NoteText = "We have just discovered a new part of the temple. It seems to be some sort of sacrificial pit? It reeks with blood. The other scientists are already planning on renovation, they think that the old sacrifices are the key to the power. I feel like this is bad. They want the star stones to power everything in sight.";
+                    m_note.GetComponent<Note>().NoteName = noteDate[1];
+                    m_note.GetComponent<Note>().NoteText = noteText[1];
                     break;
                 case 3:
-                    m_note.GetComponent<Note>().NoteName = "26.06.1923";
-                    m_note.GetComponent<Note>().NoteText = "Time: " + m_clockController.globalHour + ":" + m_clockController.globalMin + " - Ruins have been check and the generator is in full working order. Fuel consumption gathered from the Temples core is at a steady rate and the stones are charging as expected.";
+                    m_note.GetComponent<Note>().NoteName = noteDate[2];
+                    m_note.GetComponent<Note>().NoteText = "Time: " + m_clockController.globalHour + ":" + m_clockController.globalMin + noteText[2];
                     break;
             }
             

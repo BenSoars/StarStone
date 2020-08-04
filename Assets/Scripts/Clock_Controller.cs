@@ -80,6 +80,11 @@ public class Clock_Controller : MonoBehaviour
             globalMin = "12";
         }
         else globalMin = "" + m_desiredMin * 5;
+
+        if(m_desiredMin == 1)
+        {
+            globalMin = "0" + m_desiredMin;
+        }
     }
 
     void f_clockMechanic()
