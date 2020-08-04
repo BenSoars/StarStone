@@ -127,13 +127,15 @@ public class Wave_System : MonoBehaviour
     //Kurtis Watson
     void f_spawnWisps()
     {
-        m_playerContoller.playerHealth = 100;
-        newWave = false;
+        Debug.Log("f_spawnWisps function called.");
+        
+        newWave = false; //Stop this function being called again.
         currentIntermissionTime = intermissionTime; //Reset current intermission time.
-                                                    //Stop a new wave of enemies spawning. 
         m_startedWaves = true; //Update UI values.
+
         f_sortOutEnemys(); //Spawn enemies of different types.
         audio.playImportant(roundNoises[0]);
+
         for (int k = 0; k < m_enemyArray.Count; k++)
         {
             for (int i = 0; i < m_enemyArray[k]; i++)
@@ -142,14 +144,24 @@ public class Wave_System : MonoBehaviour
                 GameObject spawned = Instantiate(wisps[k], m_wispPoint[m_random].transform.position, Quaternion.identity); //Spawn wisps at a random point.
                 spawnedEnemies.Add(spawned); //Add enemy spawned to enemies spawned list.
             }
+            Debug.Log("Total spawnedEnemies: " + spawnedEnemies.Count);
         }
         enemiesLeft = spawnedEnemies.Count; //Set the count for the enemies left.
-        m_prototypeClasses.fogStrength = 0.2f; //Fog strength.
-        m_prototypeClasses.currentFog = 0.2f; //Reset current fog.
         m_prototypeClasses.stonePower[m_prototypeClasses.chosenBuff] -= enemiesLeft * 2; //Decrease the chosen enemy buff by two times the amount of enemies.
-        fogMath = m_prototypeClasses.fogStrength / enemiesLeft; //Calculate the amount of fog to decrease each enemy kill.
+
         curRound += 1; //Increase current round by one.
         m_enemiesKilled = false;
+        m_playerContoller.playerHealth = 100;
+
+        f_fogManager(); //Reset fog values.
+        Debug.Log("New Wave: " + newWave);
+    }
+
+    void f_fogManager()
+    {
+        m_prototypeClasses.fogStrength = 0.2f; //Fog strength.
+        m_prototypeClasses.currentFog = 0.2f; //Reset current fog. 
+        fogMath = m_prototypeClasses.fogStrength / enemiesLeft; //Calculate the amount of fog to decrease each enemy kill.
     }
 
     //Kurtis Watson
@@ -177,12 +189,12 @@ public class Wave_System : MonoBehaviour
                 case 6:
                 case 7:
                 case 9:
-                    m_pickupSystem.spawnCogs = true;
+                    m_pickupSystem.spawnCogs = true; //Spawn clock part if the case is met.
                     break;
                 case 3:
                 case 5:
                 case 8:
-                    m_pickupSystem.spawnNote = true;
+                    m_pickupSystem.spawnNote = true; //Spawn note if the case is met.
                     break;
             }
             m_enemiesKilled = true; //Stops the pick-ups from spawning more than one item a round (Notes etc. above in %2 function).
