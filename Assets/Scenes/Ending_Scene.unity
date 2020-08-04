@@ -5011,57 +5011,22 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '
-
-    CREDITS:
-
-
-    Lead Producer:
-
-    Oliver Savage
-
-
-    Producer:
-
-    Sema
-    Ermis
-
-
-    Programmers:
-
-    Kurtis Watson
-
-    Ben Soars
-
-
-    Prop Artist:
-
-    Lee
-    Smith
-
-
-    Concept Artists:
-
-    Sandra Grozav
-
-    Alex Gate
-
-    Holo Moon
-
-    Sarah
-    Briers
-
-    Morgan Grant
-
-
-    A message from Team 3:
-
-    Thank you for playing,
-    we hope you enjoyed!
-
-    Shoutout Mumzy too from Kurt xox!
-
-'
+  m_text: "\nCREDITS:\n\nLead Producer:\nOliver Savage\n\nProducer:\nSema Ermis\n\nProgrammers:\nKurtis
+    Watson\nBen Soars\n\nProp Artist:\nLee Smith\n\nConcept Artists:\nSandra Grozav\nAlex
+    Gate\nHolo Moon\nSarah Briers\nMorgan Grant\n\nOther Assets\n\r\nSound Effects\r:\n\r\n(Combined
+    for the gun)\r\nGun Shot Close by udikagan (Creative Commons 0)\r\nPistol Riccohet
+    by Diboz (Creative Commons 0)\r\n\n(Combined for health kit pickup sound)\r\nBandage
+    = Cloth Rip by Dpoggioli (Attribution License)\nHealth regen = regen-healing3
+    by jtn191 (Attribution License)\r\n\nCrossbow =  bow02 by Erdie (Attribution
+    License) \r\n\r\nAmmo Pickup = Metal Flick 1 by Sethroph (Creative Commons 0)
+    \r\n\r\nWoosh by qubodup (Creative Commons 0)\r\n\r\nLaser (heavily altered)
+    = spaceshipfx by music152jaa (Creative Commons 0)\r\n\r\nGong = warm gong by
+    Veiler (Creative Commons 0)\r\n\r\nReload Shotgun = shotgun, 12 gage winchester
+    pump shotgun, fire and reload multiple shots - JoseIgnacioTriay (Attribution
+    Noncommercial) \r\n\r\nGun Intro = Cocking a revolver by acidsnowflake (Creative
+    Commons 0)\r\n\r\nMelee Swing = Bamboo Swing, A8 by InspectorJ (Attribution License)\r\n\r\nRock
+    destroy by Bertsz (Creative Commons 0)\r\n\nA message from Team 3:\nThank you
+    for playing, we hope you enjoyed!\nShoutout Mumzy too from Kurt xox!\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -5089,8 +5054,8 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 20
+  m_fontSizeBase: 20
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -5106,7 +5071,7 @@ MonoBehaviour:
   m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
-  m_firstOverflowCharacterIndex: -1
+  m_firstOverflowCharacterIndex: 944
   m_linkedTextComponent: {fileID: 0}
   m_isLinkedTextComponent: 0
   m_isTextTruncated: 0
@@ -5130,12 +5095,12 @@ MonoBehaviour:
   m_margin: {x: -364.7001, y: 0, z: -361.33093, w: -1055.6809}
   m_textInfo:
     textComponent: {fileID: 39932159}
-    characterCount: 304
+    characterCount: 1233
     spriteCount: 0
-    spaceCount: 55
-    wordCount: 49
+    spaceCount: 206
+    wordCount: 174
     linkCount: 0
-    lineCount: 26
+    lineCount: 57
     pageCount: 1
     materialCount: 1
   m_isUsingLegacyAnimationComponent: 0
@@ -5358,7 +5323,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 264317203}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
