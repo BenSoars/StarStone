@@ -97,7 +97,7 @@ public class Player_Controller : MonoBehaviour
 
         if (playerHealth > 100) { playerHealth = 100; } //Set player health to 100 if max health is exceeded.
 
-        if (isPlayerActive == true)
+        if (isPlayerActive == true) //Check if the player is active.
         {            
             f_climb();
             f_lookAround();
@@ -123,18 +123,18 @@ public class Player_Controller : MonoBehaviour
             transition.color = tempColor;
         }
 
-        if (portalController.transitionActive == true)
+        if (portalController.transitionActive == true) //Check if the portal has been activated.
         {
-            tempColor.a += 0.5f * Time.deltaTime;
+            tempColor.a += 0.5f * Time.deltaTime; //Increase opacity of the transition for smooth scene swtiching.
             transition.color = tempColor;
-            if (tempColor.a >= 1 && SceneManager.GetActiveScene() == SceneManager.GetSceneByName("Game_Scene"))
+            if (tempColor.a >= 1 && SceneManager.GetActiveScene() == SceneManager.GetSceneByName("Game_Scene")) //When at solid colour state, based on the scene, load a new scene.
             {
-                SceneManager.LoadScene("Ending_Scene");
-                portalController.transitionActive = false;
+                SceneManager.LoadScene("Ending_Scene"); //Load ending scene.
+                portalController.transitionActive = false; //Disable portal.
             }
             if (tempColor.a >= 1 && SceneManager.GetActiveScene() == SceneManager.GetSceneByName("Tutorial_Scene"))
             {
-                SceneManager.LoadScene("Main_Menu");
+                SceneManager.LoadScene("Main_Menu"); //Redirect to the main menu.
                 portalController.transitionActive = false;
             }
         }

@@ -5,6 +5,9 @@ using UnityEngine;
 //Kurtis Watson
 public class Ability_Melee : MonoBehaviour
 {
+    [Header("Melee Values")]
+    [Tooltip("Set the damage of the melee.")]
+    public float meleeDamage;
     private Animator m_animator;
     private bool m_isMelee;
 
@@ -18,7 +21,7 @@ public class Ability_Melee : MonoBehaviour
     {
         if(o_collided.CompareTag("Enemy"))
         {
-            o_collided.gameObject.GetComponent<Enemy_Controller>().m_enemyHealth -= 50; //Damage enemy by 50 if collided.
+            o_collided.gameObject.GetComponent<Enemy_Controller>().m_enemyHealth -= meleeDamage; //Damage enemy by 50 if collided.
         }
     }
 

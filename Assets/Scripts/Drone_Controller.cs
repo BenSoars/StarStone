@@ -11,12 +11,16 @@ public class Drone_Controller : MonoBehaviour
 
     [Header("Camera Values")]
     [Space(2)]
+    [Tooltip("Set look rotation speed.")]
     public float camRotSpeed;
     public float camMinY;
     public float camMaxY;
     public float camSmoothSpeed;
+    [Tooltip("Set the default speed of the drone.")]
     public float flySpeed;
+    [Tooltip("Set the max speed of the drone.")]
     public float maxSpeed;
+    [Tooltip("Set the speed at which the drone goes up and down.")]
     public float verticalSpeed;
     private float m_playerRotX;
     private float m_camRotY;
@@ -26,7 +30,6 @@ public class Drone_Controller : MonoBehaviour
     [Header("Referenced Scripts")]
     [Space(2)]
     private Player_Controller m_playerController;
-
 
     private void Start()
     {
