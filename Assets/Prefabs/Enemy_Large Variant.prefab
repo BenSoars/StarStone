@@ -14677,9 +14677,7 @@ MonoBehaviour:
   m_enemyHealth: 150
   m_enemyDamage: 11
   m_attackTime: 2
-  m_spawnChance: 1
   m_isStunned: 0
-  m_isRanged: 0
   m_projectile: {fileID: 0}
   m_isGrounded: 1
   m_state: 1
@@ -14691,6 +14689,7 @@ MonoBehaviour:
   soundEffect: {fileID: 1994396276538777736}
   soundsList:
   - {fileID: 8300000, guid: 26aa0a816685b62409345f756a29b67d, type: 3}
+  - {fileID: 8300000, guid: d8f1920ed35f07d4f9d2820af75d1697, type: 3}
   m_whisp: {fileID: 4912677542973487342, guid: 49ceda97bbd165a459db2f8f4ef86096, type: 3}
   m_isEnemyInfected: 0
 --- !u!136 &8653534323981115254
@@ -14801,7 +14800,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 1
+      value: 0.45
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -14816,7 +14815,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 0.35833332
       inSlope: 0
       outSlope: 0
       tangentMode: 0

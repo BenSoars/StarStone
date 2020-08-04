@@ -45,11 +45,14 @@ public class Projectile : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Enemy") && m_enemy == false) // if it's not an enemy projectile and collides with an enemy
         {
-            other.GetComponent<Enemy_Controller>().m_enemyHealth -= m_damage; // deal damage to the enemy
+            Enemy_Controller enemy = other.GetComponent<Enemy_Controller>();
+            enemy.m_enemyHealth -= m_damage; // deal damage to the enemy
+            enemy.f_onHit(); // play the enemy hurt sound
             GameObject m_textObject = Instantiate(m_hitDamageText, other.transform.position, Quaternion.identity); // create a damage text number
             m_textObject.GetComponentInChildren<TextMeshPro>().text = "" + m_damage; // display the damage dealt to the text
             stickyProjectile(other); // run the sticky projectile test
-           
+            
+
         } else if (other.gameObject.CompareTag ("Player") && m_enemy == true) // if it's an enemy projectile
         {
             Player_Controller player = other.GetComponent<Player_Controller>(); // get the player component

@@ -99,14 +99,8 @@ MonoBehaviour:
   m_enemyHealth: 100
   m_enemyDamage: 8
   m_attackTime: 1
-  m_spawnChance: 2
   m_isStunned: 0
-  m_isRanged: 0
   m_projectile: {fileID: 0}
-  m_ItemDrops:
-  - {fileID: 5762886321429660750, guid: e8fea09451d242e47a7ae1e2c4f6f86f, type: 3}
-  - {fileID: 1328950134255430560, guid: 0905edf88bc54574bb94d689a6dcae3e, type: 3}
-  - {fileID: 4088087161858035614, guid: 885e3a98b9c464d46945e84f7e39cc74, type: 3}
   m_isGrounded: 1
   m_state: 1
   m_eyePos: {fileID: 1229794459954426972}
@@ -117,6 +111,7 @@ MonoBehaviour:
   soundEffect: {fileID: -2077051157206875317}
   soundsList:
   - {fileID: 8300000, guid: 26aa0a816685b62409345f756a29b67d, type: 3}
+  - {fileID: 8300000, guid: d8f1920ed35f07d4f9d2820af75d1697, type: 3}
   m_whisp: {fileID: 42458450682264745, guid: 6befa5c3aa19d1842a12f708f5aab1c0, type: 3}
   m_isEnemyInfected: 0
 --- !u!136 &42458450682264757
@@ -246,7 +241,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 1
+      value: 0.45
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -261,7 +256,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 0.35833332
       inSlope: 0
       outSlope: 0
       tangentMode: 0

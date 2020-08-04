@@ -14,15 +14,18 @@ public class Enemy_Controller : MonoBehaviour
     public float m_moveSpeed = 2; // the default movement speed
     [Tooltip("Enemy running speed, used when the enemy spots the player")]
     public float m_runSpeed; // the running speed, used when it spots the player
+    [Tooltip("The enemy's current health")]
     public float m_enemyHealth; // the enemy health
+    [Tooltip("The amount of damage they do per attack")]
     public float m_enemyDamage; // the damage the enemy does to the player
+    [Tooltip("Time until they can attack again")]
     public float m_attackTime = 2; //the time inbetween attacks
-    public int m_spawnChance = 3; // chance for it to spawn an item on death
+
     public bool m_isStunned; // is stunend
     private bool m_resetStun; // reset the stun
     private bool m_isAttacking; // used to tell if the enemy is currently attacking
 
-    public bool m_isRanged = false; // if the enemy is a ranged type
+    [Tooltip("The projectile the enemy fires, leave blank if they don't fire anyhting")]
     public Projectile m_projectile; // the projectile they fire
 
     // access to other componenets
@@ -31,7 +34,7 @@ public class Enemy_Controller : MonoBehaviour
     private Rigidbody m_rb;
     private Animator r_anim;
     private AchievementSpecialConditions m_Achievement;
-
+    private Audio_System m_audio;
     private Item_Drop_System m_itemDrop;
 
     public bool m_isGrounded = true; // is grounded check
@@ -81,6 +84,7 @@ public class Enemy_Controller : MonoBehaviour
         m_defaultRunSpeed = m_runSpeed; // set the default run speed
         m_hurtBox.m_damage = m_enemyDamage; // set the hurtbox damage to represent the enemy damage
         m_itemDrop = FindObjectOfType<Item_Drop_System>();
+        m_audio = FindObjectOfType<Audio_System>(); // get the audio system
         soundEffect.volume = PlayerPrefs.GetFloat("volumeLevel"); // set the sound to match the sound effect volume
     }
 
@@ -172,7 +176,7 @@ public class Enemy_Controller : MonoBehaviour
             {
                 case (CurrentState.Attack): // if they're set to attack 
 
-                    if (m_isRanged == true) // if the enemy is ranged
+                    if (m_projectile) // if the enemy is ranged
                     {
                         if (m_isAttacking == false)
                         {
@@ -229,7 +233,7 @@ public class Enemy_Controller : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Melee")) // if the enemy is hit by an explosion
         {
-            
+            f_onHit(); // play hit sound
             m_enemyHealth -= 50; // set them to 1 health so they die on impact
         }
     }
@@ -240,7 +244,7 @@ public class Enemy_Controller : MonoBehaviour
         {
             m_isAttacking = true; // set the enemmy to be attacking to prevent this coroutine from overlapping itself
             yield return new WaitForSeconds(0.1f); // wait a short time so it's not instant
-            if (!m_isRanged) // if they are not a ranged type
+            if (!m_projectile) // if they are not a ranged type
             {
                 r_anim.SetTrigger("Attack"); // play attacking animation
             } else
@@ -264,6 +268,11 @@ public class Enemy_Controller : MonoBehaviour
         m_resetStun = false;
     }
 
+    public void f_onHit() // used outside of this script, acts as a getter and setter
+    {
+        m_audio.playEnemyHurt();
+    }
+
     //Kurtis Watson
     void f_resetSpeed()
     {
@@ -279,4 +288,6 @@ public class Enemy_Controller : MonoBehaviour
         GetComponentInChildren<ParticleSystem>().Stop();
         GetComponentInChildren<BoxCollider>().enabled = false;       
     }
+
+    
 }

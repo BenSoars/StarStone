@@ -150,7 +150,9 @@ public class Gun_Generic : Melee_Attack
 
                     if (m_hitscanCast.transform.gameObject.CompareTag("Enemy")) // if an enemy was hit take away their health based on damage
                     {
-                        m_hitscanCast.transform.gameObject.GetComponent<Enemy_Controller>().m_enemyHealth -= m_bulletDamage; // damage the player
+                        Enemy_Controller enemy = m_hitscanCast.transform.gameObject.GetComponent<Enemy_Controller>(); // get the enemy component
+                        enemy.m_enemyHealth -= m_bulletDamage; // damage the enemy
+                        enemy.f_onHit(); // play the enemy hurt sound
                         //Kurtis Watson
                         GameObject m_textObject = Instantiate(hitDamageText, m_hitscanCast.point, Quaternion.identity); // spawn a damage 
                         m_textObject.GetComponentInChildren<TextMeshPro>().text = "" + m_bulletDamage; // assign damage dealt to the text

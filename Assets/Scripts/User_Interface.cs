@@ -294,7 +294,7 @@ public class User_Interface : MonoBehaviour
     public void exitButton()
     {
         Destroy(gameObject); //Destroy game object.
-        Destroy(difficultyHandler); //Destroy difficulty handler so the values can be reset.
+        Destroy(difficultyHandler.gameObject); //Destroy difficulty handler so the values can be reset.
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
         gameUI.active = false;

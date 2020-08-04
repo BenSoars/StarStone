@@ -2,13 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Audio_System : MonoBehaviour
+public class Audio_System : Music_Volume
 {
     // Ben Soars
     public AudioSource gunShot; // gun audio source
     public AudioSource playerHurt; // player injured audio source
     public AudioSource other;
     public AudioSource notification; // used for player notifications, such as round start or important annoucenemnts
+    public AudioSource enemyHurt; // enemy injured sound effect
+
+    
 
     // in lists to make it easier to get access to them
   
@@ -20,6 +23,8 @@ public class Audio_System : MonoBehaviour
         playerHurt.volume = PlayerPrefs.GetFloat("volumeLevel");
         other.volume = PlayerPrefs.GetFloat("volumeLevel");
         notification.volume = PlayerPrefs.GetFloat("volumeLevel");
+        enemyHurt.volume = PlayerPrefs.GetFloat("volumeLevel") / 1.2f;
+       
     }
 
     public void playGun(AudioClip gunSound) // 
@@ -44,5 +49,11 @@ public class Audio_System : MonoBehaviour
     {
         notification.clip = soundClip; // get the passed through audio clip
         notification.Play(); // play the sound
+    }
+
+    public void playEnemyHurt() // Enemy hurt sound play, is separate as it would cut off otherwise
+    {
+        enemyHurt.pitch = Random.Range(0.7f, 1.31f); // set the pitch to be random
+        enemyHurt.Play(); // play the sound
     }
 }

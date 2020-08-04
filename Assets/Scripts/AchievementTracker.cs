@@ -80,6 +80,7 @@ public class AchievementTracker : MonoBehaviour
             PlayerPrefs.SetInt(unlockNames[i], 0); // unlock the Achievement
            
         }
+        PlayerPrefs.SetInt("TotalKills", 0);
         PlayerPrefs.Save(); // save the unlocked Achievement
     }
 
