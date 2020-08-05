@@ -4970,182 +4970,6 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
---- !u!1 &39932157
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 39932158}
-  - component: {fileID: 39932160}
-  - component: {fileID: 39932159}
-  m_Layer: 0
-  m_Name: Text (TMP) (1)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &39932158
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 39932157}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1935602396}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -568}
-  m_SizeDelta: {x: 200, y: 50}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &39932159
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 39932157}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_text: "\nCREDITS:\n\nLead Producer:\nOliver Savage\n\nProducer:\nSema Ermis\n\nProgrammers:\nKurtis
-    Watson\nBen Soars\n\nConcept Artists:\nSandra Grozav\nAlex Gate\nHolo Moon\nSarah
-    Briers\nMorgan Grant\n\nOther Assets\n\r\nSound Effects\r:\n\r\n(Combined for
-    the gun)\r\nGun Shot Close by udikagan (Creative Commons 0)\r\nPistol Riccohet
-    by Diboz (Creative Commons 0)\r\n\n(Combined for health kit pickup sound)\r\nBandage:
-    Cloth Rip by Dpoggioli (Attribution License)\nHealth regen: regen-healing3 by
-    jtn191 (Attribution License)\r\n\nCrossbow:  bow02 by Erdie (Attribution License)
-    \r\n\r\nAmmo Pickup: Metal Flick 1 by Sethroph (Creative Commons 0) \r\n\r\nWoosh
-    by qubodup (Creative Commons 0)\r\n\r\nLaser (heavily altered): spaceshipfx by
-    music152jaa (Creative Commons 0)\r\n\r\nGong: warm gong by Veiler (Creative Commons
-    0)\r\n\r\nReload Shotgun: shotgun, 12 gage winchester pump shotgun, fire and
-    reload multiple shots - JoseIgnacioTriay (Attribution Noncommercial) \r\n\r\nGun
-    Intro: Cocking a revolver by acidsnowflake (Creative Commons 0)\r\n\r\nMelee
-    Swing: Bamboo Swing, A8 by InspectorJ (Attribution License)\r\n\r\nRock destroy
-    by Bertsz (Creative Commons 0)\r\n\nMusic (Opening) - Lonely Walts by Lexys\n\nMusic
-    (In-game) - Hour Aztec Mix by Ricardo Lozano and Jorge Ramos\n\nModel - Kunai\r
-    by sBjamms\n\nMaterial - Force field\r by The Developer (Asset Store)\n\nMaterial
-    - Plasma by The Developer (Asset Store)\r\n\nConcept - Star Stones by Holo Moon\n\nModel
-    - Hands\r by Piter207\n\nModel - Crossbow\r by Sir_Oor_Yip\n\nModel - Staffs
-    and Starstones by Lee Smith\n\nA message from Team 3:\nThank you for playing,
-    we hope you enjoyed!\nQuick shoutout to Papa and Mumzy from Kurt xox\n"
-  m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_fontSharedMaterials: []
-  m_fontMaterial: {fileID: 0}
-  m_fontMaterials: []
-  m_fontColor32:
-    serializedVersion: 2
-    rgba: 4279275720
-  m_fontColor: {r: 0.7830189, g: 0.5636372, b: 0.06278926, a: 1}
-  m_enableVertexGradient: 0
-  m_colorMode: 3
-  m_fontColorGradient:
-    topLeft: {r: 1, g: 1, b: 1, a: 1}
-    topRight: {r: 1, g: 1, b: 1, a: 1}
-    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
-    bottomRight: {r: 1, g: 1, b: 1, a: 1}
-  m_fontColorGradientPreset: {fileID: 0}
-  m_spriteAsset: {fileID: 0}
-  m_tintAllSprites: 0
-  m_overrideHtmlColors: 0
-  m_faceColor:
-    serializedVersion: 2
-    rgba: 4294967295
-  m_outlineColor:
-    serializedVersion: 2
-    rgba: 4278190080
-  m_fontSize: 20
-  m_fontSizeBase: 20
-  m_fontWeight: 400
-  m_enableAutoSizing: 0
-  m_fontSizeMin: 18
-  m_fontSizeMax: 72
-  m_fontStyle: 0
-  m_textAlignment: 258
-  m_characterSpacing: 0
-  m_wordSpacing: 0
-  m_lineSpacing: 0
-  m_lineSpacingMax: 0
-  m_paragraphSpacing: 0
-  m_charWidthMaxAdj: 0
-  m_enableWordWrapping: 1
-  m_wordWrappingRatios: 0.4
-  m_overflowMode: 0
-  m_firstOverflowCharacterIndex: 1051
-  m_linkedTextComponent: {fileID: 0}
-  m_isLinkedTextComponent: 0
-  m_isTextTruncated: 0
-  m_enableKerning: 1
-  m_enableExtraPadding: 0
-  checkPaddingRequired: 0
-  m_isRichText: 1
-  m_parseCtrlCharacters: 1
-  m_isOrthographic: 1
-  m_isCullingEnabled: 0
-  m_ignoreRectMaskCulling: 0
-  m_ignoreCulling: 1
-  m_horizontalMapping: 0
-  m_verticalMapping: 0
-  m_uvLineOffset: 0
-  m_geometrySortingOrder: 0
-  m_VertexBufferAutoSizeReduction: 1
-  m_firstVisibleCharacter: 0
-  m_useMaxVisibleDescender: 1
-  m_pageToDisplay: 1
-  m_margin: {x: -364.7001, y: 0, z: -361.33093, w: -1055.6809}
-  m_textInfo:
-    textComponent: {fileID: 39932159}
-    characterCount: 1598
-    spriteCount: 0
-    spaceCount: 270
-    wordCount: 241
-    linkCount: 0
-    lineCount: 72
-    pageCount: 1
-    materialCount: 1
-  m_isUsingLegacyAnimationComponent: 0
-  m_isVolumetricText: 0
-  m_spriteAnimator: {fileID: 0}
-  m_hasFontAssetChanged: 0
-  m_subTextObjects:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  m_baseMaterial: {fileID: 0}
-  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!222 &39932160
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 39932157}
-  m_CullTransparentMesh: 0
 --- !u!1 &47873555
 GameObject:
   m_ObjectHideFlags: 0
@@ -6501,6 +6325,119 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bf5ba0474328c1b4b8b5940432eae67b, type: 3}
+--- !u!1 &1494309321
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1494309322}
+  - component: {fileID: 1494309324}
+  - component: {fileID: 1494309323}
+  m_Layer: 0
+  m_Name: Credits
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1494309322
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1494309321}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
+  m_Children: []
+  m_Father: {fileID: 1935602396}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: -873}
+  m_SizeDelta: {x: 7445.0303, y: 14403.602}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1494309323
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1494309321}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 0.946934, b: 0.7877358, a: 1}
+  m_RaycastTarget: 1
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 100
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 1
+    m_MaxSize: 100
+    m_Alignment: 1
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: "\nCREDITS:\n\nLead Producer:\nOliver Savage\n\nProducer:\nSema Ermis\n\nProgrammers:\nKurtis
+    Watson\nBen Soars\n\nConcept Artists:\nSandra Grozav\nAlex Gate\nHolo Moon\nSarah
+    Briers\nMorgan Grant\n\nOther Assets\n\n----------------------------- Unity Asset
+    Store Assets -----------------------------\n\nYughues Free Rocks by Nobiax /
+    Yughues (Extension Asset)\r\n\r\nMossy Rocks - Photoscanned by Miko\u0142aj Spycha\u0142
+    (Extension Asset)\r\n\r\nStones by Pixelcloud (Extension Asset)\r\r\n\r\n18 High
+    Resolution Wall Textures by A dog's life software (Extension Asset)\r\n\r\nProcedural
+    fire by Hovl Studio (Extension Asset)\r\n\r\nDemonic dagger by Dwarven Curse
+    (Extension Asset)\r\n\r\nMystic Runestone by Armaboros Design (Extension Asset)\r\n\r\nMachine
+    Shop Equipment by Inca (Extension Asset)\r\n\r\nUltimate 10+ Shaders by The Developer
+    (Extension Asset)\r\n\n\n------------------ Models ---------------------\n\nStaff
+    and Starstones by Lee Smith\r\n\nConcept - Star Stones by Holo Moon\n\nWhitebox
+    Initially by Alex Gate\n\nMayan Mask by Ben Soars\n\r\nSketchfab\r:\n\r\nLow-Poly
+    Skull by Vladimir E. (CC Attribution-NonCommercia)\r\n\r\nFirst Person hands
+    rigged by DavidFischer (CC Attribution)\r\n\r\nSteampunk Crossbow by Sir_Oor_Yip
+    (CC Attribution)\r\n\r\nTurbosquid \r\n\r\nkunai 3D model by WenJun Luo (Standard)
+    \r\n\r\nMilitary First Aid, Health Kit model by Vertici (Standard) \r\r\n\r\nMilitary
+    Case by Lekik (Standard) \r\n\r\nTriple Barrel Shotgun PBR 3D model by GkhanZ
+    (Standard) \r\n\r\nSteampunk Clock 3D model by Mfarhani (Standard) \r\n\n\n-----------------------------
+    Sound Effects -----------------------------\n\n(Combined for the gun)\r\nGun
+    Shot Close by udikagan (Creative Commons 0)\r\nPistol Riccohet by Diboz (Creative
+    Commons 0)\r\n\n(Combined for health kit pickup sound)\r\nBandage: Cloth Rip
+    by Dpoggioli (Attribution License)\nHealth regen: regen-healing3 by jtn191 (Attribution
+    License)\r\n\nCrossbow:  bow02 by Erdie (Attribution License) \r\n\r\nAmmo Pickup:
+    Metal Flick 1 by Sethroph (Creative Commons 0) \r\n\r\nWoosh by qubodup (Creative
+    Commons 0)\r\n\r\nLaser (heavily altered): spaceshipfx by music152jaa (Creative
+    Commons 0)\r\n\r\nGong: warm gong by Veiler (Creative Commons 0)\r\n\r\nReload
+    Shotgun: shotgun, 12 gage winchester pump shotgun, fire and reload multiple shots
+    \nby JoseIgnacioTriay (Attribution Noncommercial) \r\n\r\nGun Intro: Cocking
+    a revolver by acidsnowflake (Creative Commons 0)\r\n\r\nMelee Swing: Bamboo Swing,
+    A8 by InspectorJ (Attribution License)\r\n\r\nRock destroy by Bertsz (Creative
+    Commons 0)\r\n\n----------------------------- Music -----------------------------\n\nMusic
+    (Opening) - Lonely Walts by Lexys\n\nMusic (In-game) - Hour Aztec Mix by Ricardo
+    Lozano and Jorge Ramos\n\n\nLINKS TO ALL ASSETS USED INCLUDED IN THE READ ME\n\n\nA
+    message from Team 3:\nThank you for playing, we hope you enjoyed!\nQuick shoutout
+    to Papa and Mumzy from Kurt xox"
+--- !u!222 &1494309324
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1494309321}
+  m_CullTransparentMesh: 0
 --- !u!1 &1540420652
 GameObject:
   m_ObjectHideFlags: 0
@@ -6991,7 +6928,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1935602396}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -7122,8 +7059,8 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 264317206}
+  - {fileID: 1494309322}
   - {fileID: 1918350850}
-  - {fileID: 39932158}
   m_Father: {fileID: 279386102}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
