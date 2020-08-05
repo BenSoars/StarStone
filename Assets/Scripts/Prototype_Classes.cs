@@ -15,7 +15,7 @@ public class Prototype_Classes : MonoBehaviour
     private Wave_System m_waveSystem;
     public Gun_Generic gunGeneric;
     private User_Interface m_userInterface;
-
+    private Station_Controller m_stationController;
 
     [Header("Weapon Mechanics")]
     [Space(2)]
@@ -71,6 +71,7 @@ public class Prototype_Classes : MonoBehaviour
         m_playerController = FindObjectOfType<Player_Controller>();
         m_waveSystem = FindObjectOfType<Wave_System>();
         m_userInterface = FindObjectOfType<User_Interface>();
+        m_stationController = FindObjectOfType<Station_Controller>();
 
         currentFog = fogStrength; //Set current fog.
         canSelect = true; //Allow the player to select a starstone.
@@ -241,6 +242,7 @@ public class Prototype_Classes : MonoBehaviour
                             stonePower[0] -= 15; //Decrease starstone power as it has been 'drained'.
                             canSwitch = false; //Don't allow the player to switch weapons.
                             stateQ = false;
+                            m_stationController.disableUpgrade = true;
                         }
                         break;
                     case 1:
@@ -250,6 +252,7 @@ public class Prototype_Classes : MonoBehaviour
                             stonePower[1] -= 15;
                             canSwitch = false;
                             stateQ = false;
+                            m_stationController.disableUpgrade = true;
                         }
                         break;
                     case 2:
@@ -259,6 +262,7 @@ public class Prototype_Classes : MonoBehaviour
                             stonePower[2] -= 15;
                             canSwitch = false;
                             stateQ = false;
+                            m_stationController.disableUpgrade = true;
                         }
                         break;
                     case 3:
@@ -268,6 +272,7 @@ public class Prototype_Classes : MonoBehaviour
                             stonePower[3] -= 15;
                             canSwitch = false;
                             stateQ = false;
+                            m_stationController.disableUpgrade = true;
                         }
                         break;
                 }
@@ -285,6 +290,7 @@ public class Prototype_Classes : MonoBehaviour
                             stonePower[0] -= 20; //Decrease starstone power as it has been 'drained'.
                             canSwitch = false; //Don't allow the player to switch weapons.
                             stateV = false;
+                            m_stationController.disableUpgrade = true;
                         }
                         break;
                     case 1:
@@ -294,6 +300,7 @@ public class Prototype_Classes : MonoBehaviour
                             stonePower[1] -= 25;
                             canSwitch = false;
                             stateV = false;
+                            m_stationController.disableUpgrade = true;
                         }
                         break;
                     case 2:
@@ -303,6 +310,7 @@ public class Prototype_Classes : MonoBehaviour
                             stonePower[2] -= 15;
                             canSwitch = false;
                             stateV = false;
+                            m_stationController.disableUpgrade = true;
                         }
                         //Knives.
                         break;
@@ -313,6 +321,7 @@ public class Prototype_Classes : MonoBehaviour
                             stonePower[3] -= 25;
                             canSwitch = false;
                             stateV = false;
+                            m_stationController.disableUpgrade = true;
                         }
                         break;
                 }

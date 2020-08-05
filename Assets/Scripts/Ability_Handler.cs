@@ -9,6 +9,7 @@ public class Ability_Handler : MonoBehaviour
     private Player_Controller m_playerController;
     private Prototype_Classes m_prototypeClasses;
     private Wave_System m_waveSystem;
+    private Station_Controller m_stationController;
 
     [Header("Ability Mechanics")]
     [Space(2)]
@@ -49,6 +50,7 @@ public class Ability_Handler : MonoBehaviour
         m_playerController = GameObject.FindObjectOfType<Player_Controller>();
         m_prototypeClasses = FindObjectOfType<Prototype_Classes>();
         m_waveSystem = FindObjectOfType<Wave_System>();
+        m_stationController = FindObjectOfType<Station_Controller>();
 
         m_handsAnim = hands.GetComponent<Animator>();
     }
@@ -179,5 +181,6 @@ public class Ability_Handler : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         m_prototypeClasses.canSwitch = true; //Allow the player to switch weapons again.
         m_prototypeClasses.abilityState = !m_prototypeClasses.abilityState; //Set ability state to false.
+        m_stationController.disableUpgrade = false; //Allow the player to collect upgraded weapons again.
     }
 }

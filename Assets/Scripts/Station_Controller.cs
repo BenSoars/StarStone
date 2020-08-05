@@ -15,7 +15,7 @@ public class Station_Controller : MonoBehaviour
     private bool m_isUpgrading;
     private bool m_weaponUpgraded;
     public Animator rockAnim;
-    private bool m_disableUpgrade;
+    public bool disableUpgrade;
     private bool m_showText;
     public TextMeshProUGUI upgradeOpenText;
 
@@ -56,7 +56,7 @@ public class Station_Controller : MonoBehaviour
 
         if (Physics.Raycast(cameraLook.transform.position, cameraLook.transform.forward, out m_stationHit, 5f)) //Shoot the raycast from the camera forward.
         {
-            if (m_stationHit.collider.gameObject.tag == "Upgrade" && Input.GetKeyDown("f") && m_disableUpgrade == false) //Check for an object hit with the tag "Upgrade" and for user events.
+            if (m_stationHit.collider.gameObject.tag == "Upgrade" && Input.GetKeyDown("f") && disableUpgrade == false) //Check for an object hit with the tag "Upgrade" and for user events.
             {
                 if (m_weaponUpgraded == false && m_weaponSwitch.currentWeapon == 1 || m_weaponSwitch.currentWeapon == 2) //Checks if the current weapon value is equal to 1 or 2.
                 {
@@ -86,12 +86,12 @@ public class Station_Controller : MonoBehaviour
                         case 1:
                             weapon1.GetComponent<Gun_Generic>().damageMultiplier = 1.6f;
                             upgradedWeapon1.active = true;
-                            m_disableUpgrade = true;
+                            disableUpgrade = true;
                             break;
                         case 2:
                             weapon2.GetComponent<Gun_Generic>().damageMultiplier = 1.6f;
                             upgradedWeapon2.active = true;
-                            m_disableUpgrade = true;
+                            disableUpgrade = true;
                             break;
                     }
                     if (m_achivement)
@@ -135,7 +135,7 @@ public class Station_Controller : MonoBehaviour
                     m_showText = true;
                     Invoke("f_resetText", 5);
                     upgradeOpenText.enabled = true;
-                    m_disableUpgrade = false; //Allow the player to upgrade their weapon as the upgrade station has arrived.
+                    disableUpgrade = false; //Allow the player to upgrade their weapon as the upgrade station has arrived.
                     rockAnim.SetBool("Active", true); //Raise rocks to allow the player to access the upgrade station.
                 }
                 break;
@@ -145,13 +145,13 @@ public class Station_Controller : MonoBehaviour
                     m_showText = true;
                     Invoke("f_resetText", 5);
                     upgradeOpenText.enabled = true;
-                    m_disableUpgrade = false;
+                    disableUpgrade = false;
                     rockAnim.SetBool("Active", true);
                 }
                 break;
             default:
                 m_showText = false;
-                m_disableUpgrade = true;
+                disableUpgrade = true;
                 rockAnim.SetBool("Active", false); //Lower the rock to stop the player from accessing the upgrade station area.
                 break;
         }
