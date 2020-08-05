@@ -83,7 +83,7 @@ public class Clock_Controller : MonoBehaviour
 
         if(m_desiredMin == 1)
         {
-            globalMin = "0" + m_desiredMin;
+            globalMin = "05";
         }
     }
 
