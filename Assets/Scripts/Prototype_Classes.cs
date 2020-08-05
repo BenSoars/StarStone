@@ -13,7 +13,9 @@ public class Prototype_Classes : MonoBehaviour
     private Player_Controller m_playerController;
     public Prototype_Weapon prototypeWeapon;
     private Wave_System m_waveSystem;
-    public Gun_Generic m_gunGeneric;
+    public Gun_Generic gunGeneric;
+    private User_Interface m_userInterface;
+
 
     [Header("Weapon Mechanics")]
     [Space(2)]
@@ -68,12 +70,13 @@ public class Prototype_Classes : MonoBehaviour
         m_runeAnim = FindObjectsOfType<Rune_Controller>(); //Reference Rune_Controller.
         m_playerController = FindObjectOfType<Player_Controller>();
         m_waveSystem = FindObjectOfType<Wave_System>();
+        m_userInterface = FindObjectOfType<User_Interface>();
 
         currentFog = fogStrength; //Set current fog.
         canSelect = true; //Allow the player to select a starstone.
         canSwitch = true; //Allow the player to switch weapons.
 
-        m_defaultDamage = m_gunGeneric.m_bulletDamage;
+        m_defaultDamage = gunGeneric.m_bulletDamage;
         m_defaultDefence = m_playerController.defenceValue; //Set default values.
         m_defaultHealth = m_playerController.playerHealth;
         m_defaultDamageCooldown = prototypeWeapon.damageCoolDown;
@@ -102,7 +105,7 @@ public class Prototype_Classes : MonoBehaviour
             staffs[classState].active = false;
         }
 
-        m_gunGeneric.m_bulletDamage = m_defaultDamage;
+        gunGeneric.m_bulletDamage = m_defaultDamage;
         m_waveSystem.notChosen = false; //Set players weapon state to not chosen to indicate they need to select a weapon.
         currentFog = fogStrength; //Reset fog.
         RenderSettings.fog = false;
@@ -175,6 +178,11 @@ public class Prototype_Classes : MonoBehaviour
         if(m_waveSystem.isIntermission == true)
         {
             runtimeUI.active = false; //Checks to see if the game is intermission phase and set the runtime UI disabled.
+            m_userInterface.chooseStone.enabled = true;
+        }
+        else
+        {
+            m_userInterface.chooseStone.enabled = false;
         }
     }
 
@@ -183,7 +191,7 @@ public class Prototype_Classes : MonoBehaviour
         switch (chosenBuff)
         {
             case 0:
-                m_gunGeneric.m_bulletDamage = m_defaultDamage * 0.80f; //Enemy takes less damage from the laser.
+                gunGeneric.m_bulletDamage = m_defaultDamage * 0.80f; //Enemy takes less damage from the laser.
                 break;
             case 1:
                 fogStrength = Mathf.Lerp(fogStrength, currentFog, Time.deltaTime * 2); //Smooth fog adjustment.
@@ -191,10 +199,10 @@ public class Prototype_Classes : MonoBehaviour
                 RenderSettings.fog = true;
                 break;
             case 2:
-                m_gunGeneric.m_bulletDamage = m_defaultDamage * 0.75f;
+                gunGeneric.m_bulletDamage = m_defaultDamage * 0.75f;
                 break;
             case 3:
-                m_gunGeneric.m_bulletDamage = m_defaultDamage * 0.70f;
+                gunGeneric.m_bulletDamage = m_defaultDamage * 0.70f;
                 break;
         }
     }

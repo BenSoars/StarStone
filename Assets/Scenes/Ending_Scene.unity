@@ -5027,9 +5027,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "\nCREDITS:\n\nLead Producer:\nOliver Savage\n\nProducer:\nSema Ermis\n\nProgrammers:\nKurtis
-    Watson\nBen Soars\n\nProp Artist:\nLee Smith\n\nConcept Artists:\nSandra Grozav\nAlex
-    Gate\nHolo Moon\nSarah Briers\nMorgan Grant\n\nOther Assets\n\r\nSound Effects\r:\n\r\n(Combined
-    for the gun)\r\nGun Shot Close by udikagan (Creative Commons 0)\r\nPistol Riccohet
+    Watson\nBen Soars\n\nConcept Artists:\nSandra Grozav\nAlex Gate\nHolo Moon\nSarah
+    Briers\nMorgan Grant\n\nOther Assets\n\r\nSound Effects\r:\n\r\n(Combined for
+    the gun)\r\nGun Shot Close by udikagan (Creative Commons 0)\r\nPistol Riccohet
     by Diboz (Creative Commons 0)\r\n\n(Combined for health kit pickup sound)\r\nBandage:
     Cloth Rip by Dpoggioli (Attribution License)\nHealth regen: regen-healing3 by
     jtn191 (Attribution License)\r\n\nCrossbow:  bow02 by Erdie (Attribution License)
@@ -5040,7 +5040,12 @@ MonoBehaviour:
     reload multiple shots - JoseIgnacioTriay (Attribution Noncommercial) \r\n\r\nGun
     Intro: Cocking a revolver by acidsnowflake (Creative Commons 0)\r\n\r\nMelee
     Swing: Bamboo Swing, A8 by InspectorJ (Attribution License)\r\n\r\nRock destroy
-    by Bertsz (Creative Commons 0)\r\n\nA message from Team 3:\nThank you for playing,
+    by Bertsz (Creative Commons 0)\r\n\nMusic (Opening) - Lonely Walts by Lexys\n\nMusic
+    (In-game) - Hour Aztec Mix by Ricardo Lozano and Jorge Ramos\n\nModel - Kunai\r
+    by sBjamms\n\nMaterial - Force field\r by The Developer (Asset Store)\n\nMaterial
+    - Plasma by The Developer (Asset Store)\r\n\nConcept - Star Stones by Holo Moon\n\nModel
+    - Hands\r by Piter207\n\nModel - Crossbow\r by Sir_Oor_Yip\n\nModel - Staffs
+    and Starstones by Lee Smith\n\nA message from Team 3:\nThank you for playing,
     we hope you enjoyed!\nQuick shoutout to Papa and Mumzy from Kurt xox\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -5086,7 +5091,7 @@ MonoBehaviour:
   m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
-  m_firstOverflowCharacterIndex: 937
+  m_firstOverflowCharacterIndex: 1051
   m_linkedTextComponent: {fileID: 0}
   m_isLinkedTextComponent: 0
   m_isTextTruncated: 0
@@ -5110,12 +5115,12 @@ MonoBehaviour:
   m_margin: {x: -364.7001, y: 0, z: -361.33093, w: -1055.6809}
   m_textInfo:
     textComponent: {fileID: 39932159}
-    characterCount: 1237
+    characterCount: 1598
     spriteCount: 0
-    spaceCount: 200
-    wordCount: 177
+    spaceCount: 270
+    wordCount: 241
     linkCount: 0
-    lineCount: 57
+    lineCount: 72
     pageCount: 1
     materialCount: 1
   m_isUsingLegacyAnimationComponent: 0
@@ -5306,7 +5311,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7d2cf1cfec00fe4c97aa5ba034ac6b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeBeforeCredits: 1
+  timeBeforeCredits: 2
   exitPrompt: {fileID: 1918350848}
   transitionActive: 0
   anim: {fileID: 279386103}

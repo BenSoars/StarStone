@@ -21825,7 +21825,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prototypeWeapon: {fileID: 6879699983474076598}
-  m_gunGeneric: {fileID: 1908995038181295566}
+  gunGeneric: {fileID: 1908995038181295566}
   shotPoint: {fileID: 567909998898289762}
   canSwitch: 0
   staffs:
@@ -21922,6 +21922,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1fff7c6652405d40bd232d70ffe00de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  noteDate:
+  - 21.06.1923
+  - 24.06.1923
+  - 26.06.1923
+  noteText:
+  - We should not have touched it. Oh God, whoever that is anymore. If only we could
+    go back. Only a few weeks ago everything was normal. It was only until those
+    damned power-hungry scientists went rogue and started poking around the new generator
+    they started building.
+  - We have just discovered a new part of the temple. It seems to be some sort of
+    sacrificial pit? It reeks with blood. The other scientists are already planning
+    on renovation, they think that the old sacrifices are the key to the power. I
+    feel like this is bad. They want the star stones to power everything in sight.
+  - ' - Ruins have been check and the generator is in full working order. Fuel consumption
+    gathered from the Temples core is at a steady rate and the stones are charging
+    as expected.'
   floatPoint: {fileID: 7147601382110104090}
   currentPart: {fileID: 0}
   spawnNote: 0
@@ -21944,22 +21960,6 @@ MonoBehaviour:
   - {fileID: 3374482455240836894, guid: 6dddf3f39316a6e43bf00cf02a1baae8, type: 3}
   repairedParts: 0
   note: {fileID: 1033052027369876156, guid: c38ac8c3ae000e04dae3ee914d878c7e, type: 3}
-  noteDate:
-  - 21.06.1923
-  - 24.06.1923
-  - 26.06.1923
-  noteText:
-  - We should not have touched it. Oh God, whoever that is anymore. If only we could
-    go back. Only a few weeks ago everything was normal. It was only until those
-    damned power-hungry scientists went rogue and started poking around the new generator
-    they started building.
-  - We have just discovered a new part of the temple. It seems to be some sort of
-    sacrificial pit? It reeks with blood. The other scientists are already planning
-    on renovation, they think that the old sacrifices are the key to the power. I
-    feel like this is bad. They want the star stones to power everything in sight.
-  - ' - Ruins have been check and the generator is in full working order. Fuel consumption
-    gathered from the Temples core is at a steady rate and the stones are charging
-    as expected.'
 --- !u!114 &9031854256961507002
 MonoBehaviour:
   m_ObjectHideFlags: 0
