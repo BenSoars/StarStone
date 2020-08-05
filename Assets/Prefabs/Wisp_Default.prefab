@@ -398,7 +398,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 88a676e2d4ff48f4ea8098a8917b3272, type: 2}
+      objectReference: {fileID: 0}
     - target: {fileID: 2313928236004091260, guid: 305e1cbcc1088bc4d97a4a39376df821,
         type: 3}
       propertyPath: m_LocalRotation.x
@@ -493,7 +493,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 88a676e2d4ff48f4ea8098a8917b3272, type: 2}
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 305e1cbcc1088bc4d97a4a39376df821, type: 3}
 --- !u!4 &3372512050849853920 stripped
