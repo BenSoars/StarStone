@@ -79,7 +79,7 @@ public class Cutscene_Handler : MonoBehaviour
             StartCoroutine(f_skipScene()); //Smooth scene transfer (no text shown on screen because of coroutine delay).
         }
 
-        if (Input.GetKeyDown(KeyCode.Space) && m_isSkipped == false)
+        if (Input.GetKeyDown(KeyCode.Space) && m_isSkipped == false && SceneManager.GetActiveScene() == SceneManager.GetSceneByName("Opening_Scene"))
         {
             m_index = 5;
             m_isSkipped = true;

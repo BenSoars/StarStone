@@ -121,7 +121,7 @@ public class Prototype_Classes : MonoBehaviour
     {
         RaycastHit m_stoneSelect;
 
-        if (Physics.Raycast(shotPoint.position, shotPoint.forward, out m_stoneSelect, 3f, 1 << 11) && Input.GetKeyDown("f") && canSelect == true) //Create a raycast that checks for layer 11.
+        if (Physics.Raycast(shotPoint.position, shotPoint.forward, out m_stoneSelect, 1f, 1 << 11) && Input.GetKeyDown("f") && canSelect == true) //Create a raycast that checks for layer 11.
         {
             buffChosen = true; //If the player select their prototype buff, this is set true.
             f_animateRunes(); //Start rune shake.
