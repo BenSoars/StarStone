@@ -139,18 +139,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0140777971ed96c449b4404d521763ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wisp: {fileID: 42458450682264745, guid: 6befa5c3aa19d1842a12f708f5aab1c0, type: 3}
   animator: {fileID: 1420687056379109268}
   light: {fileID: 6117712238516201389}
   runeBall: {fileID: 5206463932686783605}
   runeArt: {fileID: 2785175512274132743}
-  globalColor: {fileID: 2100000, guid: 88a676e2d4ff48f4ea8098a8917b3272, type: 2}
-  animated: 0
+  globalColor: {fileID: 2100000, guid: 0cbc18006710000005cc180067100000, type: 2}
   stopActivation: 0
-  particleColour:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  animated: 0
+  wisp: {fileID: 42458450682264745, guid: 6befa5c3aa19d1842a12f708f5aab1c0, type: 3}
 --- !u!95 &1420687056379109268
 Animator:
   serializedVersion: 3
