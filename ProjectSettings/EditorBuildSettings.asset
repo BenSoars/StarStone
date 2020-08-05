@@ -12,15 +12,15 @@ EditorBuildSettings:
     path: Assets/Scenes/Opening_Scene.unity
     guid: 9d0dcd48684ba104397b7964a92b1bd6
   - enabled: 1
+    path: Assets/Scenes/Tutorial_Scene.unity
+    guid: e6c5446e001116d428393438440aea94
+  - enabled: 1
     path: Assets/Scenes/Game_Scene.unity
     guid: 5931897c1f4b66747a6d5ca7d8ec4e9f
-  - enabled: 1
-    path: Assets/Scenes/Ending_Scene.unity
-    guid: 02657b8ec334a3e48b86ac85037fe662
   - enabled: 1
     path: Assets/Scenes/Game_Over.unity
     guid: 194652143986e0745850ec5f83258888
   - enabled: 1
-    path: Assets/Scenes/Tutorial_Scene.unity
-    guid: e6c5446e001116d428393438440aea94
+    path: Assets/Scenes/Ending_Scene.unity
+    guid: 02657b8ec334a3e48b86ac85037fe662
   m_configObjects: {}
