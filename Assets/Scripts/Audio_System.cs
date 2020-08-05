@@ -24,6 +24,7 @@ public class Audio_System : Music_Volume
         other.volume = PlayerPrefs.GetFloat("volumeLevel");
         notification.volume = PlayerPrefs.GetFloat("volumeLevel");
         enemyHurt.volume = PlayerPrefs.GetFloat("volumeLevel") / 1.2f;
+        fixVolume(); // alter the volue of the music, inherited from the music volume script
        
     }
 

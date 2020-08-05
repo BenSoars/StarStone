@@ -8,11 +8,14 @@ public class Music_Volume : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
-            music.volume = PlayerPrefs.GetFloat("musicLevel"); // set the music level
-            music.Play(); // play the music
-        
+        fixVolume();
     }
 
-  
+    public void fixVolume()
+    {
+        music.volume = PlayerPrefs.GetFloat("musicLevel"); // set the music level
+        music.Play(); // play the musi
+
+
+    }
 }
