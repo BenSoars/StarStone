@@ -13,26 +13,29 @@ public class Cutscene_Handler : MonoBehaviour
     [Header("Text Components")]
     [Space(2)]
     [Tooltip("Text to display during the cutscenes. Number '5' is the cut off point for first cutscene.")]
-    public TextMeshProUGUI cutsceneTextMesh;   
-    public string[] cutsceneText;
-    private int m_index;
+    public TextMeshProUGUI cutsceneTextMesh;
+    [Tooltip("Set the text values for the different notes.")]
+    public string[] cutsceneText; //String array for notes.
+    private int m_index; //Index value for current text display.
     [Tooltip("How fast each letter should appear one after the other.")]
-    public float typewriterSpeed;
+    public float typewriterSpeed; //Speed at which the character appear.
     private bool m_stopTextLoop;
 
     [Header("Cutscene Components")]
     [Space(2)]
-    private float m_currentTime;
+    private float m_currentTime; //Time between sentences.
     [Tooltip("How much time before the next sentence starts displaying.")]
     public float timeBetweenSentences;
-    private bool m_sentenceFinish;
+    private bool m_sentenceFinish; //Checks if all characters have been printed.
+    [Tooltip("Transition image reference.")]
     public Image transition;
+    [Tooltip("Bool to check if the text is paused.")]
     public bool m_pauseText;
-    private bool m_isSkipped;
+    private bool m_isSkipped; //Check if the cutscene is skipped.
     private bool m_sceneSkipped;
-    private float m_defaultTypeWriterSpeed;
+    private float m_defaultTypeWriterSpeed; //Set default speed of text print.
 
-    private bool test;
+    private bool test; //Test bool for bug fix.
 
     // Start is called before the first frame update
     void Start()

@@ -5,7 +5,7 @@ using UnityEngine;
 //Kurtis Watson
 public class Ability_Melee : MonoBehaviour
 {
-    [Header("Melee Values")]
+    [Header("Melee Properties")]
     [Tooltip("Set the damage of the melee.")]
     public float meleeDamage;
     private Animator m_animator;

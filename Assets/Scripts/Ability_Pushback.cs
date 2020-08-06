@@ -7,19 +7,19 @@ using UnityEngine;
 public class Ability_Pushback : MonoBehaviour
 {
     [Header("Game Object Components")]
-    private SphereCollider m_sphereCollider;
-    private Rigidbody m_rb;
+    private SphereCollider m_sphereCollider; //Get sphere component.
+    private Rigidbody m_rb; //Get rigidbody component.
 
     [Header("Pushback Values")]
     [Space(2)]
-    [Tooltip("Set the fast the object moves.")]
+    [Tooltip("Set how fast the ability moves forward from the player.")]
     public float abilitySpeed; //Values to change the strength of the pushback.
-    [Tooltip("Set the strength of the uplift force.")]
-    public float upliftForce; // the upwards velocity
-    [Tooltip("Set the strength of the pushback force.")]
-    public float knockbackForce; // the force at which the knockback is applied
-    [Tooltip("Set the radius of the ability.")]
-    public float damageRadius; // the damage radius
+    [Tooltip("Set how high the player is lifted off the ground.")]
+    public float upliftForce; //The upwards velocity.
+    [Tooltip("Set how much the player is knocked back on trigger enter.")]
+    public float knockbackForce; //The force at which the knockback is applied.
+    [Tooltip("Set the radius at which the object effects enemies.")]
+    public float damageRadius; //The damage radius.
 
     public void Start()
     {

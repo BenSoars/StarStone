@@ -7,15 +7,18 @@ public class Clock_ID : MonoBehaviour
 {
     [Header("Clock Mechanics")]
     [Space(2)]
-    public int clockPartID;
-    public bool pickedUp;
+    [Tooltip("Set the ID of this clock part.")]
+    public int clockPartID; //Clock part ID.
+    [Tooltip("Checks if the item is picked up.")]
+    public bool pickedUp; //Is the item picked up bool.
 
 
     [Header("Light Mechanics")]
     [Space(2)]
+    [Tooltip("Reference the light component of this game object.")]
     public Light light;
-    private float m_currentIntensity;
-    private bool m_increaseIntensity;
+    private float m_currentIntensity; //Current light intensity.
+    private bool m_increaseIntensity; //Increase intensity.
 
     private void Update()
     {

@@ -7,18 +7,22 @@ public class Easter_Eggs : MonoBehaviour
 {
     [Header("Raycast Components")]
     [Space(2)]
-    public Transform camera;
+    [Tooltip("Camera object attached to player.")]
+    public Transform camera; //Player camera.
 
     [Header("Rune Components")]
     [Space(2)]
-    public int runesFound; 
-    private AchievementTracker m_Achievement;
+    [Tooltip("Total amount of runes found.")]
+    public int runesFound; //Runes found counter.
+    private AchievementTracker m_Achievement; //Achievement tracker reference.
 
     [Header("Audio Components")]
     [Space(2)]
+    [Tooltip("The audio source for the easter egg music.")]
     public AudioSource audioSource;
+    [Tooltip("The song to play for the easter egg.")]
     public AudioClip song;
-    private bool m_musicPlayed;
+    private bool m_musicPlayed; //Stop the song looping.
 
     // Start is called before the first frame update
     void Start()
@@ -47,7 +51,7 @@ public class Easter_Eggs : MonoBehaviour
 
         if(runesFound == 5 && m_musicPlayed == false)
         {
-            //m_Achievement.UnlockAchievement(11); // unlock the Achievement
+            m_Achievement.UnlockAchievement(11); // unlock the Achievement
             m_musicPlayed = true;
             audioSource.clip = song; //Set the song.
             audioSource.Play(); //Play the song.

@@ -6,12 +6,12 @@ public class Unlock_Doors : MonoBehaviour
 {
     [Header("Door Components")]
     [Space(2)]
-    public Animator anim;
-    private Wave_System m_waveSystem;
+    public Animator anim; //Access animator.
+    private Wave_System m_waveSystem; //Required script.
 
     private void Start()
     {
-        m_waveSystem = FindObjectOfType<Wave_System>();
+        m_waveSystem = FindObjectOfType<Wave_System>(); //Access required script.
     }
     void Update()
     {
@@ -25,6 +25,6 @@ public class Unlock_Doors : MonoBehaviour
 
     void f_removeObject()
     {
-        Destroy(gameObject);
+        Destroy(gameObject); //Remove the game object.
     }
 }

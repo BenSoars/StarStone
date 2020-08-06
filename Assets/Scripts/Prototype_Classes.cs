@@ -10,31 +10,38 @@ public class Prototype_Classes : MonoBehaviour
 {
     [Header("Script References")]
     [Space(2)]
-    private Player_Controller m_playerController;
+    private Player_Controller m_playerController; //Reference player controller.
+    [Tooltip("References the prototype weapon attached to player.")]
     public Prototype_Weapon prototypeWeapon;
     private Wave_System m_waveSystem;
-    public Gun_Generic gunGeneric;
+    [Tooltip("References the gun generic script attached to the priamry and secondary weapons.")]
+    public Gun_Generic gunGeneric; //Reference the hidden scripts (public).
     private User_Interface m_userInterface;
     private Station_Controller m_stationController;
 
     [Header("Weapon Mechanics")]
     [Space(2)]
-    [Tooltip("Position where the laser is shot from.")]
-    public Transform shotPoint;
-    public bool canSwitch;
+    [Tooltip("Position where the raycast is shot from.")]
+    public Transform shotPoint; //Where the raycast is shot from.
+    [Tooltip("Check for if the player is able to switch weapons.")]
+    public bool canSwitch; //True/false can player switch.
 
     [Header("Default Stats Before Buffs")]
     [Space(2)]
-    private float m_defaultDamage;
+    private float m_defaultDamage; //This section grabs all default values before they are altered.
     private float m_defaultDefence;
     private float m_defaultHealth;
     private float m_defaultDamageCooldown;
 
     [Header("Staff Mechanics")]
     [Space(2)]
-    public GameObject[] staffs;
-    public bool abilityState;
+    [Tooltip("Array that stores the different staff objects.")]
+    public GameObject[] staffs; //Array for staff objects.
+    [Tooltip("Check to see if the player is using an ability.")]
+    public bool abilityState; //Is the player current state for the abilities.
+    [Tooltip("Check to see if it is a 'Q' ability activated.")]
     public bool stateQ;
+    [Tooltip("Check to see if it is a 'V' ability activated.")]
     public bool stateV;
 
     [Header("Rune Mechanics")]
@@ -43,19 +50,28 @@ public class Prototype_Classes : MonoBehaviour
 
     [Header("Stone Mechanics")]
     [Space(2)]
-    public int classState;
-    public float[] stonePower;
+    [Tooltip("Current class state (used for prototype classes).")]
+    public int classState; //Current weapon state used for switch case.
+    [Tooltip("Array of all the stones current power.")]
+    public float[] stonePower; 
+    [Tooltip("List that stores the current active stones.")]
     public bool[] activeStone;
+    [Tooltip("Sets the global colour ready for runes/wisps.")]
     public Color stoneColor;
+    [Tooltip("Check for if the player can select a Starstone or not.")]
     public bool canSelect;
+    [Tooltip("ID stored of the enemies chosen buff.")]
     public int chosenBuff;
+    [Tooltip("Check to see if the enemy buff was chosen for that round so that one can be set if not.")]
     public bool buffChosen;
+    [Tooltip("Default staff for game start.")]
     public GameObject defaultStaff;
 
     [Header("Environment")]
     [Space(2)]
     [Tooltip("Set the starting intensity of the fog at round start.")]
     public float fogStrength;
+    [Tooltip("Current fog strength.")]
     public float currentFog;
 
     public GameObject runtimeUI;

@@ -10,15 +10,19 @@ public class Game_End : MonoBehaviour
     [Header("Ending Cutscene Components")]
     [Space(2)]
     [Tooltip("Set the time before credits begin to scroll.")]
-    public int timeBeforeCredits = 4;
-    private Portal_Controller m_portalController;
-    public TextMeshProUGUI exitPrompt;
-    public bool transitionActive;
+    public int timeBeforeCredits = 4; //Seconds before the credits begin scrolling.
+    private Portal_Controller m_portalController; //Reference portal controller script.
+    public TextMeshProUGUI exitPrompt; //Exit temple message.
+    [Tooltip("Check to see if the transition is active or not.")]
+    public bool transitionActive; //Start transition between screen.
     private bool m_playerEnter;
-    public Animator anim;
+    [Tooltip("Animator for the transition.")]
+    public Animator anim; //Reference game object animator.
+    [Tooltip("Transition image.")]
     public Image transition;
+    [Tooltip("Canvas that holds the content for the cutscene text.")]
     public GameObject cutsceneTextCanvas;
-    public Image test;
+    public Image test; //Blank variable.
     public Image background;
 
     void Start()

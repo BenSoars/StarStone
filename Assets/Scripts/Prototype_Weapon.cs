@@ -10,7 +10,7 @@ public class Prototype_Weapon : MonoBehaviour
 {
     [Header("Referenced Scripts")]
     [Space(2)]
-    private Player_Controller m_playerController;
+    private Player_Controller m_playerController; //References the required scripts.
     private Prototype_Classes m_prototypeClasses;
     public Clock_Controller clockController;
     private Enemy_Controller m_enemyHit;
@@ -18,22 +18,26 @@ public class Prototype_Weapon : MonoBehaviour
     [Header("Weapon Mechanics")]
     [Space(2)]
     private Animator m_anim;
-    private LineRenderer m_lr;
-    private Transform m_shotPoint;
+    private LineRenderer m_lr; //Access the line renderer component.
+    private Transform m_shotPoint;   
     public GameObject particles;
+    [Tooltip("Hit text that appears when the enemy is hit.")]
     public GameObject hitDamageText;
+    [Tooltip("Particles used for the laser.")]
     public GameObject beamParticles;
     [Tooltip("Set the minimum damage of the laser.")]
-    public float minLaserDamage;
+    public float minLaserDamage; //Minimum set for the lower Random.Range value.
     [Tooltip("Set the maximum damage of the laser.")]
-    public float maxLaserDamage;
+    public float maxLaserDamage; //Maximum set for the higher Random.Range value.
     private float m_laserDamage;
     [Tooltip("Set how long between laser hits.")]
     public float damageCoolDown;
     private float m_currentDamageCoolDown;
+    [Tooltip("Laser audio.")]
     public AudioSource beamNoise;
 
-    public LayerMask layerMask; // the layermask
+    [Tooltip("Used to determine what layers the raycast should ignore.")]
+    public LayerMask layerMask; // The layermask
 
     // Use this for initialization
     void Start()

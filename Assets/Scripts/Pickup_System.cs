@@ -13,45 +13,55 @@ public class Pickup_System : MonoBehaviour
     public string[] noteText;
 
     [Header("Pickup Mechanics")]
+    [Tooltip("Location where the picked up part will float.")]
     public GameObject floatPoint;
-    private Transform m_desiredLocation;
-    private List<Transform> m_locations = new List<Transform>();      
-    public GameObject currentPart;
-    public bool spawnNote;
-    public bool spawnCogs;
-    public bool itemHeld;
-    private bool m_isRepairing;
-    public int currentPartID;
-    public Animator animator;
-    public Transform camera;
+    private Transform m_desiredLocation; //Location to spawn object.
+    private List<Transform> m_locations = new List<Transform>(); //List of all posisible locations. 
+    [Tooltip("Current held object.")]
+    public GameObject currentPart; //Current part held by player.
+    [Tooltip("Spawn a note.")]
+    public bool spawnNote; //Spawn a note if true.
+    [Tooltip("Spawn a clock part.")]
+    public bool spawnCogs; //Spawn a clock part if true.
+    [Tooltip("Check if the player is holding an item.")]
+    public bool itemHeld; //Check if the player is holding a clock part.
+    private bool m_isRepairing; //Used to check if the clock is being repaired.
+    [Tooltip("Grabs the ID of the held current part so that the clock can show the correct part after repair.")]
+    public int currentPartID; //Grabs current part ID held by the player.
+    public Animator animator; //Grabs animator of repair mechanic.
+    public Transform camera; //Reference the camera attached to the player.
 
     [Header("Script References")]
     [Space(2)]
-    private Clock_Controller m_clockController;
-    private User_Interface m_userInterface;
-    public Prototype_Classes prototypeClasses;
+    private Clock_Controller m_clockController; //Clock controller reference.
+    private User_Interface m_userInterface; //User interface reference.
+    public Prototype_Classes prototypeClasses; //Prototype classes reference.
 
     [Tooltip("Set how long it takes for the player to repair the clock.")]
-    public float repairTime;
-    public float currentRepairTime;
+    public float repairTime; //How long it takes to repair the clock.
+    public float currentRepairTime; //Current repair time.
     
     [Header("Player Attributes")]
     [Space(2)]
+    [Tooltip("Weapons game object.")]
     public GameObject weaponHands;
+    [Tooltip("Repair hand game object.")]
     public GameObject repairHands;
 
     [Header("Clock Mechanics")]
     [Space(2)]
-    public bool clockFixed;
-    private int m_clockPart;
-    public List<GameObject> clockPart = new List<GameObject>();
+    [Tooltip("Check for if all parts have been repaired on the clock.")]
+    public bool clockFixed; //True/false clock fixed.
+    private int m_clockPart; //Store the int of the current clock part.
+    [Tooltip("List of all the clock parts to spawn.")]
+    public List<GameObject> clockPart = new List<GameObject>(); //List of all the clock parts.
+    [Tooltip("Sum of how many parts have been added to the clock.")]
     public int repairedParts;
+    [Tooltip("Note game object.")]
     public GameObject note;
-    private int m_noteID;
+    private int m_noteID; //Note ID set for text value.
 
     private AchievementTracker m_achivement;
-
-
 
     private void Start()
     {

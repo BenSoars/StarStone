@@ -6,11 +6,10 @@ public class Upgrade_Pushback : MonoBehaviour
 {
     [Header("Pushback Forces")]
     [Space(2)]
-
     [Tooltip("Set the explosion force (how much the player is pushed by the force).")]
-    public float explosionForce;
+    public float explosionForce; //Push-away force.
     [Tooltip("Set how high the player is lifted when inside the trigger.")]
-    public float upwardsForce;
+    public float upwardsForce; //Upwards force.
 
     private void OnTriggerStay(Collider other)
     {

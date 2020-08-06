@@ -11,25 +11,28 @@ public class Drone_Controller : MonoBehaviour
 
     [Header("Camera Values")]
     [Space(2)]
-    [Tooltip("Set look rotation speed.")]
-    public float camRotSpeed;
-    public float camMinY;
-    public float camMaxY;
-    public float camSmoothSpeed;
+    [Tooltip("Set how fast the camera rotates.")]
+    public float camRotSpeed; //How fast the camera looks around.
+    [Tooltip("Set how low the player can look before being stopped.")]
+    public float camMinY; //How low the camera can look.
+    [Tooltip("Set how high the player can look before being stopped.")]
+    public float camMaxY; //How high the camera can look.
+    [Tooltip("Set how smooth the camera moves (the higher the faster the camera movement).")]
+    public float camSmoothSpeed; //How smooth the camera looks around.
     [Tooltip("Set the default speed of the drone.")]
-    public float flySpeed;
+    public float flySpeed; //Drone speed.
     [Tooltip("Set the max speed of the drone.")]
-    public float maxSpeed;
-    [Tooltip("Set the speed at which the drone goes up and down.")]
-    public float verticalSpeed;
-    private float m_playerRotX;
+    public float maxSpeed; //Drone max speed.
+    [Tooltip("Set how fast the drone moves up and down.")]
+    public float verticalSpeed; //Up/down speed.
+    private float m_playerRotX; //Set the rotation of the player object.
     private float m_camRotY;
-    private Vector3 m_directionIntentX;
-    private Vector3 m_directionIntentY;
+    private Vector3 m_directionIntentX; //Direction intended to look on X axis.
+    private Vector3 m_directionIntentY; //Direction to look on Y axis.
 
     [Header("Referenced Scripts")]
     [Space(2)]
-    private Player_Controller m_playerController;
+    private Player_Controller m_playerController; //Reference the player controller script.
 
     private void Start()
     {

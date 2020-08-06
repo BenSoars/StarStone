@@ -7,10 +7,10 @@ public class Orb_Controller : MonoBehaviour
 {
     [Header("Script References")]
     [Space(2)]
-    private Prototype_Classes r_prototypeClasses;
+    private Prototype_Classes r_prototypeClasses; //Reference prototype classes script.
 
     [Tooltip("Set the colour of the orbs material based on list values.")]
-    public List<Material> materials = new List<Material>();
+    public List<Material> materials = new List<Material>(); //List of materials used.
 
     private void Start()
     {

@@ -8,14 +8,15 @@ public class Prototype_Default : MonoBehaviour
     [Space(2)]
     [Tooltip("Set position of particle point.")]
     public Transform shotPoint;
+    [Tooltip("Particle component used for the 'spark'.")]
     public GameObject particles;
-    private Animator m_anim;
-    private bool m_isPlaying;
+    private Animator m_anim; //Animator component reference. 
+    private bool m_isPlaying; //Bool used to stop the player spamming the animation.
 
     // Start is called before the first frame update
     void Start()
     {
-        m_anim = GetComponent<Animator>();
+        m_anim = GetComponent<Animator>(); //Access the animator.
     }
 
     // Update is called once per frame

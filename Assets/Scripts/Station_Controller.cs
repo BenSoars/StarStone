@@ -7,30 +7,40 @@ public class Station_Controller : MonoBehaviour
 {
     [Header("Station Components")]
     [Space(2)]
-    public GameObject station;
     private Wave_System m_waveSystem;
     private Weapon_Switch m_weaponSwitch;
-    public Transform cameraLook;
+    [Tooltip("Camera attached to player.")]
+    public Transform camera;
+    [Tooltip("Animator of the upgrade station.")]
     public Animator animator;
     private bool m_isUpgrading;
     private bool m_weaponUpgraded;
+    [Tooltip("Access the animation to remove the rocks when the station is open.")]
     public Animator rockAnim;
+    [Tooltip("Bool to disable the upgrade process if the player runs out of time.")]
     public bool disableUpgrade;
     private bool m_showText;
+    [Tooltip("Text used to notify the player the upgrade station is open.")]
     public TextMeshProUGUI upgradeOpenText;
 
     [Header("Weapon Handler")]
     [Space(2)]
+    [Tooltip("Weapon handler object.")]
     public GameObject weaponHands;
+    [Tooltip("Repair hands for when the weapon is upgrading.")]
     public GameObject repairHands;
 
+    [Tooltip("Store the primary weapon game object.")]
     public GameObject weapon1;
+    [Tooltip("Store the secondary weapon game object.")]
     public GameObject weapon2;
 
+    [Tooltip("Store the upgraded primary weapon game object.")]
     public GameObject upgradedWeapon1;
+    [Tooltip("Store the upgraded secondary weapon game object.")]
     public GameObject upgradedWeapon2;
 
-    private bool isUpgrading1;
+    private bool isUpgrading1; //These bools are used for when the weapon is upgrading and the intermission time runs out, causing the upgrade to cancel.
     private bool isUpgrading2;
 
     private AchievementTracker m_achivement;
@@ -54,7 +64,7 @@ public class Station_Controller : MonoBehaviour
 
         RaycastHit m_stationHit; //Create a raycast.
 
-        if (Physics.Raycast(cameraLook.transform.position, cameraLook.transform.forward, out m_stationHit, 5f)) //Shoot the raycast from the camera forward.
+        if (Physics.Raycast(camera.transform.position, camera.transform.forward, out m_stationHit, 5f)) //Shoot the raycast from the camera forward.
         {
             if (m_stationHit.collider.gameObject.tag == "Upgrade" && Input.GetKeyDown("f") && disableUpgrade == false) //Check for an object hit with the tag "Upgrade" and for user events.
             {

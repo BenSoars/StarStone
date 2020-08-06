@@ -140,7 +140,7 @@ public class Enemy_Controller : MonoBehaviour
 
             //Kurtis Watson
             GameObject isNewWisp = Instantiate(m_whisp, transform.position, Quaternion.identity); // spawn a wisp
-            isNewWisp.GetComponent<Wisp_Controller>().m_enemySpawn = true; // set the wisp to recognise it was spawned from a defeated enemy
+            isNewWisp.GetComponent<Wisp_Controller>().enemySpawn = true; // set the wisp to recognise it was spawned from a defeated enemy
             r_waveSystem.enemiesLeft -= 1; // take away from the enemies left
 
             

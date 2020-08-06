@@ -8,12 +8,9 @@ using UnityEngine.SceneManagement;
 //Kurtis Watson
 public class Portal_Controller : MonoBehaviour
 {
+    [Header("Portal Components")]
+    [Tooltip("Sets the transition active so the scene switching is smoother.")]
     public bool transitionActive;
-
-    private void Start()
-    {
-        
-    }
 
     private void OnTriggerEnter(Collider other)
     {

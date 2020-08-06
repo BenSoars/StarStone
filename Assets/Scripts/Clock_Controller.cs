@@ -10,32 +10,43 @@ public class Clock_Controller : MonoBehaviour
 {
     [Header("Required Components")]
     [Space(2)]
-    private Animator m_animator;
-    public Camera camera;
-    public GameObject player;
-    private Pickup_System m_pickupSystem;
-    public Gun_Generic gunGeneric;
-    public bool canAim;
-    public bool canShoot;
+    private Animator m_animator; //Reference animator.
+    [Tooltip("Player camera.")]
+    public Camera camera; //Camera used in scene reference.
+    [Tooltip("Player object.")]
+    public GameObject player; //Player reference.
+    private Pickup_System m_pickupSystem; //Reference pickup system.
+    [Tooltip("Access gun generic script.")]
+    public Gun_Generic gunGeneric; //Reference gun generic script.
+    [Tooltip("This sets if the player can aim or not.")]
+    public bool canAim; //Enable/disable player aiming.
+    [Tooltip("This sets if the player can shoot or not.")]
+    public bool canShoot; //Enable/disable player shooting.
     private bool m_isActive;
 
     [Header("Time Values")]
     [Space(2)]
-    public string globalMin;
-    public string globalHour;
-    private int m_desiredMin;
-    private int m_desiredHour;
-    private int m_currentMin;
-    private int m_currentHour;
+    [Tooltip("Sets the string value for the clock minute text.")]
+    public string globalMin; //Clock minute (readable format).
+    [Tooltip("Sets the string value for the clock hour text.")]
+    public string globalHour; //Clock hour (readable format).
+    private int m_desiredMin; //Desired minute.
+    private int m_desiredHour; //Desired hour.
+    private int m_currentMin; //Current minute set by player.
+    private int m_currentHour; //Current hour set by player.
 
     [Header("Clock Mechanics")]
     [Space(2)]
-    public GameObject hourHand;
-    public GameObject minuteHand;
-    public GameObject portal;
-    private int m_smallRotation = 0;
-    private int m_bigRotation = 0;
-    public List<GameObject> clockParts = new List<GameObject>(); 
+    [Tooltip("Hour hand object of the clock.")]
+    public GameObject hourHand; //Hour hand object.
+    [Tooltip("Minute hand object of the clock.")]
+    public GameObject minuteHand; //Minute hand object.
+    [Tooltip("Portal object.")]
+    public GameObject portal; //Portal object reference.
+    private int m_smallRotation = 0; //Rotation for small hand.
+    private int m_bigRotation = 0; //Rotation for big hand.
+    [Tooltip("List of the different clock parts.")]
+    public List<GameObject> clockParts = new List<GameObject>(); //List for the clock parts.
 
     private void Start()
     {

@@ -6,22 +6,29 @@ using UnityEngine;
 public class Rune_Controller : MonoBehaviour
 {   
     [Header("Referenced Scripts")]
-    private Prototype_Classes m_prototypeClasses;
+    private Prototype_Classes m_prototypeClasses; //References the required scripts.
     private Easter_Eggs m_easterEggs;
 
     [Header("Rune Components")]
     [Space(2)]   
+    [Tooltip("Attach animator of the Rune.")]
     public Animator animator;
+    [Tooltip("Light object that changes colour based on enemy buff.")]
     public Light light;
+    [Tooltip("Ball object that changes colour based on enemy buff.")]
     public Renderer runeBall;
+    [Tooltip("Rune stripes that changes colour based on enemy buff.")]
     public Renderer runeArt;
-    public Material globalColor;
+    [Tooltip("Global colour that all objects will be set to based on enemy buff.")]
+    public Material globalColor; //Colour that will be used by several objects.
     public bool stopActivation;
-    private bool m_shake;
+    private bool m_shake; //Bool that is used to set the shake animation true/false.
+    [Tooltip("Check to see if the Runes are currently animating.")]
     public bool animated;
  
     [Header("Wisp Components")]
     [Space(2)]
+    [Tooltip("Wisp game object.")]
     public GameObject wisp;
 
     private void Start()

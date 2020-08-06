@@ -13,10 +13,10 @@ public class Difficulty : MonoBehaviour
 
     [Header("Enemies")]
     [Space(2)]
-    public GameObject enemySmall;
-    public GameObject enemyMedium;
-    public GameObject enemyLarge;
-    public GameObject enemyRange;
+    public GameObject enemySmall; //Reference small enemy.
+    public GameObject enemyMedium; //Reference medium enemy.
+    public GameObject enemyLarge; //Reference large enemy.
+    public GameObject enemyRange; //Reference ranged enemy.
 
     [Header("Small Enemy")]
     [Space(2)]
@@ -56,10 +56,7 @@ public class Difficulty : MonoBehaviour
 
     [Header("Percentage Mechanics")]
     [Space(2)]
-    private float percent;
-    private bool percentChosen;
-    private bool valuesSet;
-    private int dropDownValue;
+    private float percent; //Set the percent to alter enemy values by.
 
     // Start is called before the first frame update
     void Start()

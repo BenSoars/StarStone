@@ -54,13 +54,13 @@ public class Wave_System : MonoBehaviour
     public List<GameObject> wisps = new List<GameObject>();
     public List<Transform> spawnPoints = new List<Transform>(); //Stores the spawnpoints for the enemy.
     public bool m_startedWaves; //Detects if the wave has started.
-    private GameObject[] m_wispPoint;
-    private int m_random;
-    public bool newWave;
-    private bool m_enemiesKilled;
-    private Text m_enemyCount;
+    private GameObject[] m_wispPoint; //Spawn points.
+    private int m_random; //Used to randomly choose where the enemy wisps should move towards.
+    public bool newWave; //Check for new wave.
+    private bool m_enemiesKilled; //Check for if all enemies have been killed.
+    private Text m_enemyCount; //Displayed on screen.
 
-    [Header("Script References")]
+    [Header("Script References")] //Required script references.
     [Space(2)]
     private User_Interface m_userInterface;
     private Prototype_Classes m_prototypeClasses;
@@ -70,15 +70,15 @@ public class Wave_System : MonoBehaviour
     [Header("Fog Values")]
     [Space(2)]
     [Tooltip("Calculate the fog intensity based on how many enemies are left.")]
-    public float fogMath;
+    public float fogMath; //Used to work out how much fog to decrease by based on enemies.
 
     [Header("Intermission Components")]
     [Space(2)]
-    public bool isIntermission;
-    public bool notChosen;
+    public bool isIntermission; //Check for if intermission is live.
+    public bool notChosen; //Check for if the player select a Starstone in time.
     [Tooltip("Set the time length of the intermission phases between rounds.")]
-    public float intermissionTime;
-    public float currentIntermissionTime;
+    public float intermissionTime; //Intermission time value.
+    public float currentIntermissionTime; //Current intermission time.
 
     [Header("Drop Manager")]
     [Space(2)]
@@ -156,6 +156,7 @@ public class Wave_System : MonoBehaviour
         Debug.Log("New Wave: " + newWave);
     }
 
+    //Kurtis Watson
     void f_fogManager()
     {
         m_prototypeClasses.fogStrength = 0.2f; //Fog strength.

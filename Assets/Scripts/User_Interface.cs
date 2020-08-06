@@ -10,13 +10,13 @@ using System.Security.Cryptography;
 //Kurtis Watson
 public class User_Interface : MonoBehaviour
 {
-    [Header("Script References")]
+    [Header("Script References")] //References for the scripts required.
     private Wave_System m_waveSystem;
     private Player_Controller m_playerController;
     private Prototype_Classes m_prototypeClasses;
     private Pickup_System m_pickupSystem;
 
-    [Header("Text Mesh Pro UGUI")]
+    [Header("Text Mesh Pro UGUI")] //Access for all Text Meshes on the UI.
     [Space(2)]
     [Tooltip("Current time left before round end.")]
     public TMPro.TextMeshProUGUI currentTimeText;
@@ -37,7 +37,7 @@ public class User_Interface : MonoBehaviour
     [Tooltip("Display the amount of notes left to collect.")]
     public TMPro.TextMeshProUGUI notesLeft;
 
-    [Header("UI Game Objects")]
+    [Header("UI Game Objects")] //Game objects needed for enabline/disabling.
     [Space(2)]
     [Tooltip("Game UI reference.")]
     public GameObject gameUI;
@@ -56,7 +56,7 @@ public class User_Interface : MonoBehaviour
     public GameObject timeLeft;
     public GameObject leaveNow;
 
-    [Header("UI Images")]
+    [Header("UI Images")] //Images used for the User Interface.
     [Tooltip("Display current starstone image on UI.")]
     public Image starstoneIcon;
     [Tooltip("Show the allogated Q ability on screen.")]
@@ -76,16 +76,16 @@ public class User_Interface : MonoBehaviour
     public Image bloodRed;
 
     [Header("Runtime Components")]
-    [Tooltip("Camera reference.")]
-    public Camera camera;
-    private string m_interactionText;      
-    private float m_targetTime;
-    private int m_currentSecond;
-    private int m_currentMinute;
-    private bool m_pauseMenuActive;
-    private bool m_isLooking;
+    [Tooltip("Camera attached to player.")]
+    public Camera camera; //Camera attached to player.
+    private string m_interactionText; //Text to display if a prompt is recongnised infront of the player.
+    private float m_targetTime; //Time to display for round time left.
+    private int m_currentSecond; //Second to display.
+    private int m_currentMinute; //Minute to display.
+    private bool m_pauseMenuActive; //Bool to enable/disable pause menu.
+    private bool m_isLooking; //Detect if player is looking at a prompt.
     private bool m_bugFix;
-    private bool m_findClock;
+    private bool m_findClock; //Display 'find clock' text.
     [Tooltip("Stores the wave times for each round.")]
     public List<int> waveTimes = new List<int>();
     [Tooltip("Stores the amount of notes the player has collected.")]

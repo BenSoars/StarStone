@@ -6,10 +6,10 @@ using UnityEngine;
 public class Ability_Handler : MonoBehaviour
 {
     [Header("Script Access")]
-    private Player_Controller m_playerController;
-    private Prototype_Classes m_prototypeClasses;
-    private Wave_System m_waveSystem;
-    private Station_Controller m_stationController;
+    private Player_Controller m_playerController; //Reference to player controller.
+    private Prototype_Classes m_prototypeClasses; //Reference to prototype classes.
+    private Wave_System m_waveSystem; //Reference to wave system.
+    private Station_Controller m_stationController; //Reference to station controller.
 
     [Header("Ability Mechanics")]
     [Space(2)]

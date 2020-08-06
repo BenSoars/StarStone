@@ -14,7 +14,7 @@ public class Repair_Bar : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        m_pickupSystem = FindObjectOfType<Pickup_System>();
+        m_pickupSystem = FindObjectOfType<Pickup_System>(); //Access pickup script.
     }
 
     // Update is called once per frame

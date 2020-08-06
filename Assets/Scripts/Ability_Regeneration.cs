@@ -6,7 +6,7 @@ public class Ability_Regeneration : MonoBehaviour
 {
     [Header("Regeneration Values")]
     [Tooltip("How much health the player should regenerate per second when stood in the circle.")]
-    public float healthPerSecond;
+    public float healthPerSecond; //Set regen value.
     private void OnTriggerStay(Collider other)
     {
         if(other.gameObject.tag == "Player")

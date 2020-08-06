@@ -7,8 +7,8 @@ public class Teleport : MonoBehaviour
 {
     [Header("Teleport Components")]
     [Space(2)]
-    private Player_Controller m_playerController;
-    public Transform desiredLocation;
+    private Player_Controller m_playerController; //Reference the required script.
+    public Transform desiredLocation; //Where to teleport the player to.
 
     private void Start()
     {

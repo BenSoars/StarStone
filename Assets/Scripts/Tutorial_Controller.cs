@@ -5,54 +5,67 @@ using UnityEngine;
 
 public class Tutorial_Controller : MonoBehaviour
 {
+    [Header("Required Scripts")]
     private Prototype_Classes m_prototypeClasses;
     private Clock_Controller m_clockController;
     private Wave_System m_waveSystem;
 
+    [Header("Movement Instructions")] //Moving text instructions.
+    [Space(2)]
     public TextMeshProUGUI wText;
     public TextMeshProUGUI aText;
     public TextMeshProUGUI sText;
     public TextMeshProUGUI dText;
     public TextMeshProUGUI spaceText;
 
+    [Header("Shooting Instructions")] //Shooting text instructions.
+    [Space(2)]
     public TextMeshProUGUI leftClickText;
     public TextMeshProUGUI rightClickText;
     public TextMeshProUGUI middleClickText;
 
+    [Header("Note Instructions")] //Note text instructions.
+    [Space(2)]
     public TextMeshProUGUI findNotesText;
     public TextMeshProUGUI tabClickText;
     public TextMeshProUGUI tabExitText;
 
+    [Tooltip("Starstone Instructions")] //Starstone text instructions.
+    [Space(2)]
     public TextMeshProUGUI locateStarstoneText;
-
-    public GameObject clockText;
-    public TextMeshProUGUI timeToSetText;
-
     public TextMeshProUGUI num1;
     public TextMeshProUGUI num2;
     public TextMeshProUGUI num3;
 
+    [Tooltip("Clock Instructions")] //Clock text instructions.
+    [Space(2)]
+    public GameObject clockText;
+    public TextMeshProUGUI timeToSetText;
+
+
+    [Tooltip("Bool Variables")] //Bool values to check if certain keys have been pressed.
     private bool m_wPressed;
     private bool m_aPressed;
     private bool m_sPressed;
     private bool m_dPressed;
     private bool m_spacePressed;
-
     private bool m_leftClickPressed;
     private bool m_rightClickPressed;
     private bool m_scrollWheelPressed;
-
     private bool m_tabClicked;
-
     private bool m_1pressed;
     private bool m_2pressed;
     private bool m_3pressed;
+    private bool m_notesComplete;
 
+    [Tooltip("Int Variables")] //Int values to check if all buttons have been pressed.
     private int m_WASD;
     private int m_mouseCheck;
     private int m_numbersPressed;
 
-    public GameObject stoneBarrier;
+    [Tooltip("UI Game Objects")] //UI game objects for enabling/disabling.
+    [Space(2)]
+    public GameObject stoneBarrier; 
     public GameObject WASD;
     public GameObject mouseCheck;
     public GameObject note;
@@ -62,16 +75,14 @@ public class Tutorial_Controller : MonoBehaviour
     public GameObject abilityExample;
     public GameObject QorV;
     public GameObject leftClickAbility;
-    public GameObject uiDescription;
-
-    private bool notesComplete;
-
-    public Transform shotPoint;
-
+    public GameObject uiDescription; 
     public GameObject noteReleased;
     public GameObject clockPartReleased;
     public GameObject findClock;
     public GameObject packapunch;
+
+    [Tooltip("Where the raycast is shot from.")]
+    public Transform shotPoint;
 
     private void Start()
     {
@@ -79,6 +90,7 @@ public class Tutorial_Controller : MonoBehaviour
         m_clockController = FindObjectOfType<Clock_Controller>();
         m_waveSystem = FindObjectOfType<Wave_System>();
 
+        //Disabled until needed.
         findNotesText.enabled = false;
         tabClickText.enabled = false;
         tabExitText.enabled = false;
@@ -203,7 +215,7 @@ public class Tutorial_Controller : MonoBehaviour
             else if (Input.GetKeyDown(KeyCode.Tab) && m_tabClicked == true)
             {
                 stoneBarrier.active = false; //Allow the player 
-                notesComplete = true; //This bool is true when the player has followed the instructions on how the note system works.
+                m_notesComplete = true; //This bool is true when the player has followed the instructions on how the note system works.
                 tabExitText.enabled = false;
             }
         }
@@ -211,7 +223,7 @@ public class Tutorial_Controller : MonoBehaviour
 
     void f_stoneCheck()
     {
-        if (notesComplete == true) 
+        if (m_notesComplete == true) 
         {
             locateStarstoneText.enabled = true; //Display locate starstone text.
         }
@@ -222,7 +234,7 @@ public class Tutorial_Controller : MonoBehaviour
            if (m_rayHit.collider.gameObject.layer == LayerMask.NameToLayer("Stones") && Input.GetKeyDown("f") && locateStarstoneText.enabled == true) //If the player presses f then >
             {
                 m_waveSystem.canSpawnEnemies = true;
-                notesComplete = false;
+                m_notesComplete = false;
                 locateStarstoneText.enabled = false;
                 killEnemiesText.active = true; // > indicate to the player that there are enemies that can be killed. 
             }
