@@ -91,6 +91,7 @@ public class User_Interface : MonoBehaviour
     [Tooltip("Stores the amount of notes the player has collected.")]
     public int collectedNotes;
     public Animator bloodAnimation;
+    public LayerMask layerMask;
 
     //[Header("In-game Individual Canvas")] //This was to display the starstone power in game.
     //public TMPro.TextMeshPro SS1;
@@ -336,10 +337,10 @@ public class User_Interface : MonoBehaviour
     {
         RaycastHit m_objectHit; //Create a raycast.
 
-        if (Physics.Raycast(camera.transform.position, camera.transform.forward, out m_objectHit, 100f)) //Shoot raycast in direction of where player is looking.
+        if (Physics.Raycast(camera.transform.position, camera.transform.forward, out m_objectHit, 100f, ~layerMask)) //Shoot raycast in direction of where player is looking (ignores layerMask set).
         {
             float distance = Vector3.Distance(camera.transform.position, m_objectHit.collider.transform.position); //Check distance between the player and the object hit.
-            if ((m_objectHit.collider.gameObject.GetComponent("Interact_Text") as Interact_Text) != null && distance <= 4) //Check if the collided object holds the 'Interact_Text' script.
+            if ((m_objectHit.collider.gameObject.GetComponent("Interact_Text") as Interact_Text) != null && distance <= 5) //Check if the collided object holds the 'Interact_Text' script.
             {
                 m_interactionText = m_objectHit.collider.GetComponent<Interact_Text>().text; //Grab the string value stored on the object and >
                 interactText.enabled = true;
