@@ -8523,7 +8523,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &5064050746291840193
 Transform:
   m_ObjectHideFlags: 0
@@ -21872,6 +21872,8 @@ MonoBehaviour:
   desiredPos: {fileID: 0}
   audio: {fileID: 0}
   runSound: {fileID: 5915776234038842692}
+  gameHUDCanvas: {fileID: 0}
+  tutorialCanvas: {fileID: 0}
 --- !u!95 &8145446568550084157
 Animator:
   serializedVersion: 3
