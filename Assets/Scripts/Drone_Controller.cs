@@ -64,9 +64,9 @@ public class Drone_Controller : MonoBehaviour
         Quaternion m_camTargetRotation = Quaternion.Euler(-m_camRotY, 0, 0); 
         Quaternion m_targetRotation = Quaternion.Euler(0, m_playerRotX, 0);
 
-        transform.rotation = Quaternion.Lerp(transform.rotation, m_targetRotation, Time.deltaTime * camSmoothSpeed);
+        transform.rotation = Quaternion.Lerp(transform.rotation, m_targetRotation, Time.deltaTime * camSmoothSpeed); //Drone rotation.
 
-        camera.localRotation = Quaternion.Lerp(camera.localRotation, m_camTargetRotation, Time.deltaTime * camSmoothSpeed);
+        camera.localRotation = Quaternion.Lerp(camera.localRotation, m_camTargetRotation, Time.deltaTime * camSmoothSpeed); //Camera rotation.
     }
 
     void f_moveAround()
@@ -80,8 +80,8 @@ public class Drone_Controller : MonoBehaviour
         m_directionIntentY.y = 0;
         m_directionIntentY.Normalize();
 
-        rigidbody.velocity = m_directionIntentY * Input.GetAxis("Vertical") * flySpeed + m_directionIntentX * Input.GetAxis("Horizontal") * flySpeed + Vector3.up * rigidbody.velocity.y;
-        rigidbody.velocity = Vector3.ClampMagnitude(rigidbody.velocity, maxSpeed);
+        rigidbody.velocity = m_directionIntentY * Input.GetAxis("Vertical") * flySpeed + m_directionIntentX * Input.GetAxis("Horizontal") * flySpeed + Vector3.up * rigidbody.velocity.y; //Movement controls.
+        rigidbody.velocity = Vector3.ClampMagnitude(rigidbody.velocity, maxSpeed); //Clamp the speed of the drone.
 
         if (Input.GetKey(KeyCode.LeftControl))
         {
