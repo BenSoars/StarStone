@@ -64084,8 +64084,18 @@ PrefabInstance:
     - target: {fileID: 2534672464195050704, guid: 23e70938c35368744948706caab60da2,
         type: 3}
       propertyPath: m_PlayOnAwake
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2534672464195050704, guid: 23e70938c35368744948706caab60da2,
+        type: 3}
+      propertyPath: Loop
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2534672464195050704, guid: 23e70938c35368744948706caab60da2,
+        type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: bbd95424754321a48af588574d2e42c1, type: 3}
     - target: {fileID: 3107962700206469286, guid: 23e70938c35368744948706caab60da2,
         type: 3}
       propertyPath: m_textInfo.characterCount

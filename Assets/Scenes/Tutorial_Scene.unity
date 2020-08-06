@@ -52573,6 +52573,7 @@ MonoBehaviour:
   difficultyHandler: {fileID: 3170200391802772419, guid: f4c3db54aefbb9440b8879fd647251a3,
     type: 3}
   timeLeft: {fileID: 5969321555251359715}
+  leaveNow: {fileID: 0}
   starstoneIcon: {fileID: 7751080379094901683}
   abilityPreview1: {fileID: 5113393004986411743}
   abilityPreview2: {fileID: 8195584632513661213}
@@ -52593,9 +52594,11 @@ MonoBehaviour:
   - {fileID: 21300000, guid: fc87569fbd54df7469da11e94938dbf1, type: 3}
   - {fileID: 21300000, guid: 060097af173c7db4f9dda36b8ad3089e, type: 3}
   - {fileID: 21300000, guid: e4ea9e0b5d807fd448b25feb9e615f1b, type: 3}
+  bloodRed: {fileID: 0}
   camera: {fileID: 896352354}
   waveTimes: 100e0000100e0000100e0000100e0000100e0000100e0000100e0000100e0000100e0000100e0000100e0000100e0000100e0000100e0000100e0000100e0000
   collectedNotes: 0
+  bloodAnimation: {fileID: 0}
 --- !u!4 &6737613659247432840
 Transform:
   m_ObjectHideFlags: 0
@@ -55354,11 +55357,11 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: dda1e1a4454084d4a8bd82d2eadf04ce, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 72b48eceed6a8d044b3c0f86e09803fd, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0

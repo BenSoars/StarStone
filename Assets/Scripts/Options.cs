@@ -18,6 +18,7 @@ public class Options : MonoBehaviour
         FirstTime();
         volumeSlider.value = PlayerPrefs.GetFloat("volumeLevel");
         musicSlider.value = PlayerPrefs.GetFloat("musicLevel");
+        testMusic.volume = musicSlider.value; // set test sound to use that volume
         displayTotalKills.text = "Total Kills: " + PlayerPrefs.GetInt("TotalKills").ToString();
     }
 
@@ -47,7 +48,7 @@ public class Options : MonoBehaviour
     public void alterMusicVolume()
     {
         PlayerPrefs.SetFloat("musicLevel", musicSlider.value); // set volume to reflect the slider
-   
+        testMusic.volume = musicSlider.value; // set test sound to use that volume
         PlayerPrefs.Save(); // save the volume level
     }
 }
