@@ -15,6 +15,7 @@ public class Clock_Controller : MonoBehaviour
     public GameObject player;
     private Pickup_System m_pickupSystem;
     public Gun_Generic gunGeneric;
+    public bool canAim;
     public bool canShoot;
     private bool m_isActive;
 
@@ -102,9 +103,10 @@ public class Clock_Controller : MonoBehaviour
         {
             if (m_clockHit.collider.gameObject.name == "Steampunk Clock") //and the name is 'Steampunk Clock' >
             {
+                canAim = false;
                 canShoot = false; //then stop the player from shooting their gun (allow them to change clock time). 
             }
-            else canShoot = true;
+            else canAim = true; canShoot = true;
         }
         
 

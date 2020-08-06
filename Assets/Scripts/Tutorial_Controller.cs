@@ -25,7 +25,7 @@ public class Tutorial_Controller : MonoBehaviour
 
     public TextMeshProUGUI locateStarstoneText;
 
-    public TextMeshProUGUI fixClockText;
+    public GameObject clockText;
     public TextMeshProUGUI timeToSetText;
 
     public TextMeshProUGUI num1;
@@ -84,7 +84,6 @@ public class Tutorial_Controller : MonoBehaviour
         tabExitText.enabled = false;
         locateStarstoneText.enabled = false;
         killEnemiesText.active = false;
-        fixClockText.enabled = false;
         timeToSetText.enabled = false;
         leftClickAbility.active = false;
         uiDescription.active = false;
@@ -280,7 +279,7 @@ public class Tutorial_Controller : MonoBehaviour
     void f_fixClock()
     {
         uiDescription.active = false;
-        fixClockText.enabled = true;
+        clockText.active = true;
         timeToSetText.enabled = true;
         timeToSetText.text = "Set time to " + m_clockController.globalHour + ":" + m_clockController.globalMin + ".";
         killEnemiesText.active = false;

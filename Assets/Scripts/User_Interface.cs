@@ -339,7 +339,7 @@ public class User_Interface : MonoBehaviour
         if (Physics.Raycast(camera.transform.position, camera.transform.forward, out m_objectHit, 100f)) //Shoot raycast in direction of where player is looking.
         {
             float distance = Vector3.Distance(camera.transform.position, m_objectHit.collider.transform.position); //Check distance between the player and the object hit.
-            if ((m_objectHit.collider.gameObject.GetComponent("Interact_Text") as Interact_Text) != null && distance <= 3) //Check if the collided object holds the 'Interact_Text' script.
+            if ((m_objectHit.collider.gameObject.GetComponent("Interact_Text") as Interact_Text) != null && distance <= 4) //Check if the collided object holds the 'Interact_Text' script.
             {
                 m_interactionText = m_objectHit.collider.GetComponent<Interact_Text>().text; //Grab the string value stored on the object and >
                 interactText.enabled = true;

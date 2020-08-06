@@ -70,6 +70,10 @@ public class Player_Controller : MonoBehaviour
     public Audio_System audio; //Get the audio system component to allow for sounds.
     public AudioSource runSound;
 
+    [Header("Other Assets")]
+    [Space(2)]
+    public GameObject gameHUDCanvas;
+    public GameObject tutorialCanvas;
     //public Rigidbody grenade;
     //public int grenadeAmount = 3;
 
@@ -127,6 +131,8 @@ public class Player_Controller : MonoBehaviour
         {
             tempColor.a += 0.5f * Time.deltaTime; //Increase opacity of the transition for smooth scene swtiching.
             transition.color = tempColor;
+            Destroy(tutorialCanvas);
+            Destroy(gameHUDCanvas);
             if (tempColor.a >= 1 && SceneManager.GetActiveScene() == SceneManager.GetSceneByName("Game_Scene")) //When at solid colour state, based on the scene, load a new scene.
             {
                 SceneManager.LoadScene("Ending_Scene"); //Load ending scene.
@@ -257,7 +263,7 @@ public class Player_Controller : MonoBehaviour
             canPlayerMove = true; //Allow the player to move again in all directions.
         }
         
-        else if (Physics.Raycast(camera.transform.position, camera.transform.forward, out m_ladderHit, 2f, 1<<10)) //Shoots a raycast forward of the players position at a distance of '2f'.
+        else if (Physics.Raycast(camera.transform.position, camera.transform.forward, out m_ladderHit, 4f, 1<<10)) //Shoots a raycast forward of the players position at a distance of '2f'.
         {
             if (m_ladderHit.collider != null && m_ladderHit.collider.gameObject.layer == 10) //Check for the Ladder Layer.
             {

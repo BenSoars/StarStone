@@ -258,7 +258,7 @@ public class Gun_Generic : Melee_Attack
 
                 if (canAim == true) // if the player is able to aim down sights with this weapon
                 {
-                    if (Input.GetKey(KeyCode.Mouse1) && m_player.isSprinting == false) // if they're holding down right mouse and aren't sprinting
+                    if (Input.GetKey(KeyCode.Mouse1) && m_player.isSprinting == false && clockController.canAim == true) // if they're holding down right mouse and aren't sprinting
                     {
                         m_isAiming = true; // they are aiming
                         isAccurate = true; // gun becomes accurate
