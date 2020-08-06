@@ -143,7 +143,7 @@ MonoBehaviour:
   light: {fileID: 6117712238516201389}
   runeBall: {fileID: 5206463932686783605}
   runeArt: {fileID: 2785175512274132743}
-  globalColor: {fileID: 2100000, guid: 0cbc18006710000005cc180067100000, type: 2}
+  globalColor: {fileID: 2100000, guid: 8c60cf8c9306b8349847fa61539788da, type: 2}
   stopActivation: 0
   animated: 0
   wisp: {fileID: 42458450682264745, guid: 6befa5c3aa19d1842a12f708f5aab1c0, type: 3}
