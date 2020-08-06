@@ -59,7 +59,7 @@ GameObject:
   - component: {fileID: 2123656128743154966}
   - component: {fileID: 5944149629261797855}
   - component: {fileID: 4521959873957535345}
-  m_Layer: 2
+  m_Layer: 14
   m_Name: Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4763,6 +4763,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4995d3b7cdd805443b65804c86bbf906, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stormDamage: 2
 --- !u!199 &4521959873957535345
 ParticleSystemRenderer:
   serializedVersion: 6

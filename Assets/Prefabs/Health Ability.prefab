@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2925883688444669873}
   - component: {fileID: 2925883688444669872}
   - component: {fileID: 3241889466334999889}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Health Ability
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -60,7 +60,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53911df12c7d94141a95868e94bcfa68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthPerSecond: 1
+  healthPerSecond: 5
 --- !u!114 &3241889466334999889
 MonoBehaviour:
   m_ObjectHideFlags: 0
