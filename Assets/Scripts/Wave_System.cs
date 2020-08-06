@@ -151,7 +151,6 @@ public class Wave_System : MonoBehaviour
 
         curRound += 1; //Increase current round by one.
         m_enemiesKilled = false;
-        m_playerContoller.playerHealth = 100;
 
         f_fogManager(); //Reset fog values.
         Debug.Log("New Wave: " + newWave);
@@ -225,6 +224,7 @@ public class Wave_System : MonoBehaviour
     {
         if (isIntermission == true) //Countdown for intermission between rounds.
         {
+            m_playerContoller.playerHealth = 100;
             if (m_checkRound == false)
             {
                 m_SpecialTracker.CheckForRoundAchievements();

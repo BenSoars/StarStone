@@ -54,6 +54,7 @@ public class User_Interface : MonoBehaviour
     [Tooltip("Reference the difficulty handler.")]
     public GameObject difficultyHandler;
     public GameObject timeLeft;
+    public GameObject leaveNow;
 
     [Header("UI Images")]
     [Tooltip("Display current starstone image on UI.")]
@@ -71,7 +72,8 @@ public class User_Interface : MonoBehaviour
     [Tooltip("Stores the different sprites used for the starstone icons on the runtime UI.")]
     public Sprite[] startstoneIcons;
     [Tooltip("Stores the different sprites for the starstone ability icons on the runtime UI.")]
-    public Sprite[] abilityIcons;   
+    public Sprite[] abilityIcons;
+    public Image bloodRed;
 
     [Header("Runtime Components")]
     [Tooltip("Camera reference.")]
@@ -88,6 +90,7 @@ public class User_Interface : MonoBehaviour
     public List<int> waveTimes = new List<int>();
     [Tooltip("Stores the amount of notes the player has collected.")]
     public int collectedNotes;
+    public Animator bloodAnimation;
 
     //[Header("In-game Individual Canvas")] //This was to display the starstone power in game.
     //public TMPro.TextMeshPro SS1;
@@ -123,6 +126,33 @@ public class User_Interface : MonoBehaviour
         f_pauseMenu();
         f_setStarstoneAbilityImages();
         f_runtimeUI();
+        f_playerHealth();
+
+        if(m_waveSystem.curRound == 12) { leaveNow.active = true; } //Alert the player they need to leave the temple.
+        if(m_waveSystem.curRound >= 13) { m_playerController.playerHealth -= 0.001f; } //Cause the player to forcefully die.
+
+    }
+
+    private void f_playerHealth() //This sets the animation speed based on players health.
+    {
+        if (m_playerController.playerHealth > 60) //Hide animation if players health is above 60.
+        {
+            bloodRed.enabled = false;
+        }
+        else bloodRed.enabled = true;
+
+        if (m_playerController.playerHealth <= 60 && m_playerController.playerHealth > 40) //If the players health is between 2 values, it sets the speed accordingly.
+        {
+            bloodAnimation.speed = 1;
+        }
+        if (m_playerController.playerHealth <= 40 && m_playerController.playerHealth > 20)
+        {
+            bloodAnimation.speed = 2f;
+        }
+        if (m_playerController.playerHealth <= 20 && m_playerController.playerHealth >= 0)
+        {
+            bloodAnimation.speed = 3f;
+        }
     }
 
     public void f_setStarstoneAbilityImages()
