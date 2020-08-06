@@ -33,6 +33,8 @@ public class Prototype_Weapon : MonoBehaviour
     private float m_currentDamageCoolDown;
     public AudioSource beamNoise;
 
+    public LayerMask layerMask; // the layermask
+
     // Use this for initialization
     void Start()
     {
@@ -75,7 +77,7 @@ public class Prototype_Weapon : MonoBehaviour
             m_prototypeClasses.stonePower[m_prototypeClasses.classState] -= 0.025f; //Decrease current starstone power (drain).
             m_lr.SetPosition(0, m_shotPoint.position); //Set position of laser.
             m_lr.enabled = true; //Enable laser.
-            if (Physics.SphereCast(m_shotPoint.position, 0.2f, m_shotPoint.forward, out m_laserHit)) //SphereCast allows for a thicker Raycast.
+            if (Physics.SphereCast(m_shotPoint.position, 0.2f, m_shotPoint.forward, out m_laserHit, Mathf.Infinity, ~layerMask)) //SphereCast allows for a thicker Raycast.
             {
                 m_anim.SetBool("Firing", true); //Start shooting animation.
                 if (m_laserHit.collider)

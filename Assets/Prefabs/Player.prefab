@@ -17489,6 +17489,9 @@ MonoBehaviour:
   maxLaserDamage: 20
   damageCoolDown: 0.2
   beamNoise: {fileID: 4038250209114937181}
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 16384
 --- !u!82 &4038250209114937181
 AudioSource:
   m_ObjectHideFlags: 0
