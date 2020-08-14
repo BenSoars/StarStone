@@ -8,7 +8,7 @@ public class UI_Button : MonoBehaviour
 {
     // Ben Soars
     public Animator anim; // animator
-    
+    public GameObject[] starstoneInfo;
 
     public void loadScene (string sceneName) // used for UI button to load levels
     {
@@ -23,6 +23,18 @@ public class UI_Button : MonoBehaviour
         SceneManager.LoadScene(sceneName); // load scene   
     }
 
+    //Kurtis Watson
+    public void showStarstone(int id)
+    {
+        for (int i = 0; i < GameObject.Find("Buttons").GetComponent<UI_Button>().starstoneInfo.Length; i++)
+        {
+            GameObject.Find("Buttons").GetComponent<UI_Button>().starstoneInfo[i].SetActive(false);
+        }
+
+        GameObject.Find("Buttons").GetComponent<UI_Button>().starstoneInfo[id].SetActive(true);
+    }
+
+    //Ben Soars
     public void setAnimation(string triggerName)
     {
         anim.SetTrigger(triggerName); // play the passed string in the animator

@@ -119,7 +119,7 @@ MonoBehaviour:
   minWispSpeed: 7
   maxWispSpeed: 16
   m_desiredLocation: {fileID: 0}
-  m_enemySpawn: 0
+  enemySpawn: 0
   m_type: 0
 --- !u!1 &1308668901181732451
 GameObject:
