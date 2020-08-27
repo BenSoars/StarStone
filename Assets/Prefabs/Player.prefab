@@ -21871,10 +21871,10 @@ MonoBehaviour:
   isLadder: 0
   isUsingLadder: 0
   topOfLadder: 0
-  isPlayerInvisible: 0
   desiredPos: {fileID: 0}
   audio: {fileID: 0}
   runSound: {fileID: 5915776234038842692}
+  isPlayerInvisible: 0
   gameHUDCanvas: {fileID: 0}
   tutorialCanvas: {fileID: 0}
 --- !u!95 &8145446568550084157
@@ -21983,8 +21983,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35e4b3e167a5b6242b22e57b682ac2a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  station: {fileID: 6146998418634085983, guid: 99b9f94f9f082bc46b10357af7c0028f, type: 3}
-  cameraLook: {fileID: 8493438687375166386}
+  camera: {fileID: 0}
   animator: {fileID: 0}
   rockAnim: {fileID: 0}
   disableUpgrade: 0
