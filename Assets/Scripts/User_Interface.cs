@@ -64,6 +64,10 @@ public class User_Interface : MonoBehaviour
     [Tooltip("Show the allogated V ability on screen.")]
     public Image abilityPreview2;
     [Tooltip("Show the chosen Q ability on screen,")]
+
+    public TextMeshProUGUI abilityTextPreview1;
+    public TextMeshProUGUI abilityTextPreview2;
+
     public Image abilityIcon1;
     [Tooltip("Show the chosen V ability on screen.")]
     public Image abilityIcon2;
@@ -104,6 +108,8 @@ public class User_Interface : MonoBehaviour
         //DontDestroyOnLoad(this);
         abilityPreview1.enabled = false;
         abilityPreview2.enabled = false;
+        abilityTextPreview1.enabled = false;
+        abilityTextPreview2.enabled = false;
         interactText.enabled = false;
         //transition.active = false;
         pauseMenu.active = false;
@@ -366,14 +372,20 @@ public class User_Interface : MonoBehaviour
                 stone = m_objectHit.collider.gameObject;
                 abilityPreview1.sprite = m_objectHit.collider.GetComponent<Starstone_ID>().preview1; //Set the ability preview on the UI as that stored in the colliders image variable.
                 abilityPreview2.sprite = m_objectHit.collider.GetComponent<Starstone_ID>().preview2;
+                abilityTextPreview1.text = m_objectHit.collider.GetComponent<Starstone_ID>().textPreview1;
+                abilityTextPreview2.text = m_objectHit.collider.GetComponent<Starstone_ID>().textPreview2;
                 abilityPreview1.enabled = true; //Display the ability previews when the player is looking at a starstone >
                 abilityPreview2.enabled = true;
+                abilityTextPreview1.enabled = true;
+                abilityTextPreview2.enabled = true;
             }
             else
             {
                 m_isLooking = false;
                 abilityPreview1.enabled = false; // > and hide if they look away.
                 abilityPreview2.enabled = false;
+                abilityTextPreview1.enabled = false;
+                abilityTextPreview2.enabled = false;
             }
             if (Input.GetKeyDown("f") && m_objectHit.collider.gameObject.GetComponent("Starstone_ID") as Starstone_ID) //Check if the player selects a starstone.
             {
