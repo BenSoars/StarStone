@@ -102,7 +102,6 @@ public class Gun_Generic : Melee_Attack
     [Tooltip("The gameobject that is used for the damage text")]
     public GameObject hitDamageText; // the hit text
     public Clock_Controller clockController;
-  
 
     void Start()
     {
@@ -244,9 +243,9 @@ public class Gun_Generic : Melee_Attack
 
             if (m_player.isPlayerActive == true && m_player.isUsingLadder == false) // if the player is active and not on a ladder
             {
-                if (m_player.isSprinting == false && coolDownTimer <= 0) // if the player isn't sprinting and the cooldown isn't bigger than 0
+                if (m_player.isSprinting == false && coolDownTimer <= 0 && clockController.canShoot == true) // if the player isn't sprinting and the cooldown isn't bigger than 0
                 {
-                    if (Input.GetKeyDown(KeyCode.Mouse0) && clockController.canShoot == true) // and the player has fired their weapon
+                    if (Input.GetKeyDown(KeyCode.Mouse0)) // and the player has fired their weapon
                     {
                         if (m_currentAmmo > 0) // if there is ammo
                         {

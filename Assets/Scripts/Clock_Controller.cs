@@ -117,7 +117,11 @@ public class Clock_Controller : MonoBehaviour
                 canAim = false;
                 canShoot = false; //then stop the player from shooting their gun (allow them to change clock time). 
             }
-            else canAim = true; canShoot = true;
+            else
+            {
+                canAim = true;
+                canShoot = true;
+            }
         }
         
 
