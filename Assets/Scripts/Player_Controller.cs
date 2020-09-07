@@ -83,6 +83,9 @@ public class Player_Controller : MonoBehaviour
     public Audio_System audio; //Get the audio system component to allow for sounds.
     public AudioSource runSound;
 
+    public List<AudioClip> moveSounds = new List<AudioClip>();
+    private bool switched;
+
     [Header("Other Assets")]
     [Space(2)]
     [Tooltip("Check if the player is invisible or not (used for ability).")]
@@ -202,12 +205,17 @@ public class Player_Controller : MonoBehaviour
             rb.velocity = Vector3.ClampMagnitude(rb.velocity, maxSpeed);
 
             if (Input.GetKey(KeyCode.LeftShift) && Input.GetKey("w")) //Make sure the player is moving forward to sprint.
+
             {
+                SwitchRunSounds();
+                runSound.clip = moveSounds[1];
                 isSprinting = true;              
                 m_speed = sprintSpeed; //Set sprint speed.
             }
             else
             {
+                SwitchRunSounds();
+                runSound.clip = moveSounds[0];
                 isSprinting = false;               
                 m_speed = walkSpeed; //Reset speed.
             }
@@ -223,8 +231,9 @@ public class Player_Controller : MonoBehaviour
 
             m_animator.SetBool("Crouch", isCrouching);
 
-            if (isSprinting && rb.velocity != Vector3.zero && grounded == true)
+            if (rb.velocity.magnitude > 0.1f && grounded == true)
             {
+              
                 runSound.enabled = true; // Start run sound
             } else
             {
@@ -335,6 +344,14 @@ public class Player_Controller : MonoBehaviour
         }
     }
 
+    private void SwitchRunSounds()
+    {
+        if (switched == isSprinting)
+        {
+            switched = !isSprinting;
+            runSound.Play();
+        }
+    }
 
     //private void f_grenade()
     //{

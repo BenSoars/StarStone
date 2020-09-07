@@ -21874,6 +21874,9 @@ MonoBehaviour:
   desiredPos: {fileID: 0}
   audio: {fileID: 0}
   runSound: {fileID: 5915776234038842692}
+  moveSounds:
+  - {fileID: 8300000, guid: 5bd3f12a9790e914086cbe1dc9934d39, type: 3}
+  - {fileID: 8300000, guid: ab54613f12f6cb3449c455b0d4d6ee48, type: 3}
   isPlayerInvisible: 0
   gameHUDCanvas: {fileID: 0}
   tutorialCanvas: {fileID: 0}
