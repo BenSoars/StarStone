@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 42458450682264756}
   - component: {fileID: 42458450682264759}
   - component: {fileID: 6295395092690014080}
+  - component: {fileID: -3238459912554610022}
+  - component: {fileID: 1243898085299275799}
   m_Layer: 0
   m_Name: Wisp_Default
   m_TagString: Enemy
@@ -121,6 +123,115 @@ MonoBehaviour:
   m_desiredLocation: {fileID: 0}
   enemySpawn: 0
   m_type: 0
+--- !u!82 &-3238459912554610022
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 42458450682264745}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: f4245c7ea63307b43a2095ee4bbd756a, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 0.77914137
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 2.51
+  MinDistance: 1
+  MaxDistance: 9
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!114 &1243898085299275799
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 42458450682264745}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 217dd4604dc28dd4399e985fea46e803, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sound: {fileID: -3238459912554610022}
 --- !u!1 &1308668901181732451
 GameObject:
   m_ObjectHideFlags: 0
@@ -625,22 +736,22 @@ PrefabInstance:
     - target: {fileID: 198025281900492468, guid: 3d35e81bdc5955041be098ef22e82a3b,
         type: 3}
       propertyPath: InitialModule.startColor.maxColor.r
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 198025281900492468, guid: 3d35e81bdc5955041be098ef22e82a3b,
         type: 3}
       propertyPath: InitialModule.startColor.maxColor.g
-      value: 0
+      value: 0.92156863
       objectReference: {fileID: 0}
     - target: {fileID: 198025281900492468, guid: 3d35e81bdc5955041be098ef22e82a3b,
         type: 3}
       propertyPath: InitialModule.startColor.maxColor.b
-      value: 0
+      value: 0.015686275
       objectReference: {fileID: 0}
     - target: {fileID: 198025281900492468, guid: 3d35e81bdc5955041be098ef22e82a3b,
         type: 3}
       propertyPath: InitialModule.startColor.maxColor.a
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 198114777272790932, guid: 3d35e81bdc5955041be098ef22e82a3b,
         type: 3}
@@ -650,42 +761,42 @@ PrefabInstance:
     - target: {fileID: 198114777272790932, guid: 3d35e81bdc5955041be098ef22e82a3b,
         type: 3}
       propertyPath: InitialModule.startColor.maxColor.r
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 198114777272790932, guid: 3d35e81bdc5955041be098ef22e82a3b,
         type: 3}
       propertyPath: InitialModule.startColor.maxColor.g
-      value: 0
+      value: 0.92156863
       objectReference: {fileID: 0}
     - target: {fileID: 198114777272790932, guid: 3d35e81bdc5955041be098ef22e82a3b,
         type: 3}
       propertyPath: InitialModule.startColor.maxColor.b
-      value: 0
+      value: 0.015686275
       objectReference: {fileID: 0}
     - target: {fileID: 198114777272790932, guid: 3d35e81bdc5955041be098ef22e82a3b,
         type: 3}
       propertyPath: InitialModule.startColor.maxColor.a
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 198198661817966188, guid: 3d35e81bdc5955041be098ef22e82a3b,
         type: 3}
       propertyPath: InitialModule.startColor.maxColor.r
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 198198661817966188, guid: 3d35e81bdc5955041be098ef22e82a3b,
         type: 3}
       propertyPath: InitialModule.startColor.maxColor.g
-      value: 0
+      value: 0.92156863
       objectReference: {fileID: 0}
     - target: {fileID: 198198661817966188, guid: 3d35e81bdc5955041be098ef22e82a3b,
         type: 3}
       propertyPath: InitialModule.startColor.maxColor.b
-      value: 0
+      value: 0.015686275
       objectReference: {fileID: 0}
     - target: {fileID: 198198661817966188, guid: 3d35e81bdc5955041be098ef22e82a3b,
         type: 3}
       propertyPath: InitialModule.startColor.maxColor.a
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 198592367852795574, guid: 3d35e81bdc5955041be098ef22e82a3b,
         type: 3}
@@ -700,22 +811,22 @@ PrefabInstance:
     - target: {fileID: 198889961251652488, guid: 3d35e81bdc5955041be098ef22e82a3b,
         type: 3}
       propertyPath: InitialModule.startColor.maxColor.r
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 198889961251652488, guid: 3d35e81bdc5955041be098ef22e82a3b,
         type: 3}
       propertyPath: InitialModule.startColor.maxColor.g
-      value: 0
+      value: 0.92156863
       objectReference: {fileID: 0}
     - target: {fileID: 198889961251652488, guid: 3d35e81bdc5955041be098ef22e82a3b,
         type: 3}
       propertyPath: InitialModule.startColor.maxColor.b
-      value: 0
+      value: 0.015686275
       objectReference: {fileID: 0}
     - target: {fileID: 198889961251652488, guid: 3d35e81bdc5955041be098ef22e82a3b,
         type: 3}
       propertyPath: InitialModule.startColor.maxColor.a
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 199899781212541530, guid: 3d35e81bdc5955041be098ef22e82a3b,
         type: 3}
