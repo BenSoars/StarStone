@@ -18591,7 +18591,7 @@ MonoBehaviour:
   Anim: {fileID: 9051406418708992001}
   layerMask:
     serializedVersion: 2
-    m_Bits: 16384
+    m_Bits: 147456
   hitDamageText: {fileID: 716313641932058393, guid: 6d1c9af70de7b834eb4915020237bcca,
     type: 3}
   clockController: {fileID: 0}

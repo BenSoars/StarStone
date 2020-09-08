@@ -14583,7 +14583,7 @@ GameObject:
   m_Component:
   - component: {fileID: 355290617}
   - component: {fileID: 355290618}
-  m_Layer: 14
+  m_Layer: 17
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -48959,7 +48959,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1389971638}
   - component: {fileID: 1389971639}
-  m_Layer: 14
+  m_Layer: 17
   m_Name: GameObject (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -52947,7 +52947,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1652328189}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -107.06, y: -11.16, z: 29.14}
+  m_LocalPosition: {x: -107.06, y: -11.16, z: 31.8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 670473403}
@@ -53779,6 +53779,25 @@ Transform:
   m_Father: {fileID: 670473403}
   m_RootOrder: 29
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1764127459 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2502203975881118265, guid: 405f85205a76902499b0767fececde85,
+    type: 3}
+  m_PrefabInstance: {fileID: 1531518801}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &1764127460
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1764127459}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 297.65518, y: 411.1332, z: 753.47217}
+  m_Center: {x: 0, y: 15.080872, z: 0}
 --- !u!1001 &1766883855
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -57773,7 +57792,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2056972329}
   - component: {fileID: 2056972330}
-  m_Layer: 14
+  m_Layer: 17
   m_Name: GameObject (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -72835,7 +72854,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!64 &4496127517755019430
 MeshCollider:
