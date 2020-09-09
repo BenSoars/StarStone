@@ -15,6 +15,8 @@ public class User_Interface : MonoBehaviour
     private Player_Controller m_playerController;
     private Prototype_Classes m_prototypeClasses;
     private Pickup_System m_pickupSystem;
+    private Weapon_Switch m_weaponSwitch;
+    private Enemy_Damage m_enemyDamage;
 
     [Header("Text Mesh Pro UGUI")] //Access for all Text Meshes on the UI.
     [Space(2)]
@@ -36,6 +38,9 @@ public class User_Interface : MonoBehaviour
     public TMPro.TextMeshProUGUI clockPartsLeft;
     [Tooltip("Display the amount of notes left to collect.")]
     public TMPro.TextMeshProUGUI notesLeft;
+
+    public GameObject currentAmmo;
+    public Image blood;
 
     [Header("UI Game Objects")] //Game objects needed for enabline/disabling.
     [Space(2)]
@@ -111,6 +116,7 @@ public class User_Interface : MonoBehaviour
         abilityTextPreview1.enabled = false;
         abilityTextPreview2.enabled = false;
         interactText.enabled = false;
+        blood.enabled = false;
         //transition.active = false;
         pauseMenu.active = false;
         repairBar.active = false;
@@ -121,6 +127,8 @@ public class User_Interface : MonoBehaviour
         m_playerController = FindObjectOfType<Player_Controller>();
         m_prototypeClasses = FindObjectOfType<Prototype_Classes>();
         m_pickupSystem = FindObjectOfType<Pickup_System>();
+        m_weaponSwitch = FindObjectOfType<Weapon_Switch>();
+        m_enemyDamage = FindObjectOfType<Enemy_Damage>();
         timeTillNextRound.enabled = false;
 
     }
@@ -138,6 +146,24 @@ public class User_Interface : MonoBehaviour
         if(m_waveSystem.curRound == 12) { leaveNow.active = true; } //Alert the player they need to leave the temple.
         if(m_waveSystem.curRound >= 13) { m_playerController.playerHealth -= 0.001f; } //Cause the player to forcefully die.
 
+        switch (m_weaponSwitch.currentWeapon)
+        {
+            case 3:
+                currentAmmo.active = false;
+                break;
+            default:
+                currentAmmo.active = true;
+                break;
+        }
+
+        if(m_enemyDamage.damaged == true)
+        {
+            blood.enabled = true;
+        }
+        else if (m_enemyDamage.damaged == false)
+        {
+            blood.enabled = false;
+        }
     }
 
     private void f_playerHealth() //This sets the animation speed based on players health.
