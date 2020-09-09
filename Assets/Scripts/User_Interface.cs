@@ -102,6 +102,8 @@ public class User_Interface : MonoBehaviour
     public Animator bloodAnimation;
     public LayerMask layerMask;
 
+    private bool damaged;
+
     //[Header("In-game Individual Canvas")] //This was to display the starstone power in game.
     //public TMPro.TextMeshPro SS1;
     //public TMPro.TextMeshPro SS2;
@@ -128,7 +130,7 @@ public class User_Interface : MonoBehaviour
         m_prototypeClasses = FindObjectOfType<Prototype_Classes>();
         m_pickupSystem = FindObjectOfType<Pickup_System>();
         m_weaponSwitch = FindObjectOfType<Weapon_Switch>();
-        m_enemyDamage = FindObjectOfType<Enemy_Damage>();
+       
         timeTillNextRound.enabled = false;
 
     }
@@ -156,11 +158,11 @@ public class User_Interface : MonoBehaviour
                 break;
         }
 
-        if(m_enemyDamage.damaged == true)
+        if(damaged == true)
         {
             blood.enabled = true;
         }
-        else if (m_enemyDamage.damaged == false)
+        else if (damaged == false)
         {
             blood.enabled = false;
         }
@@ -427,6 +429,13 @@ public class User_Interface : MonoBehaviour
     public void f_bugFix()
     {
         m_bugFix = true;
+    }
+
+    public IEnumerator bloodEffect()
+    {
+        damaged = true;
+        yield return new WaitForSeconds(0.5f);
+        damaged = false;
     }
 
 }
